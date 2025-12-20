@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Typography improvements */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-black;
+  }
+
+  /* Smooth transitions for theme changes - only for specific properties */
+  html,
+  body,
+  [class*="bg-"],
+  [class*="text-"],
+  [class*="border-"] {
+    transition-property: background-color, border-color, color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  .animate-slide-in-top-left {
+    animation: slideInTopLeft 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-in-bottom-left {
+    animation: slideInBottomLeft 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-in-top-right {
+    animation: slideInTopRight 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-in-bottom-right {
+    animation: slideInBottomRight 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  [data-animate-card] {
+    opacity: 0;
+  }
+
+  [data-animate-card].animate-on-scroll {
+    opacity: 1;
+  }
+
+  [data-scroll-animate] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  [data-scroll-animate].animate-on-scroll {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  [data-scroll-animate-fade] {
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+  }
+
+  [data-scroll-animate-fade].animate-on-scroll {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInTopLeft {
+  from {
+    opacity: 0;
+    transform: translate(-30px, -30px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInBottomLeft {
+  from {
+    opacity: 0;
+    transform: translate(-30px, 30px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slideInTopRight {
+  from {
+    opacity: 0;
+    transform: translate(30px, -30px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slideInBottomRight {
+  from {
+    opacity: 0;
+    transform: translate(30px, 30px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Arriving on time - Moved up 37.5px (half of 75px) */
+.arriving-on-time {
+  top: calc(25% - 37.5px) !important;
+}
+
+@media (min-width: 640px) {
+  .arriving-on-time {
+    top: calc(33.333% - 37.5px) !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .arriving-on-time {
+    top: calc(50% - 37.5px) !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .arriving-on-time {
+    top: calc(16rem - 37.5px) !important;
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "nav": {
+    "home": "Home",
+    "demo": "Demo",
+    "widget": "Widget",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Manage All Your Bookings in One Place",
+    "subtitle": "The complete booking management platform for vacation rental owners",
+    "cta": "Get Started Free",
+    "watchDemo": "Watch Demo"
+  },
+  "trust": {
+    "title": "Built with Modern Technology"
+  },
+  "features": {
+    "title": "Everything You Need",
+    "subtitle": "Powerful features to streamline your rental business",
+    "calendar": {
+      "title": "Smart Calendar",
+      "desc": "Month/Year view with turnover detection and real-time sync across devices"
+    },
+    "payments": {
+      "title": "Stripe Payments",
+      "desc": "Secure checkout with automatic tracking and refund management"
+    },
+    "emails": {
+      "title": "Automated Emails",
+      "desc": "Booking confirmations, check-in reminders, and payment notifications"
+    },
+    "widget": {
+      "title": "Embeddable Widget",
+      "desc": "3 modes, custom domains, and light/dark theme support"
+    },
+    "analytics": {
+      "title": "Booking Analytics",
+      "desc": "Revenue tracking, occupancy rates, and seasonal insights"
+    },
+    "ical": {
+      "title": "iCal Sync",
+      "desc": "Two-way sync with Airbnb, Booking.com, and other platforms"
+    }
+  },
+  "screenshots": {
+    "title": "See It In Action",
+    "subtitle": "A beautiful, intuitive interface for managing your properties"
+  },
+  "cta": {
+    "title": "Ready to Simplify Your Bookings?",
+    "subtitle": "Join property owners who trust BookBed for their rental management",
+    "button": "Start Free Trial"
+  },
+  "demo": {
+    "title": "See BookBed in Action",
+    "subtitle": "Watch how easy it is to manage your vacation rentals",
+    "video1": {
+      "title": "Widget Booking Flow",
+      "desc": "See how guests can easily book through your embedded widget with Stripe payments"
+    },
+    "video2": {
+      "title": "Property & Unit Setup",
+      "desc": "Create properties, add units, set pricing, and publish with the setup wizard"
+    },
+    "video3": {
+      "title": "Booking Management",
+      "desc": "Approve, reject, or cancel bookings with the intuitive timeline calendar"
+    },
+    "video4": {
+      "title": "Integrations",
+      "desc": "Set up iCal sync, connect Stripe, configure custom subdomain, and embed widgets"
+    }
+  },
+  "widget": {
+    "title": "Embeddable Booking Widget",
+    "subtitle": "Add booking functionality to your website in minutes",
+    "mode1": {
+      "title": "Full Booking Mode",
+      "desc": "Complete booking flow with Stripe payment integration"
+    },
+    "mode2": {
+      "title": "Calendar Only Mode",
+      "desc": "Display availability without booking - perfect for inquiry-based rentals"
+    },
+    "mode3": {
+      "title": "Inquiry Mode",
+      "desc": "Allow guests to send booking inquiries without immediate payment"
+    },
+    "embedCode": "Embed Code",
+    "copyCode": "Copy Code"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Have questions? We'd love to hear from you",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "success": "Message sent successfully!",
+    "error": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "copyright": "© 2025 BookBed. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "nav": {
+    "home": "Početna",
+    "demo": "Demo",
+    "widget": "Widget",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Upravljajte Svim Rezervacijama na Jednom Mjestu",
+    "subtitle": "Kompletna platforma za upravljanje rezervacijama za vlasnike smještaja",
+    "cta": "Započnite Besplatno",
+    "watchDemo": "Pogledaj Demo"
+  },
+  "trust": {
+    "title": "Izgrađeno sa Modernom Tehnologijom"
+  },
+  "features": {
+    "title": "Sve Što Vam Treba",
+    "subtitle": "Moćne funkcije za pojednostavljenje vašeg posla iznajmljivanja",
+    "calendar": {
+      "title": "Pametni Kalendar",
+      "desc": "Mjesečni/Godišnji prikaz sa detekcijom turnover-a i sinkronizacijom u realnom vremenu"
+    },
+    "payments": {
+      "title": "Stripe Plaćanja",
+      "desc": "Sigurno plaćanje sa automatskim praćenjem i upravljanjem povratima"
+    },
+    "emails": {
+      "title": "Automatski Emailovi",
+      "desc": "Potvrde rezervacija, podsjetnici za check-in i obavijesti o plaćanju"
+    },
+    "widget": {
+      "title": "Widget za Ugradnju",
+      "desc": "3 moda, prilagođene domene i podrška za light/dark temu"
+    },
+    "analytics": {
+      "title": "Analitika Rezervacija",
+      "desc": "Praćenje prihoda, stope popunjenosti i sezonski uvidi"
+    },
+    "ical": {
+      "title": "iCal Sinkronizacija",
+      "desc": "Dvosmjerna sinkronizacija sa Airbnb, Booking.com i drugim platformama"
+    }
+  },
+  "screenshots": {
+    "title": "Pogledajte u Akciji",
+    "subtitle": "Prekrasan, intuitivan interfejs za upravljanje vašim nekretninama"
+  },
+  "cta": {
+    "title": "Spremni Pojednostaviti Vaše Rezervacije?",
+    "subtitle": "Pridružite se vlasnicima nekretnina koji vjeruju BookBed-u za upravljanje iznajmljivanjem",
+    "button": "Započni Besplatno"
+  },
+  "demo": {
+    "title": "Pogledajte BookBed u Akciji",
+    "subtitle": "Pogledajte koliko je lako upravljati vašim smještajima",
+    "video1": {
+      "title": "Widget Tok Rezervacije",
+      "desc": "Pogledajte kako gosti mogu jednostavno rezervirati kroz vaš ugrađeni widget sa Stripe plaćanjima"
+    },
+    "video2": {
+      "title": "Postavljanje Nekretnine i Jedinice",
+      "desc": "Kreirajte nekretnine, dodajte jedinice, postavite cijene i objavite pomoću čarobnjaka za postavljanje"
+    },
+    "video3": {
+      "title": "Upravljanje Rezervacijama",
+      "desc": "Odobrite, odbijte ili otkažite rezervacije sa intuitivnim timeline kalendarom"
+    },
+    "video4": {
+      "title": "Integracije",
+      "desc": "Postavite iCal sinkronizaciju, povežite Stripe, konfigurirajte prilagođenu subdomenu i ugradite widgete"
+    }
+  },
+  "widget": {
+    "title": "Widget za Rezervacije",
+    "subtitle": "Dodajte funkcionalnost rezervacija na vašu web stranicu za nekoliko minuta",
+    "mode1": {
+      "title": "Puni Mod Rezervacije",
+      "desc": "Kompletan tok rezervacije sa Stripe integracijom plaćanja"
+    },
+    "mode2": {
+      "title": "Samo Kalendar Mod",
+      "desc": "Prikaz dostupnosti bez rezervacije - savršeno za iznajmljivanje bazirano na upitima"
+    },
+    "mode3": {
+      "title": "Mod Upita",
+      "desc": "Omogućite gostima slanje upita za rezervaciju bez trenutnog plaćanja"
+    },
+    "embedCode": "Embed Kod",
+    "copyCode": "Kopiraj Kod"
+  },
+  "contact": {
+    "title": "Kontaktirajte Nas",
+    "subtitle": "Imate pitanja? Rado ćemo vas čuti",
+    "name": "Ime",
+    "email": "Email",
+    "message": "Poruka",
+    "send": "Pošalji Poruku",
+    "success": "Poruka uspješno poslana!",
+    "error": "Nešto je pošlo po zlu. Molimo pokušajte ponovo."
+  },
+  "footer": {
+    "copyright": "© 2025 BookBed. Sva prava zadržana.",
+    "privacy": "Politika Privatnosti",
+    "terms": "Uvjeti Korištenja"
+  }
+}
