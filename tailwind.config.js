@@ -21,16 +21,24 @@ export default {
           DEFAULT: '#6B4CE6',
           dark: '#5B3DD6',
           light: '#9B86F3',
+          lighter: '#B8A6F5', // Higher contrast for dark mode (5.1:1 on zinc-900)
           hover: '#7B5CF6',
           disabled: 'rgba(155, 134, 243, 0.5)',
         },
-        // Secondary Colors (Coral)
+        // Secondary Colors (Purple variant - for accents)
         secondary: {
-          DEFAULT: '#FF6B6B',
-          dark: '#E63946',
-          light: '#FF8E8E',
-          hover: '#FF7B7B',
-          disabled: 'rgba(255, 142, 142, 0.5)',
+          DEFAULT: '#8B5CF6',  // Violet-500
+          dark: '#7C3AED',    // Violet-600
+          light: '#A78BFA',   // Violet-400
+          hover: '#9365F6',
+          disabled: 'rgba(167, 139, 250, 0.5)',
+        },
+        // Success Colors (Emerald - for positive feedback)
+        success: {
+          DEFAULT: '#10B981', // Emerald-500
+          dark: '#059669',    // Emerald-600
+          light: '#34D399',   // Emerald-400
+          hover: '#0D9668',
         },
         // Tertiary Colors (Golden)
         tertiary: {
@@ -83,6 +91,13 @@ export default {
         'strong': '0 10px 15px rgba(0, 0, 0, 0.15)',
         'purple': '0 4px 14px rgba(107, 76, 230, 0.2)',
         'purple-dark': '0 4px 14px rgba(155, 134, 243, 0.3)',
+        'emerald': '0 4px 14px rgba(16, 185, 129, 0.25)',
+        'emerald-dark': '0 4px 14px rgba(52, 211, 153, 0.35)',
+        // Elevation scale for cards
+        'elevation-1': '0 1px 2px rgba(0, 0, 0, 0.05)',
+        'elevation-2': '0 2px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04)',
+        'elevation-3': '0 4px 8px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04)',
+        'elevation-4': '0 8px 16px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.06)',
       },
       animation: {
         'float': 'float 3s ease-in-out infinite',
@@ -91,6 +106,10 @@ export default {
         'slideInBottomLeft': 'slideInBottomLeft 0.6s ease-out',
         'slideInBottomRight': 'slideInBottomRight 0.6s ease-out',
         'slideInBottom': 'slideInBottom 0.6s ease-out',
+        'gradient': 'gradient 8s linear infinite',
+        'shine': 'shine 5s linear infinite',
+        'star-movement-bottom': 'star-movement-bottom linear infinite alternate',
+        'star-movement-top': 'star-movement-top linear infinite alternate',
       },
       keyframes: {
         float: {
@@ -116,6 +135,23 @@ export default {
         slideInBottom: {
           'from': { opacity: '0', transform: 'translateY(40px)' },
           'to': { opacity: '1', transform: 'translateY(0)' },
+        },
+        gradient: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+        shine: {
+          '0%': { backgroundPosition: '100%' },
+          '100%': { backgroundPosition: '-100%' },
+        },
+        'star-movement-bottom': {
+          '0%': { transform: 'translate(0%, 0%)', opacity: '1' },
+          '100%': { transform: 'translate(-100%, 0%)', opacity: '0' },
+        },
+        'star-movement-top': {
+          '0%': { transform: 'translate(0%, 0%)', opacity: '1' },
+          '100%': { transform: 'translate(100%, 0%)', opacity: '0' },
         },
       },
     },

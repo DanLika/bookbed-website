@@ -91,6 +91,7 @@ export default function LiveDemoSection() {
                     <img
                       src={YOUTUBE_THUMBNAIL_URL}
                       alt="BookBed Widget Demo Video"
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement

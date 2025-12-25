@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "rab-booking-248fc"
+  },
+  "targets": {
+    "rab-booking-248fc": {
+      "hosting": {
+        "website": ["bookbed-website"]
+      }
+    }
+  }
+}

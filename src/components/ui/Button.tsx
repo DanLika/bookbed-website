@@ -13,7 +13,9 @@ export default function Button({
   className = '',
   ...props
 }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]'
+  // Use @media (hover: hover) via Tailwind's hover variant - only scale on devices that support true hover
+  // Mobile gets active:scale-[0.98] for tap feedback, but no hover:scale (which feels weird on touch)
+  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 transform md:hover:scale-[1.02] active:scale-[0.98]'
 
   const variants = {
     primary: 'bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white shadow-purple hover:shadow-purple-dark',

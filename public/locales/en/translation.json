@@ -1,9 +1,33 @@
 {
   "nav": {
     "home": "Home",
+    "about": "About",
     "demo": "Demo",
     "widget": "Widget",
     "contact": "Contact"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "BookBed is a booking management platform that helps vacation rental owners efficiently manage their business.",
+    "mission": {
+      "title": "Our Mission",
+      "description1": "Our mission is to simplify booking management and help property owners focus their time on what matters most - providing an excellent experience for their guests.",
+      "description2": "Through innovative technology and a simple user experience, BookBed transforms how vacation rental owners manage their bookings."
+    },
+    "features": {
+      "fast": {
+        "title": "Fast & Simple",
+        "desc": "Intuitive user experience that saves time"
+      },
+      "secure": {
+        "title": "Secure & Reliable",
+        "desc": "Your data is protected and secure"
+      },
+      "team": {
+        "title": "Team Approach",
+        "desc": "We work together with you for success"
+      }
+    }
   },
   "hero": {
     "title": "Manage All Your Bookings in One Place",
@@ -18,8 +42,16 @@
     "title": "Everything You Need",
     "subtitle": "Powerful features to streamline your rental business",
     "calendar": {
-      "title": "Smart Calendar",
-      "desc": "Month/Year view with turnover detection and real-time sync across devices"
+      "title": "Timeline Calendar",
+      "desc": "Visual timeline view with drag-and-drop booking management and turnover detection"
+    },
+    "widget": {
+      "title": "Unit Hub",
+      "desc": "Centralized property management with unit details, pricing, and availability settings"
+    },
+    "analytics": {
+      "title": "Booking Management",
+      "desc": "Track all reservations with status updates, guest details, and payment history"
     },
     "payments": {
       "title": "Stripe Payments",
@@ -28,14 +60,6 @@
     "emails": {
       "title": "Automated Emails",
       "desc": "Booking confirmations, check-in reminders, and payment notifications"
-    },
-    "widget": {
-      "title": "Embeddable Widget",
-      "desc": "3 modes, custom domains, and light/dark theme support"
-    },
-    "analytics": {
-      "title": "Booking Analytics",
-      "desc": "Revenue tracking, occupancy rates, and seasonal insights"
     },
     "ical": {
       "title": "iCal Sync",
@@ -46,14 +70,41 @@
     "title": "See It In Action",
     "subtitle": "A beautiful, intuitive interface for managing your properties"
   },
+  "gallery": {
+    "title": "See It In Action",
+    "subtitle": "Beautiful, intuitive interface designed for property owners",
+    "dashboard": {
+      "title": "Dashboard"
+    },
+    "calendar": {
+      "title": "Calendar"
+    },
+    "bookings": {
+      "title": "Bookings"
+    },
+    "ical": {
+      "title": "iCal Sync"
+    },
+    "unitHubBasic": {
+      "title": "Unit Hub"
+    },
+    "unitHubWidget": {
+      "title": "Widget Settings"
+    }
+  },
   "cta": {
     "title": "Ready to Simplify Your Bookings?",
-    "subtitle": "Join property owners who trust BookBed for their rental management",
-    "button": "Start Free Trial"
+    "subtitle": "Start managing your vacation rentals the easy way",
+    "button": "Get Started"
   },
   "demo": {
     "title": "See BookBed in Action",
     "subtitle": "Watch how easy it is to manage your vacation rentals",
+    "badge": "Video Demos",
+    "comingSoon": "Video coming soon",
+    "ctaTitle": "Ready to get started?",
+    "ctaDesc": "Try BookBed free and see how easy it is to manage your bookings.",
+    "ctaButton": "Start Free Trial",
     "video1": {
       "title": "Widget Booking Flow",
       "desc": "See how guests can easily book through your embedded widget with Stripe payments"
@@ -69,9 +120,14 @@
     "video4": {
       "title": "Integrations",
       "desc": "Set up iCal sync, connect Stripe, configure custom subdomain, and embed widgets"
+    },
+    "video5": {
+      "title": "Analytics & Reports",
+      "desc": "Track revenue, occupancy rates, and booking trends with detailed analytics dashboard"
     }
   },
   "widget": {
+    "badge": "Embeddable Widget",
     "title": "Embeddable Booking Widget",
     "subtitle": "Add booking functionality to your website in minutes",
     "mode1": {
@@ -87,7 +143,20 @@
       "desc": "Allow guests to send booking inquiries without immediate payment"
     },
     "embedCode": "Embed Code",
-    "copyCode": "Copy Code"
+    "copyCode": "Copy Code",
+    "copied": "Copied!",
+    "feature1": {
+      "title": "Light & Dark Theme",
+      "desc": "Matches your website"
+    },
+    "feature2": {
+      "title": "Fully Responsive",
+      "desc": "Works on all devices"
+    },
+    "feature3": {
+      "title": "Fast Loading",
+      "desc": "Optimized performance"
+    }
   },
   "contact": {
     "title": "Get in Touch",
@@ -99,7 +168,33 @@
     "success": "Message sent successfully!",
     "error": "Something went wrong. Please try again."
   },
+  "pricing": {
+    "badge": "Pricing",
+    "title": "Let's Talk",
+    "subtitle": "Get a personalized quote tailored to your property needs",
+    "cta": "Contact Us",
+    "custom": {
+      "title": "Custom Pricing",
+      "desc": "Full access to all features. Contact us for a quote that fits your business."
+    },
+    "features": {
+      "unlimited": "Unlimited properties & bookings",
+      "stripe": "Stripe payment integration",
+      "ical": "iCal sync with all platforms",
+      "emails": "Automated email notifications",
+      "widget": "Embeddable booking widget",
+      "support": "Priority support"
+    }
+  },
+  "testimonials": {
+    "title": "Loved by Property Owners",
+    "subtitle": "See what our customers have to say"
+  },
   "footer": {
+    "description": "The complete booking management platform for vacation rental owners.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "builtWith": "Built with",
     "copyright": "© 2025 BookBed. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service"

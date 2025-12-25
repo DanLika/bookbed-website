@@ -1,28 +1,27 @@
 interface LogoIconProps {
   size?: number
-  isWhite?: boolean
-  darkMode?: boolean
   className?: string
 }
 
-export function LogoIcon({ size = 32, isWhite = false, darkMode = false, className = '' }: LogoIconProps) {
-  const bgColor = isWhite 
-    ? 'bg-white' 
-    : darkMode 
-      ? 'bg-gradient-to-br from-purple-600 to-purple-400' 
-      : 'bg-gradient-to-br from-purple-600 to-purple-400'
-  
-  const textColor = isWhite ? 'text-purple-600' : 'text-white'
-
+export function LogoIcon({ size = 32, className = '' }: LogoIconProps) {
   return (
-    <div 
-      className={`${bgColor} rounded-lg flex items-center justify-center ${className}`}
+    <div
+      className={`flex items-center justify-center ${className}`}
       style={{ width: size, height: size }}
     >
-      <span className={`${textColor} font-bold text-lg`} style={{ fontSize: `${size * 0.6}px` }}>
-        B
-      </span>
+      {/* Light theme logo (shown when NOT in dark mode) */}
+      <img
+        src="/images/logo-light.avif"
+        alt="BookBed"
+        className="block dark:hidden w-full h-full object-contain"
+      />
+      {/* Dark theme logo (shown when in dark mode) - white version using CSS filter */}
+      <img
+        src="/images/logo-light.avif"
+        alt="BookBed"
+        className="hidden dark:block w-full h-full object-contain brightness-0 invert"
+        style={{ filter: 'brightness(0) invert(1)' }}
+      />
     </div>
   )
 }
-

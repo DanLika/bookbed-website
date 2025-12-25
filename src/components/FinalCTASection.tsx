@@ -1,11 +1,15 @@
 import { useTranslation } from 'react-i18next'
-import { motion } from 'framer-motion'
+import { getSectionSpacing, getContainerClasses } from '../utils/spacing'
+import { typography } from '../utils/typography'
+import FadeContent from './ui/animations/FadeContent'
+import BlurText from './ui/animations/BlurText'
+import ShinyText from './ui/animations/ShinyText'
 
 export default function FinalCTASection() {
   const { t } = useTranslation()
 
   return (
-    <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary via-primary-hover to-primary-light dark:from-primary-dark dark:via-primary dark:to-primary-light overflow-hidden">
+    <section className={`relative ${getSectionSpacing()} px-4 sm:px-6 md:px-8 lg:px-12 bg-gradient-to-br from-primary via-primary-hover to-primary-light dark:from-primary-dark dark:via-primary dark:to-primary-light`}>
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-float" />
@@ -18,44 +22,77 @@ export default function FinalCTASection() {
         backgroundSize: '40px 40px'
       }} />
 
-      <div className="relative max-w-4xl mx-auto text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6"
-        >
-          {t('cta.title')}
-        </motion.h2>
+      <div className={`relative ${getContainerClasses()}`}>
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          {/* Text Content */}
+          <div className="flex-1 text-center lg:text-left">
+            <BlurText
+              text={t('cta.title')}
+              as="h2"
+              delay={100}
+              animateBy="words"
+              direction="top"
+              justify="responsive"
+              className={`${typography.h2} font-bold text-white mb-6`}
+            />
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-xl sm:text-2xl text-white/90 mb-12 max-w-2xl mx-auto"
-        >
-          {t('cta.subtitle')}
-        </motion.p>
+            <FadeContent
+              duration={600}
+              delay={100}
+              direction="up"
+              distance={30}
+            >
+              <p className="text-xl sm:text-2xl text-white/90 mb-10 max-w-xl mx-auto lg:mx-0">
+                {t('cta.subtitle')}
+              </p>
+            </FadeContent>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-        >
-          <a
-            href="https://app.bookbed.io"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-10 py-5 bg-white text-primary font-bold rounded-xl text-lg hover:bg-gray-50 transition-all transform hover:scale-105 shadow-2xl"
+            <FadeContent
+              duration={600}
+              delay={200}
+              direction="up"
+              distance={30}
+            >
+              <a
+                href="https://app.bookbed.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-xl text-lg shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-110 hover:-translate-y-1"
+              >
+                <ShinyText text={t('cta.button')} speed={4} />
+                <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </FadeContent>
+          </div>
+
+          {/* Mockup Image */}
+          <FadeContent
+            duration={600}
+            delay={300}
+            direction="right"
+            distance={50}
+            className="flex-1 w-full max-w-xl lg:max-w-none"
           >
-            {t('cta.button')}
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </motion.div>
+            <div className="relative">
+              {/* Glow behind mockup */}
+              <div className="absolute inset-0 bg-white/20 blur-3xl rounded-3xl scale-95" />
+
+              {/* Mockup frame */}
+              <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-3 border border-white/20">
+                <div className="rounded-xl overflow-hidden shadow-2xl">
+                  <img
+                    src="/images/bookbed/dashboard.avif"
+                    alt="BookBed Dashboard"
+                    loading="lazy"
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
+            </div>
+          </FadeContent>
+        </div>
       </div>
     </section>
   )

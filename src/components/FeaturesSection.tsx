@@ -1,27 +1,19 @@
 import { useTranslation } from 'react-i18next'
-import { motion } from 'framer-motion'
+import { getSectionSpacing, getContainerClasses } from '../utils/spacing'
+import { typography } from '../utils/typography'
+import FadeContent from './ui/animations/FadeContent'
+import BlurText from './ui/animations/BlurText'
+import MagicBento from './ui/MagicBento'
 
 export default function FeaturesSection() {
   const { t } = useTranslation()
 
-  const features = [
-    {
-      key: 'calendar',
-      image: '/images/bookbed/bookbed-calendar.png',
-    },
-    {
-      key: 'widget',
-      image: '/images/bookbed/bookbed-widget.png',
-    },
-    {
-      key: 'analytics',
-      image: '/images/bookbed/bookbed-dashboard.png',
-    },
-  ]
-
   return (
-    <section className="relative py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white dark:from-black dark:to-zinc-900 overflow-hidden">
-      {/* Subtle dot pattern background */}
+    <section
+      id="features"
+      className={`relative ${getSectionSpacing()} bg-gradient-to-b from-gray-50 to-white dark:from-zinc-950 dark:to-zinc-900 overflow-hidden`}
+    >
+      {/* Dot Pattern Background */}
       <div
         className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]"
         style={{
@@ -30,71 +22,37 @@ export default function FeaturesSection() {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto">
+      <div className={getContainerClasses()}>
         {/* Section Header */}
-        <div className="text-center mb-16 sm:mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary dark:text-white mb-4"
-          >
-            {t('features.title')}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-lg sm:text-xl text-text-secondary dark:text-gray-400 max-w-2xl mx-auto"
-          >
-            {t('features.subtitle')}
-          </motion.p>
-        </div>
-
-        {/* Features Grid - 3 large cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.key}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ delay: index * 0.15, duration: 0.5 }}
-              className="group"
+        <FadeContent>
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <span className="inline-block px-4 py-2 mb-4 text-sm font-semibold rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-light">
+              {t('features.title')}
+            </span>
+            <h2
+              className={`${typography.h2} font-bold text-text-primary dark:text-white mb-4`}
             >
-              {/* Card */}
-              <div className="relative bg-white dark:bg-zinc-900 rounded-3xl border border-gray-200 dark:border-zinc-800 overflow-hidden transition-all duration-500 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2">
-                {/* Image Container */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 dark:from-zinc-800 dark:to-zinc-900">
-                  <img
-                    src={feature.image}
-                    alt={t(`features.${feature.key}.title`)}
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/20 dark:from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
+              <BlurText text={t('features.title')} delay={0.05} />
+            </h2>
+            <p className={`${typography.body} text-text-secondary dark:text-gray-400 max-w-2xl mx-auto`}>
+              {t('features.subtitle')}
+            </p>
+          </div>
+        </FadeContent>
 
-                {/* Content */}
-                <div className="p-6 sm:p-8">
-                  {/* Title */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-text-primary dark:text-white mb-3 group-hover:text-primary dark:group-hover:text-primary-light transition-colors duration-300">
-                    {t(`features.${feature.key}.title`)}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-text-secondary dark:text-gray-400 leading-relaxed">
-                    {t(`features.${feature.key}.desc`)}
-                  </p>
-                </div>
-
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary-light to-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        {/* MagicBento Grid - Original ReactBits Implementation */}
+        <MagicBento
+          textAutoHide={true}
+          enableStars={true}
+          enableSpotlight={true}
+          enableBorderGlow={true}
+          enableTilt={true}
+          enableMagnetism={true}
+          clickEffect={true}
+          spotlightRadius={400}
+          particleCount={12}
+          glowColor="107, 76, 230"
+        />
       </div>
     </section>
   )

@@ -1,58 +1,128 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { LogoIcon } from './Logo'
+import FadeContent from './ui/animations/FadeContent'
+import GlassIcon from './ui/GlassIcon'
 
 export default function Footer() {
   const { t } = useTranslation()
 
-  return (
-    <footer className="bg-zinc-900 dark:bg-black border-t border-zinc-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Logo & Links */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <LogoIcon
-              size={36}
-              isWhite={true}
-              className="w-9 h-9 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
-            />
-            <span className="text-xl font-bold text-white group-hover:text-primary-light transition-colors duration-300">
-              BookBed
-            </span>
-          </Link>
+  const navLinks = [
+    { path: '/', key: 'home' },
+    { path: '/demo', key: 'demo' },
+    { path: '/widget', key: 'widget' },
+    { path: '/contact', key: 'contact' },
+  ]
 
-          {/* Links */}
-          <div className="flex items-center gap-6 text-sm">
-            <a
-              href="mailto:dusko@bookbed.io"
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              dusko@bookbed.io
-            </a>
-            <Link
-              to="/contact"
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              {t('nav.contact')}
+  return (
+    <footer className="relative bg-white dark:bg-zinc-900 overflow-hidden">
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        {/* Main Footer Content */}
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16 mb-10">
+          {/* Logo & Description */}
+          <FadeContent
+            duration={500}
+            direction="up"
+            distance={20}
+            className="flex-1"
+          >
+            <Link to="/" className="inline-flex items-center gap-3 group mb-4">
+              <LogoIcon
+                size={40}
+                className="group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
+              />
+              <span className="text-2xl font-bold text-text-primary dark:text-white group-hover:text-primary transition-colors duration-300">
+                BookBed
+              </span>
             </Link>
+            <p className="text-text-secondary dark:text-gray-400 text-sm leading-relaxed max-w-sm">
+              {t('footer.description')}
+            </p>
+          </FadeContent>
+
+          {/* Navigation & Contact - Same Row */}
+          <div className="flex gap-12 md:gap-16">
+            {/* Navigation Links */}
+            <FadeContent
+              duration={500}
+              delay={100}
+              direction="up"
+              distance={20}
+            >
+              <h4 className="text-text-primary dark:text-white font-semibold mb-4 text-sm uppercase tracking-wider">{t('footer.navigation')}</h4>
+              <nav className="flex flex-col gap-1" aria-label="Footer navigation">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.key}
+                    to={link.path}
+                    className="text-text-secondary dark:text-gray-400 hover:text-primary hover:translate-x-2 active:opacity-80 transition-all text-sm py-2 -ml-1 pl-1"
+                  >
+                    {t(`nav.${link.key}`)}
+                  </Link>
+                ))}
+              </nav>
+            </FadeContent>
+
+            {/* Contact */}
+            <FadeContent
+              duration={500}
+              delay={200}
+              direction="up"
+              distance={20}
+            >
+              <h4 className="text-text-primary dark:text-white font-semibold mb-4 text-sm uppercase tracking-wider">{t('footer.contact')}</h4>
+              <div className="flex flex-col gap-1">
+                <a
+                  href="mailto:info@bookbed.io"
+                  className="group text-text-secondary dark:text-gray-400 hover:text-primary active:opacity-80 transition-all text-sm flex items-center gap-2 py-2 -ml-1 pl-1"
+                >
+                  <GlassIcon size="sm" color="primary">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </GlassIcon>
+                  info@bookbed.io
+                </a>
+                <a
+                  href="https://app.bookbed.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group text-text-secondary dark:text-gray-400 hover:text-primary active:opacity-80 transition-all text-sm flex items-center gap-2 py-2 -ml-1 pl-1"
+                >
+                  <GlassIcon size="sm" color="emerald">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </GlassIcon>
+                  app.bookbed.io
+                </a>
+              </div>
+            </FadeContent>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-zinc-800">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-            <p>{t('footer.copyright')}</p>
-            <div className="flex items-center gap-4">
-              <a href="#" className="hover:text-gray-400 transition-colors">
-                {t('footer.privacy')}
-              </a>
-              <a href="#" className="hover:text-gray-400 transition-colors">
-                {t('footer.terms')}
-              </a>
+        <FadeContent
+          duration={500}
+          delay={300}
+          direction="up"
+          distance={10}
+        >
+          <div className="border-t border-gray-300 dark:border-zinc-800 pt-8">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-text-tertiary dark:text-gray-500">
+              <p>{t('footer.copyright')}</p>
+              <div className="flex items-center gap-4">
+                <a href="#" className="hover:text-primary active:opacity-80 transition-all py-2 px-1">
+                  {t('footer.privacy')}
+                </a>
+                <a href="#" className="hover:text-primary active:opacity-80 transition-all py-2 px-1">
+                  {t('footer.terms')}
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        </FadeContent>
       </div>
     </footer>
   )

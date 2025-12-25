@@ -1,5 +1,9 @@
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
+import { spacing, heroSpacing, getSectionSpacing, getContainerClasses } from '../utils/spacing'
+import { typography } from '../utils/typography'
+import FadeContent from '../components/ui/animations/FadeContent'
+import GradientText from '../components/ui/animations/GradientText'
 
 const DemoPage = () => {
   const { t } = useTranslation()
@@ -24,75 +28,117 @@ const DemoPage = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-black dark:to-zinc-900">
+    <div className="relative min-h-screen bg-white dark:bg-zinc-900 overflow-hidden">
+      {/* Subtle dot pattern background */}
+      <div
+        className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
+          backgroundSize: '32px 32px'
+        }}
+      />
+
       {/* Hero */}
-      <section className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
+      <section className={`relative ${heroSpacing.paddingTop} pb-12 sm:pb-16 ${spacing.container.padding}`}>
         <div className="max-w-4xl mx-auto text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl sm:text-5xl font-bold text-text-primary dark:text-white mb-6"
+          <FadeContent
+            duration={500}
+            direction="none"
           >
-            {t('demo.title')}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-text-secondary dark:text-gray-400"
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary dark:text-primary-light text-sm font-medium mb-6">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              {t('demo.badge', 'Video Tutorials')}
+            </div>
+          </FadeContent>
+
+          <FadeContent
+            blur
+            duration={600}
+            delay={100}
+            direction="up"
+            distance={20}
           >
-            {t('demo.subtitle')}
-          </motion.p>
+            <h1 className={`${typography.h1} font-bold text-text-primary dark:text-white mb-6`}>
+              <GradientText
+                colors={['#6B4CE6', '#9B86F3', '#6B4CE6', '#9B86F3', '#6B4CE6']}
+                animationSpeed={6}
+                className={typography.h1}
+              >
+                {t('demo.title')}
+              </GradientText>
+            </h1>
+          </FadeContent>
+
+          <FadeContent
+            duration={600}
+            delay={200}
+            direction="up"
+            distance={20}
+          >
+            <p className={`${typography.subtitle} text-text-secondary dark:text-gray-400 max-w-2xl mx-auto`}>
+              {t('demo.subtitle')}
+            </p>
+          </FadeContent>
         </div>
       </section>
 
       {/* Videos - Zig-zag layout */}
-      <section className="pb-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto space-y-24">
-          {videos.map((video, index) => (
-            <motion.div
-              key={video.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.6 }}
-              className={`flex flex-col ${
-                index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-              } items-center gap-8 lg:gap-16`}
-            >
-              {/* Text */}
-              <div className="flex-1 text-center lg:text-left">
-                <h2 className="text-2xl sm:text-3xl font-bold text-text-primary dark:text-white mb-4">
-                  {t(`demo.${video.id}.title`)}
-                </h2>
-                <p className="text-lg text-text-secondary dark:text-gray-400">
-                  {t(`demo.${video.id}.desc`)}
-                </p>
-              </div>
+      <section className={`relative ${getSectionSpacing()} ${spacing.container.padding}`}>
+        <div className={`relative ${getContainerClasses()}`}>
+          <div className="space-y-16 sm:space-y-20 lg:space-y-24">
+            {videos.map((video, index) => (
+              <FadeContent
+                key={video.id}
+                duration={600}
+                delay={index * 100}
+                direction={index % 2 === 0 ? 'left' : 'right'}
+                distance={40}
+              >
+                <div
+                  className={`flex flex-col ${
+                    index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                  } items-center gap-8 lg:gap-12`}
+                >
+                  {/* Text */}
+                  <div className={`flex-1 text-center ${index % 2 === 0 ? 'lg:text-left' : 'lg:text-right'}`}>
+                    <h2 className={`${typography.h3} font-bold text-text-primary dark:text-white mb-4`}>
+                      {t(`demo.${video.id}.title`)}
+                    </h2>
+                    <p className="text-lg text-text-secondary dark:text-gray-400 leading-relaxed">
+                      {t(`demo.${video.id}.desc`)}
+                    </p>
+                  </div>
 
-              {/* Video Placeholder */}
-              <div className="flex-1 w-full">
-                <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-800 shadow-strong">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                        <svg
-                          className="w-8 h-8 text-primary"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
+                  {/* Video Placeholder */}
+                  <div className="flex-1 w-full">
+                    <div className="group relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 dark:from-zinc-800 dark:to-zinc-900 shadow-xl border border-gray-200 dark:border-zinc-700 hover:shadow-2xl transition-shadow duration-300">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-center">
+                          <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mx-auto mb-4 cursor-pointer group-hover:bg-primary/20 dark:group-hover:bg-primary/30 transition-colors"
+                          >
+                            <svg
+                              className="w-8 h-8 sm:w-10 sm:h-10 text-primary ml-1"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          </motion.div>
+                          <p className="text-sm text-text-secondary dark:text-gray-500 font-medium">
+                            {t('demo.comingSoon', 'Video coming soon')}
+                          </p>
+                        </div>
                       </div>
-                      <p className="text-text-secondary dark:text-gray-500">
-                        Video coming soon
-                      </p>
                     </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </FadeContent>
+            ))}
+          </div>
         </div>
       </section>
     </div>
