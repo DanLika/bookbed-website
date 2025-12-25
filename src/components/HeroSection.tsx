@@ -31,11 +31,11 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section className="relative w-full pb-4 sm:pb-6 md:pb-8 lg:pb-10 bg-transparent overflow-hidden">
-      {/* Background - Light theme base gradient */}
+    <section className="relative w-full pb-4 sm:pb-6 md:pb-8 lg:pb-10 bg-gradient-to-br from-slate-100 to-white dark:from-zinc-950 dark:to-zinc-900 overflow-hidden">
+      {/* Background - Light theme overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-violet-50/80 via-white to-white dark:hidden" />
 
-      {/* Background - Dark theme base gradient */}
+      {/* Background - Dark theme overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] to-zinc-900 hidden dark:block" />
 
       {/* GridScan Background - Dark theme only */}

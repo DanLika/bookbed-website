@@ -99,7 +99,7 @@ export default function ScreenshotGallery() {
   }))
 
   return (
-    <section className={`relative ${getSectionSpacing()} bg-gradient-to-b from-white to-gray-50 dark:from-zinc-900 dark:to-zinc-950`}>
+    <section className={`relative ${getSectionSpacing()} bg-white dark:bg-zinc-900`}>
       {/* Section Header with container */}
       <div className={`relative ${getContainerClasses()}`}>
         <div className="text-center mb-12 sm:mb-16 px-4 sm:px-6 md:px-8 lg:px-12">
@@ -148,7 +148,7 @@ export default function ScreenshotGallery() {
         ease="power3.out"
         threshold={0.2}
       >
-        <div className="relative w-full h-[600px] sm:h-[700px] md:h-[800px]">
+        <div className="relative w-full h-[500px] sm:h-[550px] md:h-[600px]">
           <CircularGallery
             items={galleryItems}
             bend={1}

@@ -218,7 +218,7 @@ class Media {
     this.font = font;
     this.createShader();
     this.createMesh();
-    this.createTitle();
+    // this.createTitle(); // Removed text labels
     this.onResize();
   }
 

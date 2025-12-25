@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { LogoIcon } from './Logo'
 import LetterSwapForward from './ui/animations/LetterSwapForward'
@@ -12,6 +12,7 @@ interface HeaderProps {
 export default function Header({ isDark, onToggleTheme }: HeaderProps) {
   const { t, i18n } = useTranslation()
   const location = useLocation()
+  const navigate = useNavigate()
   const [isVisible, setIsVisible] = useState(true)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const lastScrollY = useRef(0)
@@ -54,12 +55,13 @@ export default function Header({ isDark, onToggleTheme }: HeaderProps) {
     setIsMobileMenuOpen(false)
   }, [location.pathname])
 
-  // Handle logo click - always scroll to top and navigate to home
+  // Handle logo click - always navigate to home and scroll to top
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (location.pathname === '/') {
-      e.preventDefault()
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
+    e.preventDefault()
+    // Navigate to home (this will refresh if already on home)
+    navigate('/', { replace: true })
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   return (

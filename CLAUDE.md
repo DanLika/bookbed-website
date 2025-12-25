@@ -131,28 +131,34 @@ export const getContainerClasses = () =>
 
 Sve sekcije koriste konzistentan gradient sistem za smooth transitions između sekcija.
 
+**IMPORTANT:** Koriste se exact Tailwind hex values za seamless prelaze:
+- `white` = `#FFFFFF`
+- `gray-50` = `#F9FAFB`
+- `zinc-900` = `#18181B`
+- `zinc-950` = `#09090B`
+
 ### Light Theme Flow:
 ```
-Hero:           from-slate-100 to-white
-Trust:          from-white to-gray-50
-Features:       from-gray-50 to-white
-ScreenshotGallery: from-white to-gray-50
-Pricing:        from-gray-50 to-white
-Testimonials:   bg-gray-50
-CTA:            Purple gradient
-Footer:         from-zinc-900 to-zinc-950
+Hero:              from-slate-100 to-white (bottom: #FFFFFF)
+Trust:             from-white to-gray-50 (top: #FFFFFF, bottom: #F9FAFB)
+Features:          from-gray-50 to-white (top: #F9FAFB, bottom: #FFFFFF)
+ScreenshotGallery: bg-white (solid #FFFFFF) ← SEAMLESS with Features!
+Pricing:           from-white to-gray-50 (top: #FFFFFF, bottom: #F9FAFB) ← SEAMLESS with Gallery!
+Testimonials:      bg-gray-50
+CTA:               Purple gradient
+Footer:            from-zinc-900 to-zinc-950
 ```
 
 ### Dark Theme Flow:
 ```
-Hero:           from-zinc-950 to-zinc-900
-Trust:          from-zinc-900 to-zinc-950
-Features:       from-zinc-950 to-zinc-900
-ScreenshotGallery: from-zinc-900 to-zinc-950
-Pricing:        from-zinc-950 to-zinc-900
-Testimonials:   bg-zinc-950
-CTA:            Purple gradient
-Footer:         from-zinc-950 to-black
+Hero:              from-zinc-950 to-zinc-900 (bottom: #18181B)
+Trust:             from-zinc-900 to-zinc-950 (top: #18181B, bottom: #09090B)
+Features:          from-zinc-950 to-zinc-900 (top: #09090B, bottom: #18181B)
+ScreenshotGallery: bg-zinc-900 (solid #18181B) ← SEAMLESS with Features!
+Pricing:           from-zinc-900 to-zinc-950 (top: #18181B, bottom: #09090B) ← SEAMLESS with Gallery!
+Testimonials:      bg-zinc-950
+CTA:               Purple gradient
+Footer:            from-zinc-950 to-black
 ```
 
 ### Implementation:
@@ -166,14 +172,22 @@ className="bg-gradient-to-b from-white to-gray-50 dark:from-zinc-900 dark:to-zin
 // Features section
 className="bg-gradient-to-b from-gray-50 to-white dark:from-zinc-950 dark:to-zinc-900"
 
-// ScreenshotGallery section
-className="bg-gradient-to-b from-white to-gray-50 dark:from-zinc-900 dark:to-zinc-950"
+// ScreenshotGallery section - SOLID background for seamless transitions!
+className="bg-white dark:bg-zinc-900"
+// CircularGallery backgroundColor must match exactly:
+backgroundColor={isDark ? '#18181B' : '#FFFFFF'}
 
 // Pricing section
-className="bg-gradient-to-b from-gray-50 to-white dark:from-zinc-950 dark:to-zinc-900"
+className="bg-gradient-to-b from-white to-gray-50 dark:from-zinc-900 dark:to-zinc-950"
 
 // Footer
 className="bg-gradient-to-b from-zinc-900 to-zinc-950 dark:from-zinc-950 dark:to-black"
+```
+
+### HomePage Wrapper
+```tsx
+// HomePage wrapper ensures no gaps show through
+className="overflow-x-hidden bg-white dark:bg-zinc-950"
 ```
 
 ### Dot Pattern Background

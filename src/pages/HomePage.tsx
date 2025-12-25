@@ -7,7 +7,7 @@ import FinalCTASection from '../components/FinalCTASection'
 
 export default function HomePage() {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden bg-white dark:bg-zinc-950">
       <HeroSection />
       <TrustSection />
       <FeaturesSection />
