@@ -399,13 +399,13 @@ const GlobalSpotlight: React.FC<{
     document.body.appendChild(spotlight);
     spotlightRef.current = spotlight;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleInteraction = (clientX: number, clientY: number) => {
       if (!spotlightRef.current || !gridRef.current) return;
 
       const section = gridRef.current.closest('.bento-section');
       const rect = section?.getBoundingClientRect();
       const mouseInside =
-        rect && e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+        rect && clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom;
 
       isInsideSection.current = mouseInside || false;
       const cards = gridRef.current.querySelectorAll('.card');
@@ -431,7 +431,7 @@ const GlobalSpotlight: React.FC<{
         const centerX = cardRect.left + cardRect.width / 2;
         const centerY = cardRect.top + cardRect.height / 2;
         const distance =
-          Math.hypot(e.clientX - centerX, e.clientY - centerY) - Math.max(cardRect.width, cardRect.height) / 2;
+          Math.hypot(clientX - centerX, clientY - centerY) - Math.max(cardRect.width, cardRect.height) / 2;
         const effectiveDistance = Math.max(0, distance);
 
         minDistance = Math.min(minDistance, effectiveDistance);
@@ -443,12 +443,12 @@ const GlobalSpotlight: React.FC<{
           glowIntensity = (fadeDistance - effectiveDistance) / (fadeDistance - proximity);
         }
 
-        updateCardGlowProperties(cardElement, e.clientX, e.clientY, glowIntensity, spotlightRadius);
+        updateCardGlowProperties(cardElement, clientX, clientY, glowIntensity, spotlightRadius);
       });
 
       gsap.to(spotlightRef.current, {
-        left: e.clientX,
-        top: e.clientY,
+        left: clientX,
+        top: clientY,
         duration: 0.1,
         ease: 'power2.out'
       });
@@ -467,6 +467,22 @@ const GlobalSpotlight: React.FC<{
       });
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      handleInteraction(e.clientX, e.clientY);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        handleInteraction(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        handleInteraction(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+
     const handleMouseLeave = () => {
       isInsideSection.current = false;
       gridRef.current?.querySelectorAll('.card').forEach(card => {
@@ -481,12 +497,32 @@ const GlobalSpotlight: React.FC<{
       }
     };
 
+    const handleTouchEnd = () => {
+      // Fade out spotlight after touch ends
+      if (spotlightRef.current) {
+        gsap.to(spotlightRef.current, {
+          opacity: 0,
+          duration: 0.5,
+          ease: 'power2.out'
+        });
+      }
+      gridRef.current?.querySelectorAll('.card').forEach(card => {
+        (card as HTMLElement).style.setProperty('--glow-intensity', '0');
+      });
+    };
+
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    document.addEventListener('touchmove', handleTouchMove, { passive: true });
+    document.addEventListener('touchend', handleTouchEnd, { passive: true });
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
       spotlightRef.current?.parentNode?.removeChild(spotlightRef.current);
     };
   }, [gridRef, disableAnimations, enabled, spotlightRadius, glowColor]);
@@ -740,7 +776,7 @@ const MagicBento: React.FC<BentoProps> = ({
                     <span className="card__label text-base">{card.label}</span>
                   </div>
                   {(card.image || card.imageDark) && (
-                    <div className="card__image absolute inset-0 opacity-35 overflow-hidden rounded-[20px]">
+                    <div className="card__image absolute inset-0 opacity-95 overflow-hidden rounded-[20px]">
                       <img
                         src={getCardImage(card)}
                         alt={card.title}
@@ -881,7 +917,7 @@ const MagicBento: React.FC<BentoProps> = ({
                   <span className="card__label text-base">{card.label}</span>
                 </div>
                 {(card.image || card.imageDark) && (
-                  <div className="card__image absolute inset-0 opacity-35 overflow-hidden rounded-[20px]">
+                  <div className="card__image absolute inset-0 opacity-95 overflow-hidden rounded-[20px]">
                     <img
                       src={getCardImage(card)}
                       alt={card.title}

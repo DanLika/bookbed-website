@@ -27,7 +27,7 @@ export default function PricingSection() {
   ]
 
   return (
-    <section className={`relative ${getSectionSpacing()} px-4 sm:px-6 md:px-8 lg:px-12 bg-gradient-to-b from-gray-50 to-white dark:from-zinc-950 dark:to-zinc-900`}>
+    <section className={`relative ${getSectionSpacing()} px-4 sm:px-6 md:px-8 lg:px-12 bg-gradient-to-b from-white to-gray-50 dark:from-zinc-900 dark:to-zinc-950`}>
       <div className={`relative ${getContainerClasses()}`}>
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">

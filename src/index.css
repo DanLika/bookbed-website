@@ -47,6 +47,11 @@
     @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-black;
   }
 
+  /* Ensure CircularGallery canvas is fully transparent */
+  canvas {
+    background: transparent !important;
+  }
+
   /* Smooth transitions for theme changes - only for specific properties */
   html,
   body,

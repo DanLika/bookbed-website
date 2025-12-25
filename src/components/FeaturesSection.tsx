@@ -13,14 +13,6 @@ export default function FeaturesSection() {
       id="features"
       className={`relative ${getSectionSpacing()} bg-gradient-to-b from-gray-50 to-white dark:from-zinc-950 dark:to-zinc-900 overflow-hidden`}
     >
-      {/* Dot Pattern Background */}
-      <div
-        className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
-          backgroundSize: '32px 32px'
-        }}
-      />
 
       <div className={getContainerClasses()}>
         {/* Section Header */}

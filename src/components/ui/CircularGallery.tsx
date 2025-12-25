@@ -152,6 +152,7 @@ interface MediaProps {
   textColor: string;
   borderRadius?: number;
   font?: string;
+  backgroundColor?: string;
 }
 
 class Media {
@@ -170,6 +171,7 @@ class Media {
   textColor: string;
   borderRadius: number;
   font?: string;
+  backgroundColor: string;
   program!: Program;
   plane!: Mesh;
   title!: Title;
@@ -196,7 +198,8 @@ class Media {
     bend,
     textColor,
     borderRadius = 0,
-    font
+    font,
+    backgroundColor = '#FFFFFF'
   }: MediaProps) {
     this.geometry = geometry;
     this.gl = gl;
@@ -205,6 +208,7 @@ class Media {
     this.length = length;
     this.renderer = renderer;
     this.scene = scene;
+    this.backgroundColor = backgroundColor;
     this.screen = screen;
     this.text = text;
     this.viewport = viewport;
@@ -288,8 +292,20 @@ class Media {
     img.crossOrigin = 'anonymous';
     img.src = this.image;
     img.onload = () => {
-      texture.image = img;
-      this.program.uniforms.uImageSizes.value = [img.naturalWidth, img.naturalHeight];
+      // Create canvas with background color
+      const canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        // Fill with background color
+        ctx.fillStyle = this.backgroundColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // Draw image on top
+        ctx.drawImage(img, 0, 0);
+      }
+      texture.image = canvas;
+      this.program.uniforms.uImageSizes.value = [canvas.width, canvas.height];
     };
   }
 
@@ -363,9 +379,9 @@ class Media {
       }
     }
     this.scale = this.screen.height / 1500;
-    // 9:16 aspect ratio (portrait) - height is larger than width
+    // 9:18 aspect ratio (portrait) - height is larger than width
     this.plane.scale.x = (this.viewport.width * (450 * this.scale)) / this.screen.width;
-    this.plane.scale.y = (this.viewport.height * (800 * this.scale)) / this.screen.height;
+    this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
     this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
     this.padding = 2;
     this.width = this.plane.scale.x + this.padding;
@@ -382,11 +398,13 @@ interface AppConfig {
   font?: string;
   scrollSpeed?: number;
   scrollEase?: number;
+  backgroundColor?: string;
 }
 
 class App {
   container: HTMLElement;
   scrollSpeed: number;
+  backgroundColor: string;
   scroll: {
     ease: number;
     current: number;
@@ -424,12 +442,14 @@ class App {
       borderRadius = 0,
       font = 'bold 30px Figtree',
       scrollSpeed = 2,
-      scrollEase = 0.05
+      scrollEase = 0.05,
+      backgroundColor = '#FFFFFF'
     }: AppConfig
   ) {
     document.documentElement.classList.remove('no-js');
     this.container = container;
     this.scrollSpeed = scrollSpeed;
+    this.backgroundColor = backgroundColor;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
     this.onCheckDebounce = debounce(this.onCheck.bind(this), 200);
     this.createRenderer();
@@ -437,7 +457,7 @@ class App {
     this.createScene();
     this.onResize();
     this.createGeometry();
-    this.createMedias(items, bend, textColor, borderRadius, font);
+    this.createMedias(items, bend, textColor, borderRadius, font, backgroundColor);
     this.update();
     this.addEventListeners();
   }
@@ -449,7 +469,13 @@ class App {
       dpr: Math.min(window.devicePixelRatio || 1, 2)
     });
     this.gl = this.renderer.gl;
-    this.gl.clearColor(0, 0, 0, 0);
+    // Convert hex color to RGB values (0-1 range)
+    const hex = this.backgroundColor.replace('#', '');
+    const r = parseInt(hex.substring(0, 2), 16) / 255;
+    const g = parseInt(hex.substring(2, 4), 16) / 255;
+    const b = parseInt(hex.substring(4, 6), 16) / 255;
+    // Set background color to match section background
+    this.gl.clearColor(r, g, b, 1.0);
     this.container.appendChild(this.renderer.gl.canvas as HTMLCanvasElement);
   }
 
@@ -475,7 +501,8 @@ class App {
     bend: number = 1,
     textColor: string,
     borderRadius: number,
-    font: string
+    font: string,
+    backgroundColor: string = '#FFFFFF'
   ) {
     const defaultItems = [
       {
@@ -544,7 +571,8 @@ class App {
         bend,
         textColor,
         borderRadius,
-        font
+        font,
+        backgroundColor
       });
     });
   }
@@ -606,6 +634,8 @@ class App {
     if (this.medias) {
       this.medias.forEach(media => media.update(this.scroll, direction));
     }
+    // Clear with transparent background before rendering
+    this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
     this.renderer.render({ scene: this.scene, camera: this.camera });
     this.scroll.last = this.scroll.current;
     this.raf = window.requestAnimationFrame(this.update.bind(this));
@@ -653,6 +683,7 @@ interface CircularGalleryProps {
   font?: string;
   scrollSpeed?: number;
   scrollEase?: number;
+  backgroundColor?: string;
 }
 
 export default function CircularGallery({
@@ -662,7 +693,8 @@ export default function CircularGallery({
   borderRadius = 0.05,
   font = 'bold 30px Figtree',
   scrollSpeed = 2,
-  scrollEase = 0.05
+  scrollEase = 0.05,
+  backgroundColor = '#FFFFFF'
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -674,11 +706,12 @@ export default function CircularGallery({
       borderRadius,
       font,
       scrollSpeed,
-      scrollEase
+      scrollEase,
+      backgroundColor
     });
     return () => {
       app.destroy();
     };
-  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
+  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, backgroundColor]);
   return <div className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing" ref={containerRef} />;
 }

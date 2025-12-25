@@ -11,6 +11,7 @@ import ScrollFloat from './ui/animations/ScrollFloat'
 export default function ScreenshotGallery() {
   const { t } = useTranslation()
   const [isDark, setIsDark] = useState(false)
+  const [scrollSpeed, setScrollSpeed] = useState(1.5)
 
   // Check if dark mode is enabled
   useEffect(() => {
@@ -28,6 +29,33 @@ export default function ScreenshotGallery() {
     })
 
     return () => observer.disconnect()
+  }, [])
+
+  // Adaptive scrollSpeed based on screen size and touch capability
+  useEffect(() => {
+    const calculateScrollSpeed = () => {
+      const width = window.innerWidth
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+
+      // Mobile (≤768px) or touch device → fast scroll
+      if (width <= 768 || isTouchDevice) {
+        setScrollSpeed(1.5)
+      }
+      // Tablet (769-1024px) → medium scroll
+      else if (width > 768 && width <= 1024) {
+        setScrollSpeed(1.0)
+      }
+      // Desktop (>1024px) without touch → slow scroll
+      else {
+        setScrollSpeed(0.5)
+      }
+    }
+
+    calculateScrollSpeed()
+
+    // Update on window resize (handles rotation and window resizing)
+    window.addEventListener('resize', calculateScrollSpeed)
+    return () => window.removeEventListener('resize', calculateScrollSpeed)
   }, [])
 
   // Gallery data with both light and dark variants
@@ -127,8 +155,9 @@ export default function ScreenshotGallery() {
             textColor="#6B4CE6"
             borderRadius={0.08}
             font="bold 24px Figtree, sans-serif"
-            scrollSpeed={0.5}
+            scrollSpeed={scrollSpeed}
             scrollEase={0.15}
+            backgroundColor={isDark ? '#18181B' : '#FFFFFF'}
           />
         </div>
       </ScrollFloat>
