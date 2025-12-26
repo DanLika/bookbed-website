@@ -778,6 +778,31 @@ useEffect(() => {
 - Tablet: icon 24px (w-6 h-6), text 14px (text-sm), gap 8px
 - Desktop: icon 28px (w-7 h-7), text 16px (text-base), gap 8px
 
+### Footer Logo Size
+
+**Visual Hierarchy Rule:** Footer logo koristi **identičnu** implementaciju kao Header logo za konzistentnost, ali se Footer smatra sekundarnom navigacijom.
+
+**Rješenje:**
+```tsx
+<Link to="/" className="inline-flex items-center gap-1.5 sm:gap-2 group mb-4">
+  <LogoIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300" />
+  <span className="text-xs sm:text-sm lg:text-base font-bold text-text-primary dark:text-white group-hover:text-primary dark:group-hover:text-primary-light transition-colors duration-300">
+    BookBed
+  </span>
+</Link>
+```
+
+**Veličine (identične kao Header):**
+- Mobile: icon 20px (w-5 h-5), text 12px (text-xs), gap 6px
+- Tablet: icon 24px (w-6 h-6), text 14px (text-sm), gap 8px
+- Desktop: icon 28px (w-7 h-7), text 16px (text-base), gap 8px
+
+**Key Features:**
+- Responsive sizing sa Tailwind klase (ne `size` prop)
+- Dark mode hover variant: `dark:group-hover:text-primary-light`
+- Konzistentne hover animacije (scale + rotate)
+- Potpuna parnost sa Header implementacijom
+
 ### CTA Section Bubbles on Mobile
 
 **Problem:** Decorative bubbles izgledaju loše na mobilnim ekranima.
