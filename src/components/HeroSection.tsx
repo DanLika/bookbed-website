@@ -38,7 +38,7 @@ export default function HeroSection() {
 
       {/* GridScan Background - Dark theme only */}
       {isDark && (
-        <div className="absolute inset-0 opacity-50">
+        <div className="absolute inset-0 w-full h-full opacity-50">
           <GridScan
             linesColor="#6B4CE6"
             scanColor="#9B86F3"
