@@ -206,29 +206,43 @@ Sve stranice koriste subtle dot pattern:
 
 ## Hero Section - Mockup Scaling
 
-Mockup u hero sekciji je skaliran da bude veći na mobilnim uređajima:
+Mockup u hero sekciji je skaliran da bude veći na mobilnim uređajima, sa `max-w-7xl` da spreči zoom glitch:
 
 ```tsx
 <img
-  src="/images/hero/hero-dark.avif"
-  alt="BookBed Dashboard"
-  className="relative w-[120%] sm:w-[110%] md:w-full max-w-none h-auto block dark:hidden"
-/>
-<img
   src="/images/hero/hero-light.avif"
   alt="BookBed Dashboard"
-  className="relative w-[120%] sm:w-[110%] md:w-full max-w-none h-auto hidden dark:block"
+  className="relative w-[120%] sm:w-[110%] md:w-[105%] lg:w-full max-w-7xl mx-auto h-auto block dark:hidden"
+  loading="eager"
+  fetchPriority="high"
+  decoding="async"
+/>
+<img
+  src="/images/hero/hero-dark.avif"
+  alt="BookBed Dashboard"
+  className="relative w-[120%] sm:w-[110%] md:w-[105%] lg:w-full max-w-7xl mx-auto h-auto hidden dark:block"
+  loading="eager"
+  fetchPriority="high"
+  decoding="async"
 />
 ```
 
 **Breakpoints:**
-- Mobile: 120% širine (veći mockup)
-- Tablet (sm): 110% širine
-- Desktop (md+): 100% širine
+- **Mobile**: 120% širine (veći mockup za bolji prikaz)
+- **Tablet (sm)**: 110% širine
+- **Medium (md)**: 105% širine
+- **Desktop (lg+)**: 100% širine
+- **Max Width**: `max-w-7xl` - sprječava zoom glitch
+
+**Image Loading:**
+- `loading="eager"` - Kritične slike se učitavaju odmah
+- `fetchPriority="high"` - Prioritet učitavanja
+- `decoding="async"` - Async dekodiranje
 
 **Floating Cards:**
-- Skriveni na mobile (`hidden lg:block`)
-- Prikazuju se samo na lg+ breakpointu
+- Vidljive na mobile ali manje (`w-28 sm:w-36`)
+- Desktop varijante (`hidden lg:block`) - pune veličine
+- Bez animacija - samo static display sa `animate-float` CSS
 
 ---
 
@@ -289,15 +303,53 @@ const galleryItems = galleryData.map(item => ({
   textColor="#6B4CE6"         // Primary purple color
   borderRadius={0.08}         // Rounded corners
   font="bold 24px Figtree, sans-serif"
-  scrollSpeed={0.5}           // Lower = slower scrolling
-  scrollEase={0.15}           // Smoothness of scroll (0.05 = very smooth)
+  scrollSpeed={scrollSpeed}   // Adaptive: 1.5 (mobile), 1.0 (tablet), 0.5 (desktop)
+  scrollEase={0.15}           // Smoothness of scroll
 />
+```
+
+**Adaptive Scroll Speed:**
+```tsx
+useEffect(() => {
+  const calculateScrollSpeed = () => {
+    const width = window.innerWidth
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+
+    if (width <= 768 || isTouchDevice) setScrollSpeed(1.5)       // Mobile/touch - fast
+    else if (width > 768 && width <= 1024) setScrollSpeed(1.0)   // Tablet - medium
+    else setScrollSpeed(0.5)                                      // Desktop - slow
+  }
+  // ...
+}, [])
 ```
 
 **Container Heights (Responsive):**
 ```tsx
-<div className="relative w-full h-[600px] sm:h-[700px] md:h-[800px]">
+<div className="relative w-full h-[500px] sm:h-[550px] md:h-[600px]">
 ```
+
+### CircularGallery Mobile Scroll Behavior
+
+**IMPORTANT:** Page scroll listener je **ISKLJUČEN** na mobile uređajima da se spriječi konflikt između vertikalnog page scroll-a i horizontalnog gallery scroll-a.
+
+**Lokacija:** `src/components/ui/CircularGallery.tsx` (linije 697-701, 716-719)
+
+**Razlog:** Originalni paket je imao funkcionalnost gdje vertikalni scroll stranice automatski rotira galeriju kao "parallax efekat". Ovo je uzrokovalo "fighting" osjećaj i konfuziju kod korisnika.
+
+**Rješenje:**
+```tsx
+// DISABLED: Page scroll listener caused "fighting" feeling on mobile
+// Gallery now ONLY rotates on direct swipe, not on page scroll
+// if (this.isTouchDevice) {
+//   window.addEventListener('scroll', this.boundOnPageScroll, { passive: true });
+// }
+```
+
+**Rezultat:**
+- ✅ **Desktop**: Mouse wheel rotira galeriju
+- ✅ **Mobile**: Gallery se rotira SAMO kada direktno swipe-uješ na njoj
+- ✅ **Mobile**: Vertikalni page scroll NE rotira galeriju automatski
+- ✅ Nema više "baguje" efekta tokom scroll-anja
 
 ### i18n Keys
 
@@ -557,4 +609,189 @@ npm run build && firebase deploy --only hosting
 
 ---
 
-**Last Updated:** 2025-12-20
+## Performance Optimizations
+
+### Lazy Loading Strategy
+
+**HomePage** koristi React `lazy()` i `Suspense` za optimizovano učitavanje:
+
+```tsx
+import { lazy, Suspense } from 'react'
+import HeroSection from '../components/HeroSection'
+
+// Lazy load below-the-fold sections
+const TrustSection = lazy(() => import('../components/TrustSection'))
+const FeaturesSection = lazy(() => import('../components/FeaturesSection'))
+const ScreenshotGallery = lazy(() => import('../components/ScreenshotGallery'))
+const PricingSection = lazy(() => import('../components/PricingSection'))
+const FinalCTASection = lazy(() => import('../components/FinalCTASection'))
+
+export default function HomePage() {
+  return (
+    <div className="overflow-x-hidden bg-white dark:bg-zinc-950">
+      {/* Hero loads immediately - above the fold */}
+      <HeroSection />
+
+      {/* Below-the-fold sections load lazily */}
+      <Suspense fallback={<SectionFallback />}>
+        <TrustSection />
+      </Suspense>
+      {/* ... */}
+    </div>
+  )
+}
+```
+
+**Prednosti:**
+- Hero section se učitava odmah (critical content)
+- Ostale sekcije se učitavaju on-demand (code splitting)
+- Minimal loading fallback (spinner)
+- Brže initial page load
+
+### Vite Build Configuration
+
+**Lokacija:** `vite.config.ts`
+
+```typescript
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'i18n-vendor': ['react-i18next', 'i18next'],
+          'animation-vendor': ['framer-motion', 'gsap'],
+        },
+      },
+    },
+    minify: 'esbuild',           // Brži od terser
+    chunkSizeWarningLimit: 1000,
+    sourcemap: false,            // Manji production build
+  },
+})
+```
+
+**Vendor Chunks:**
+- `react-vendor` - React core libraries
+- `i18n-vendor` - Translations
+- `animation-vendor` - Animation libraries (heavy)
+
+### Image Optimization
+
+**Critical Images (Above-the-fold):**
+```tsx
+<img
+  loading="eager"          // Load immediately
+  fetchPriority="high"     // Browser prioritizes this
+  decoding="async"         // Async decode
+/>
+```
+
+**Non-critical Images:**
+```tsx
+<img
+  loading="lazy"           // Load when visible
+  decoding="async"
+/>
+```
+
+**Format:** Koristi AVIF (better compression od WebP/PNG)
+
+---
+
+## Bug Fixes i Known Issues
+
+### GridScan Animation Disappearing Bug (FIXED)
+
+**Problem:** GridScan WebGL animacija je nestajala nakon klikanja po Hero sekciji, ostavljajući siv background.
+
+**Uzrok:**
+1. Component remount bez provjere postojećeg renderera
+2. Errori u animation loop zaustavljaju animaciju
+3. Cleanup bez safe guard-a
+
+**Rješenje:** `src/components/ui/backgrounds/GridScan.tsx`
+
+```tsx
+useEffect(() => {
+  // Prevent duplicate canvas elements
+  if (rendererRef.current && container.contains(rendererRef.current.domElement)) {
+    return  // Skip if already rendered
+  }
+
+  // Animation loop with error handling
+  const tick = () => {
+    try {
+      // ... animation code
+    } catch (error) {
+      console.error('GridScan animation error:', error)
+      // Continue animation even if error occurs
+    }
+    rafRef.current = requestAnimationFrame(tick)
+  }
+
+  return () => {
+    // Safe cleanup - check if objects exist
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current)
+      rafRef.current = null
+    }
+    if (material) material.dispose()
+    if (quad && quad.geometry) quad.geometry.dispose()
+    if (composerRef.current) {
+      composerRef.current.dispose()
+      composerRef.current = null
+    }
+    if (renderer) {
+      renderer.dispose()
+      if (container && container.contains(renderer.domElement)) {
+        container.removeChild(renderer.domElement)
+      }
+    }
+    rendererRef.current = null
+    materialRef.current = null
+  }
+}, [/* dependencies */])
+```
+
+**Rezultat:**
+- ✅ Animacija se ne duplicira na re-render
+- ✅ Errori ne zaustavljaju animation loop
+- ✅ Safe cleanup bez crash-a
+
+### Header Logo Size
+
+**Problem:** Logo je bio prevelik i neuravnotežen sa header elementima.
+
+**Rješenje:**
+```tsx
+<LogoIcon
+  size={20}
+  className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7"
+/>
+<span className="text-xs sm:text-sm lg:text-base">
+  BookBed
+</span>
+```
+
+**Veličine:**
+- Mobile: icon 20px (w-5 h-5), text 12px (text-xs)
+- Tablet: icon 24px (w-6 h-6), text 14px (text-sm)
+- Desktop: icon 28px (w-7 h-7), text 16px (text-base)
+
+### CTA Section Bubbles on Mobile
+
+**Problem:** Decorative bubbles izgledaju loše na mobilnim ekranima.
+
+**Rješenje:**
+```tsx
+<div className="absolute inset-0 opacity-30 hidden lg:block">
+  {/* Bubbles only on desktop */}
+</div>
+```
+
+**Rezultat:** Bubbles vidljivi samo na lg+ breakpointu (≥1024px)
+
+---
+
+**Last Updated:** 2025-12-26
