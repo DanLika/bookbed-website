@@ -1,9 +1,8 @@
 interface LogoIconProps {
-  size?: number
   className?: string
 }
 
-export function LogoIcon({ size = 32, className = '' }: LogoIconProps) {
+export function LogoIcon({ className = '' }: LogoIconProps) {
   return (
     <>
       {/* Light theme logo (shown when NOT in dark mode) */}
