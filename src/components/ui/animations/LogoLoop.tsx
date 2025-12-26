@@ -291,7 +291,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           '[--logoloop-gap:32px]',
           '[--logoloop-logoHeight:28px]',
           '[--logoloop-fadeColorAuto:#ffffff]',
-          'dark:[--logoloop-fadeColorAuto:#18181b]',
+          'dark:[--logoloop-fadeColorAuto:#0d0d0f]',
           scaleOnHover && 'py-[calc(var(--logoloop-logoHeight)*0.1)]',
           className
         ),

@@ -78,13 +78,12 @@ export default function Header({ isDark, onToggleTheme }: HeaderProps) {
               <Link
                 to="/"
                 onClick={handleLogoClick}
-                className="flex items-center gap-1.5 sm:gap-2 group"
+                className="inline-flex items-center gap-1.5 sm:gap-2 group"
               >
                 <LogoIcon
-                  size={20}
                   className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
                 />
-                <span className="text-xs sm:text-sm lg:text-base font-bold text-text-primary dark:text-white tracking-tight group-hover:text-primary dark:group-hover:text-primary-light transition-colors duration-300">
+                <span className="text-xs sm:text-sm lg:text-base font-bold text-text-primary dark:text-white group-hover:text-primary dark:group-hover:text-primary-light transition-colors duration-300">
                   BookBed
                 </span>
               </Link>

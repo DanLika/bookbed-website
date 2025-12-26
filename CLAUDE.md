@@ -765,19 +765,18 @@ useEffect(() => {
 
 **Rješenje:**
 ```tsx
-<LogoIcon
-  size={20}
-  className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7"
-/>
-<span className="text-xs sm:text-sm lg:text-base">
-  BookBed
-</span>
+<Link to="/" className="inline-flex items-center gap-1.5 sm:gap-2 group">
+  <LogoIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300" />
+  <span className="text-xs sm:text-sm lg:text-base font-bold text-text-primary dark:text-white">
+    BookBed
+  </span>
+</Link>
 ```
 
 **Veličine:**
-- Mobile: icon 20px (w-5 h-5), text 12px (text-xs)
-- Tablet: icon 24px (w-6 h-6), text 14px (text-sm)
-- Desktop: icon 28px (w-7 h-7), text 16px (text-base)
+- Mobile: icon 20px (w-5 h-5), text 12px (text-xs), gap 6px
+- Tablet: icon 24px (w-6 h-6), text 14px (text-sm), gap 8px
+- Desktop: icon 28px (w-7 h-7), text 16px (text-base), gap 8px
 
 ### CTA Section Bubbles on Mobile
 

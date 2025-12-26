@@ -35,7 +35,7 @@ const ResendIcon = () => (
 
 // Logo card component for LogoLoop
 const LogoCard = ({ icon, name }: { icon: React.ReactNode; name: string }) => (
-  <div className="flex items-center gap-3 px-6 py-3 rounded-xl bg-white dark:bg-zinc-800/50 border border-gray-200 dark:border-zinc-700 shadow-sm">
+  <div className="flex items-center gap-3 px-6 py-3 rounded-xl bg-white dark:bg-zinc-800/50 border border-gray-200 dark:border-zinc-700">
     {icon}
     <span className="text-sm font-medium text-text-primary dark:text-white whitespace-nowrap">
       {name}
@@ -62,7 +62,7 @@ export default function TrustSection() {
           direction="up"
           distance={20}
         >
-          <p className="text-center text-text-secondary dark:text-gray-400 font-medium mb-10">
+          <p className="text-center text-lg font-semibold text-text-primary dark:text-white mb-6">
             {t('trust.title')}
           </p>
         </FadeContent>
