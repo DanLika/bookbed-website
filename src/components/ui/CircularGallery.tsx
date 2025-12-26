@@ -694,10 +694,11 @@ class App {
     window.addEventListener('touchmove', this.boundOnTouchMove);
     window.addEventListener('touchend', this.boundOnTouchUp);
 
-    // Add page scroll listener for mobile devices
-    if (this.isTouchDevice) {
-      window.addEventListener('scroll', this.boundOnPageScroll, { passive: true });
-    }
+    // DISABLED: Page scroll listener caused "fighting" feeling on mobile
+    // Gallery now ONLY rotates on direct swipe, not on page scroll
+    // if (this.isTouchDevice) {
+    //   window.addEventListener('scroll', this.boundOnPageScroll, { passive: true });
+    // }
   }
 
   destroy() {
@@ -712,10 +713,10 @@ class App {
     window.removeEventListener('touchmove', this.boundOnTouchMove);
     window.removeEventListener('touchend', this.boundOnTouchUp);
 
-    // Remove page scroll listener
-    if (this.isTouchDevice) {
-      window.removeEventListener('scroll', this.boundOnPageScroll);
-    }
+    // Remove page scroll listener (disabled)
+    // if (this.isTouchDevice) {
+    //   window.removeEventListener('scroll', this.boundOnPageScroll);
+    // }
 
     if (this.renderer && this.renderer.gl && this.renderer.gl.canvas.parentNode) {
       this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas as HTMLCanvasElement);

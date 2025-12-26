@@ -1,13 +1,17 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
+import { useTranslation } from 'react-i18next';
+import { BentoAnimations } from './animations/BentoAnimations';
 
 export interface BentoCardProps {
   color?: string;
   title?: string;
   description?: string;
   label?: string;
+  i18nKey?: string; // i18n translation key
   image?: string;
   imageDark?: string; // Dark theme variant
+  animation?: keyof typeof BentoAnimations; // Animation type
   textAutoHide?: boolean;
   disableAnimations?: boolean;
 }
@@ -31,47 +35,50 @@ const DEFAULT_SPOTLIGHT_RADIUS = 300;
 const DEFAULT_GLOW_COLOR = '107, 76, 230'; // BookBed primary purple #6B4CE6
 const MOBILE_BREAKPOINT = 768;
 
-const cardData: BentoCardProps[] = [
+const getBentoCardData = (t: (key: string) => string): BentoCardProps[] => [
+  // Feature Benefits Cards (moved to top for better visibility)
   {
     color: '#18181B',
-    title: 'Analytics',
-    description: 'Track user behavior',
-    label: 'Insights'
+    title: t('features.bento.sync.title'),
+    description: t('features.bento.sync.desc'),
+    label: '🔄 Sync',
+    animation: 'sync'
   },
   {
     color: '#18181B',
-    title: 'Dashboard',
-    description: 'Centralized data view',
-    label: 'Overview'
+    title: t('features.bento.emails.title'),
+    description: t('features.bento.emails.desc'),
+    label: '✉️ Emails',
+    animation: 'email'
+  },
+  // Before/After Comparison Cards (moved to middle with shorter text)
+  {
+    color: '#18181B',
+    title: t('features.bento.before.title'),
+    description: t('features.bento.before.desc'),
+    label: '❌ Before',
+    animation: 'manualChaos'
   },
   {
     color: '#18181B',
-    title: 'Timeline Calendar',
-    description: 'Visualize your bookings',
-    label: 'Calendar',
-    image: '/images/bookbed/bookbed-timeline-calendar.avif',
-    imageDark: '/images/features/calendar-desktop-dark.png' // Desktop screenshot for dark theme
+    title: t('features.bento.after.title'),
+    description: t('features.bento.after.desc'),
+    label: '✅ After',
+    animation: 'automated'
   },
   {
     color: '#18181B',
-    title: 'Booking Management',
-    description: 'Manage all bookings efficiently',
-    label: 'Bookings',
-    image: '/images/bookbed/bookbed-bookings.avif',
-    imageDark: '/images/features/bookings-desktop-dark.png' // Desktop screenshot for dark theme
+    title: t('features.bento.payments.title'),
+    description: t('features.bento.payments.desc'),
+    label: '💳 Pay',
+    animation: 'payment'
   },
   {
     color: '#18181B',
-    title: 'Integration',
-    description: 'Connect favorite tools',
-    label: 'Connectivity'
-  },
-  {
-    color: '#18181B',
-    title: 'Unit Hub',
-    description: 'Organize your properties',
-    label: 'Properties',
-    image: '/images/bookbed/bookbed-unit-hub.avif'
+    title: t('features.bento.multiProperty.title'),
+    description: t('features.bento.multiProperty.desc'),
+    label: '🏠 Units',
+    animation: 'multiProperty'
   }
 ];
 
@@ -571,10 +578,14 @@ const MagicBento: React.FC<BentoProps> = ({
   clickEffect = true,
   enableMagnetism = true
 }) => {
+  const { t } = useTranslation();
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
   const [isDark, setIsDark] = useState(false);
+
+  // Get card data with translations
+  const cardData = getBentoCardData(t);
 
   // Check if dark mode is enabled
   useEffect(() => {
@@ -593,6 +604,11 @@ const MagicBento: React.FC<BentoProps> = ({
 
     return () => observer.disconnect();
   }, []);
+
+  // Get theme-aware card background color
+  const getCardBackgroundColor = () => {
+    return isDark ? '#18181B' : '#FFFFFF'; // Dark: zinc-900, Light: white
+  };
 
   // Function to get the correct image based on theme
   const getCardImage = (card: BentoCardProps) => {
@@ -750,9 +766,9 @@ const MagicBento: React.FC<BentoProps> = ({
             }`;
 
             const cardStyle = {
-              backgroundColor: card.color || 'var(--background-dark)',
-              borderColor: 'var(--border-color)',
-              color: 'var(--white)',
+              backgroundColor: getCardBackgroundColor(),
+              borderColor: isDark ? 'var(--border-color)' : '#E5E7EB',
+              color: isDark ? 'var(--white)' : '#18181B',
               '--glow-x': '50%',
               '--glow-y': '50%',
               '--glow-intensity': '0',
@@ -772,9 +788,15 @@ const MagicBento: React.FC<BentoProps> = ({
                   clickEffect={clickEffect}
                   enableMagnetism={enableMagnetism}
                 >
-                  <div className="card__header flex justify-between gap-3 relative text-white">
+                  <div className={`card__header flex justify-between gap-3 relative ${isDark ? 'text-white' : 'text-zinc-900'}`}>
                     <span className="card__label text-base">{card.label}</span>
                   </div>
+                  {/* Animation or Image */}
+                  {card.animation && !card.image && !card.imageDark && (
+                    <div className="absolute inset-0 opacity-60 pointer-events-none">
+                      {React.createElement(BentoAnimations[card.animation])}
+                    </div>
+                  )}
                   {(card.image || card.imageDark) && (
                     <div className="card__image absolute inset-0 opacity-95 overflow-hidden rounded-[20px]">
                       <img
@@ -784,7 +806,8 @@ const MagicBento: React.FC<BentoProps> = ({
                       />
                     </div>
                   )}
-                  <div className="card__content flex flex-col relative text-white z-10">
+
+                  <div className={`card__content flex flex-col relative z-20 ${isDark ? 'text-white' : 'text-zinc-900'}`}>
                     <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
                       {card.title}
                     </h3>
@@ -913,9 +936,15 @@ const MagicBento: React.FC<BentoProps> = ({
                   el.addEventListener('click', handleClick);
                 }}
               >
-                <div className="card__header flex justify-between gap-3 relative text-white">
+                <div className={`card__header flex justify-between gap-3 relative ${isDark ? 'text-white' : 'text-zinc-900'}`}>
                   <span className="card__label text-base">{card.label}</span>
                 </div>
+                {/* Animation or Image */}
+                {card.animation && !card.image && !card.imageDark && (
+                  <div className="absolute inset-0 opacity-60 pointer-events-none">
+                    {React.createElement(BentoAnimations[card.animation])}
+                  </div>
+                )}
                 {(card.image || card.imageDark) && (
                   <div className="card__image absolute inset-0 opacity-95 overflow-hidden rounded-[20px]">
                     <img
@@ -925,7 +954,8 @@ const MagicBento: React.FC<BentoProps> = ({
                     />
                   </div>
                 )}
-                <div className="card__content flex flex-col relative text-white z-10">
+
+                <div className={`card__content flex flex-col relative z-20 ${isDark ? 'text-white' : 'text-zinc-900'}`}>
                   <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
                     {card.title}
                   </h3>

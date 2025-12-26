@@ -10,10 +10,10 @@ export default function FinalCTASection() {
 
   return (
     <section className={`relative ${getSectionSpacing()} px-4 sm:px-6 md:px-8 lg:px-12 bg-gradient-to-br from-primary via-primary-hover to-primary-light dark:from-primary-dark dark:via-primary dark:to-primary-light`}>
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
+      {/* Background decoration - bubbles hidden on mobile, shown on desktop only */}
+      <div className="absolute inset-0 opacity-30 hidden lg:block">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full animate-float" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full animate-float" style={{ animationDelay: '1.5s' }} />
       </div>
 
       {/* Subtle pattern */}
@@ -85,7 +85,9 @@ export default function FinalCTASection() {
                   <img
                     src="/images/bookbed/dashboard.avif"
                     alt="BookBed Dashboard"
-                    loading="lazy"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
                     className="w-full h-auto"
                   />
                 </div>

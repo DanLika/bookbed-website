@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { containers } from '../utils/typography'
 import { spacing } from '../utils/spacing'
-import FadeContent from './ui/animations/FadeContent'
-import BlurText from './ui/animations/BlurText'
 import ShinyText from './ui/animations/ShinyText'
 import StarBorder from './ui/animations/StarBorder'
 import GridScan from './ui/backgrounds/GridScan'
@@ -65,177 +63,141 @@ export default function HeroSection() {
       {/* Hero Title (inside container) - closer to navbar on desktop */}
       <div className={`relative ${containers.hero} mx-auto ${spacing.container.padding} pt-24 sm:pt-28 md:pt-32 lg:pt-28 xl:pt-32`}>
         <div className="text-center mb-4 sm:mb-5 md:mb-6 lg:mb-6">
-          {/* Hero Title - BlurText animation, max 2 lines on desktop */}
-          <BlurText
-            text={t('hero.title')}
-            as="h1"
-            delay={80}
-            animateBy="words"
-            direction="top"
-            className="text-[clamp(1.75rem,5vw,3.5rem)] font-bold text-text-primary dark:text-white leading-tight max-w-5xl mx-auto line-clamp-2"
-          />
+          {/* Hero Title - Simple instant render with CSS fade-in */}
+          <h1 className="text-[clamp(1.75rem,5vw,3.5rem)] font-bold text-text-primary dark:text-white leading-tight max-w-5xl mx-auto line-clamp-2 animate-fade-in">
+            {t('hero.title')}
+          </h1>
         </div>
       </div>
 
       {/* Central Mockup - Larger on mobile with scale transform */}
-      <FadeContent
-        duration={800}
-        delay={200}
-        direction="up"
-        distance={40}
-      >
-        <div className="relative w-full flex justify-center">
-          {/* Subtle glow effect behind mockup */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 blur-3xl scale-105 opacity-30" />
+      <div className="relative w-full flex justify-center animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+        {/* Subtle glow effect behind mockup */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 blur-3xl scale-105 opacity-30" />
 
-          {/* Dashboard Screenshot - Light/Dark versions - Scaled up */}
-          <img
-            src="/images/hero/hero-light.avif"
-            alt="BookBed Dashboard"
-            className="relative w-[140%] sm:w-[130%] md:w-[115%] lg:w-[110%] max-w-none h-auto block dark:hidden"
-          />
-          <img
-            src="/images/hero/hero-dark.avif"
-            alt="BookBed Dashboard"
-            className="relative w-[140%] sm:w-[130%] md:w-[115%] lg:w-[110%] max-w-none h-auto hidden dark:block"
-          />
+        {/* Dashboard Screenshot - Light/Dark versions - Larger on mobile, responsive scaling */}
+        <img
+          src="/images/hero/hero-light.avif"
+          alt="BookBed Dashboard"
+          className="relative w-[120%] sm:w-[110%] md:w-[105%] lg:w-full max-w-7xl mx-auto h-auto block dark:hidden"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+        <img
+          src="/images/hero/hero-dark.avif"
+          alt="BookBed Dashboard"
+          className="relative w-[120%] sm:w-[110%] md:w-[105%] lg:w-full max-w-7xl mx-auto h-auto hidden dark:block"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
 
-          {/* Floating Cards - Positioned closer to mockup, overlapping it */}
-          {/* Left Card - New Booking (visible on mobile too, but smaller) */}
-          <FadeContent
-            duration={600}
-            delay={500}
-            direction="left"
-            distance={50}
-            className="absolute left-[2%] sm:left-[3%] lg:left-[5%] xl:left-[10%] top-[15%] sm:top-[20%] lg:top-1/4 z-10"
-          >
-            {/* Mobile version - compact */}
-            <div className="lg:hidden bg-white dark:bg-zinc-800 rounded-lg p-2 shadow-xl border border-gray-200 dark:border-zinc-700 w-28 sm:w-36 animate-float">
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div className="min-w-0">
-                  <p className="font-semibold text-text-primary dark:text-white text-[10px] sm:text-xs truncate">New Booking</p>
-                  <p className="text-[8px] sm:text-[10px] text-text-tertiary dark:text-gray-400">Just now</p>
-                </div>
+        {/* Floating Cards - NO ANIMATIONS, just static display */}
+        {/* Left Card - New Booking (visible on mobile too, but smaller) */}
+        <div className="absolute left-[2%] sm:left-[3%] lg:left-[5%] xl:left-[10%] top-[15%] sm:top-[20%] lg:top-1/4 z-10">
+          {/* Mobile version - compact */}
+          <div className="lg:hidden bg-white dark:bg-zinc-800 rounded-lg p-2 shadow-xl border border-gray-200 dark:border-zinc-700 w-28 sm:w-36 animate-float">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
+                <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <p className="font-semibold text-text-primary dark:text-white text-[10px] sm:text-xs truncate">New Booking</p>
+                <p className="text-[8px] sm:text-[10px] text-text-tertiary dark:text-gray-400">Just now</p>
               </div>
             </div>
-            {/* Desktop version - full */}
-            <div className="hidden lg:block bg-white dark:bg-zinc-800 rounded-xl p-4 shadow-2xl border border-gray-200 dark:border-zinc-700 w-64 animate-float">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                  <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-semibold text-text-primary dark:text-white text-sm">New Booking</p>
-                  <p className="text-xs text-text-tertiary dark:text-gray-400">Just now</p>
-                </div>
+          </div>
+          {/* Desktop version - full */}
+          <div className="hidden lg:block bg-white dark:bg-zinc-800 rounded-xl p-4 shadow-2xl border border-gray-200 dark:border-zinc-700 w-64 animate-float">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
               </div>
-              <p className="text-sm text-text-secondary dark:text-gray-300">
-                Marko P. booked Apartman A2 for Dec 20-25
-              </p>
-            </div>
-          </FadeContent>
-
-          {/* Top Right Card - Payment Received (desktop only) */}
-          <FadeContent
-            duration={600}
-            delay={600}
-            direction="right"
-            distance={50}
-            className="hidden lg:block absolute right-[5%] xl:right-[10%] top-1/4 z-10"
-          >
-            <div className="bg-white dark:bg-zinc-800 rounded-xl p-4 shadow-2xl border border-gray-200 dark:border-zinc-700 w-56 animate-float" style={{ animationDelay: '1s' }}>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-semibold text-text-primary dark:text-white text-sm">€320.00</p>
-                  <p className="text-xs text-state-success">Payment received</p>
-                </div>
+              <div>
+                <p className="font-semibold text-text-primary dark:text-white text-sm">New Booking</p>
+                <p className="text-xs text-text-tertiary dark:text-gray-400">Just now</p>
               </div>
             </div>
-          </FadeContent>
-
-          {/* Right Card - Check-in Today (mobile shows this instead of Payment) */}
-          <FadeContent
-            duration={600}
-            delay={600}
-            direction="right"
-            distance={50}
-            className="absolute right-[2%] sm:right-[3%] lg:right-[10%] xl:right-[15%] top-[60%] sm:top-[55%] lg:top-2/3 z-10"
-          >
-            {/* Mobile version - compact Check-in card */}
-            <div className="lg:hidden bg-white dark:bg-zinc-800 rounded-lg p-2 shadow-xl border border-gray-200 dark:border-zinc-700 w-26 sm:w-32 animate-float" style={{ animationDelay: '1s' }}>
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-                <div className="min-w-0">
-                  <p className="font-semibold text-text-primary dark:text-white text-[10px] sm:text-xs truncate">Check-in</p>
-                  <p className="text-[8px] sm:text-[10px] text-text-tertiary dark:text-gray-400">Today</p>
-                </div>
-              </div>
-            </div>
-            {/* Desktop version - full */}
-            <div className="hidden lg:block bg-white dark:bg-zinc-800 rounded-xl p-4 shadow-2xl border border-gray-200 dark:border-zinc-700 w-56 animate-float" style={{ animationDelay: '2s' }}>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
-                  <svg className="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-semibold text-text-primary dark:text-white text-sm">Check-in Today</p>
-                  <p className="text-xs text-text-tertiary dark:text-gray-400">Ana M. - Apartman A1</p>
-                </div>
-              </div>
-            </div>
-          </FadeContent>
-
-          {/* Bottom Left Card - Occupancy Rate */}
-          <FadeContent
-            duration={600}
-            delay={700}
-            direction="left"
-            distance={50}
-            className="hidden lg:block absolute left-[10%] xl:left-[15%] top-2/3 z-10"
-          >
-            <div className="bg-white dark:bg-zinc-800 rounded-xl p-4 shadow-2xl border border-gray-200 dark:border-zinc-700 w-52 animate-float" style={{ animationDelay: '1.5s' }}>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-semibold text-text-primary dark:text-white text-sm">85% Occupancy</p>
-                  <p className="text-xs text-text-tertiary dark:text-gray-400">This month</p>
-                </div>
-              </div>
-            </div>
-          </FadeContent>
+            <p className="text-sm text-text-secondary dark:text-gray-300">
+              Marko P. booked Apartman A2 for Dec 20-25
+            </p>
+          </div>
         </div>
-      </FadeContent>
+
+        {/* Top Right Card - Payment Received (desktop only) */}
+        <div className="hidden lg:block absolute right-[5%] xl:right-[10%] top-1/4 z-10">
+          <div className="bg-white dark:bg-zinc-800 rounded-xl p-4 shadow-2xl border border-gray-200 dark:border-zinc-700 w-56 animate-float" style={{ animationDelay: '1s' }}>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-text-primary dark:text-white text-sm">€320.00</p>
+                <p className="text-xs text-state-success">Payment received</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Card - Check-in Today (mobile shows this instead of Payment) */}
+        <div className="absolute right-[2%] sm:right-[3%] lg:right-[10%] xl:right-[15%] top-[60%] sm:top-[55%] lg:top-2/3 z-10">
+          {/* Mobile version - compact Check-in card */}
+          <div className="lg:hidden bg-white dark:bg-zinc-800 rounded-lg p-2 shadow-xl border border-gray-200 dark:border-zinc-700 w-26 sm:w-32 animate-float" style={{ animationDelay: '1s' }}>
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center flex-shrink-0">
+                <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <p className="font-semibold text-text-primary dark:text-white text-[10px] sm:text-xs truncate">Check-in</p>
+                <p className="text-[8px] sm:text-[10px] text-text-tertiary dark:text-gray-400">Today</p>
+              </div>
+            </div>
+          </div>
+          {/* Desktop version - full */}
+          <div className="hidden lg:block bg-white dark:bg-zinc-800 rounded-xl p-4 shadow-2xl border border-gray-200 dark:border-zinc-700 w-56 animate-float" style={{ animationDelay: '2s' }}>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
+                <svg className="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-text-primary dark:text-white text-sm">Check-in Today</p>
+                <p className="text-xs text-text-tertiary dark:text-gray-400">Ana M. - Apartman A1</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Left Card - Occupancy Rate */}
+        <div className="hidden lg:block absolute left-[10%] xl:left-[15%] top-2/3 z-10">
+          <div className="bg-white dark:bg-zinc-800 rounded-xl p-4 shadow-2xl border border-gray-200 dark:border-zinc-700 w-52 animate-float" style={{ animationDelay: '1.5s' }}>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-text-primary dark:text-white text-sm">85% Occupancy</p>
+                <p className="text-xs text-text-tertiary dark:text-gray-400">This month</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Watch Demo Button - Below mockup */}
-      <FadeContent
-        duration={600}
-        delay={400}
-        direction="up"
-        distance={20}
-        className={`flex justify-center mt-4 sm:mt-6 md:mt-8 lg:mt-6 ${spacing.container.padding}`}
-      >
+      <div className={`flex justify-center mt-4 sm:mt-6 md:mt-8 lg:mt-6 ${spacing.container.padding} animate-fade-in-up`} style={{ animationDelay: '0.2s' }}>
         <StarBorder
           as="div"
           color="#6B4CE6"
@@ -253,7 +215,7 @@ export default function HeroSection() {
             <ShinyText text={t('hero.watchDemo')} speed={4} />
           </Link>
         </StarBorder>
-      </FadeContent>
+      </div>
     </section>
   )
 }

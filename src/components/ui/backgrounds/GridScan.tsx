@@ -451,6 +451,11 @@ export default function GridScan({
     const container = containerRef.current
     if (!container) return
 
+    // Prevent duplicate canvas elements
+    if (rendererRef.current && container.contains(rendererRef.current.domElement)) {
+      return
+    }
+
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     rendererRef.current = renderer
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
@@ -531,71 +536,105 @@ export default function GridScan({
     }
 
     const onResize = () => {
+      // Update devicePixelRatio on zoom to prevent visual glitches
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
       renderer.setSize(container.clientWidth, container.clientHeight)
       material.uniforms.iResolution.value.set(container.clientWidth, container.clientHeight, renderer.getPixelRatio())
       if (composerRef.current) composerRef.current.setSize(container.clientWidth, container.clientHeight)
     }
+
     window.addEventListener('resize', onResize)
+
+    // Listen for browser zoom changes (fixes zoom glitch)
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', onResize)
+    }
 
     let last = performance.now()
     const tick = () => {
-      const now = performance.now()
-      const dt = Math.max(0, Math.min(0.1, (now - last) / 1000))
-      last = now
+      try {
+        const now = performance.now()
+        const dt = Math.max(0, Math.min(0.1, (now - last) / 1000))
+        last = now
 
-      lookCurrent.current.copy(
-        smoothDampVec2(lookCurrent.current, lookTarget.current, lookVel.current, smoothTime, maxSpeed, dt)
-      )
+        lookCurrent.current.copy(
+          smoothDampVec2(lookCurrent.current, lookTarget.current, lookVel.current, smoothTime, maxSpeed, dt)
+        )
 
-      const tiltSm = smoothDampFloat(
-        tiltCurrent.current,
-        tiltTarget.current,
-        { v: tiltVel.current },
-        smoothTime,
-        maxSpeed,
-        dt
-      )
-      tiltCurrent.current = tiltSm.value
-      tiltVel.current = tiltSm.v
+        const tiltSm = smoothDampFloat(
+          tiltCurrent.current,
+          tiltTarget.current,
+          { v: tiltVel.current },
+          smoothTime,
+          maxSpeed,
+          dt
+        )
+        tiltCurrent.current = tiltSm.value
+        tiltVel.current = tiltSm.v
 
-      const yawSm = smoothDampFloat(
-        yawCurrent.current,
-        yawTarget.current,
-        { v: yawVel.current },
-        smoothTime,
-        maxSpeed,
-        dt
-      )
-      yawCurrent.current = yawSm.value
-      yawVel.current = yawSm.v
+        const yawSm = smoothDampFloat(
+          yawCurrent.current,
+          yawTarget.current,
+          { v: yawVel.current },
+          smoothTime,
+          maxSpeed,
+          dt
+        )
+        yawCurrent.current = yawSm.value
+        yawVel.current = yawSm.v
 
-      const skew = new THREE.Vector2(lookCurrent.current.x * skewScale, -lookCurrent.current.y * yBoost * skewScale)
-      material.uniforms.uSkew.value.set(skew.x, skew.y)
-      material.uniforms.uTilt.value = tiltCurrent.current * tiltScale
-      material.uniforms.uYaw.value = THREE.MathUtils.clamp(yawCurrent.current * yawScale, -0.6, 0.6)
+        const skew = new THREE.Vector2(lookCurrent.current.x * skewScale, -lookCurrent.current.y * yBoost * skewScale)
+        material.uniforms.uSkew.value.set(skew.x, skew.y)
+        material.uniforms.uTilt.value = tiltCurrent.current * tiltScale
+        material.uniforms.uYaw.value = THREE.MathUtils.clamp(yawCurrent.current * yawScale, -0.6, 0.6)
 
-      material.uniforms.iTime.value = now / 1000
-      renderer.clear(true, true, true)
-      if (composerRef.current) {
-        composerRef.current.render(dt)
-      } else {
-        renderer.render(scene, camera)
+        material.uniforms.iTime.value = now / 1000
+        renderer.clear(true, true, true)
+        if (composerRef.current) {
+          composerRef.current.render(dt)
+        } else {
+          renderer.render(scene, camera)
+        }
+      } catch (error) {
+        // Log error but continue animation loop
+        console.error('GridScan animation error:', error)
       }
       rafRef.current = requestAnimationFrame(tick)
     }
     rafRef.current = requestAnimationFrame(tick)
 
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+        rafRef.current = null
+      }
       window.removeEventListener('resize', onResize)
-      material.dispose()
-      ;(quad.geometry as THREE.BufferGeometry).dispose()
+      // Cleanup visualViewport listener
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('resize', onResize)
+      }
+
+      // Safe cleanup - check if objects still exist
+      if (material) {
+        material.dispose()
+      }
+      if (quad && quad.geometry) {
+        ;(quad.geometry as THREE.BufferGeometry).dispose()
+      }
       if (composerRef.current) {
         composerRef.current.dispose()
         composerRef.current = null
       }
-      renderer.dispose()
-      container.removeChild(renderer.domElement)
+      if (renderer) {
+        renderer.dispose()
+        // Only remove DOM element if it's still a child
+        if (container && container.contains(renderer.domElement)) {
+          container.removeChild(renderer.domElement)
+        }
+      }
+      // Clear ref to prevent re-use of disposed renderer
+      rendererRef.current = null
+      materialRef.current = null
     }
   }, [
     sensitivity,

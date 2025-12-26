@@ -132,8 +132,10 @@ const FadeContent: React.FC<FadeContentProps> = ({
       paused: true,
       delay: getSeconds(delay),
       onComplete: () => {
-        // Clean up willChange after animation
-        gsap.set(el, { willChange: 'auto' });
+        // Delay willChange cleanup to prevent black flash on scroll-back
+        setTimeout(() => {
+          gsap.set(el, { willChange: 'auto' });
+        }, 100); // Wait 100ms for animation to fully settle
 
         if (onComplete) onComplete();
 

@@ -41,6 +41,32 @@
   "features": {
     "title": "Everything You Need",
     "subtitle": "Powerful features to streamline your rental business",
+    "bento": {
+      "sync": {
+        "title": "Real-time Sync",
+        "desc": "iCal with Airbnb & Booking.com"
+      },
+      "emails": {
+        "title": "Auto Emails",
+        "desc": "Confirmations sent automatically"
+      },
+      "before": {
+        "title": "Before: Manual",
+        "desc": "Excel chaos & missed bookings"
+      },
+      "after": {
+        "title": "After: Automated",
+        "desc": "Dashboard & real-time sync"
+      },
+      "payments": {
+        "title": "Stripe Payments",
+        "desc": "Secure automatic processing"
+      },
+      "multiProperty": {
+        "title": "Multi-Property",
+        "desc": "Unlimited from one place"
+      }
+    },
     "calendar": {
       "title": "Timeline Calendar",
       "desc": "Visual timeline view with drag-and-drop booking management and turnover detection"

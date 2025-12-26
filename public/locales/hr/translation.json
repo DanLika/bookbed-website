@@ -41,6 +41,32 @@
   "features": {
     "title": "Sve Što Vam Treba",
     "subtitle": "Moćne funkcije za pojednostavljenje vašeg posla iznajmljivanja",
+    "bento": {
+      "sync": {
+        "title": "Sinkronizacija u Realnom Vremenu",
+        "desc": "iCal sa Airbnb i Booking.com"
+      },
+      "emails": {
+        "title": "Automatski Emailovi",
+        "desc": "Potvrde se šalju automatski"
+      },
+      "before": {
+        "title": "Prije: Ručno",
+        "desc": "Excel kaos i propuštene rezervacije"
+      },
+      "after": {
+        "title": "Poslije: Automatizirano",
+        "desc": "Dashboard i sinkronizacija uživo"
+      },
+      "payments": {
+        "title": "Stripe Plaćanja",
+        "desc": "Sigurna automatska obrada"
+      },
+      "multiProperty": {
+        "title": "Više Nekretnina",
+        "desc": "Neograničeno sa jednog mjesta"
+      }
+    },
     "calendar": {
       "title": "Timeline Kalendar",
       "desc": "Vizualni timeline prikaz sa drag-and-drop upravljanjem rezervacija i detekcijom turnover-a"
