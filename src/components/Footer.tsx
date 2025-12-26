@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { LogoIcon } from './Logo'
 import FadeContent from './ui/animations/FadeContent'
-import GlassIcon from './ui/GlassIcon'
+import GlassIcons from './ui/animations/GlassIcons'
 
 export default function Footer() {
   const { t } = useTranslation()
@@ -72,32 +72,31 @@ export default function Footer() {
               distance={20}
             >
               <h4 className="text-text-primary dark:text-white font-semibold mb-4 text-sm uppercase tracking-wider">{t('footer.contact')}</h4>
-              <div className="flex flex-col gap-1">
-                <a
-                  href="mailto:info@bookbed.io"
-                  className="group text-text-secondary dark:text-gray-400 hover:text-primary active:opacity-80 transition-all text-sm flex items-center gap-2 py-2 -ml-1 pl-1"
-                >
-                  <GlassIcon size="sm" color="primary">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </GlassIcon>
-                  info@bookbed.io
-                </a>
-                <a
-                  href="https://app.bookbed.io"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group text-text-secondary dark:text-gray-400 hover:text-primary active:opacity-80 transition-all text-sm flex items-center gap-2 py-2 -ml-1 pl-1"
-                >
-                  <GlassIcon size="sm" color="emerald">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </GlassIcon>
-                  app.bookbed.io
-                </a>
-              </div>
+              <GlassIcons
+                items={[
+                  {
+                    icon: (
+                      <svg className="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    ),
+                    color: 'linear-gradient(135deg, hsl(220, 8%, 50%), hsl(220, 8%, 40%))',
+                    label: 'Email',
+                    href: 'mailto:info@bookbed.io',
+                  },
+                  {
+                    icon: (
+                      <svg className="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    ),
+                    color: 'linear-gradient(135deg, hsl(200, 8%, 50%), hsl(200, 8%, 40%))',
+                    label: 'App',
+                    href: 'https://app.bookbed.io',
+                  },
+                ]}
+                className="justify-start !gap-3 !py-1"
+              />
             </FadeContent>
           </div>
         </div>

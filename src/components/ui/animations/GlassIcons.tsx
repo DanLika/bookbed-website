@@ -5,6 +5,7 @@ export interface GlassIconsItem {
   color: string
   label: string
   customClass?: string
+  href?: string
 }
 
 export interface GlassIconsProps {
@@ -46,13 +47,20 @@ const GlassIcons: React.FC<GlassIconsProps> = ({ items, className }) => {
 
   return (
     <div className={`grid gap-8 sm:gap-12 grid-cols-2 md:grid-cols-3 mx-auto py-8 overflow-visible ${className || ''}`}>
-      {items.map((item, index) => (
-        <div
+      {items.map((item, index) => {
+        const WrapperElement = item.href ? 'a' : 'div'
+        const linkProps = item.href
+          ? { href: item.href, target: item.href.startsWith('http') ? '_blank' : undefined, rel: item.href.startsWith('http') ? 'noopener noreferrer' : undefined }
+          : {}
+
+        return (
+        <WrapperElement
           key={index}
           className={`flex flex-col items-center ${item.customClass || ''}`}
+          {...linkProps}
         >
           <div
-            className={`relative bg-transparent w-16 h-16 sm:w-20 sm:h-20 [perspective:24em] [transform-style:preserve-3d] group ${
+            className={`relative bg-transparent w-10 h-10 [perspective:24em] [transform-style:preserve-3d] group ${
               prefersReducedMotion ? '' : 'cursor-pointer'
             }`}
           >
@@ -80,7 +88,7 @@ const GlassIcons: React.FC<GlassIconsProps> = ({ items, className }) => {
                 boxShadow: '0 0 0 0.1em hsla(0, 0%, 100%, 0.3) inset',
               }}
             >
-              <span className="m-auto w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-white" aria-hidden="true">
+              <span className="m-auto w-5 h-5 flex items-center justify-center text-white" aria-hidden="true">
                 {React.cloneElement(item.icon as React.ReactElement<{ className?: string }>, {
                   className: 'w-full h-full',
                 })}
@@ -90,16 +98,16 @@ const GlassIcons: React.FC<GlassIconsProps> = ({ items, className }) => {
 
           {/* Label */}
           <span
-            className={`mt-4 text-sm sm:text-base font-medium text-text-primary dark:text-white text-center ${
+            className={`mt-2 text-[10px] font-medium text-text-secondary dark:text-gray-400 text-center ${
               prefersReducedMotion
                 ? 'opacity-100'
-                : 'opacity-70 transition-opacity duration-300 group-hover:opacity-100'
+                : 'opacity-80 transition-opacity duration-300 group-hover:opacity-100'
             }`}
           >
             {item.label}
           </span>
-        </div>
-      ))}
+        </WrapperElement>
+      )})}
     </div>
   )
 }

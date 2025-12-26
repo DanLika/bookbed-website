@@ -159,6 +159,26 @@ export default function ScreenshotGallery() {
             scrollEase={0.15}
             backgroundColor={isDark ? '#18181B' : '#FFFFFF'}
           />
+
+          {/* Mobile Swipe Hint - Only visible on touch devices */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none md:hidden">
+            <FadeContent
+              duration={800}
+              delay={1000}
+              direction="up"
+              distance={10}
+            >
+              <div className="flex items-center gap-2 px-4 py-2 bg-black/60 dark:bg-white/10 backdrop-blur-sm rounded-full text-white text-xs font-medium shadow-lg">
+                <svg className="w-4 h-4 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                </svg>
+                <span>Swipe to explore</span>
+                <svg className="w-4 h-4 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </FadeContent>
+          </div>
         </div>
       </ScrollFloat>
     </section>

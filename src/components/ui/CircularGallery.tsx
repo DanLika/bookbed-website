@@ -429,9 +429,13 @@ class App {
   boundOnTouchDown!: (e: MouseEvent | TouchEvent) => void;
   boundOnTouchMove!: (e: MouseEvent | TouchEvent) => void;
   boundOnTouchUp!: () => void;
+  boundOnPageScroll!: () => void;
 
   isDown: boolean = false;
   start: number = 0;
+  lastScrollY: number = 0;
+  isInViewport: boolean = false;
+  isTouchDevice: boolean = false;
 
   constructor(
     container: HTMLElement,
@@ -452,6 +456,7 @@ class App {
     this.backgroundColor = backgroundColor;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
     this.onCheckDebounce = debounce(this.onCheck.bind(this), 200);
+    this.isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     this.createRenderer();
     this.createCamera();
     this.createScene();
@@ -460,6 +465,7 @@ class App {
     this.createMedias(items, bend, textColor, borderRadius, font, backgroundColor);
     this.update();
     this.addEventListeners();
+    this.setupIntersectionObserver();
   }
 
   createRenderer() {
@@ -610,6 +616,35 @@ class App {
     this.scroll.target = this.scroll.target < 0 ? -item : item;
   }
 
+  setupIntersectionObserver() {
+    // Only enable page scroll on touch devices
+    if (!this.isTouchDevice) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        this.isInViewport = entry.isIntersecting;
+      },
+      { threshold: 0.3 } // Gallery needs to be 30% visible
+    );
+
+    observer.observe(this.container);
+  }
+
+  onPageScroll() {
+    // Only work on touch devices when gallery is in viewport
+    if (!this.isTouchDevice || !this.isInViewport) return;
+
+    const currentScrollY = window.scrollY;
+    const delta = currentScrollY - this.lastScrollY;
+
+    // Convert vertical scroll to horizontal gallery movement
+    // Balanced multiplier for smooth, natural movement on mobile
+    this.scroll.target += (delta > 0 ? this.scrollSpeed : -this.scrollSpeed) * 0.15;
+
+    this.lastScrollY = currentScrollY;
+    this.onCheckDebounce();
+  }
+
   onResize() {
     this.screen = {
       width: this.container.clientWidth,
@@ -647,6 +682,8 @@ class App {
     this.boundOnTouchDown = this.onTouchDown.bind(this);
     this.boundOnTouchMove = this.onTouchMove.bind(this);
     this.boundOnTouchUp = this.onTouchUp.bind(this);
+    this.boundOnPageScroll = this.onPageScroll.bind(this);
+
     window.addEventListener('resize', this.boundOnResize);
     window.addEventListener('mousewheel', this.boundOnWheel);
     window.addEventListener('wheel', this.boundOnWheel);
@@ -656,6 +693,11 @@ class App {
     window.addEventListener('touchstart', this.boundOnTouchDown);
     window.addEventListener('touchmove', this.boundOnTouchMove);
     window.addEventListener('touchend', this.boundOnTouchUp);
+
+    // Add page scroll listener for mobile devices
+    if (this.isTouchDevice) {
+      window.addEventListener('scroll', this.boundOnPageScroll, { passive: true });
+    }
   }
 
   destroy() {
@@ -669,6 +711,12 @@ class App {
     window.removeEventListener('touchstart', this.boundOnTouchDown);
     window.removeEventListener('touchmove', this.boundOnTouchMove);
     window.removeEventListener('touchend', this.boundOnTouchUp);
+
+    // Remove page scroll listener
+    if (this.isTouchDevice) {
+      window.removeEventListener('scroll', this.boundOnPageScroll);
+    }
+
     if (this.renderer && this.renderer.gl && this.renderer.gl.canvas.parentNode) {
       this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas as HTMLCanvasElement);
     }
