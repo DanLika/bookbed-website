@@ -808,9 +808,9 @@ const MagicBento: React.FC<BentoProps> = ({
                   )}
 
                   <div className={`card__content flex flex-col relative z-20 ${isDark ? 'text-white' : 'text-zinc-900'}`}>
-                    <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
+                    <p className={`card__title font-semibold text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
                       {card.title}
-                    </h3>
+                    </p>
                     <p
                       className={`card__description text-xs leading-5 opacity-90 ${textAutoHide ? 'text-clamp-2' : ''}`}
                     >
@@ -956,9 +956,9 @@ const MagicBento: React.FC<BentoProps> = ({
                 )}
 
                 <div className={`card__content flex flex-col relative z-20 ${isDark ? 'text-white' : 'text-zinc-900'}`}>
-                  <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
+                  <p className={`card__title font-semibold text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
                     {card.title}
-                  </h3>
+                  </p>
                   <p className={`card__description text-xs leading-5 opacity-90 ${textAutoHide ? 'text-clamp-2' : ''}`}>
                     {card.description}
                   </p>

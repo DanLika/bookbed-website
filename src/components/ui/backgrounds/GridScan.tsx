@@ -551,7 +551,27 @@ export default function GridScan({
     }
 
     let last = performance.now()
+    const isVisibleRef = { current: true }
+
+    // Update visibility ref from state (closure workaround)
+    const updateVisibility = () => {
+      const container = containerRef.current
+      if (container) {
+        const rect = container.getBoundingClientRect()
+        isVisibleRef.current = rect.bottom > 0 && rect.top < window.innerHeight
+      }
+    }
+
     const tick = () => {
+      // Check visibility every frame for performance
+      updateVisibility()
+
+      // Skip heavy rendering when offscreen (major performance optimization)
+      if (!isVisibleRef.current) {
+        rafRef.current = requestAnimationFrame(tick)
+        return
+      }
+
       try {
         const now = performance.now()
         const dt = Math.max(0, Math.min(0.1, (now - last) / 1000))

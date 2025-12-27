@@ -57,7 +57,8 @@ export default function FinalCTASection() {
                 href="https://app.bookbed.io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-xl text-lg shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-110 hover:-translate-y-1"
+                title="Otvori BookBed aplikaciju"
+                className="group inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-white text-primary font-semibold rounded-lg text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
               >
                 <ShinyText text={t('cta.button')} speed={4} />
                 <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -85,8 +86,10 @@ export default function FinalCTASection() {
                   <img
                     src="/images/bookbed/dashboard.avif"
                     alt="BookBed Dashboard"
-                    loading="eager"
-                    fetchPriority="high"
+                    title="BookBed Dashboard"
+                    width={800}
+                    height={502}
+                    loading="lazy"
                     decoding="async"
                     className="w-full h-auto"
                   />

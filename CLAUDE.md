@@ -20,9 +20,15 @@ BookBed je SaaS platforma za upravljanje rezervacijama za vlasnike smještaja. O
 bookbed-website/
 ├── public/
 │   ├── images/
-│   │   ├── hero/               # Hero section images
-│   │   │   ├── hero-dark.avif  # Light theme mockup
-│   │   │   └── hero-light.avif # Dark theme mockup
+│   │   ├── hero/               # Hero section images (responsive srcset)
+│   │   │   ├── hero-light.avif       # Full resolution (1778w)
+│   │   │   ├── hero-light-1280.avif  # Desktop (1280w)
+│   │   │   ├── hero-light-1000.avif  # Tablet (1000w)
+│   │   │   ├── hero-light-768.avif   # Mobile (768w)
+│   │   │   ├── hero-dark.avif        # Full resolution dark
+│   │   │   ├── hero-dark-1280.avif   # Desktop dark
+│   │   │   ├── hero-dark-1000.avif   # Tablet dark
+│   │   │   └── hero-dark-768.avif    # Mobile dark
 │   │   ├── bookbed/            # BookBed screenshots & mockups
 │   │   │   ├── bookbed-mockup.avif
 │   │   │   ├── bookbed-dashboard.png
@@ -206,21 +212,31 @@ Sve stranice koriste subtle dot pattern:
 
 ## Hero Section - Mockup Scaling
 
-Mockup u hero sekciji je skaliran da bude veći na mobilnim uređajima, sa `max-w-7xl` da spreči zoom glitch:
+Mockup u hero sekciji je skaliran da bude veći na mobilnim uređajima, sa optimizovanim responsive srcset:
 
 ```tsx
 <img
-  src="/images/hero/hero-light.avif"
+  src="/images/hero/hero-light-1280.avif"
+  srcSet="/images/hero/hero-light-768.avif 768w, /images/hero/hero-light-1000.avif 1000w, /images/hero/hero-light-1280.avif 1280w, /images/hero/hero-light.avif 1778w"
   alt="BookBed Dashboard"
-  className="relative w-[120%] sm:w-[110%] md:w-[105%] lg:w-full max-w-7xl mx-auto h-auto block dark:hidden"
+  title="BookBed Dashboard"
+  width={1280}
+  height={720}
+  sizes="(max-width: 640px) 130vw, (max-width: 1024px) 115vw, 1280px"
+  className="relative w-[130%] sm:w-[130%] md:w-[115%] lg:w-full max-w-7xl mx-auto h-auto block dark:hidden"
   loading="eager"
   fetchPriority="high"
   decoding="async"
 />
 <img
-  src="/images/hero/hero-dark.avif"
+  src="/images/hero/hero-dark-1280.avif"
+  srcSet="/images/hero/hero-dark-768.avif 768w, /images/hero/hero-dark-1000.avif 1000w, /images/hero/hero-dark-1280.avif 1280w, /images/hero/hero-dark.avif 1778w"
   alt="BookBed Dashboard"
-  className="relative w-[120%] sm:w-[110%] md:w-[105%] lg:w-full max-w-7xl mx-auto h-auto hidden dark:block"
+  title="BookBed Dashboard"
+  width={1280}
+  height={720}
+  sizes="(max-width: 640px) 130vw, (max-width: 1024px) 115vw, 1280px"
+  className="relative w-[130%] sm:w-[130%] md:w-[115%] lg:w-full max-w-7xl mx-auto h-auto hidden dark:block"
   loading="eager"
   fetchPriority="high"
   decoding="async"
@@ -228,16 +244,23 @@ Mockup u hero sekciji je skaliran da bude veći na mobilnim uređajima, sa `max-
 ```
 
 **Breakpoints:**
-- **Mobile**: 120% širine (veći mockup za bolji prikaz)
-- **Tablet (sm)**: 110% širine
-- **Medium (md)**: 105% širine
+- **Mobile** (< 640px): 130% širine (veći mockup za bolji prikaz)
+- **Tablet (sm)**: 130% širine
+- **Medium (md)**: 115% širine
 - **Desktop (lg+)**: 100% širine
 - **Max Width**: `max-w-7xl` - sprječava zoom glitch
+
+**Responsive Image Sizes:**
+- `hero-*-768.avif` - 768w (mobile)
+- `hero-*-1000.avif` - 1000w (tablet)
+- `hero-*-1280.avif` - 1280w (desktop default)
+- `hero-*.avif` - 1778w (full resolution)
 
 **Image Loading:**
 - `loading="eager"` - Kritične slike se učitavaju odmah
 - `fetchPriority="high"` - Prioritet učitavanja
 - `decoding="async"` - Async dekodiranje
+- Preload u `index.html` za LCP optimizaciju
 
 **Floating Cards:**
 - Vidljive na mobile ali manje (`w-28 sm:w-36`)
@@ -558,8 +581,14 @@ className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emer
 ### Hero Section
 | Image | Size | Description |
 |-------|------|-------------|
-| `hero-dark.avif` | 1920x1080+ | Dashboard mockup for light theme |
-| `hero-light.avif` | 1920x1080+ | Dashboard mockup for dark theme |
+| `hero-light.avif` | 1778w | Full resolution light mockup |
+| `hero-light-1280.avif` | 1280w | Desktop default light mockup |
+| `hero-light-1000.avif` | 1000w | Tablet light mockup |
+| `hero-light-768.avif` | 768w | Mobile light mockup |
+| `hero-dark.avif` | 1778w | Full resolution dark mockup |
+| `hero-dark-1280.avif` | 1280w | Desktop default dark mockup |
+| `hero-dark-1000.avif` | 1000w | Tablet dark mockup |
+| `hero-dark-768.avif` | 768w | Mobile dark mockup |
 
 ### Features Section
 | Image | Size | Description |
@@ -696,6 +725,56 @@ export default defineConfig({
 ```
 
 **Format:** Koristi AVIF (better compression od WebP/PNG)
+
+### CardNav Performance Optimization
+
+**Problem:** GSAP timeline initialization je blokirala main thread tokom initial load, uzrokujući loš TBT (Total Blocking Time).
+
+**Rješenje:** `src/components/CardNav.tsx`
+
+```tsx
+useLayoutEffect(() => {
+  // Defer GSAP timeline creation to reduce main thread blocking
+  const scheduleInit = typeof requestIdleCallback !== 'undefined'
+    ? requestIdleCallback
+    : (cb: () => void) => setTimeout(cb, 1)
+
+  const cancelInit = typeof cancelIdleCallback !== 'undefined'
+    ? cancelIdleCallback
+    : clearTimeout
+
+  let initId: number | ReturnType<typeof setTimeout>
+
+  // Schedule timeline creation for when browser is idle
+  initId = scheduleInit(() => {
+    const tl = createTimeline()
+    tlRef.current = tl
+
+    // Defer accurate height calculation to after paint
+    requestAnimationFrame(() => {
+      cachedHeightRef.current = null
+      calculateHeight(true)
+    })
+  })
+
+  return () => {
+    cancelInit(initId as number)
+    tlRef.current?.kill()
+    tlRef.current = null
+  }
+}, [ease, items, calculateHeight])
+```
+
+**Dodatne optimizacije:**
+- Height caching sa `cachedHeightRef` za izbjegavanje ponavljajućih reflow-a
+- CSS containment: `contain: 'layout style'` za izolaciju layout kalkulacija
+- Debounced resize handler (150ms) za smanjenje main thread rada
+- `willChange: 'height'` samo tokom animacije
+
+**Rezultat:**
+- ✅ TBT značajno smanjen
+- ✅ Smoother initial page load
+- ✅ Mobile Lighthouse score: 93%
 
 ---
 

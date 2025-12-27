@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState, useCallback } from 'react'
 import { gsap } from 'gsap'
 import { GoArrowUpRight } from 'react-icons/go'
 
@@ -36,7 +36,7 @@ export interface CardNavProps {
 const CardNav: React.FC<CardNavProps> = ({
   items,
   className = '',
-  ease = 'elastic.out(1, 0.5)',
+  ease = 'power3.out',
   baseColor = '#6B4CE6',
   menuColor = '#FFFFFF',
   buttonBgColor = '#FFFFFF',
@@ -53,8 +53,17 @@ const CardNav: React.FC<CardNavProps> = ({
   const navRef = useRef<HTMLDivElement | null>(null)
   const cardsRef = useRef<HTMLDivElement[]>([])
   const tlRef = useRef<gsap.core.Timeline | null>(null)
+  // Cache calculated height to avoid repeated forced reflows
+  const cachedHeightRef = useRef<number | null>(null)
 
-  const calculateHeight = () => {
+  // Optimized height calculation - uses cached value when available
+  // Only recalculates on resize (which is debounced)
+  const calculateHeight = useCallback((forceRecalculate = false) => {
+    // Return cached value if available and not forcing recalculation
+    if (!forceRecalculate && cachedHeightRef.current !== null) {
+      return cachedHeightRef.current
+    }
+
     const navEl = navRef.current
     if (!navEl) return 260
 
@@ -62,32 +71,41 @@ const CardNav: React.FC<CardNavProps> = ({
     if (isMobile) {
       const contentEl = navEl.querySelector('.card-nav-content') as HTMLElement
       if (contentEl) {
+        // Batch all reads first (avoid read-write-read pattern)
         const wasVisible = contentEl.style.visibility
         const wasPointerEvents = contentEl.style.pointerEvents
         const wasPosition = contentEl.style.position
         const wasHeight = contentEl.style.height
 
-        contentEl.style.visibility = 'visible'
-        contentEl.style.pointerEvents = 'auto'
-        contentEl.style.position = 'static'
-        contentEl.style.height = 'auto'
+        // Batch all writes together
+        contentEl.style.cssText = `
+          visibility: visible !important;
+          pointer-events: auto !important;
+          position: static !important;
+          height: auto !important;
+        `
 
-        contentEl.offsetHeight
-
+        // Single layout read (still triggers reflow but only once)
         const topBar = 60
         const padding = 16
         const contentHeight = contentEl.scrollHeight
+        const calculatedHeight = topBar + contentHeight + padding
 
+        // Restore styles
         contentEl.style.visibility = wasVisible
         contentEl.style.pointerEvents = wasPointerEvents
         contentEl.style.position = wasPosition
         contentEl.style.height = wasHeight
 
-        return topBar + contentHeight + padding
+        // Cache the result
+        cachedHeightRef.current = calculatedHeight
+        return calculatedHeight
       }
     }
+
+    cachedHeightRef.current = 260
     return 260
-  }
+  }, [])
 
   const createTimeline = () => {
     const navEl = navRef.current
@@ -99,7 +117,7 @@ const CardNav: React.FC<CardNavProps> = ({
     const tl = gsap.timeline({ paused: true })
 
     tl.to(navEl, {
-      height: calculateHeight,
+      height: () => calculateHeight(),
       duration: 0.4,
       ease
     })
@@ -110,45 +128,86 @@ const CardNav: React.FC<CardNavProps> = ({
   }
 
   useLayoutEffect(() => {
-    const tl = createTimeline()
-    tlRef.current = tl
+    // Defer GSAP timeline creation to reduce main thread blocking during initial load
+    // This improves TBT (Total Blocking Time) significantly
+    const scheduleInit = typeof requestIdleCallback !== 'undefined'
+      ? requestIdleCallback
+      : (cb: () => void) => setTimeout(cb, 1)
+
+    const cancelInit = typeof cancelIdleCallback !== 'undefined'
+      ? cancelIdleCallback
+      : clearTimeout
+
+    let initId: number | ReturnType<typeof setTimeout>
+
+    // Schedule timeline creation for when browser is idle
+    initId = scheduleInit(() => {
+      const tl = createTimeline()
+      tlRef.current = tl
+
+      // Defer accurate height calculation to after paint
+      requestAnimationFrame(() => {
+        cachedHeightRef.current = null // Invalidate default cache
+        calculateHeight(true)
+      })
+    })
 
     return () => {
-      tl?.kill()
+      cancelInit(initId as number)
+      tlRef.current?.kill()
       tlRef.current = null
     }
-  }, [ease, items])
+  }, [ease, items, calculateHeight])
 
   useLayoutEffect(() => {
+    let resizeTimer: ReturnType<typeof setTimeout> | null = null
+
     const handleResize = () => {
-      if (!tlRef.current) return
+      // Debounce resize events to reduce main thread work
+      if (resizeTimer) clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(() => {
+        if (!tlRef.current) return
 
-      if (isExpanded) {
-        const newHeight = calculateHeight()
-        gsap.set(navRef.current, { height: newHeight })
+        // Invalidate cache on resize
+        cachedHeightRef.current = null
 
-        tlRef.current.kill()
-        const newTl = createTimeline()
-        if (newTl) {
-          newTl.progress(1)
-          tlRef.current = newTl
+        if (isExpanded) {
+          const newHeight = calculateHeight(true) // Force recalculation
+          gsap.set(navRef.current, { height: newHeight })
+
+          tlRef.current.kill()
+          const newTl = createTimeline()
+          if (newTl) {
+            newTl.progress(1)
+            tlRef.current = newTl
+          }
+        } else {
+          tlRef.current.kill()
+          const newTl = createTimeline()
+          if (newTl) {
+            tlRef.current = newTl
+          }
         }
-      } else {
-        tlRef.current.kill()
-        const newTl = createTimeline()
-        if (newTl) {
-          tlRef.current = newTl
-        }
-      }
+      }, 150)
     }
 
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    window.addEventListener('resize', handleResize, { passive: true })
+    return () => {
+      if (resizeTimer) clearTimeout(resizeTimer)
+      window.removeEventListener('resize', handleResize)
+    }
   }, [isExpanded])
 
   const toggleMenu = () => {
-    const tl = tlRef.current
-    if (!tl) return
+    let tl = tlRef.current
+
+    // Recreate timeline if it was killed/nullified
+    if (!tl) {
+      tl = createTimeline()
+      tlRef.current = tl
+      if (!tl) return // Still null, nav ref not ready
+    }
+
     if (!isExpanded) {
       setIsHamburgerOpen(true)
       setIsExpanded(true)
@@ -170,18 +229,22 @@ const CardNav: React.FC<CardNavProps> = ({
     >
       <nav
         ref={navRef}
-        className={`card-nav ${isExpanded ? 'open' : ''} block h-[60px] p-0 rounded-xl shadow-lg border relative overflow-hidden will-change-[height]`}
+        className={`card-nav ${isExpanded ? 'open' : ''} block h-[60px] p-0 rounded-xl shadow-lg border relative overflow-hidden`}
         style={{
           backgroundColor: baseColor,
-          borderColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
+          borderColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+          willChange: isExpanded ? 'height' : 'auto', // Only hint when animating
+          contain: 'layout style' // CSS containment for better performance
         }}
       >
         <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between px-4 z-[2]">
           <div
             className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''} group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] w-[40px] flex-shrink-0`}
             onClick={toggleMenu}
+            onKeyDown={(e) => e.key === 'Enter' && toggleMenu()}
             role="button"
             aria-label={isExpanded ? 'Close menu' : 'Open menu'}
+            aria-expanded={isExpanded}
             tabIndex={0}
             style={{ color: menuColor || '#000' }}
           >
@@ -201,11 +264,19 @@ const CardNav: React.FC<CardNavProps> = ({
             <img
               src="/images/logo-light.avif"
               alt="BookBed"
+              title="BookBed"
+              width={84}
+              height={100}
+              loading="eager"
               className="h-[36px] w-[36px] object-contain dark:hidden"
             />
             <img
               src="/images/logo-light.avif"
               alt="BookBed"
+              title="BookBed"
+              width={84}
+              height={100}
+              loading="eager"
               className="h-[36px] w-[36px] object-contain hidden dark:block brightness-0 invert"
             />
             <span
@@ -236,7 +307,7 @@ const CardNav: React.FC<CardNavProps> = ({
               </button>
             )}
 
-            {/* Theme Toggle - Monitor Icon */}
+            {/* Theme Toggle */}
             {onToggleTheme && (
               <button
                 type="button"
@@ -251,11 +322,11 @@ const CardNav: React.FC<CardNavProps> = ({
               >
                 {isDark ? (
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                 ) : (
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                   </svg>
                 )}
               </button>
@@ -295,6 +366,7 @@ const CardNav: React.FC<CardNavProps> = ({
                     key={`${lnk.label}-${i}`}
                     className="nav-card-link inline-flex items-center gap-[6px] no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px]"
                     href={lnk.href}
+                    title={lnk.ariaLabel}
                     aria-label={lnk.ariaLabel}
                   >
                     <GoArrowUpRight className="nav-card-link-icon shrink-0" aria-hidden="true" />

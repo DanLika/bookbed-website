@@ -6,6 +6,7 @@ export interface GlassIconsItem {
   label: string
   customClass?: string
   href?: string
+  title?: string
 }
 
 export interface GlassIconsProps {
@@ -50,7 +51,7 @@ const GlassIcons: React.FC<GlassIconsProps> = ({ items, className }) => {
       {items.map((item, index) => {
         const WrapperElement = item.href ? 'a' : 'div'
         const linkProps = item.href
-          ? { href: item.href, target: item.href.startsWith('http') ? '_blank' : undefined, rel: item.href.startsWith('http') ? 'noopener noreferrer' : undefined }
+          ? { href: item.href, title: item.title, target: item.href.startsWith('http') ? '_blank' : undefined, rel: item.href.startsWith('http') ? 'noopener noreferrer' : undefined }
           : {}
 
         return (
@@ -60,7 +61,7 @@ const GlassIcons: React.FC<GlassIconsProps> = ({ items, className }) => {
           {...linkProps}
         >
           <div
-            className={`relative bg-transparent w-10 h-10 [perspective:24em] [transform-style:preserve-3d] group ${
+            className={`relative bg-transparent w-[45px] h-[45px] [perspective:24em] [transform-style:preserve-3d] group ${
               prefersReducedMotion ? '' : 'cursor-pointer'
             }`}
           >
@@ -88,7 +89,7 @@ const GlassIcons: React.FC<GlassIconsProps> = ({ items, className }) => {
                 boxShadow: '0 0 0 0.1em hsla(0, 0%, 100%, 0.3) inset',
               }}
             >
-              <span className="m-auto w-5 h-5 flex items-center justify-center text-white" aria-hidden="true">
+              <span className="m-auto w-[22px] h-[22px] flex items-center justify-center text-white" aria-hidden="true">
                 {React.cloneElement(item.icon as React.ReactElement<{ className?: string }>, {
                   className: 'w-full h-full',
                 })}

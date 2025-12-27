@@ -8,10 +8,10 @@ export default function Footer() {
   const { t } = useTranslation()
 
   const navLinks = [
-    { path: '/', key: 'home' },
-    { path: '/demo', key: 'demo' },
-    { path: '/widget', key: 'widget' },
-    { path: '/contact', key: 'contact' },
+    { path: '/', key: 'home', title: 'Početna stranica' },
+    { path: '/demo', key: 'demo', title: 'Pogledajte demo video tutorijale' },
+    { path: '/widget', key: 'widget', title: 'Saznajte više o booking widgetu' },
+    { path: '/contact', key: 'contact', title: 'Kontaktirajte nas' },
   ]
 
   return (
@@ -27,7 +27,7 @@ export default function Footer() {
             distance={20}
             className="flex-1"
           >
-            <Link to="/" className="inline-flex items-center gap-1.5 sm:gap-2 group mb-4">
+            <Link to="/" title="BookBed - Početna" className="inline-flex items-center gap-1.5 sm:gap-2 group mb-4">
               <LogoIcon
                 className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
               />
@@ -40,8 +40,8 @@ export default function Footer() {
             </p>
           </FadeContent>
 
-          {/* Navigation & Contact - Same Row */}
-          <div className="flex gap-12 md:gap-16">
+          {/* Navigation & Contact */}
+          <div className="flex flex-col sm:flex-row gap-8 sm:gap-12 md:gap-16">
             {/* Navigation Links */}
             <FadeContent
               duration={500}
@@ -49,13 +49,14 @@ export default function Footer() {
               direction="up"
               distance={20}
             >
-              <h4 className="text-text-primary dark:text-white font-semibold mb-4 text-sm uppercase tracking-wider">{t('footer.navigation')}</h4>
-              <nav className="flex flex-col gap-1" aria-label="Footer navigation">
+              <h3 className="text-text-primary dark:text-white font-semibold mb-3 text-sm uppercase tracking-wider">{t('footer.navigation')}</h3>
+              <nav className="flex flex-col" aria-label="Footer navigation">
                 {navLinks.map((link) => (
                   <Link
                     key={link.key}
                     to={link.path}
-                    className="text-text-secondary dark:text-gray-400 hover:text-primary hover:translate-x-2 active:opacity-80 transition-all text-sm py-2 -ml-1 pl-1"
+                    title={link.title}
+                    className="text-text-secondary dark:text-gray-400 hover:text-primary active:opacity-80 transition-colors text-sm py-1.5"
                   >
                     {t(`nav.${link.key}`)}
                   </Link>
@@ -70,7 +71,7 @@ export default function Footer() {
               direction="up"
               distance={20}
             >
-              <h4 className="text-text-primary dark:text-white font-semibold mb-4 text-sm uppercase tracking-wider">{t('footer.contact')}</h4>
+              <h3 className="text-text-primary dark:text-white font-semibold mb-6 text-sm uppercase tracking-wider">{t('footer.contact')}</h3>
               <GlassIcons
                 items={[
                   {
@@ -82,6 +83,7 @@ export default function Footer() {
                     color: 'linear-gradient(135deg, hsl(220, 8%, 50%), hsl(220, 8%, 40%))',
                     label: 'Email',
                     href: 'mailto:info@bookbed.io',
+                    title: 'Pošaljite nam email',
                   },
                   {
                     icon: (
@@ -92,9 +94,10 @@ export default function Footer() {
                     color: 'linear-gradient(135deg, hsl(200, 8%, 50%), hsl(200, 8%, 40%))',
                     label: 'App',
                     href: 'https://app.bookbed.io',
+                    title: 'Otvori BookBed aplikaciju',
                   },
                 ]}
-                className="justify-start !gap-3 !py-1"
+                className="!flex !gap-4 !py-0"
               />
             </FadeContent>
           </div>
@@ -111,12 +114,12 @@ export default function Footer() {
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-text-tertiary dark:text-gray-500">
               <p>{t('footer.copyright')}</p>
               <div className="flex items-center gap-4">
-                <a href="#" className="hover:text-primary active:opacity-80 transition-all py-2 px-1">
+                <Link to="/privacy" title="Politika privatnosti" className="hover:text-primary active:opacity-80 transition-all py-2 px-1">
                   {t('footer.privacy')}
-                </a>
-                <a href="#" className="hover:text-primary active:opacity-80 transition-all py-2 px-1">
+                </Link>
+                <Link to="/terms" title="Uvjeti korištenja" className="hover:text-primary active:opacity-80 transition-all py-2 px-1">
                   {t('footer.terms')}
-                </a>
+                </Link>
               </div>
             </div>
           </div>

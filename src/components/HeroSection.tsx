@@ -1,11 +1,13 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { containers } from '../utils/typography'
 import { spacing } from '../utils/spacing'
 import ShinyText from './ui/animations/ShinyText'
 import StarBorder from './ui/animations/StarBorder'
-import GridScan from './ui/backgrounds/GridScan'
+
+// Lazy load GridScan - heavy WebGL component, only needed in dark mode
+const GridScan = lazy(() => import('./ui/backgrounds/GridScan'))
 
 export default function HeroSection() {
   const { t } = useTranslation()
@@ -36,35 +38,37 @@ export default function HeroSection() {
       {/* Background - Dark theme overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] to-zinc-900 hidden dark:block" />
 
-      {/* GridScan Background - Dark theme only */}
+      {/* GridScan Background - Dark theme only, lazy loaded */}
       {isDark && (
-        <div className="absolute inset-0 w-full h-full opacity-50">
-          <GridScan
-            linesColor="#6B4CE6"
-            scanColor="#9B86F3"
-            gridScale={0.1}
-            lineThickness={0.8}
-            lineJitter={0.08}
-            scanOpacity={0.45}
-            scanGlow={0.5}
-            scanSoftness={2}
-            scanDuration={2.5}
-            scanDelay={2.0}
-            scanDirection="pingpong"
-            sensitivity={0.5}
-            enablePost={true}
-            bloomIntensity={0.3}
-            chromaticAberration={0.001}
-            noiseIntensity={0.008}
-          />
-        </div>
+        <Suspense fallback={null}>
+          <div className="absolute inset-0 w-full h-full opacity-50">
+            <GridScan
+              linesColor="#6B4CE6"
+              scanColor="#9B86F3"
+              gridScale={0.1}
+              lineThickness={0.8}
+              lineJitter={0.08}
+              scanOpacity={0.45}
+              scanGlow={0.5}
+              scanSoftness={2}
+              scanDuration={2.5}
+              scanDelay={2.0}
+              scanDirection="pingpong"
+              sensitivity={0.5}
+              enablePost={true}
+              bloomIntensity={0.3}
+              chromaticAberration={0.001}
+              noiseIntensity={0.008}
+            />
+          </div>
+        </Suspense>
       )}
 
       {/* Hero Title (inside container) - closer to navbar on desktop */}
       <div className={`relative ${containers.hero} mx-auto ${spacing.container.padding} pt-24 sm:pt-28 md:pt-32 lg:pt-28 xl:pt-32`}>
         <div className="text-center mb-4 sm:mb-5 md:mb-6 lg:mb-6">
-          {/* Hero Title - Simple instant render with CSS fade-in */}
-          <h1 className="text-[clamp(1.75rem,5vw,3.5rem)] font-bold text-text-primary dark:text-white leading-tight max-w-5xl mx-auto line-clamp-2 animate-fade-in">
+          {/* Hero Title - INSTANT render for LCP (no animation delay) */}
+          <h1 className="text-[clamp(1.75rem,5vw,3.5rem)] font-bold text-text-primary dark:text-white leading-tight max-w-5xl mx-auto">
             {t('hero.title')}
           </h1>
         </div>
@@ -75,19 +79,29 @@ export default function HeroSection() {
         {/* Subtle glow effect behind mockup */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 blur-3xl scale-105 opacity-30" />
 
-        {/* Dashboard Screenshot - Light/Dark versions - Larger on mobile, responsive scaling */}
+        {/* Dashboard Screenshot - Light/Dark versions with optimized responsive srcset */}
         <img
-          src="/images/hero/hero-light.avif"
+          src="/images/hero/hero-light-1280.avif"
+          srcSet="/images/hero/hero-light-768.avif 768w, /images/hero/hero-light-1000.avif 1000w, /images/hero/hero-light-1280.avif 1280w, /images/hero/hero-light.avif 1778w"
           alt="BookBed Dashboard"
-          className="relative w-[120%] sm:w-[110%] md:w-[105%] lg:w-full max-w-7xl mx-auto h-auto block dark:hidden"
+          title="BookBed Dashboard"
+          width={1280}
+          height={720}
+          sizes="(max-width: 640px) 130vw, (max-width: 1024px) 115vw, 1280px"
+          className="relative w-[130%] sm:w-[130%] md:w-[115%] lg:w-full max-w-7xl mx-auto h-auto block dark:hidden"
           loading="eager"
           fetchPriority="high"
           decoding="async"
         />
         <img
-          src="/images/hero/hero-dark.avif"
+          src="/images/hero/hero-dark-1280.avif"
+          srcSet="/images/hero/hero-dark-768.avif 768w, /images/hero/hero-dark-1000.avif 1000w, /images/hero/hero-dark-1280.avif 1280w, /images/hero/hero-dark.avif 1778w"
           alt="BookBed Dashboard"
-          className="relative w-[120%] sm:w-[110%] md:w-[105%] lg:w-full max-w-7xl mx-auto h-auto hidden dark:block"
+          title="BookBed Dashboard"
+          width={1280}
+          height={720}
+          sizes="(max-width: 640px) 130vw, (max-width: 1024px) 115vw, 1280px"
+          className="relative w-[130%] sm:w-[130%] md:w-[115%] lg:w-full max-w-7xl mx-auto h-auto hidden dark:block"
           loading="eager"
           fetchPriority="high"
           decoding="async"
@@ -106,7 +120,7 @@ export default function HeroSection() {
               </div>
               <div className="min-w-0">
                 <p className="font-semibold text-text-primary dark:text-white text-[10px] sm:text-xs truncate">New Booking</p>
-                <p className="text-[8px] sm:text-[10px] text-text-tertiary dark:text-gray-400">Just now</p>
+                <p className="text-[8px] sm:text-[10px] text-gray-600 dark:text-gray-400">Just now</p>
               </div>
             </div>
           </div>
@@ -120,7 +134,7 @@ export default function HeroSection() {
               </div>
               <div>
                 <p className="font-semibold text-text-primary dark:text-white text-sm">New Booking</p>
-                <p className="text-xs text-text-tertiary dark:text-gray-400">Just now</p>
+                <p className="text-xs text-text-secondary dark:text-gray-300">Just now</p>
               </div>
             </div>
             <p className="text-sm text-text-secondary dark:text-gray-300">
@@ -140,7 +154,7 @@ export default function HeroSection() {
               </div>
               <div>
                 <p className="font-semibold text-text-primary dark:text-white text-sm">€320.00</p>
-                <p className="text-xs text-state-success">Payment received</p>
+                <p className="text-xs text-emerald-600 dark:text-emerald-400">Payment received</p>
               </div>
             </div>
           </div>
@@ -158,7 +172,7 @@ export default function HeroSection() {
               </div>
               <div className="min-w-0">
                 <p className="font-semibold text-text-primary dark:text-white text-[10px] sm:text-xs truncate">Check-in</p>
-                <p className="text-[8px] sm:text-[10px] text-text-tertiary dark:text-gray-400">Today</p>
+                <p className="text-[8px] sm:text-[10px] text-gray-600 dark:text-gray-300">Today</p>
               </div>
             </div>
           </div>
@@ -172,7 +186,7 @@ export default function HeroSection() {
               </div>
               <div>
                 <p className="font-semibold text-text-primary dark:text-white text-sm">Check-in Today</p>
-                <p className="text-xs text-text-tertiary dark:text-gray-400">Ana M. - Apartman A1</p>
+                <p className="text-xs text-text-secondary dark:text-gray-300">Ana M. - Apartman A1</p>
               </div>
             </div>
           </div>
@@ -189,7 +203,7 @@ export default function HeroSection() {
               </div>
               <div>
                 <p className="font-semibold text-text-primary dark:text-white text-sm">85% Occupancy</p>
-                <p className="text-xs text-text-tertiary dark:text-gray-400">This month</p>
+                <p className="text-xs text-text-secondary dark:text-gray-300">This month</p>
               </div>
             </div>
           </div>
@@ -207,6 +221,7 @@ export default function HeroSection() {
         >
           <Link
             to="/demo"
+            title="Pogledaj demo"
             className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 text-text-primary dark:text-white font-semibold rounded-lg text-base sm:text-lg transition-all transform md:hover:scale-[1.02] active:scale-[0.98] focus:outline-none"
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">

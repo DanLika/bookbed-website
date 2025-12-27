@@ -18,10 +18,10 @@ export default function Header({ isDark, onToggleTheme }: HeaderProps) {
   const lastScrollY = useRef(0)
 
   const navLinks = [
-    { path: '/', key: 'home' },
-    { path: '/demo', key: 'demo' },
-    { path: '/widget', key: 'widget' },
-    { path: '/contact', key: 'contact' },
+    { path: '/', key: 'home', title: 'Početna stranica' },
+    { path: '/demo', key: 'demo', title: 'Pogledajte demo video tutorijale' },
+    { path: '/widget', key: 'widget', title: 'Saznajte više o booking widgetu' },
+    { path: '/contact', key: 'contact', title: 'Kontaktirajte nas' },
   ]
 
   const toggleLanguage = () => {
@@ -78,6 +78,7 @@ export default function Header({ isDark, onToggleTheme }: HeaderProps) {
               <Link
                 to="/"
                 onClick={handleLogoClick}
+                title="BookBed - Početna"
                 className="inline-flex items-center gap-1.5 sm:gap-2 group"
               >
                 <LogoIcon
@@ -97,6 +98,7 @@ export default function Header({ isDark, onToggleTheme }: HeaderProps) {
                   <Link
                     key={link.key}
                     to={link.path}
+                    title={link.title}
                     aria-current={isActive ? 'page' : undefined}
                     className={`font-medium text-sm transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-zinc-900 rounded-lg px-2.5 py-1.5 active:opacity-80 ${
                       isActive
@@ -143,6 +145,7 @@ export default function Header({ isDark, onToggleTheme }: HeaderProps) {
                 href="https://app.bookbed.io"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Otvori BookBed aplikaciju"
                 className="hidden lg:inline-flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary hover:scale-[1.02] active:scale-95 text-white text-sm font-semibold rounded-lg shadow-purple transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-zinc-900"
               >
                 {t('hero.cta')}
@@ -184,6 +187,7 @@ export default function Header({ isDark, onToggleTheme }: HeaderProps) {
                   <Link
                     key={link.key}
                     to={link.path}
+                    title={link.title}
                     aria-current={isActive ? 'page' : undefined}
                     className={`px-4 py-3 rounded-lg font-medium transition-all active:scale-[0.98] ${
                       isActive
@@ -201,6 +205,7 @@ export default function Header({ isDark, onToggleTheme }: HeaderProps) {
                 href="https://app.bookbed.io"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Otvori BookBed aplikaciju"
                 className="mt-2 w-full px-4 py-3.5 bg-gradient-to-r from-primary to-primary-dark text-white font-semibold rounded-lg flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
               >
                 {t('hero.cta')}

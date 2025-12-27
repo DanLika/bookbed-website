@@ -9,9 +9,21 @@ import ScrollFloat from '../components/ui/animations/ScrollFloat'
 import SpotlightCard from '../components/ui/animations/SpotlightCard'
 import ShinyText from '../components/ui/animations/ShinyText'
 import GlassIcon from '../components/ui/GlassIcon'
+import GlassIcons from '../components/ui/animations/GlassIcons'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const ContactPage = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+
+  // Page-specific SEO meta tags
+  usePageMeta({
+    title: i18n.language === 'hr'
+      ? 'Kontaktirajte BookBed Tim | Podrška'
+      : 'Contact BookBed Team | Support',
+    description: i18n.language === 'hr'
+      ? 'Kontaktirajte BookBed tim. Pošaljite upit, zatražite demo ili saznajte više o našoj platformi za upravljanje rezervacijama.'
+      : 'Contact BookBed team. Send an inquiry, request a demo, or learn more about our booking management platform.'
+  })
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -71,11 +83,13 @@ const ContactPage = () => {
             duration={0.6}
             threshold={0.1}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary dark:text-primary-light text-sm font-medium mb-6">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              {t('contact.badge', 'Get in Touch')}
+            <div className="group inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-white/70 dark:bg-zinc-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-zinc-700/50 text-sm font-medium mb-6 shadow-sm">
+              <GlassIcon size="sm" color="primary">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </GlassIcon>
+              <span className="text-text-primary dark:text-white pr-1">{t('contact.badge', 'Get in Touch')}</span>
             </div>
           </ScrollFloat>
 
@@ -234,18 +248,28 @@ const ContactPage = () => {
               {/* Email Card */}
               <a
                 href="mailto:info@bookbed.io"
+                title="Pošalji email na info@bookbed.io"
                 className="group block bg-white/70 dark:bg-zinc-800/70 backdrop-blur-xl rounded-2xl p-5 sm:p-6 border border-gray-200/50 dark:border-zinc-700/50 hover:border-primary/30 dark:hover:border-primary/30 transition-all hover:shadow-lg"
               >
                 <div className="flex items-start gap-4">
-                  <GlassIcon color="primary">
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </GlassIcon>
-                  <div>
-                    <h3 className="font-semibold text-text-primary dark:text-white mb-1">
+                  <div className="flex-shrink-0">
+                    <GlassIcons
+                      items={[{
+                        icon: (
+                          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                          </svg>
+                        ),
+                        color: '#9b86f3',
+                        label: ''
+                      }]}
+                      className="!py-0 !gap-0 !grid-cols-1"
+                    />
+                  </div>
+                  <div className="pt-2">
+                    <h2 className="font-semibold text-text-primary dark:text-white mb-1 text-base">
                       {t('contact.emailUs', 'Email Us')}
-                    </h3>
+                    </h2>
                     <p className="text-primary dark:text-primary-light font-medium">
                       info@bookbed.io
                     </p>
@@ -258,18 +282,28 @@ const ContactPage = () => {
                 href="https://app.bookbed.io"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Otvori BookBed aplikaciju"
                 className="group block bg-white/70 dark:bg-zinc-800/70 backdrop-blur-xl rounded-2xl p-5 sm:p-6 border border-gray-200/50 dark:border-zinc-700/50 hover:border-primary/30 dark:hover:border-primary/30 transition-all hover:shadow-lg"
               >
                 <div className="flex items-start gap-4">
-                  <GlassIcon color="emerald">
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </GlassIcon>
-                  <div>
-                    <h3 className="font-semibold text-text-primary dark:text-white mb-1">
+                  <div className="flex-shrink-0">
+                    <GlassIcons
+                      items={[{
+                        icon: (
+                          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        ),
+                        color: 'rgba(52, 211, 153)',
+                        label: ''
+                      }]}
+                      className="!py-0 !gap-0 !grid-cols-1"
+                    />
+                  </div>
+                  <div className="pt-2">
+                    <h2 className="font-semibold text-text-primary dark:text-white mb-1 text-base">
                       {t('contact.openApp', 'Open App')}
-                    </h3>
+                    </h2>
                     <p className="text-text-secondary dark:text-gray-400 text-sm">
                       {t('contact.openAppDesc', 'Access your dashboard')}
                     </p>
@@ -280,15 +314,24 @@ const ContactPage = () => {
               {/* Response Time Card */}
               <div className="bg-white/70 dark:bg-zinc-800/70 backdrop-blur-xl rounded-2xl p-5 sm:p-6 border border-gray-200/50 dark:border-zinc-700/50">
                 <div className="flex items-start gap-4">
-                  <GlassIcon color="blue">
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </GlassIcon>
-                  <div>
-                    <h3 className="font-semibold text-text-primary dark:text-white mb-1">
+                  <div className="flex-shrink-0">
+                    <GlassIcons
+                      items={[{
+                        icon: (
+                          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        ),
+                        color: '#61a6fb',
+                        label: ''
+                      }]}
+                      className="!py-0 !gap-0 !grid-cols-1"
+                    />
+                  </div>
+                  <div className="pt-2">
+                    <h2 className="font-semibold text-text-primary dark:text-white mb-1 text-base">
                       {t('contact.responseTime', 'Quick Response')}
-                    </h3>
+                    </h2>
                     <p className="text-text-secondary dark:text-gray-400 text-sm">
                       {t('contact.responseTimeDesc', 'We typically respond within 24 hours')}
                     </p>

@@ -125,7 +125,8 @@ export default function PricingSection() {
                 >
                   <Link
                     to="/contact"
-                    className="group block w-full py-4 px-6 text-center font-semibold rounded-xl bg-white text-primary shadow-lg transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/20"
+                    title="Kontaktirajte nas"
+                    className="group block w-full py-3 sm:py-4 px-6 sm:px-8 text-center font-semibold rounded-lg text-base sm:text-lg bg-white text-primary shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-xl"
                   >
                     <span className="inline-flex items-center gap-2">
                       <ShinyText text={t('pricing.cta')} speed={4} />

@@ -6,9 +6,21 @@ import { typography } from '../utils/typography'
 import FadeContent from '../components/ui/animations/FadeContent'
 import GradientText from '../components/ui/animations/GradientText'
 import GlassIcon from '../components/ui/GlassIcon'
+import GlassIcons from '../components/ui/animations/GlassIcons'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const WidgetPage = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+
+  // Page-specific SEO meta tags
+  usePageMeta({
+    title: i18n.language === 'hr'
+      ? 'Booking Widget - Integrirajte Rezervacije na Vaš Web - BookBed'
+      : 'Booking Widget - Integrate Bookings on Your Website - BookBed',
+    description: i18n.language === 'hr'
+      ? 'Dodajte BookBed widget na svoju web stranicu. Prilagodljivi kalendar rezervacija, jednostavna integracija, više načina prikaza.'
+      : 'Add BookBed widget to your website. Customizable booking calendar, easy integration, multiple display modes.'
+  })
   const [activeMode, setActiveMode] = useState<'full' | 'calendar' | 'inquiry'>('full')
   const [copied, setCopied] = useState(false)
 
@@ -17,28 +29,31 @@ const WidgetPage = () => {
       id: 'full',
       key: 'mode1',
       icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
         </svg>
       ),
+      color: 'primary' as const,
     },
     {
       id: 'calendar',
       key: 'mode2',
       icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
       ),
+      color: 'blue' as const,
     },
     {
       id: 'inquiry',
       key: 'mode3',
       icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
         </svg>
       ),
+      color: 'emerald' as const,
     },
   ] as const
 
@@ -90,11 +105,13 @@ const WidgetPage = () => {
             duration={500}
             direction="none"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary dark:text-primary-light text-sm font-medium mb-6">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-              {t('widget.badge')}
+            <div className="group inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-white/70 dark:bg-zinc-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-zinc-700/50 text-sm font-medium mb-6 shadow-sm">
+              <GlassIcon size="sm" color="primary">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </GlassIcon>
+              <span className="text-text-primary dark:text-white pr-1">{t('widget.badge')}</span>
             </div>
           </FadeContent>
 
@@ -145,14 +162,18 @@ const WidgetPage = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setActiveMode(mode.id as typeof activeMode)}
-                  className={`flex items-center gap-2 px-5 sm:px-6 py-3 rounded-xl font-medium transition-all border ${
+                  className={`group flex items-center gap-3 px-4 sm:px-5 py-2.5 rounded-xl font-medium transition-all border ${
                     activeMode === mode.id
-                      ? 'bg-primary text-white shadow-purple border-primary'
-                      : 'bg-white/70 dark:bg-zinc-800/70 backdrop-blur-xl text-text-primary dark:text-white hover:bg-gray-50/80 dark:hover:bg-zinc-700/80 border-gray-200/50 dark:border-zinc-700/50 shadow-sm'
+                      ? 'bg-primary/10 dark:bg-primary/20 border-primary/30 shadow-sm'
+                      : 'bg-white/70 dark:bg-zinc-800/70 backdrop-blur-xl hover:bg-gray-50/80 dark:hover:bg-zinc-700/80 border-gray-200/50 dark:border-zinc-700/50 shadow-sm'
                   }`}
                 >
-                  {mode.icon}
-                  <span className="hidden sm:inline">{t(`widget.${mode.key}.title`)}</span>
+                  <GlassIcon size="sm" color={mode.color}>
+                    {mode.icon}
+                  </GlassIcon>
+                  <span className={`hidden sm:inline ${activeMode === mode.id ? 'text-primary dark:text-primary-light' : 'text-text-primary dark:text-white'}`}>
+                    {t(`widget.${mode.key}.title`)}
+                  </span>
                 </motion.button>
               ))}
             </div>
@@ -230,12 +251,14 @@ const WidgetPage = () => {
             direction="up"
             distance={30}
           >
-            <h3 className={`${typography.h3} font-semibold text-text-primary dark:text-white mb-6 text-center flex items-center justify-center gap-3`}>
-              <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
+            <h2 className={`${typography.h3} font-semibold text-text-primary dark:text-white mb-6 text-center flex items-center justify-center gap-4`}>
+              <GlassIcon size="sm" color="primary">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </GlassIcon>
               {t('widget.embedCode')}
-            </h3>
+            </h2>
             <div className="relative">
               <pre className="bg-zinc-900 dark:bg-zinc-950 rounded-2xl p-6 overflow-x-auto text-sm text-gray-300 border border-zinc-800">
                 <code>{embedCode}</code>
@@ -276,29 +299,29 @@ const WidgetPage = () => {
                 {
                   key: 'feature1',
                   icon: (
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                     </svg>
                   ),
-                  color: 'primary' as const
+                  color: '#8574d1',
                 },
                 {
                   key: 'feature2',
                   icon: (
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                     </svg>
                   ),
-                  color: 'blue' as const
+                  color: '#4b7ab7',
                 },
                 {
                   key: 'feature3',
                   icon: (
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   ),
-                  color: 'amber' as const
+                  color: 'rgba(240, 183, 36)',
                 },
               ].map((feature, i) => (
                 <div
@@ -306,11 +329,12 @@ const WidgetPage = () => {
                   className="group text-center p-5 sm:p-6 rounded-2xl bg-white/70 dark:bg-zinc-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-zinc-700/50 hover:border-primary/30 dark:hover:border-primary/30 hover:shadow-lg transition-all duration-300"
                 >
                   <div className="flex justify-center mb-4">
-                    <GlassIcon size="md" color={feature.color}>
-                      {feature.icon}
-                    </GlassIcon>
+                    <GlassIcons
+                      items={[{ icon: feature.icon, color: feature.color, label: '' }]}
+                      className="!py-0 !gap-0 !grid-cols-1 place-items-center"
+                    />
                   </div>
-                  <h4 className="font-semibold text-text-primary dark:text-white mb-2">{t(`widget.${feature.key}.title`)}</h4>
+                  <h3 className="font-semibold text-text-primary dark:text-white mb-2">{t(`widget.${feature.key}.title`)}</h3>
                   <p className="text-sm text-text-secondary dark:text-gray-400">{t(`widget.${feature.key}.desc`)}</p>
                 </div>
               ))}

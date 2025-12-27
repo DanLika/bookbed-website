@@ -100,6 +100,7 @@ export default {
         'elevation-4': '0 8px 16px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.06)',
       },
       animation: {
+        'page-enter': 'pageEnter 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         'float': 'float 3s ease-in-out infinite',
         'fadeIn': 'fadeIn 0.6s ease-out',
         'fadeInUp': 'fadeInUp 0.6s ease-out',
@@ -112,6 +113,10 @@ export default {
         'star-movement-top': 'star-movement-top linear infinite alternate',
       },
       keyframes: {
+        pageEnter: {
+          'from': { opacity: '0', transform: 'translateY(8px)' },
+          'to': { opacity: '1', transform: 'translateY(0)' },
+        },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },

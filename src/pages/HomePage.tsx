@@ -1,5 +1,7 @@
 import { lazy, Suspense } from 'react'
+import { useTranslation } from 'react-i18next'
 import HeroSection from '../components/HeroSection'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 // Lazy load sections that are below the fold
 const TrustSection = lazy(() => import('../components/TrustSection'))
@@ -16,6 +18,17 @@ const SectionFallback = () => (
 )
 
 export default function HomePage() {
+  const { i18n } = useTranslation()
+
+  usePageMeta({
+    title: i18n.language === 'hr'
+      ? 'BookBed - Upravljajte Svim Rezervacijama na Jednom Mjestu'
+      : 'BookBed - Manage All Your Bookings in One Place',
+    description: i18n.language === 'hr'
+      ? 'Kompletna platforma za upravljanje rezervacijama za vlasnike apartmana i smještaja. Pametni kalendar, Stripe plaćanja, automatski emailovi, iCal sinkronizacija.'
+      : 'Complete booking management platform for property owners. Smart calendar, Stripe payments, automatic emails, iCal synchronization.'
+  })
+
   return (
     <div className="overflow-x-hidden bg-white dark:bg-zinc-950">
       {/* Hero loads immediately - above the fold */}

@@ -4,9 +4,21 @@ import { spacing, heroSpacing, getSectionSpacing, getContainerClasses } from '..
 import { typography } from '../utils/typography'
 import FadeContent from '../components/ui/animations/FadeContent'
 import GradientText from '../components/ui/animations/GradientText'
+import GlassIcon from '../components/ui/GlassIcon'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const DemoPage = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+
+  // Page-specific SEO meta tags
+  usePageMeta({
+    title: i18n.language === 'hr'
+      ? 'Demo Video Tutorijali - BookBed'
+      : 'Demo Video Tutorials - BookBed',
+    description: i18n.language === 'hr'
+      ? 'Pogledajte kako BookBed funkcionira kroz naše video tutorijale. Naučite upravljati rezervacijama, postaviti nekretnine i koristiti sve značajke platforme.'
+      : 'See how BookBed works through our video tutorials. Learn to manage bookings, set up properties, and use all platform features.'
+  })
 
   const videos = [
     {
@@ -45,11 +57,13 @@ const DemoPage = () => {
             duration={500}
             direction="none"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary dark:text-primary-light text-sm font-medium mb-6">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              {t('demo.badge', 'Video Tutorials')}
+            <div className="group inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-white/70 dark:bg-zinc-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-zinc-700/50 text-sm font-medium mb-6 shadow-sm">
+              <GlassIcon size="sm" color="primary">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </GlassIcon>
+              <span className="text-text-primary dark:text-white pr-1">{t('demo.badge', 'Video Tutorials')}</span>
             </div>
           </FadeContent>
 
