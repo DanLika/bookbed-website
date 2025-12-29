@@ -124,9 +124,8 @@ export default function Header({ isDark, onToggleTheme }: HeaderProps) {
               {/* Theme Toggle */}
               <button
                 onClick={onToggleTheme}
-                title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
                 className="hidden sm:flex p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-zinc-900"
+                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
               >
                 {isDark ? (
                   <svg className="w-4.5 h-4.5 text-text-secondary dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -138,9 +137,6 @@ export default function Header({ isDark, onToggleTheme }: HeaderProps) {
                   </svg>
                 )}
               </button>
-              <span className="sr-only" aria-live="polite">
-                {isDark ? 'Switched to dark mode' : 'Switched to light mode'}
-              </span>
 
               {/* CTA Button - Desktop */}
               <a
