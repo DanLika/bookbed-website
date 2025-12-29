@@ -8,10 +8,13 @@ export default function ContactPage() {
   const [searchParams] = useSearchParams()
   const subjectParam = searchParams.get('subject')
 
-  // Security: Validate the 'subject' param to prevent potential reflected XSS if the
-  // form's `select` were ever changed to an `input[type=text]`.
-  const allowedSubjects = ['demo', 'sales', 'support', 'general', 'partnership', 'other']
-  const validatedSubjectParam = subjectParam && allowedSubjects.includes(subjectParam) ? subjectParam : null
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: subjectParam || '',
+    message: '',
+  })
+
   // Map URL params to form values
   const mapSubjectParam = (param: string | null): string => {
     if (!param) return ''
@@ -25,23 +28,16 @@ export default function ContactPage() {
     }
     return mapping[param] || ''
   }
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: mapSubjectParam(validatedSubjectParam) || '',
-    message: '',
-  })
-
 
   // Update subject when URL param changes
   useEffect(() => {
-    if (validatedSubjectParam) {
-      const mappedSubject = mapSubjectParam(validatedSubjectParam)
+    if (subjectParam) {
+      const mappedSubject = mapSubjectParam(subjectParam)
       if (mappedSubject) {
         setFormData(prev => ({ ...prev, subject: mappedSubject }))
       }
     }
-  }, [validatedSubjectParam])
+  }, [subjectParam])
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
