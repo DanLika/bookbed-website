@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
-import useSEO from '../hooks/useSEO'
 import { spacing, heroSpacing, getSectionSpacing } from '../utils/spacing'
 import { typography } from '../utils/typography'
 import FadeContent from '../components/ui/animations/FadeContent'
@@ -10,10 +9,6 @@ import GlassIcon from '../components/ui/GlassIcon'
 
 const WidgetPage = () => {
   const { t } = useTranslation()
-  useSEO(
-    t('seo.widget.title'),
-    t('seo.widget.description')
-  )
   const [activeMode, setActiveMode] = useState<'full' | 'calendar' | 'inquiry'>('full')
   const [copied, setCopied] = useState(false)
 

@@ -226,26 +226,5 @@
     "privacy": "Politika Privatnosti",
     "terms": "Uvjeti Korištenja"
   },
-  "seo": {
-    "home": {
-      "title": "BookBed | Softver za Upravljanje Apartmanima i Rezervacijama",
-      "description": "BookBed je moderno rješenje za vlasnike apartmana i nekretnina za odmor. Jednostavno upravljajte rezervacijama, kalendarom i komunikacijom s gostima na jednom mjestu."
-    },
-    "contact": {
-      "title": "Kontaktirajte Nas | BookBed Podrška",
-      "description": "Imate pitanja o BookBed platformi? Kontaktirajte naš tim za podršku putem obrasca, emaila ili telefona. Tu smo da vam pomognemo."
-    },
-    "about": {
-      "title": "O Nama | BookBed Priča",
-      "description": "Saznajte više o BookBed misiji i timu koji stoji iza platforme za upravljanje smještajem."
-    },
-    "demo": {
-      "title": "Video Demo | BookBed u Akciji",
-      "description": "Pogledajte video demonstracije BookBed platforme i otkrijte kako jednostavno upravljati rezervacijama."
-    },
-    "widget": {
-      "title": "Widget za Rezervacije | BookBed",
-      "description": "Integrirajte BookBed widget za rezervacije na svoju web stranicu i počnite primati online rezervacije."
-    }
-  }
+  "skipToContent": "Preskoči na glavni sadržaj"
 }

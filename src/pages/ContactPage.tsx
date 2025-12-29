@@ -1,7 +1,6 @@
 import { useState, useEffect, FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
-import useSEO from '../hooks/useSEO'
 import { spacing, heroSpacing, getSectionSpacing } from '../utils/spacing'
 import { typography } from '../utils/typography'
 import BlurText from '../components/ui/animations/BlurText'
@@ -13,10 +12,6 @@ import GlassIcon from '../components/ui/GlassIcon'
 
 const ContactPage = () => {
   const { t } = useTranslation()
-  useSEO(
-    t('seo.contact.title'),
-    t('seo.contact.description')
-  )
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -220,10 +215,6 @@ const ContactPage = () => {
                       {t('contact.success')}
                     </motion.div>
                   )}
-
-                  <p className="text-xs text-center text-text-tertiary dark:text-gray-500 mt-4">
-                    {t('contact.mailtoNotice', 'Clicking "Send" will open your default email client.')}
-                  </p>
                 </form>
               </SpotlightCard>
             </ScrollFloat>

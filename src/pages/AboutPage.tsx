@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next'
-import useSEO from '../hooks/useSEO'
 import { spacing, heroSpacing, getSectionSpacing } from '../utils/spacing'
 import { typography } from '../utils/typography'
 import FadeContent from '../components/ui/animations/FadeContent'
@@ -7,10 +6,6 @@ import GradientText from '../components/ui/animations/GradientText'
 
 export default function AboutPage() {
   const { t } = useTranslation()
-  useSEO(
-    t('seo.about.title'),
-    t('seo.about.description')
-  )
 
   const features = [
     {
