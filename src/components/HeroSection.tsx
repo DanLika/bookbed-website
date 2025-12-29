@@ -9,20 +9,24 @@ import GridScan from './ui/backgrounds/GridScan'
 
 export default function HeroSection() {
   const { t } = useTranslation()
-  const [isDark, setIsDark] = useState(false)
+  const [isGridScanMounted, setIsGridScanMounted] = useState(false)
 
   useEffect(() => {
-    // Check initial theme
     const checkTheme = () => {
-      setIsDark(document.documentElement.classList.contains('dark'))
+      const isDarkTheme = document.documentElement.classList.contains('dark')
+      // Performance: Defer mounting the heavy GridScan component until it's actually needed.
+      if (isDarkTheme && !isGridScanMounted) {
+        // A short delay can prevent the animation from blocking the initial page paint.
+        setTimeout(() => setIsGridScanMounted(true), 100)
+      }
     }
+
     checkTheme()
 
-    // Watch for theme changes
     const observer = new MutationObserver(checkTheme)
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['class']
+      attributeFilter: ['class'],
     })
 
     return () => observer.disconnect()
@@ -36,8 +40,8 @@ export default function HeroSection() {
       {/* Background - Dark theme overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] to-zinc-900 hidden dark:block" />
 
-      {/* GridScan Background - Dark theme only */}
-      {isDark && (
+      {/* GridScan Background - Dark theme only, and only when mounted */}
+      {isGridScanMounted && (
         <div className="absolute inset-0 w-full h-full opacity-50">
           <GridScan
             linesColor="#6B4CE6"
