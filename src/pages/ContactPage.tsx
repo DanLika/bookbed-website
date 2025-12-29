@@ -220,6 +220,10 @@ const ContactPage = () => {
                       {t('contact.success')}
                     </motion.div>
                   )}
+
+                  <p className="text-xs text-center text-text-tertiary dark:text-gray-500 mt-4">
+                    {t('contact.mailtoNotice', 'Clicking "Send" will open your default email client.')}
+                  </p>
                 </form>
               </SpotlightCard>
             </ScrollFloat>
