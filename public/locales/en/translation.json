@@ -224,5 +224,27 @@
     "copyright": "© 2025 BookBed. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service"
+  },
+  "seo": {
+    "home": {
+      "title": "BookBed | Vacation Rental & Booking Management Software",
+      "description": "BookBed is a modern solution for vacation rental owners. Easily manage bookings, calendars, and guest communication all in one place."
+    },
+    "contact": {
+      "title": "Contact Us | BookBed Support",
+      "description": "Have questions about the BookBed platform? Contact our support team via form, email, or phone. We're here to help."
+    },
+    "about": {
+      "title": "About Us | The BookBed Story",
+      "description": "Learn more about the BookBed mission and the team behind the vacation rental management platform."
+    },
+    "demo": {
+      "title": "Video Demos | BookBed in Action",
+      "description": "Watch video demonstrations of the BookBed platform and discover how to easily manage your bookings."
+    },
+    "widget": {
+      "title": "Booking Widget | BookBed",
+      "description": "Integrate the BookBed booking widget into your website and start accepting online reservations."
+    }
   }
 }

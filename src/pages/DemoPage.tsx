@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
+import useSEO from '../hooks/useSEO'
 import { spacing, heroSpacing, getSectionSpacing, getContainerClasses } from '../utils/spacing'
 import { typography } from '../utils/typography'
 import FadeContent from '../components/ui/animations/FadeContent'
@@ -7,6 +8,10 @@ import GradientText from '../components/ui/animations/GradientText'
 
 const DemoPage = () => {
   const { t } = useTranslation()
+  useSEO(
+    t('seo.demo.title'),
+    t('seo.demo.description')
+  )
 
   const videos = [
     {

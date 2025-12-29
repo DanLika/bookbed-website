@@ -1,6 +1,7 @@
 import { useState, useEffect, FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
+import useSEO from '../hooks/useSEO'
 import { spacing, heroSpacing, getSectionSpacing } from '../utils/spacing'
 import { typography } from '../utils/typography'
 import BlurText from '../components/ui/animations/BlurText'
@@ -12,6 +13,10 @@ import GlassIcon from '../components/ui/GlassIcon'
 
 const ContactPage = () => {
   const { t } = useTranslation()
+  useSEO(
+    t('seo.contact.title'),
+    t('seo.contact.description')
+  )
   const [formData, setFormData] = useState({
     name: '',
     email: '',

@@ -1,4 +1,6 @@
 import { lazy, Suspense } from 'react'
+import { useTranslation } from 'react-i18next'
+import useSEO from '../hooks/useSEO'
 import HeroSection from '../components/HeroSection'
 
 // Lazy load sections that are below the fold
@@ -16,6 +18,12 @@ const SectionFallback = () => (
 )
 
 export default function HomePage() {
+  const { t } = useTranslation()
+  useSEO(
+    t('seo.home.title'),
+    t('seo.home.description')
+  )
+
   return (
     <div className="overflow-x-hidden bg-white dark:bg-zinc-950">
       {/* Hero loads immediately - above the fold */}
