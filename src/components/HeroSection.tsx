@@ -82,19 +82,11 @@ export default function HeroSection() {
         {/* Subtle glow effect behind mockup */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary-light/10 to-primary/10 blur-3xl scale-105 opacity-30" />
 
-        {/* Dashboard Screenshot - Light/Dark versions - Larger on mobile, responsive scaling */}
-        <img
-          src="/images/hero/hero-light.avif"
-          alt="BookBed Dashboard"
-          className="relative w-[120%] sm:w-[110%] md:w-[105%] lg:w-full max-w-7xl mx-auto h-auto block dark:hidden"
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-        />
+        {/* Dashboard Screenshot - Single version for both light and dark themes */}
         <img
           src="/images/hero/hero-dark.avif"
           alt="BookBed Dashboard"
-          className="relative w-[120%] sm:w-[110%] md:w-[105%] lg:w-full max-w-7xl mx-auto h-auto hidden dark:block"
+          className="relative w-[120%] sm:w-[110%] md:w-[105%] lg:w-full max-w-7xl mx-auto h-auto"
           loading="eager"
           fetchPriority="high"
           decoding="async"
