@@ -8,10 +8,15 @@ export default function ContactPage() {
   const [searchParams] = useSearchParams()
   const subjectParam = searchParams.get('subject')
 
+  // Security: Validate the 'subject' param to prevent potential reflected XSS if the
+  // form's `select` were ever changed to an `input[type=text]`.
+  const allowedSubjects = ['demo', 'sales', 'support', 'general', 'partnership', 'other']
+  const validatedSubject = subjectParam && allowedSubjects.includes(subjectParam) ? subjectParam : null
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: subjectParam || '',
+    subject: validatedSubject || '',
     message: '',
   })
 
@@ -31,13 +36,13 @@ export default function ContactPage() {
 
   // Update subject when URL param changes
   useEffect(() => {
-    if (subjectParam) {
-      const mappedSubject = mapSubjectParam(subjectParam)
+    if (validatedSubject) {
+      const mappedSubject = mapSubjectParam(validatedSubject)
       if (mappedSubject) {
         setFormData(prev => ({ ...prev, subject: mappedSubject }))
       }
     }
-  }, [subjectParam])
+  }, [validatedSubject])
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
