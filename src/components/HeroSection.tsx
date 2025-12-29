@@ -6,10 +6,13 @@ import { spacing } from '../utils/spacing'
 import ShinyText from './ui/animations/ShinyText'
 import StarBorder from './ui/animations/StarBorder'
 import GridScan from './ui/backgrounds/GridScan'
+import { useMediaQuery } from '../hooks/useMediaQuery'
 
 export default function HeroSection() {
   const { t } = useTranslation()
   const [isDark, setIsDark] = useState(false)
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
+  const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
 
   useEffect(() => {
     // Check initial theme
@@ -28,6 +31,8 @@ export default function HeroSection() {
     return () => observer.disconnect()
   }, [])
 
+  const showGridScan = isDark && isDesktop && !prefersReducedMotion;
+
   return (
     <section className="relative w-full pb-4 sm:pb-6 md:pb-8 lg:pb-10 bg-gradient-to-br from-slate-100 to-white dark:from-zinc-950 dark:to-zinc-900 overflow-hidden">
       {/* Background - Light theme overlay gradient */}
@@ -37,7 +42,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] to-zinc-900 hidden dark:block" />
 
       {/* GridScan Background - Dark theme only */}
-      {isDark && (
+      {showGridScan ? (
         <div className="absolute inset-0 w-full h-full opacity-50">
           <GridScan
             linesColor="#6B4CE6"
@@ -58,6 +63,8 @@ export default function HeroSection() {
             noiseIntensity={0.008}
           />
         </div>
+      ) : (
+        <div className="absolute inset-0 w-full h-full bg-grid-pattern dark:bg-grid-pattern opacity-10 dark:opacity-20" />
       )}
 
       {/* Hero Title (inside container) - closer to navbar on desktop */}
