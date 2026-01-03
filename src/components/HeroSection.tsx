@@ -124,8 +124,8 @@ export default function HeroSection() {
                 </svg>
               </div>
               <div className="min-w-0">
-                <p className="font-semibold text-text-primary dark:text-white text-[10px] sm:text-xs truncate">New Booking</p>
-                <p className="text-[8px] sm:text-[10px] text-gray-600 dark:text-gray-400">Just now</p>
+                <p className="font-semibold text-text-primary dark:text-white text-[10px] sm:text-xs truncate">{t('hero.cards.newBooking')}</p>
+                <p className="text-[8px] sm:text-[10px] text-gray-600 dark:text-gray-400">{t('hero.cards.justNow')}</p>
               </div>
             </div>
           </div>
@@ -138,12 +138,12 @@ export default function HeroSection() {
                 </svg>
               </div>
               <div>
-                <p className="font-semibold text-text-primary dark:text-white text-sm">New Booking</p>
-                <p className="text-xs text-text-secondary dark:text-gray-300">Just now</p>
+                <p className="font-semibold text-text-primary dark:text-white text-sm">{t('hero.cards.newBooking')}</p>
+                <p className="text-xs text-text-secondary dark:text-gray-300">{t('hero.cards.justNow')}</p>
               </div>
             </div>
             <p className="text-sm text-text-secondary dark:text-gray-300">
-              Marko P. booked Apartman A2 for Dec 20-25
+              {t('hero.cards.bookedMessage')}
             </p>
           </div>
         </div>
@@ -159,7 +159,7 @@ export default function HeroSection() {
               </div>
               <div>
                 <p className="font-semibold text-text-primary dark:text-white text-sm">€320.00</p>
-                <p className="text-xs text-emerald-600 dark:text-emerald-400">Payment received</p>
+                <p className="text-xs text-emerald-600 dark:text-emerald-400">{t('hero.cards.paymentReceived')}</p>
               </div>
             </div>
           </div>
@@ -176,8 +176,8 @@ export default function HeroSection() {
                 </svg>
               </div>
               <div className="min-w-0">
-                <p className="font-semibold text-text-primary dark:text-white text-[10px] sm:text-xs truncate">Check-in</p>
-                <p className="text-[8px] sm:text-[10px] text-gray-600 dark:text-gray-300">Today</p>
+                <p className="font-semibold text-text-primary dark:text-white text-[10px] sm:text-xs truncate">{t('hero.cards.checkIn')}</p>
+                <p className="text-[8px] sm:text-[10px] text-gray-600 dark:text-gray-300">{t('hero.cards.today')}</p>
               </div>
             </div>
           </div>
@@ -190,8 +190,8 @@ export default function HeroSection() {
                 </svg>
               </div>
               <div>
-                <p className="font-semibold text-text-primary dark:text-white text-sm">Check-in Today</p>
-                <p className="text-xs text-text-secondary dark:text-gray-300">Ana M. - Apartman A1</p>
+                <p className="font-semibold text-text-primary dark:text-white text-sm">{t('hero.cards.checkInToday')}</p>
+                <p className="text-xs text-text-secondary dark:text-gray-300">{t('hero.cards.guestInfo')}</p>
               </div>
             </div>
           </div>
@@ -207,8 +207,8 @@ export default function HeroSection() {
                 </svg>
               </div>
               <div>
-                <p className="font-semibold text-text-primary dark:text-white text-sm">85% Occupancy</p>
-                <p className="text-xs text-text-secondary dark:text-gray-300">This month</p>
+                <p className="font-semibold text-text-primary dark:text-white text-sm">{t('hero.cards.occupancy')}</p>
+                <p className="text-xs text-text-secondary dark:text-gray-300">{t('hero.cards.thisMonth')}</p>
               </div>
             </div>
           </div>

@@ -83,7 +83,7 @@ function AppContent({ isDark, onToggleTheme }: { isDark: boolean; onToggleTheme:
     <div className="min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-300">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:z-50 top-2 left-2 px-4 py-2 bg-white dark:bg-zinc-800 text-primary dark:text-primary-light font-semibold rounded-lg shadow-md outline-none ring-2 ring-primary"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 px-4 py-2 bg-white dark:bg-zinc-800 text-primary dark:text-primary-light font-semibold rounded-lg shadow-md outline-none ring-2 ring-primary"
       >
         {t('skipToContent', 'Skip to main content')}
       </a>

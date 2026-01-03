@@ -33,7 +33,19 @@
     "title": "Manage All Your Bookings in One Place",
     "subtitle": "The complete booking management platform for vacation rental owners",
     "cta": "Get Started Free",
-    "watchDemo": "Watch Demo"
+    "watchDemo": "Watch Demo",
+    "cards": {
+      "newBooking": "New Booking",
+      "justNow": "Just now",
+      "bookedMessage": "Marko P. booked Apartman A2 for Dec 20-25",
+      "paymentReceived": "Payment received",
+      "checkIn": "Check-in",
+      "checkInToday": "Check-in Today",
+      "today": "Today",
+      "guestInfo": "Ana M. - Apartman A1",
+      "occupancy": "85% Occupancy",
+      "thisMonth": "This month"
+    }
   },
   "trust": {
     "title": "Built with Modern Technology"

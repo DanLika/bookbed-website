@@ -33,7 +33,19 @@
     "title": "Upravljajte Svim Rezervacijama na Jednom Mjestu",
     "subtitle": "Kompletna platforma za upravljanje rezervacijama za vlasnike smještaja",
     "cta": "Započnite Besplatno",
-    "watchDemo": "Pogledaj Demo"
+    "watchDemo": "Pogledaj Demo",
+    "cards": {
+      "newBooking": "Nova Rezervacija",
+      "justNow": "Upravo sada",
+      "bookedMessage": "Marko P. rezervirao Apartman A2 za 20-25. pro.",
+      "paymentReceived": "Uplata primljena",
+      "checkIn": "Prijava",
+      "checkInToday": "Prijava Danas",
+      "today": "Danas",
+      "guestInfo": "Ana M. - Apartman A1",
+      "occupancy": "85% Popunjenost",
+      "thisMonth": "Ovaj mjesec"
+    }
   },
   "trust": {
     "title": "Izgrađeno sa Modernom Tehnologijom"

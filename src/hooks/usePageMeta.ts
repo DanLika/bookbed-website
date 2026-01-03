@@ -38,6 +38,12 @@ export function usePageMeta({ title, description }: PageMeta) {
     const twitterTitle = document.querySelector('meta[name="twitter:title"]')
     const twitterDescription = document.querySelector('meta[name="twitter:description"]')
 
+    const previousOgTitle = ogTitle?.getAttribute('content') || ''
+    const previousOgDescription = ogDescription?.getAttribute('content') || ''
+    const previousOgUrl = ogUrl?.getAttribute('content') || ''
+    const previousTwitterTitle = twitterTitle?.getAttribute('content') || ''
+    const previousTwitterDescription = twitterDescription?.getAttribute('content') || ''
+
     if (ogTitle) ogTitle.setAttribute('content', title)
     if (ogDescription) ogDescription.setAttribute('content', description)
     if (ogUrl) ogUrl.setAttribute('content', newCanonical)
@@ -47,12 +53,13 @@ export function usePageMeta({ title, description }: PageMeta) {
     // Cleanup: restore previous values on unmount
     return () => {
       document.title = previousTitle
-      if (metaDescription) {
-        metaDescription.setAttribute('content', previousDescription)
-      }
-      if (canonical) {
-        canonical.setAttribute('href', previousCanonical)
-      }
+      if (metaDescription) metaDescription.setAttribute('content', previousDescription)
+      if (canonical) canonical.setAttribute('href', previousCanonical)
+      if (ogTitle) ogTitle.setAttribute('content', previousOgTitle)
+      if (ogDescription) ogDescription.setAttribute('content', previousOgDescription)
+      if (ogUrl) ogUrl.setAttribute('content', previousOgUrl)
+      if (twitterTitle) twitterTitle.setAttribute('content', previousTwitterTitle)
+      if (twitterDescription) twitterDescription.setAttribute('content', previousTwitterDescription)
     }
   }, [title, description, location.pathname])
 }
