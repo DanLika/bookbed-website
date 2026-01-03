@@ -24,7 +24,9 @@ export function usePageMeta({ title, description }: PageMeta) {
     // Update canonical URL (always use trailing slash for consistency)
     const canonical = document.querySelector('link[rel="canonical"]')
     const previousCanonical = canonical?.getAttribute('href') || ''
-    const newCanonical = `https://bookbed.io${location.pathname === '/' ? '/' : location.pathname}`
+    // Ensure trailing slash for all paths except root
+    const pathWithSlash = location.pathname === '/' ? '/' : `${location.pathname.replace(/\/$/, '')}/`
+    const newCanonical = `https://bookbed.io${pathWithSlash}`
     if (canonical) {
       canonical.setAttribute('href', newCanonical)
     }

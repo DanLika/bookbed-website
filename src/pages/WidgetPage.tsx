@@ -213,30 +213,31 @@ const WidgetPage = () => {
               {/* Glow effect */}
               <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-primary-light/10 to-primary/20 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
 
-              {/* Widget content - Live iframe */}
-              <div className="relative w-full rounded-2xl overflow-hidden border border-gray-200 dark:border-zinc-700 shadow-xl">
-                {activeMode === 'full' && (
-                  <iframe
-                    src="https://view.bookbed.io/?property=fg5nlt3aLlx4HWJeqliq&unit=gMIOos56siO74VkCsSwY&embed=true"
-                    style={{ width: '100%', border: 'none', aspectRatio: '1/1.4', minHeight: '500px', maxHeight: '850px' }}
-                    title="BookBed Full Booking Widget"
-                  />
-                )}
-                {activeMode === 'calendar' && (
-                  <iframe
-                    src="https://view.bookbed.io/?property=fg5nlt3aLlx4HWJeqliq&unit=Ot2PzlJYSNXjJIGvicHY&embed=true"
-                    style={{ width: '100%', border: 'none', aspectRatio: '1/1.4', minHeight: '500px', maxHeight: '850px' }}
-                    title="BookBed Calendar Widget"
-                  />
-                )}
-                {activeMode === 'inquiry' && (
-                  <iframe
-                    src="https://view.bookbed.io/?property=fg5nlt3aLlx4HWJeqliq&unit=fEAkFrzkjLP6EF2unqLv&embed=true"
-                    style={{ width: '100%', border: 'none', aspectRatio: '1/1.4', minHeight: '500px', maxHeight: '850px' }}
-                    title="BookBed Inquiry Widget"
-                  />
-                )}
-              </div>
+              {/* Widget content - Live iframe without wrapper constraints */}
+              {activeMode === 'full' && (
+                <iframe
+                  src="https://view.bookbed.io/?property=fg5nlt3aLlx4HWJeqliq&unit=gMIOos56siO74VkCsSwY&embed=true"
+                  className="relative w-full border-0 rounded-2xl shadow-xl"
+                  style={{ aspectRatio: '1/1.4', minHeight: '500px', maxHeight: '850px' }}
+                  title="BookBed Full Booking Widget"
+                />
+              )}
+              {activeMode === 'calendar' && (
+                <iframe
+                  src="https://view.bookbed.io/?property=fg5nlt3aLlx4HWJeqliq&unit=Ot2PzlJYSNXjJIGvicHY&embed=true"
+                  className="relative w-full border-0 rounded-2xl shadow-xl"
+                  style={{ aspectRatio: '1/1.4', minHeight: '500px', maxHeight: '850px' }}
+                  title="BookBed Calendar Widget"
+                />
+              )}
+              {activeMode === 'inquiry' && (
+                <iframe
+                  src="https://view.bookbed.io/?property=fg5nlt3aLlx4HWJeqliq&unit=fEAkFrzkjLP6EF2unqLv&embed=true"
+                  className="relative w-full border-0 rounded-2xl shadow-xl"
+                  style={{ aspectRatio: '1/1.4', minHeight: '500px', maxHeight: '850px' }}
+                  title="BookBed Inquiry Widget"
+                />
+              )}
             </motion.div>
           </FadeContent>
         </div>

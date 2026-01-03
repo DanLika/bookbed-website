@@ -30,33 +30,33 @@ export default function ScreenshotGallery() {
   // Gallery data with both light and dark variants
   const galleryData = [
     {
-      light: '/images/gallery/dashboard-dark.avif',  // Dark mockup for light theme
-      dark: '/images/gallery/dashboard-light.avif',   // Light mockup for dark theme
+      light: '/images/gallery/dashboard-light.avif',
+      dark: '/images/gallery/dashboard-dark.avif',
       text: t('gallery.dashboard.title', 'Dashboard'),
     },
     {
-      light: '/images/gallery/bookings-dark.avif',
-      dark: '/images/gallery/bookings-light.avif',
+      light: '/images/gallery/bookings-light.avif',
+      dark: '/images/gallery/bookings-dark.avif',
       text: t('gallery.bookings.title', 'Bookings'),
     },
     {
-      light: '/images/gallery/calendar-dark.avif',
-      dark: '/images/gallery/calendar-light.avif',
+      light: '/images/gallery/calendar-light.avif',
+      dark: '/images/gallery/calendar-dark.avif',
       text: t('gallery.calendar.title', 'Calendar'),
     },
     {
-      light: '/images/gallery/ical-dark.avif',
-      dark: '/images/gallery/ical-light.avif',
+      light: '/images/gallery/ical-light.avif',
+      dark: '/images/gallery/ical-dark.avif',
       text: t('gallery.ical.title', 'iCal Sync'),
     },
     {
-      light: '/images/gallery/unit-hub-basic-dark.avif',
-      dark: '/images/gallery/unit-hub-basic-light.avif',
+      light: '/images/gallery/unit-hub-basic-light.avif',
+      dark: '/images/gallery/unit-hub-basic-dark.avif',
       text: t('gallery.unitHubBasic.title', 'Unit Hub'),
     },
     {
-      light: '/images/gallery/unit-hub-widget-dark.avif',
-      dark: '/images/gallery/unit-hub-widget-light.avif',
+      light: '/images/gallery/unit-hub-widget-light.avif',
+      dark: '/images/gallery/unit-hub-widget-dark.avif',
       text: t('gallery.unitHubWidget.title', 'Widget Settings'),
     },
   ]
@@ -100,12 +100,14 @@ export default function ScreenshotGallery() {
           {galleryItems.map((item, index) => (
             <div
               key={index}
-              className="relative rounded-lg overflow-hidden shadow-lg aspect-[1/2]"
+              className="relative rounded-lg overflow-hidden shadow-lg"
             >
               <img
                 src={item.image}
                 alt={item.text}
-                className="absolute inset-0 w-full h-full object-cover"
+                width={400}
+                height={800}
+                className="w-full h-auto"
                 loading="lazy"
                 decoding="async"
               />
