@@ -192,7 +192,8 @@
     "message": "Poruka",
     "send": "Pošalji Poruku",
     "success": "Poruka uspješno poslana!",
-    "error": "Nešto je pošlo po zlu. Molimo pokušajte ponovo."
+    "error": "Nešto je pošlo po zlu. Molimo pokušajte ponovo.",
+    "mailtoNotice": "Klikom na \"Pošalji\" otvorit će se vaša zadana email aplikacija."
   },
   "pricing": {
     "badge": "Cijene",
@@ -224,5 +225,6 @@
     "copyright": "© 2025 BookBed. Sva prava zadržana.",
     "privacy": "Politika Privatnosti",
     "terms": "Uvjeti Korištenja"
-  }
+  },
+  "skipToContent": "Preskoči na glavni sadržaj"
 }

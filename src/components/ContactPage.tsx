@@ -7,7 +7,7 @@ export default function ContactPage() {
 
   const [searchParams] = useSearchParams()
   const subjectParam = searchParams.get('subject')
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
