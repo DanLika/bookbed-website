@@ -802,7 +802,7 @@ const MagicBento: React.FC<BentoProps> = ({
                       <img
                         src={getCardImage(card)}
                         alt={card.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover aspect-[4/3]"
                       />
                     </div>
                   )}
