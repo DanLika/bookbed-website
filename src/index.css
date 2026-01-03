@@ -82,6 +82,10 @@
     animation: fadeIn 0.6s ease-out;
   }
 
+  .animate-gradient {
+    animation: gradient 8s ease infinite;
+  }
+
   /* Lightweight Hero animations - instant render, simple fade */
   .animate-fade-in {
     animation: fadeIn 0.4s ease-out;
@@ -162,6 +166,15 @@
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }
 

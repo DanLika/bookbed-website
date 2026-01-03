@@ -193,6 +193,7 @@
     "send": "Pošalji Poruku",
     "success": "Poruka uspješno poslana!",
     "error": "Nešto je pošlo po zlu. Molimo pokušajte ponovo.",
+    "dismiss": "Zatvori",
     "mailtoNotice": "Klikom na \"Pošalji\" otvorit će se vaša zadana email aplikacija."
   },
   "pricing": {

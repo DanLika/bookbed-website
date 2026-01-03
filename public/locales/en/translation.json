@@ -193,6 +193,7 @@
     "send": "Send Message",
     "success": "Message sent successfully!",
     "error": "Something went wrong. Please try again.",
+    "dismiss": "Dismiss",
     "mailtoNotice": "Clicking \"Send\" will open your default email client."
   },
   "pricing": {
