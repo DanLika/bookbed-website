@@ -16,6 +16,20 @@ const PrivacyPage = () => {
       : 'Learn how BookBed collects, uses, and protects your personal data. Our privacy policy explains your rights and our obligations.'
   })
 
+  const renderList = (key: string) => {
+    const items = t(key, { returnObjects: true }) as string[]
+    if (Array.isArray(items)) {
+      return (
+        <ul className="list-disc pl-6 text-text-secondary dark:text-gray-400 mb-4 space-y-2">
+          {items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      )
+    }
+    return null
+  }
+
   return (
     <div className="relative min-h-screen bg-white dark:bg-zinc-900 overflow-hidden">
       <div
@@ -30,80 +44,153 @@ const PrivacyPage = () => {
         <div className="max-w-4xl mx-auto">
           <FadeContent duration={500} direction="up" distance={20}>
             <h1 className={`${typography.h1} font-bold text-text-primary dark:text-white mb-8`}>
-              {t('privacy.title', 'Politika Privatnosti BookBed Platforme')}
+              {t('privacy.title')}
             </h1>
           </FadeContent>
 
           <FadeContent duration={600} delay={100} direction="up" distance={20}>
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-text-secondary dark:text-gray-400 mb-6">
-                {t('privacy.lastUpdated', 'Zadnje ažurirano')}: 27. prosinca 2025.
+                {t('privacy.lastUpdated')}: 14. {i18n.language === 'hr' ? 'siječnja' : 'January'} 2026.
               </p>
 
+              <div className="text-text-secondary dark:text-gray-400 mb-8 whitespace-pre-wrap">
+                {t('privacy.intro')}
+              </div>
+
+              {/* Section 1 */}
               <h2 className="text-xl font-semibold text-text-primary dark:text-white mt-8 mb-4">
-                {t('privacy.section1.title', '1. Uvod')}
+                {t('privacy.section1.title')}
               </h2>
-              <p className="text-text-secondary dark:text-gray-400 mb-4">
-                {t('privacy.section1.content', 'BookBed ("mi", "naš" ili "nas") posvećen je zaštiti vaše privatnosti. Ova politika privatnosti objašnjava kako prikupljamo, koristimo i štitimo vaše osobne podatke kada koristite našu platformu za upravljanje rezervacijama.')}
+              <p className="text-text-secondary dark:text-gray-400 mb-6">
+                {t('privacy.section1.content')}
               </p>
 
-              <h2 className="text-xl font-semibold text-text-primary dark:text-white mt-8 mb-4">
-                {t('privacy.section2.title', '2. Podaci koje prikupljamo')}
-              </h2>
-              <p className="text-text-secondary dark:text-gray-400 mb-4">
-                {t('privacy.section2.content', 'Prikupljamo sljedeće vrste podataka:')}
-              </p>
-              <ul className="list-disc pl-6 text-text-secondary dark:text-gray-400 mb-4 space-y-2">
-                <li>{t('privacy.section2.item1', 'Kontakt informacije (ime, email adresa)')}</li>
-                <li>{t('privacy.section2.item2', 'Podaci o nekretninama i smještajnim jedinicama')}</li>
-                <li>{t('privacy.section2.item3', 'Podaci o rezervacijama i gostima')}</li>
-                <li>{t('privacy.section2.item4', 'Podaci o plaćanjima (procesira Stripe)')}</li>
-              </ul>
+              <div className="pl-4 space-y-8 mb-8">
+                {/* 1.A */}
+                <div>
+                  <h3 className="text-lg font-medium text-text-primary dark:text-white mb-2">
+                    {t('privacy.section1.items.A.title')}
+                  </h3>
+                  <p className="text-text-secondary dark:text-gray-400 mb-2">
+                    {t('privacy.section1.items.A.content')}
+                  </p>
+                  {renderList('privacy.section1.items.A.list')}
+                </div>
 
-              <h2 className="text-xl font-semibold text-text-primary dark:text-white mt-8 mb-4">
-                {t('privacy.section3.title', '3. Kako koristimo vaše podatke')}
-              </h2>
-              <p className="text-text-secondary dark:text-gray-400 mb-4">
-                {t('privacy.section3.content', 'Vaše podatke koristimo za:')}
-              </p>
-              <ul className="list-disc pl-6 text-text-secondary dark:text-gray-400 mb-4 space-y-2">
-                <li>{t('privacy.section3.item1', 'Pružanje usluge upravljanja rezervacijama')}</li>
-                <li>{t('privacy.section3.item2', 'Slanje obavijesti o rezervacijama')}</li>
-                <li>{t('privacy.section3.item3', 'Obradu plaćanja')}</li>
-                <li>{t('privacy.section3.item4', 'Poboljšanje naše usluge')}</li>
-              </ul>
+                {/* 1.B */}
+                <div>
+                  <h3 className="text-lg font-medium text-text-primary dark:text-white mb-2">
+                    {t('privacy.section1.items.B.title')}
+                  </h3>
+                  <p className="text-text-secondary dark:text-gray-400 mb-2">
+                    {t('privacy.section1.items.B.content')}
+                  </p>
+                  {renderList('privacy.section1.items.B.list')}
+                </div>
 
-              <h2 className="text-xl font-semibold text-text-primary dark:text-white mt-8 mb-4">
-                {t('privacy.section4.title', '4. Dijeljenje podataka')}
-              </h2>
-              <p className="text-text-secondary dark:text-gray-400 mb-4">
-                {t('privacy.section4.content', 'Vaše podatke ne prodajemo trećim stranama. Podatke dijelimo samo s:')}
-              </p>
-              <ul className="list-disc pl-6 text-text-secondary dark:text-gray-400 mb-4 space-y-2">
-                <li>{t('privacy.section4.item1', 'Stripe - za obradu plaćanja')}</li>
-                <li>{t('privacy.section4.item2', 'Firebase - za hosting i bazu podataka')}</li>
-                <li>{t('privacy.section4.item3', 'Resend - za slanje email obavijesti')}</li>
-              </ul>
+                {/* 1.C */}
+                <div>
+                  <h3 className="text-lg font-medium text-text-primary dark:text-white mb-2">
+                    {t('privacy.section1.items.C.title')}
+                  </h3>
+                  <p className="text-text-secondary dark:text-gray-400 mb-2">
+                    {t('privacy.section1.items.C.content')}
+                  </p>
+                </div>
 
-              <h2 className="text-xl font-semibold text-text-primary dark:text-white mt-8 mb-4">
-                {t('privacy.section5.title', '5. Vaša prava')}
-              </h2>
-              <p className="text-text-secondary dark:text-gray-400 mb-4">
-                {t('privacy.section5.content', 'Imate pravo:')}
-              </p>
-              <ul className="list-disc pl-6 text-text-secondary dark:text-gray-400 mb-4 space-y-2">
-                <li>{t('privacy.section5.item1', 'Pristupiti svojim podacima')}</li>
-                <li>{t('privacy.section5.item2', 'Ispraviti netočne podatke')}</li>
-                <li>{t('privacy.section5.item3', 'Zatražiti brisanje podataka')}</li>
-                <li>{t('privacy.section5.item4', 'Povući privolu za obradu')}</li>
-              </ul>
+                {/* 1.D */}
+                <div>
+                  <h3 className="text-lg font-medium text-text-primary dark:text-white mb-2">
+                    {t('privacy.section1.items.D.title')}
+                  </h3>
+                  <p className="text-text-secondary dark:text-gray-400 mb-2">
+                    {t('privacy.section1.items.D.content')}
+                  </p>
+                </div>
+              </div>
 
+              {/* Section 2 */}
               <h2 className="text-xl font-semibold text-text-primary dark:text-white mt-8 mb-4">
-                {t('privacy.section6.title', '6. Kontakt')}
+                {t('privacy.section2.title')}
               </h2>
               <p className="text-text-secondary dark:text-gray-400 mb-4">
-                {t('privacy.section6.content', 'Za sva pitanja o privatnosti, kontaktirajte nas na: info@bookbed.io')}
+                {t('privacy.section2.content')}
               </p>
+              {renderList('privacy.section2.list')}
+
+              {/* Section 3 */}
+              <h2 className="text-xl font-semibold text-text-primary dark:text-white mt-8 mb-4">
+                {t('privacy.section3.title')}
+              </h2>
+              <p className="text-text-secondary dark:text-gray-400 mb-4">
+                {t('privacy.section3.content')}
+              </p>
+
+              {/* Section 4 */}
+              <h2 className="text-xl font-semibold text-text-primary dark:text-white mt-8 mb-4">
+                {t('privacy.section4.title')}
+              </h2>
+              <p className="text-text-secondary dark:text-gray-400 mb-4">
+                {t('privacy.section4.content')}
+              </p>
+              <p className="text-text-secondary dark:text-gray-400 mb-2">
+                {t('privacy.section4.subcontent')}
+              </p>
+              {renderList('privacy.section4.list')}
+              <div className="mt-4 mb-6">
+                <a
+                  href="/account-deletion"
+                  className="inline-flex items-center text-purple-600 dark:text-purple-400 hover:underline font-medium"
+                >
+                  {i18n.language === 'hr' ? 'Posjetite stranicu za brisanje računa →' : 'Visit Account Deletion Page →'}
+                </a>
+              </div>
+              <p className="text-text-secondary dark:text-gray-400 mt-4">
+                {t('privacy.section4.footer')}
+              </p>
+
+              {/* Section 5 */}
+              <h2 className="text-xl font-semibold text-text-primary dark:text-white mt-8 mb-4">
+                {t('privacy.section5.title')}
+              </h2>
+              <div className="text-text-secondary dark:text-gray-400 mb-4 whitespace-pre-wrap">
+                {t('privacy.section5.content')}
+              </div>
+              {renderList('privacy.section5.list')}
+
+              {/* Section 6 */}
+              <h2 className="text-xl font-semibold text-text-primary dark:text-white mt-8 mb-4">
+                {t('privacy.section6.title')}
+              </h2>
+              <p className="text-text-secondary dark:text-gray-400 mb-4">
+                {t('privacy.section6.content')}
+              </p>
+
+              {/* Section 7 */}
+              <h2 className="text-xl font-semibold text-text-primary dark:text-white mt-8 mb-4">
+                {t('privacy.section7.title')}
+              </h2>
+              <p className="text-text-secondary dark:text-gray-400 mb-4">
+                {t('privacy.section7.content')}
+              </p>
+
+              {/* Section 8 */}
+              <h2 className="text-xl font-semibold text-text-primary dark:text-white mt-8 mb-4">
+                {t('privacy.section8.title')}
+              </h2>
+              <div className="text-text-secondary dark:text-gray-400 mb-4 whitespace-pre-wrap">
+                {t('privacy.section8.content')}
+              </div>
+
+              {/* Section 9 */}
+              <h2 className="text-xl font-semibold text-text-primary dark:text-white mt-8 mb-4">
+                {t('privacy.section9.title')}
+              </h2>
+              <p className="text-text-secondary dark:text-gray-400 mb-4">
+                {t('privacy.section9.content')}
+              </p>
+              {renderList('privacy.section9.list')}
             </div>
           </FadeContent>
         </div>

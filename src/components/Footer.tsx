@@ -11,6 +11,7 @@ export default function Footer() {
     { path: '/', key: 'home', title: 'Početna stranica' },
     { path: '/demo', key: 'demo', title: 'Pogledajte demo video tutorijale' },
     { path: '/widget', key: 'widget', title: 'Saznajte više o booking widgetu' },
+    { path: '/docs', key: 'docs', title: 'Dokumentacija i upute za korištenje' },
     { path: '/contact', key: 'contact', title: 'Kontaktirajte nas' },
   ]
 
@@ -49,7 +50,7 @@ export default function Footer() {
               direction="up"
               distance={20}
             >
-              <h3 className="text-text-primary dark:text-white font-semibold mb-3 text-sm uppercase tracking-wider">{t('footer.navigation')}</h3>
+              <div className="text-text-primary dark:text-white font-semibold mb-3 text-sm uppercase tracking-wider">{t('footer.navigation')}</div>
               <nav className="flex flex-col" aria-label="Footer navigation">
                 {navLinks.map((link) => (
                   <Link
@@ -71,7 +72,7 @@ export default function Footer() {
               direction="up"
               distance={20}
             >
-              <h3 className="text-text-primary dark:text-white font-semibold mb-6 text-sm uppercase tracking-wider">{t('footer.contact')}</h3>
+              <div className="text-text-primary dark:text-white font-semibold mb-6 text-sm uppercase tracking-wider">{t('footer.contact')}</div>
               <GlassIcons
                 items={[
                   {
@@ -114,11 +115,17 @@ export default function Footer() {
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-text-tertiary dark:text-gray-500">
               <p>{t('footer.copyright')}</p>
               <div className="flex items-center gap-4">
-                <Link to="/privacy" title="Politika privatnosti" className="hover:text-primary active:opacity-80 transition-all py-2 px-1">
+                <Link to="/privacy" title="Politika privatnosti" className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
                   {t('footer.privacy')}
                 </Link>
-                <Link to="/terms" title="Uvjeti korištenja" className="hover:text-primary active:opacity-80 transition-all py-2 px-1">
+                <Link to="/terms" title="Uvjeti korištenja" className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
                   {t('footer.terms')}
+                </Link>
+                <Link to="/account-deletion" title="Brisanje računa" className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
+                  {t('footer.accountDeletion')}
+                </Link>
+                <Link to="/data-deletion" title="Brisanje podataka" className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
+                  {t('footer.dataDeletion')}
                 </Link>
               </div>
             </div>

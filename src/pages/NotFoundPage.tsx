@@ -9,18 +9,20 @@ export default function NotFoundPage() {
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center px-4 sm:px-6 md:px-8 bg-white dark:bg-zinc-900">
       <div className="text-center">
-        {/* Fuzzy 404 */}
-        <div className="flex justify-center mb-6">
-          <FuzzyText
-            fontSize="clamp(6rem, 20vw, 14rem)"
-            fontWeight={900}
-            color="#6B4CE6"
-            baseIntensity={0.15}
-            hoverIntensity={0.6}
-            enableHover
-          >
-            404
-          </FuzzyText>
+        {/* Fuzzy 404 - 200x200 container */}
+        <div className="flex justify-center mb-8">
+          <div className="w-[200px] h-[200px] flex items-center justify-center">
+            <FuzzyText
+              fontSize="clamp(4rem, 12vw, 6rem)"
+              fontWeight={900}
+              color="#6B4CE6"
+              baseIntensity={0.15}
+              hoverIntensity={0.6}
+              enableHover
+            >
+              404
+            </FuzzyText>
+          </div>
         </div>
 
         {/* Title */}

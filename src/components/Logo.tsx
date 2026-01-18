@@ -7,7 +7,7 @@ export function LogoIcon({ className = '' }: LogoIconProps) {
     <>
       {/* Light theme logo (shown when NOT in dark mode) */}
       <img
-        src="/images/logo-light.avif"
+        src="/images/logo-light.png"
         alt="BookBed"
         title="BookBed"
         width={84}
@@ -17,7 +17,7 @@ export function LogoIcon({ className = '' }: LogoIconProps) {
       />
       {/* Dark theme logo (shown when in dark mode) - white version using CSS filter */}
       <img
-        src="/images/logo-light.avif"
+        src="/images/logo-light.png"
         alt="BookBed"
         title="BookBed"
         width={84}

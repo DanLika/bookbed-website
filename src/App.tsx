@@ -56,6 +56,7 @@ function AppContent({ isDark, onToggleTheme }: { isDark: boolean; onToggleTheme:
         { label: t('nav.home'), href: '/', ariaLabel: 'Go to Home' },
         { label: t('nav.demo'), href: '/demo', ariaLabel: 'Go to Demo' },
         { label: t('nav.widget'), href: '/widget', ariaLabel: 'Go to Widget' },
+        { label: t('nav.docs'), href: '/docs', ariaLabel: 'Go to Documentation' },
       ]
     },
     {
@@ -88,7 +89,7 @@ function AppContent({ isDark, onToggleTheme }: { isDark: boolean; onToggleTheme:
         {t('skipToContent', 'Skip to main content')}
       </a>
       <CardNav
-        logo="/images/logo-light.avif"
+        logo="/images/logo-light.png"
         logoAlt="BookBed"
         items={navItems}
         baseColor={isDark ? '#18181B' : '#FFFFFF'}

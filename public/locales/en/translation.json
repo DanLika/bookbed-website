@@ -4,7 +4,10 @@
     "about": "About",
     "demo": "Demo",
     "widget": "Widget",
-    "contact": "Contact"
+    "contact": "Contact",
+    "docs": "Docs",
+    "accountDeletion": "Account Deletion",
+    "dataDeletion": "Data Deletion"
   },
   "about": {
     "title": "About Us",
@@ -237,7 +240,873 @@
     "builtWith": "Built with",
     "copyright": "© 2025 BookBed. All rights reserved.",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Service"
+    "terms": "Terms of Service",
+    "accountDeletion": "Account Deletion",
+    "dataDeletion": "Data Deletion"
   },
-  "skipToContent": "Skip to main content"
+  "skipToContent": "Skip to main content",
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated",
+    "intro": "This Privacy Policy describes how BookBed (\"we,\" \"us,\" or \"our\") collects, uses, and discloses your information when you use our mobile application (the \"App\") and our services.\n\nBy using the App, you agree to the collection and use of information in accordance with this Privacy Policy.",
+    "section1": {
+      "title": "1. Information We Collect",
+      "content": "We collect information to provide and improve our App, process bookings, and ensure the security of our services.",
+      "items": {
+        "A": {
+          "title": "A. Personal Data",
+          "content": "While using our App, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you, including but not limited to:",
+          "list": [
+            "Identity Data: Name, surname.",
+            "Contact Data: Email address, phone number.",
+            "Account Data: Username, password (encrypted), and profile information.",
+            "Transaction Data: Details about bookings and payments (note: we do not store full credit card details; these are handled by our secure payment providers)."
+          ]
+        },
+        "B": {
+          "title": "B. Usage Data",
+          "content": "We may automatically collect information about how the App is accessed and used (\"Usage Data\"). This Usage Data may include:",
+          "list": [
+            "Your device's Internet Protocol address (IP address).",
+            "Device type, version, and operating system.",
+            "Time and date of your visit, time spent on pages, and unique device identifiers.",
+            "Crash logs and diagnostic data."
+          ]
+        },
+        "C": {
+          "title": "C. Location Data",
+          "content": "If you grant us permission, we may use your location data to help you find properties or services near you. You can enable or disable location services when you use our App at any time through your device settings."
+        },
+        "D": {
+          "title": "D. File and Media Access",
+          "content": "The App may require access to your device's camera or photo library (e.g., using image_picker) to allow you to upload profile photos or receipts. We only access this data when you explicitly grant permission and initiate the action."
+        }
+      }
+    },
+    "section2": {
+      "title": "2. How We Use Your Information",
+      "content": "We use the collected data for various purposes:",
+      "list": [
+        "To provide and maintain our Service: Managing your bookings and account.",
+        "To notify you about changes: Service updates or booking confirmations.",
+        "To provide customer support: Responding to your inquiries.",
+        "To monitor usage: Analyzing how our App is used to improve features.",
+        "To detect and prevent technical issues: Ensuring the App is secure and bug-free.",
+        "To process payments: Facilitating transactions securely via third-party providers."
+      ]
+    },
+    "section3": {
+      "title": "3. Data Retention",
+      "content": "We will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies."
+    },
+    "section4": {
+      "title": "4. Account Deletion (Right to be Forgotten)",
+      "content": "In compliance with App Store and Play Store guidelines: You have the right to request that we delete your account and associated data.",
+      "subcontent": "You can request account deletion by:",
+      "list": [
+        "Navigating to the Profile or Settings section within the App and selecting \"Delete Account\".",
+        "Contacting us directly at info@bookbed.io."
+      ],
+      "footer": "Upon request, we will delete your personal information from our active databases, subject to any legal obligations we may have to retain certain data (e.g., for tax or accounting purposes regarding completed transactions)."
+    },
+    "section5": {
+      "title": "5. Service Providers and Third-Party Services",
+      "content": "We may employ third-party companies and individuals to facilitate our Service (\"Service Providers\"), to provide the Service on our behalf, or to assist us in analyzing how our Service is used.\n\nThese third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.\n\nWe use the following third-party services in our App:",
+      "list": [
+        "Google Firebase: We use Firebase for authentication, database services (Firestore), and cloud functions.",
+        "Google Analytics for Firebase: To analyze app usage and user engagement.",
+        "Firebase Crashlytics: To collect crash data and help us improve app stability.",
+        "Sentry: For real-time error tracking and performance monitoring.",
+        "Stripe: For secure payment processing."
+      ]
+    },
+    "section6": {
+      "title": "6. Security of Data",
+      "content": "The security of your data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security."
+    },
+    "section7": {
+      "title": "7. Children's Privacy",
+      "content": "Our Service does not address anyone under the age of 13 (or applicable age in your jurisdiction). We do not knowingly collect personally identifiable information from anyone under the age of 13. If you are a parent or guardian and you are aware that your child has provided us with Personal Data, please contact us."
+    },
+    "section8": {
+      "title": "8. Changes to This Privacy Policy",
+      "content": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date using the most current date.\n\nYou are advised to review this Privacy Policy periodically for any changes."
+    },
+    "section9": {
+      "title": "9. Contact Us",
+      "content": "If you have any questions about this Privacy Policy, please contact us:",
+      "list": [
+        "By email: info@bookbed.io",
+        "By visiting this page on our website: https://bookbed.io"
+      ]
+    }
+  },
+  "docs": {
+    "menu": "Documentation Menu",
+    "readMore": "Read more",
+    "previous": "Previous",
+    "next": "Next",
+    "backToQuickStart": "Back to Quick Start",
+    "backToWidgetSetup": "Back to Widget Setup",
+    "sections": {
+      "gettingStarted": {
+        "title": "Getting Started",
+        "items": {
+          "introduction": "Introduction",
+          "quickStart": "Quick Start",
+          "account": "Account Setup"
+        }
+      },
+      "properties": {
+        "title": "Properties",
+        "items": {
+          "createProperty": "Create Property",
+          "addUnits": "Add Units",
+          "pricing": "Pricing",
+          "availability": "Availability"
+        }
+      },
+      "bookings": {
+        "title": "Bookings",
+        "items": {
+          "manageBookings": "Manage Bookings",
+          "calendar": "Calendar",
+          "statuses": "Booking Statuses"
+        }
+      },
+      "widget": {
+        "title": "Widget",
+        "items": {
+          "setupWidget": "Widget Setup",
+          "embedCode": "Embed Code",
+          "customization": "Customization"
+        }
+      },
+      "integrations": {
+        "title": "Integrations",
+        "items": {
+          "stripe": "Stripe Payments",
+          "ical": "iCal Sync"
+        }
+      },
+      "settings": {
+        "title": "Settings",
+        "items": {
+          "notifications": "Notifications",
+          "subdomain": "Custom Subdomain"
+        }
+      },
+      "faq": {
+        "title": "FAQ",
+        "items": {
+          "commonQuestions": "Common Questions"
+        }
+      }
+    },
+    "intro": {
+      "title": "BookBed Documentation",
+      "subtitle": "Everything you need to know to manage your vacation rentals with BookBed. From setting up your first property to accepting online payments.",
+      "stepsTitle": "5 Steps to Get Started",
+      "steps": {
+        "step1": {
+          "title": "Create your account",
+          "desc": "Sign up at app.bookbed.io with your email address"
+        },
+        "step2": {
+          "title": "Add your property",
+          "desc": "Enter your property details, address, and check-in/out times"
+        },
+        "step3": {
+          "title": "Create units",
+          "desc": "Add apartments, rooms, or villas with photos and amenities"
+        },
+        "step4": {
+          "title": "Set your prices",
+          "desc": "Configure base prices, seasonal pricing, and minimum stay rules"
+        },
+        "step5": {
+          "title": "Embed the widget",
+          "desc": "Copy the embed code and paste it on your website to start receiving bookings"
+        }
+      },
+      "ctaText": "Ready to start? Follow our quick start guide.",
+      "ctaButton": "Quick Start Guide"
+    },
+    "quickLinks": {
+      "createProperty": {
+        "title": "Create Your First Property",
+        "desc": "Learn how to set up your property with all necessary details"
+      },
+      "embedWidget": {
+        "title": "Embed Booking Widget",
+        "desc": "Add the booking calendar to your website in minutes"
+      },
+      "stripeSetup": {
+        "title": "Connect Stripe",
+        "desc": "Start accepting credit card payments from guests"
+      },
+      "manageBookings": {
+        "title": "Manage Bookings",
+        "desc": "Learn how to handle reservations and communicate with guests"
+      }
+    },
+    "quickStart": {
+      "title": "Quick Start Guide",
+      "intro": "Get your BookBed account up and running in just 5 minutes. This guide will walk you through the essential setup steps.",
+      "tipLabel": "Tip:",
+      "tip": "You can always come back and add more details later. Start with the basics and expand as you go.",
+      "step1": {
+        "title": "Step 1: Create Your Account",
+        "content": "Getting started is simple:",
+        "items": [
+          "Go to app.bookbed.io",
+          "Click \"Sign Up\" and enter your email address",
+          "Verify your email and set a secure password"
+        ]
+      },
+      "step2": {
+        "title": "Step 2: Create Your First Property",
+        "content": "After logging in, you'll be prompted to create your first property. Enter:",
+        "items": [
+          "Property name (e.g., \"Villa Sunset\")",
+          "Address (for your reference, not shown to guests publicly)",
+          "Default check-in and check-out times"
+        ]
+      },
+      "step3": {
+        "title": "Step 3: Add a Unit",
+        "content": "Each property needs at least one unit (apartment, room, or villa). The setup wizard will guide you through adding:",
+        "subcontent": "Unit details like capacity, amenities, and photos. You can add multiple units to the same property."
+      },
+      "step4": {
+        "title": "Step 4: Set Your Prices",
+        "content": "Configure your pricing in the Pricing tab. You can set a base price and add seasonal rules for different periods."
+      },
+      "step5": {
+        "title": "Step 5: Publish and Embed",
+        "content": "Once your unit is ready, publish it and copy the embed code from the Widget Settings tab. Paste this code on your website to display the booking calendar."
+      },
+      "successTitle": "Congratulations!",
+      "successText": "You've completed the basic setup. Your property is now ready to receive bookings. Explore the other sections to learn about advanced features like Stripe payments and iCal synchronization.",
+      "nextStep": "Create Your Property"
+    },
+    "createProperty": {
+      "title": "Creating a Property",
+      "intro": "A property in BookBed represents a physical location where you offer accommodation. Learn how to set one up correctly.",
+      "whatIsProperty": {
+        "title": "What is a Property?",
+        "content": "A property is the top-level container in BookBed. It represents a single location that can contain one or more units (rentable spaces). Examples:",
+        "examples": [
+          "A villa with 3 separate apartments",
+          "A small hotel with 10 rooms",
+          "A single vacation home"
+        ]
+      },
+      "steps": {
+        "title": "How to Create a Property",
+        "step1": {
+          "title": "Navigate to Properties",
+          "content": "From your dashboard, click on \"Properties\" in the sidebar, then click \"Add Property\" or the + button."
+        },
+        "step2": {
+          "title": "Enter Property Details",
+          "content": "Fill in the required information:",
+          "fields": {
+            "name": {
+              "label": "Property Name",
+              "desc": "A memorable name for your property (e.g., \"Beach House Croatia\")"
+            },
+            "address": {
+              "label": "Address",
+              "desc": "The full address. This is for your reference and can be shared with guests after booking."
+            },
+            "description": {
+              "label": "Description",
+              "desc": "Optional. A general description of your property."
+            },
+            "checkInOut": {
+              "label": "Check-in/Check-out Times",
+              "desc": "Default times for guest arrivals and departures."
+            }
+          }
+        },
+        "step3": {
+          "title": "Save Your Property",
+          "content": "Click \"Save\" to create your property. You can now add units to it."
+        }
+      },
+      "tipTitle": "Good to Know",
+      "tipContent": "You can have multiple properties if you manage vacation rentals in different locations. Each property can have its own settings and units.",
+      "afterCreation": {
+        "title": "After Creating Your Property",
+        "content": "Once your property is created, the next steps are:",
+        "steps": [
+          "Add one or more units (apartments, rooms, villas)",
+          "Set up pricing for each unit",
+          "Configure availability rules"
+        ]
+      },
+      "nextStep": "Add Units"
+    },
+    "widgetEmbed": {
+      "title": "Embedding the Booking Widget",
+      "intro": "The BookBed widget allows guests to view availability and make bookings directly from your website. Here's how to embed it.",
+      "getCode": {
+        "title": "Getting Your Embed Code",
+        "content": "Follow these steps to get your widget embed code:",
+        "steps": [
+          "Go to Unit Hub and select your unit",
+          "Click on the \"Widget\" tab",
+          "Make sure the unit is published",
+          "Click \"Get Embed Code\" to copy the iframe code"
+        ]
+      },
+      "example": {
+        "title": "Example Embed Code",
+        "content": "Your embed code will look similar to this:",
+        "note": "Replace PROPERTY_ID and UNIT_ID with your actual IDs from the BookBed dashboard."
+      },
+      "copyCode": "Copy code",
+      "platforms": {
+        "title": "Adding to Your Website",
+        "content": "Instructions for popular website platforms:",
+        "wordpress": {
+          "title": "WordPress",
+          "steps": [
+            "Edit the page where you want the widget",
+            "Add a \"Custom HTML\" block",
+            "Paste the embed code and save"
+          ]
+        },
+        "wix": {
+          "title": "Wix",
+          "steps": [
+            "Open the Wix Editor",
+            "Add an \"Embed HTML\" element",
+            "Paste the iframe code and apply"
+          ]
+        },
+        "squarespace": {
+          "title": "Squarespace",
+          "steps": [
+            "Edit your page and add a \"Code\" block",
+            "Paste the embed code",
+            "Save and publish"
+          ]
+        },
+        "html": {
+          "title": "Custom HTML Website",
+          "content": "Simply paste the embed code anywhere in your HTML where you want the widget to appear."
+        }
+      },
+      "warningTitle": "Important",
+      "warningContent": "The widget requires JavaScript to function. Some website builders may block external iframes. If you encounter issues, contact your website platform's support.",
+      "troubleshooting": {
+        "title": "Troubleshooting",
+        "content": "Common issues and solutions:",
+        "issues": [
+          {
+            "problem": "Widget not loading",
+            "solution": "Check that your unit is published and the IDs in the embed code are correct."
+          },
+          {
+            "problem": "Widget too small",
+            "solution": "Adjust the min-height in the iframe style, or remove max-height restrictions."
+          },
+          {
+            "problem": "Booking button not working",
+            "solution": "Ensure you have connected Stripe or enabled bank transfer payments in Widget Settings."
+          }
+        ]
+      },
+      "nextStep": "Customize Widget"
+    },
+    "stripe": {
+      "title": "Stripe Payment Integration",
+      "intro": "Accept credit card payments from your guests with Stripe. It's secure, fast, and payments go directly to your bank account.",
+      "securityTitle": "Secure Payments",
+      "securityContent": "Stripe is PCI-DSS Level 1 certified. BookBed never stores credit card numbers - all payment processing is handled by Stripe's secure servers.",
+      "whatIsStripe": {
+        "title": "What is Stripe?",
+        "content": "Stripe is a global payment processor used by millions of businesses. With Stripe Connect, you can accept payments directly to your own Stripe account.",
+        "benefits": [
+          "Accept all major credit cards (Visa, Mastercard, American Express)",
+          "Secure 3D Secure authentication",
+          "Automatic currency conversion",
+          "Funds deposited directly to your bank account"
+        ]
+      },
+      "howItWorks": {
+        "title": "How It Works",
+        "content": "When a guest makes a booking through your widget:",
+        "steps": [
+          "Guest selects dates and enters their details",
+          "Guest is redirected to Stripe's secure checkout page",
+          "Guest enters payment details and confirms",
+          "Booking is automatically confirmed and you receive an email notification"
+        ]
+      },
+      "connect": {
+        "title": "Connecting Your Stripe Account",
+        "content": "Follow these steps to connect Stripe:",
+        "step1": {
+          "title": "Navigate to Integrations",
+          "content": "Go to Settings > Integrations > Stripe and click \"Connect Stripe Account\"."
+        },
+        "step2": {
+          "title": "Complete Stripe Onboarding",
+          "content": "You'll be redirected to Stripe to either log in or create a new account. Stripe will ask for:",
+          "info": [
+            "Business information (name, type, address)",
+            "Personal verification (ID document)",
+            "Bank account details for payouts"
+          ]
+        },
+        "step3": {
+          "title": "Return to BookBed",
+          "content": "After completing Stripe onboarding, you'll be redirected back to BookBed. Your account status will show as \"Connected\"."
+        }
+      },
+      "successTitle": "Connection Complete!",
+      "successContent": "Once connected, Stripe payments are automatically enabled for all your units. Guests can now pay with credit cards through your booking widget.",
+      "fees": {
+        "title": "Stripe Fees",
+        "content": "Stripe charges processing fees for each transaction:",
+        "items": [
+          "European cards: 1.4% + €0.25 per transaction",
+          "Non-European cards: 2.9% + €0.25 per transaction"
+        ]
+      },
+      "noteTitle": "Note",
+      "noteContent": "Stripe fees are deducted from the payment before it reaches your bank account. BookBed does not charge any additional payment processing fees.",
+      "payouts": {
+        "title": "Receiving Payouts",
+        "content": "Stripe typically sends payouts to your bank account within 2-7 business days, depending on your country. You can view all transactions in your Stripe Dashboard."
+      },
+      "nextStep": "Set Up iCal Sync"
+    },
+    "ical": {
+      "title": "iCal Synchronization",
+      "intro": "Sync your BookBed calendar with Airbnb, Booking.com, and other platforms to prevent double bookings.",
+      "whatIsIcal": {
+        "title": "What is iCal?",
+        "content": "iCal is a standard calendar format that allows different booking platforms to share availability information. When a booking is made on one platform, it automatically blocks those dates on all connected platforms."
+      },
+      "supported": {
+        "title": "Supported Platforms",
+        "airbnb": "Full two-way sync",
+        "booking": "Full two-way sync",
+        "vrbo": "Calendar import and export",
+        "google": "For personal calendars",
+        "other": "Any platform that supports iCal format"
+      },
+      "import": {
+        "title": "Importing Calendars (Other Platforms → BookBed)",
+        "content": "To import bookings from other platforms into BookBed:",
+        "airbnb": {
+          "title": "From Airbnb",
+          "steps": [
+            "Log in to Airbnb and go to your listing",
+            "Click \"Availability\" then \"Calendar Sync\"",
+            "Copy the \"Export Calendar\" URL",
+            "In BookBed, go to Integrations > iCal",
+            "Click \"Add Calendar\" and paste the URL"
+          ]
+        },
+        "booking": {
+          "title": "From Booking.com",
+          "steps": [
+            "Log in to Booking.com Extranet",
+            "Go to \"Property\" > \"iCal Sync\"",
+            "Copy the \"Export Calendar\" URL",
+            "In BookBed, go to Integrations > iCal",
+            "Click \"Add Calendar\" and paste the URL"
+          ]
+        }
+      },
+      "syncFrequency": {
+        "title": "Sync Frequency",
+        "content": "BookBed automatically syncs imported calendars every 15 minutes. You can also trigger a manual sync at any time from the iCal settings page."
+      },
+      "export": {
+        "title": "Exporting Your BookBed Calendar",
+        "content": "To sync BookBed bookings to other platforms:",
+        "steps": [
+          "Go to Integrations > iCal in BookBed",
+          "Copy your unit's \"Export URL\"",
+          "Paste this URL in the \"Import Calendar\" section of Airbnb, Booking.com, or other platforms"
+        ]
+      },
+      "twoWay": {
+        "title": "Two-Way Sync",
+        "content": "For complete synchronization, you need to set up BOTH import (other → BookBed) AND export (BookBed → other) for each platform. This ensures all calendars stay perfectly synchronized."
+      },
+      "warningTitle": "Important Warning",
+      "warningContent": "iCal sync has a delay of up to 15-30 minutes. For last-minute bookings, there's a small risk of double booking. Always check your calendar before accepting same-day or next-day reservations.",
+      "troubleshooting": {
+        "title": "Troubleshooting",
+        "issues": [
+          {
+            "problem": "Calendar not syncing",
+            "solution": "Check that the URL is correct and the source calendar is accessible."
+          },
+          {
+            "problem": "Bookings not appearing",
+            "solution": "Wait up to 15 minutes for the sync to complete, or trigger a manual sync."
+          },
+          {
+            "problem": "Duplicate bookings",
+            "solution": "Make sure you haven't imported the same calendar twice."
+          }
+        ]
+      },
+      "nextStep": "Manage Bookings"
+    },
+    "account": {
+      "title": "Account Setup",
+      "intro": "Configure your BookBed account settings to personalize your experience.",
+      "sections": [
+        {
+          "title": "Profile Settings",
+          "content": "Update your personal information, including name, email, and phone number.",
+          "items": [
+            "Go to Settings > Profile to edit your details",
+            "Add a profile photo for a personalized touch",
+            "Set your preferred language and timezone"
+          ]
+        },
+        {
+          "title": "Security",
+          "content": "Keep your account secure with these settings:",
+          "items": [
+            "Use a strong, unique password",
+            "Enable two-factor authentication if available",
+            "Review your login history regularly"
+          ]
+        },
+        {
+          "title": "Notifications",
+          "content": "Configure how you receive notifications:",
+          "items": [
+            "Email notifications for new bookings",
+            "Push notifications for urgent updates",
+            "Daily or weekly booking summaries"
+          ]
+        }
+      ]
+    },
+    "units": {
+      "title": "Adding Units",
+      "intro": "Units are the individual spaces guests can book within your property. Learn how to set them up.",
+      "sections": [
+        {
+          "title": "What is a Unit?",
+          "content": "A unit is a bookable space within your property - an apartment, room, or entire villa.",
+          "items": [
+            "Each unit has its own calendar, pricing, and availability",
+            "Guests book specific units, not the entire property",
+            "You can have multiple units per property"
+          ]
+        },
+        {
+          "title": "Creating a Unit",
+          "content": "To add a new unit:",
+          "items": [
+            "Go to your property and click \"Add Unit\"",
+            "Enter unit name, capacity, and description",
+            "Add photos and amenities",
+            "Set the base price and availability rules"
+          ]
+        },
+        {
+          "title": "Unit Details",
+          "content": "Make your unit stand out with complete information:",
+          "items": [
+            "High-quality photos (at least 5 recommended)",
+            "Detailed description highlighting unique features",
+            "Complete amenities list (WiFi, parking, kitchen, etc.)",
+            "Accurate capacity and bed configuration"
+          ]
+        }
+      ]
+    },
+    "pricing": {
+      "title": "Setting Prices",
+      "intro": "Configure your pricing strategy with base rates, seasonal pricing, and special offers.",
+      "sections": [
+        {
+          "title": "Base Price",
+          "content": "The base price is your default nightly rate:",
+          "items": [
+            "Set a competitive base price for your unit",
+            "This rate applies when no seasonal rules are active",
+            "You can update it anytime from the Pricing tab"
+          ]
+        },
+        {
+          "title": "Seasonal Pricing",
+          "content": "Adjust prices for different periods:",
+          "items": [
+            "Create pricing rules for high season, low season, holidays",
+            "Set date ranges and percentage adjustments",
+            "Rules automatically apply to the calendar"
+          ]
+        },
+        {
+          "title": "Minimum Stay",
+          "content": "Set minimum night requirements:",
+          "items": [
+            "Global minimum stay for the unit",
+            "Override for specific date ranges",
+            "Useful for peak seasons or weekend minimums"
+          ]
+        }
+      ]
+    },
+    "availability": {
+      "title": "Managing Availability",
+      "intro": "Control when your units are available for booking.",
+      "sections": [
+        {
+          "title": "Blocking Dates",
+          "content": "Temporarily block dates from booking:",
+          "items": [
+            "Click on dates in the calendar to block them",
+            "Use for maintenance, personal use, or pre-existing bookings",
+            "Blocked dates appear as unavailable to guests"
+          ]
+        },
+        {
+          "title": "Advance Booking Window",
+          "content": "Control how far in advance guests can book:",
+          "items": [
+            "Minimum advance: Prevent same-day or last-minute bookings",
+            "Maximum advance: Limit how far into the future guests can book",
+            "Adjust based on your flexibility and planning needs"
+          ]
+        }
+      ]
+    },
+    "manageBookings": {
+      "title": "Managing Bookings",
+      "intro": "Learn how to handle incoming reservations, communicate with guests, and manage your booking pipeline.",
+      "sections": [
+        {
+          "title": "Booking List",
+          "content": "View all your bookings in one place:",
+          "items": [
+            "Filter by status (pending, confirmed, completed, cancelled)",
+            "Sort by check-in date, guest name, or booking date",
+            "Click any booking to view full details"
+          ]
+        },
+        {
+          "title": "Handling Pending Bookings",
+          "content": "New bookings require your attention:",
+          "items": [
+            "Review booking details and guest information",
+            "Confirm to accept the booking, or decline if unavailable",
+            "Guest receives an automatic email notification"
+          ]
+        },
+        {
+          "title": "Cancellations",
+          "content": "Managing booking cancellations:",
+          "items": [
+            "You can cancel a booking from the booking details page",
+            "Cancelled bookings free up the dates automatically",
+            "Guest is notified via email about the cancellation"
+          ]
+        }
+      ]
+    },
+    "calendar": {
+      "title": "Using the Calendar",
+      "intro": "The timeline calendar gives you a visual overview of all bookings across your units.",
+      "sections": [
+        {
+          "title": "Calendar Views",
+          "content": "Navigate your bookings easily:",
+          "items": [
+            "Timeline view shows all units in a single view",
+            "Switch between day, week, and month views",
+            "Click on bookings to see details"
+          ]
+        },
+        {
+          "title": "Color Coding",
+          "content": "Understand booking status at a glance:",
+          "items": [
+            "Green: Confirmed bookings",
+            "Yellow: Pending (awaiting confirmation)",
+            "Blue: Checked-in guests",
+            "Gray: Completed stays"
+          ]
+        }
+      ]
+    },
+    "statuses": {
+      "title": "Booking Statuses",
+      "intro": "Understanding the different booking statuses and what they mean.",
+      "sections": [
+        {
+          "title": "Status Types",
+          "content": "Each booking goes through these stages:",
+          "items": [
+            "Pending: New booking awaiting your confirmation or payment",
+            "Confirmed: Booking is accepted and payment received",
+            "Checked In: Guest has arrived",
+            "Completed: Guest has checked out",
+            "Cancelled: Booking was cancelled by you or the guest"
+          ]
+        },
+        {
+          "title": "Automatic Status Updates",
+          "content": "Some statuses update automatically:",
+          "items": [
+            "After check-out date, status changes to Completed",
+            "Payment expiration converts Pending to Cancelled",
+            "Successful payment moves Pending to Confirmed"
+          ]
+        }
+      ]
+    },
+    "widgetSetup": {
+      "title": "Widget Setup",
+      "intro": "Configure your booking widget before embedding it on your website.",
+      "sections": [
+        {
+          "title": "Publishing Your Unit",
+          "content": "Before embedding, your unit must be published:",
+          "items": [
+            "Go to Unit Hub and select your unit",
+            "Check that all required fields are filled",
+            "Click \"Publish\" to make the unit available"
+          ]
+        },
+        {
+          "title": "Widget Modes",
+          "content": "Choose how the widget works:",
+          "items": [
+            "Full Booking: Guests can complete bookings with payment",
+            "Calendar Only: Show availability without booking functionality",
+            "Inquiry Mode: Guests can request bookings without immediate payment"
+          ]
+        },
+        {
+          "title": "Payment Options",
+          "content": "Configure how guests can pay:",
+          "items": [
+            "Stripe: Credit card payments (requires Stripe connection)",
+            "Bank Transfer: Manual payment with IBAN details",
+            "Pay on Arrival: No upfront payment required"
+          ]
+        }
+      ]
+    },
+    "widgetCustomize": {
+      "title": "Customizing the Widget",
+      "intro": "Make the widget match your website's look and feel.",
+      "sections": [
+        {
+          "title": "Theme",
+          "content": "Choose the widget appearance:",
+          "items": [
+            "Light theme for bright websites",
+            "Dark theme for dark-themed websites",
+            "Auto: Follows user's system preference"
+          ]
+        },
+        {
+          "title": "Language",
+          "content": "Set the widget language:",
+          "items": [
+            "Auto-detect from browser settings",
+            "Force a specific language (English, Croatian, etc.)"
+          ]
+        }
+      ]
+    },
+    "notifications": {
+      "title": "Email Notifications",
+      "intro": "Configure which email notifications you receive.",
+      "sections": [
+        {
+          "title": "Booking Notifications",
+          "content": "Stay informed about new reservations:",
+          "items": [
+            "New booking alerts (immediate)",
+            "Booking confirmation notifications",
+            "Cancellation alerts"
+          ]
+        },
+        {
+          "title": "Guest Communications",
+          "content": "Automatic emails sent to guests:",
+          "items": [
+            "Booking confirmation with details",
+            "Check-in reminders (7 days before)",
+            "Payment reminders for pending bookings"
+          ]
+        }
+      ]
+    },
+    "subdomain": {
+      "title": "Custom Subdomain",
+      "intro": "Get a custom URL for your booking widget.",
+      "sections": [
+        {
+          "title": "What is a Subdomain?",
+          "content": "A subdomain gives you a clean, branded URL:",
+          "items": [
+            "Example: your-name.view.bookbed.io",
+            "Share directly with guests or embed on your site",
+            "Looks professional and trustworthy"
+          ]
+        },
+        {
+          "title": "Setting Up Your Subdomain",
+          "content": "To claim your subdomain:",
+          "items": [
+            "Go to Settings > Subdomain",
+            "Enter your desired subdomain name",
+            "Click \"Check Availability\" and save"
+          ]
+        }
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "intro": "Find answers to common questions about BookBed.",
+      "sections": [
+        {
+          "title": "Getting Started",
+          "content": "Common questions for new users:",
+          "items": [
+            "Q: Is BookBed free? A: Contact us for pricing information tailored to your needs.",
+            "Q: How long does setup take? A: Most users are up and running within 15-30 minutes.",
+            "Q: Do I need technical skills? A: No, BookBed is designed for non-technical users."
+          ]
+        },
+        {
+          "title": "Payments",
+          "content": "Questions about payment processing:",
+          "items": [
+            "Q: When do I receive my money? A: Stripe payouts arrive in 2-7 business days.",
+            "Q: What payment methods are supported? A: Credit cards via Stripe, bank transfers, and cash on arrival.",
+            "Q: Are there any hidden fees? A: BookBed is transparent. Stripe charges their standard processing fees."
+          ]
+        },
+        {
+          "title": "Technical",
+          "content": "Technical questions:",
+          "items": [
+            "Q: Can I use BookBed on mobile? A: Yes, the owner dashboard works on all devices.",
+            "Q: Does the widget work on all websites? A: It works on most platforms that support iframe embedding.",
+            "Q: Is my data secure? A: Yes, we use industry-standard encryption and security practices."
+          ]
+        }
+      ]
+    }
+  }
 }

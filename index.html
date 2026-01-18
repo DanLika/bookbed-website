@@ -1,61 +1,76 @@
 <!DOCTYPE html>
 <html lang="hr">
-  <head>
-    <!-- Critical Meta (Priority 100) -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Title & Description (Priority 95) -->
-    <title>BookBed - Upravljajte Svim Rezervacijama na Jednom Mjestu</title>
-    <meta name="description" content="Kompletna platforma za upravljanje rezervacijama za vlasnike apartmana i smještaja. Pametni kalendar, Stripe plaćanja, automatski emailovi, iCal sinkronizacija i više." />
+<head>
+  <!-- Critical Meta (Priority 100) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Preconnect (Priority 90) - Must be early for font loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Title & Description (Priority 95) -->
+  <title>BookBed - Upravljajte Svim Rezervacijama na Jednom Mjestu</title>
+  <meta name="description"
+    content="Kompletna platforma za upravljanje rezervacijama za vlasnike apartmana i smještaja. Pametni kalendar, Stripe plaćanja, automatski emailovi, iCal sinkronizacija i više." />
 
-    <!-- Preload LCP Image (Priority 85) - Critical for First Contentful Paint -->
-    <link rel="preload" as="image" href="/images/hero/hero-light-1280.avif" imagesrcset="/images/hero/hero-light-768.avif 768w, /images/hero/hero-light-1000.avif 1000w, /images/hero/hero-light-1280.avif 1280w, /images/hero/hero-light.avif 1778w" imagesizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1280px" type="image/avif" fetchpriority="high">
+  <!-- Preconnect (Priority 90) - Must be early for font loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- SEO Meta Tags -->
-    <meta name="keywords" content="upravljanje rezervacijama, apartmani, smještaj, booking kalendar, Stripe plaćanja, iCal sinkronizacija, automatski emailovi, booking widget, vacation rental, apartman softver" />
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="BookBed" />
-    <meta name="publisher" content="BookBed" />
-    <link rel="canonical" href="https://bookbed.io/" />
+  <!-- Preload LCP Image (Priority 85) - Critical for First Contentful Paint -->
+  <link rel="preload" as="image" href="/images/hero/hero-light-1280.avif"
+    imagesrcset="/images/hero/hero-light-768.avif 768w, /images/hero/hero-light-1000.avif 1000w, /images/hero/hero-light-1280.avif 1280w"
+    imagesizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1280px" type="image/avif" fetchpriority="high">
 
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#6B4CE6" />
+  <!-- SEO Meta Tags -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="BookBed" />
+  <meta name="publisher" content="BookBed" />
+  <link rel="canonical" href="https://bookbed.io/" />
 
-    <!-- Favicon & Icons -->
-    <link rel="icon" type="image/avif" href="/images/logo-light.avif" />
-    <link rel="apple-touch-icon" href="/images/logo-light.avif" />
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#6B4CE6" />
 
-    <!-- Font Loading (Priority 40) - Async to avoid render blocking -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <!-- Favicon & Icons - Multiple sizes for all platforms -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.json" />
 
-    <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="BookBed - Upravljajte Svim Rezervacijama na Jednom Mjestu" />
-    <meta property="og:description" content="Kompletna platforma za upravljanje rezervacijama za vlasnike apartmana i smještaja. Pametni kalendar, Stripe plaćanja, automatski emailovi." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://bookbed.io/" />
-    <meta property="og:image" content="https://bookbed.io/images/og-image.avif" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="hr_HR" />
-    <meta property="og:site_name" content="BookBed" />
+  <!-- Font Loading (Priority 40) - Async to avoid render blocking -->
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"
+    media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </noscript>
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="BookBed - Upravljajte Svim Rezervacijama na Jednom Mjestu" />
-    <meta name="twitter:description" content="Kompletna platforma za upravljanje rezervacijama za vlasnike apartmana i smještaja." />
-    <meta name="twitter:image" content="https://bookbed.io/images/og-image.avif" />
-  </head>
-  <body>
-    <div id="root">
-      <!-- Critical HTML - Shows immediately while React loads -->
-      <div id="critical-hero" style="
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="BookBed - Upravljajte Svim Rezervacijama na Jednom Mjestu" />
+  <meta property="og:description"
+    content="Kompletna platforma za upravljanje rezervacijama za vlasnike apartmana i smještaja. Pametni kalendar, Stripe plaćanja, automatski emailovi." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bookbed.io/" />
+  <meta property="og:image" content="https://bookbed.io/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="hr_HR" />
+  <meta property="og:site_name" content="BookBed" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BookBed - Upravljajte Svim Rezervacijama na Jednom Mjestu" />
+  <meta name="twitter:description"
+    content="Kompletna platforma za upravljanje rezervacijama za vlasnike apartmana i smještaja." />
+  <meta name="twitter:image" content="https://bookbed.io/images/og-image.png" />
+</head>
+
+<body>
+  <div id="root">
+    <!-- Critical HTML - Shows immediately while React loads -->
+    <div id="critical-hero" style="
         min-height: 100vh;
         background: linear-gradient(to bottom right, #f1f5f9, #ffffff);
         display: flex;
@@ -64,7 +79,7 @@
         padding-top: 120px;
         text-align: center;
       ">
-        <h1 style="
+      <h1 style="
           font-size: clamp(1.75rem, 5vw, 3.5rem);
           font-weight: 700;
           color: #2D3748;
@@ -74,25 +89,26 @@
           padding: 0 1rem;
           font-family: Inter, system-ui, -apple-system, sans-serif;
         ">Upravljajte Svim Rezervacijama na Jednom Mjestu</h1>
-      </div>
     </div>
-    <script>
-      // Remove critical HTML when React hydrates
-      window.addEventListener('DOMContentLoaded', () => {
-        const critical = document.getElementById('critical-hero');
-        if (critical) {
-          const observer = new MutationObserver(() => {
-            if (document.querySelector('[data-react-root]') || document.querySelector('section')) {
-              critical.remove();
-              observer.disconnect();
-            }
-          });
-          observer.observe(document.getElementById('root'), { childList: true, subtree: true });
-          // Fallback: remove after 3 seconds anyway
-          setTimeout(() => { if (critical.parentNode) critical.remove(); }, 3000);
-        }
-      });
-    </script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  </div>
+  <script>
+    // Remove critical HTML when React hydrates
+    window.addEventListener('DOMContentLoaded', () => {
+      const critical = document.getElementById('critical-hero');
+      if (critical) {
+        const observer = new MutationObserver(() => {
+          if (document.querySelector('[data-react-root]') || document.querySelector('section')) {
+            critical.remove();
+            observer.disconnect();
+          }
+        });
+        observer.observe(document.getElementById('root'), { childList: true, subtree: true });
+        // Fallback: remove after 3 seconds anyway
+        setTimeout(() => { if (critical.parentNode) critical.remove(); }, 3000);
+      }
+    });
+  </script>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

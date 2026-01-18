@@ -87,7 +87,7 @@ export default function HeroSection() {
         {/* Dashboard Screenshot - Light/Dark versions with optimized responsive srcset */}
         <img
           src="/images/hero/hero-light-1280.avif"
-          srcSet="/images/hero/hero-light-768.avif 768w, /images/hero/hero-light-1000.avif 1000w, /images/hero/hero-light-1280.avif 1280w, /images/hero/hero-light.avif 1778w"
+          srcSet="/images/hero/hero-light-768.avif 768w, /images/hero/hero-light-1000.avif 1000w, /images/hero/hero-light-1280.avif 1280w"
           alt="BookBed Dashboard"
           title="BookBed Dashboard"
           width={1280}

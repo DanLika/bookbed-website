@@ -112,6 +112,149 @@ export default {
         'star-movement-bottom': 'star-movement-bottom linear infinite alternate',
         'star-movement-top': 'star-movement-top linear infinite alternate',
       },
+typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: 'none',
+            color: '#4A5568',
+            h1: {
+              color: '#2D3748',
+              fontWeight: '700',
+              fontSize: '2rem',
+              marginBottom: '1rem',
+              lineHeight: '1.3',
+            },
+            h2: {
+              color: '#2D3748',
+              fontWeight: '600',
+              fontSize: '1.5rem',
+              marginTop: '2.5rem',
+              marginBottom: '1rem',
+              paddingBottom: '0.5rem',
+              borderBottom: '1px solid #E2E8F0',
+            },
+            h3: {
+              color: '#2D3748',
+              fontWeight: '600',
+              fontSize: '1.25rem',
+              marginTop: '1.5rem',
+              marginBottom: '0.75rem',
+            },
+            p: {
+              marginTop: '1rem',
+              marginBottom: '1rem',
+              lineHeight: '1.75',
+            },
+            '.lead': {
+              fontSize: '1.125rem',
+              color: '#718096',
+              lineHeight: '1.8',
+              marginBottom: '2rem',
+            },
+            ul: {
+              marginTop: '1rem',
+              marginBottom: '1rem',
+              paddingLeft: '1.5rem',
+            },
+            ol: {
+              marginTop: '1rem',
+              marginBottom: '1rem',
+              paddingLeft: '1.5rem',
+            },
+            li: {
+              marginTop: '0.5rem',
+              marginBottom: '0.5rem',
+            },
+            'ul > li': {
+              paddingLeft: '0.5rem',
+            },
+            'ol > li': {
+              paddingLeft: '0.5rem',
+            },
+            a: {
+              color: '#6B4CE6',
+              textDecoration: 'none',
+              fontWeight: '500',
+              '&:hover': {
+                textDecoration: 'underline',
+              },
+            },
+            code: {
+              backgroundColor: '#F7FAFC',
+              padding: '0.25rem 0.5rem',
+              borderRadius: '0.375rem',
+              fontSize: '0.875rem',
+              fontWeight: '500',
+              color: '#6B4CE6',
+            },
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+            pre: {
+              backgroundColor: '#1a1a2e',
+              color: '#E2E8F0',
+              borderRadius: '0.75rem',
+              padding: '1.25rem',
+              overflow: 'auto',
+              fontSize: '0.875rem',
+              lineHeight: '1.7',
+            },
+            'pre code': {
+              backgroundColor: 'transparent',
+              padding: '0',
+              color: 'inherit',
+            },
+            blockquote: {
+              borderLeftColor: '#6B4CE6',
+              borderLeftWidth: '4px',
+              backgroundColor: '#F7FAFC',
+              padding: '1rem 1.5rem',
+              borderRadius: '0 0.5rem 0.5rem 0',
+              fontStyle: 'normal',
+              color: '#4A5568',
+            },
+            strong: {
+              color: '#2D3748',
+              fontWeight: '600',
+            },
+          },
+        },
+        invert: {
+          css: {
+            color: '#A0AEC0',
+            h1: {
+              color: '#FFFFFF',
+            },
+            h2: {
+              color: '#FFFFFF',
+              borderBottomColor: '#3f3f46',
+            },
+            h3: {
+              color: '#FFFFFF',
+            },
+            '.lead': {
+              color: '#A0AEC0',
+            },
+            a: {
+              color: '#9B86F3',
+            },
+            strong: {
+              color: '#FFFFFF',
+            },
+            code: {
+              backgroundColor: '#27272a',
+              color: '#9B86F3',
+            },
+            blockquote: {
+              backgroundColor: '#27272a',
+              color: '#A0AEC0',
+            },
+          },
+        },
+      },
       keyframes: {
         pageEnter: {
           'from': { opacity: '0', transform: 'translateY(8px)' },
@@ -161,5 +304,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

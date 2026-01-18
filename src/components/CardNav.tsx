@@ -50,9 +50,12 @@ const CardNav: React.FC<CardNavProps> = ({
 }) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
+  const [isNavVisible, setIsNavVisible] = useState(true)
   const navRef = useRef<HTMLDivElement | null>(null)
   const cardsRef = useRef<HTMLDivElement[]>([])
   const tlRef = useRef<gsap.core.Timeline | null>(null)
+  const lastScrollY = useRef(0)
+  const scrollThreshold = 10 // Minimum scroll amount to trigger hide/show
   // Cache calculated height to avoid repeated forced reflows
   const cachedHeightRef = useRef<number | null>(null)
 
@@ -198,6 +201,48 @@ const CardNav: React.FC<CardNavProps> = ({
     }
   }, [isExpanded])
 
+  // Hide navbar on scroll down, show on scroll up
+  useLayoutEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      const scrollDelta = currentScrollY - lastScrollY.current
+
+      // Don't hide if menu is expanded
+      if (isExpanded) {
+        lastScrollY.current = currentScrollY
+        return
+      }
+
+      // At the very top, always show
+      if (currentScrollY < 10) {
+        setIsNavVisible(true)
+        lastScrollY.current = currentScrollY
+        return
+      }
+
+      // Only trigger if scroll amount exceeds threshold
+      if (Math.abs(scrollDelta) < scrollThreshold) {
+        return
+      }
+
+      // Scrolling down - hide navbar
+      if (scrollDelta > 0 && isNavVisible) {
+        setIsNavVisible(false)
+      }
+      // Scrolling up - show navbar
+      else if (scrollDelta < 0 && !isNavVisible) {
+        setIsNavVisible(true)
+      }
+
+      lastScrollY.current = currentScrollY
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [isNavVisible, isExpanded])
+
   const toggleMenu = () => {
     let tl = tlRef.current
 
@@ -225,7 +270,9 @@ const CardNav: React.FC<CardNavProps> = ({
 
   return (
     <div
-      className={`card-nav-container fixed left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] z-50 top-2 sm:top-4 ${className}`}
+      className={`card-nav-container fixed left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] z-50 top-2 sm:top-4 transition-transform duration-300 ease-out ${
+        isNavVisible ? 'translate-y-0' : '-translate-y-[calc(100%+1rem)]'
+      } ${className}`}
     >
       <nav
         ref={navRef}
@@ -238,53 +285,58 @@ const CardNav: React.FC<CardNavProps> = ({
         }}
       >
         <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between px-4 z-[2]">
-          <div
-            className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''} group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] w-[40px] flex-shrink-0`}
-            onClick={toggleMenu}
-            onKeyDown={(e) => e.key === 'Enter' && toggleMenu()}
-            role="button"
-            aria-label={isExpanded ? 'Close menu' : 'Open menu'}
-            aria-expanded={isExpanded}
-            tabIndex={0}
-            style={{ color: menuColor || '#000' }}
-          >
+          <div className="left-group flex items-center gap-2 flex-shrink-0 justify-start">
+            <a href="/" className="flex items-center hover:opacity-80 transition-opacity" title="BookBed - Početna">
+              <img
+                src="/images/logo-light.png"
+                alt="BookBed"
+                title="BookBed"
+                width={84}
+                height={100}
+                loading="eager"
+                className="h-[32px] w-auto object-contain dark:hidden"
+              />
+              <img
+                src="/images/logo-light.png"
+                alt="BookBed"
+                title="BookBed"
+                width={84}
+                height={100}
+                loading="eager"
+                className="h-[32px] w-auto object-contain hidden dark:block brightness-0 invert"
+              />
+            </a>
+
             <div
-              className={`hamburger-line w-[30px] h-[2px] bg-current transition-[transform,opacity,margin] duration-300 ease-linear [transform-origin:50%_50%] ${
-                isHamburgerOpen ? 'translate-y-[4px] rotate-45' : ''
-              } group-hover:opacity-75`}
-            />
-            <div
-              className={`hamburger-line w-[30px] h-[2px] bg-current transition-[transform,opacity,margin] duration-300 ease-linear [transform-origin:50%_50%] ${
-                isHamburgerOpen ? '-translate-y-[4px] -rotate-45' : ''
-              } group-hover:opacity-75`}
-            />
+              className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''} group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] w-[40px] flex-shrink-0`}
+              onClick={toggleMenu}
+              onKeyDown={(e) => e.key === 'Enter' && toggleMenu()}
+              role="button"
+              aria-label={isExpanded ? 'Close menu' : 'Open menu'}
+              aria-expanded={isExpanded}
+              tabIndex={0}
+              style={{ color: menuColor || '#000' }}
+            >
+              <div
+                className={`hamburger-line w-[30px] h-[2px] bg-current transition-[transform,opacity,margin] duration-300 ease-linear [transform-origin:50%_50%] ${isHamburgerOpen ? 'translate-y-[4px] rotate-45' : ''
+                  } group-hover:opacity-75`}
+              />
+              <div
+                className={`hamburger-line w-[30px] h-[2px] bg-current transition-[transform,opacity,margin] duration-300 ease-linear [transform-origin:50%_50%] ${isHamburgerOpen ? '-translate-y-[4px] -rotate-45' : ''
+                  } group-hover:opacity-75`}
+              />
+            </div>
           </div>
 
-          <div className="logo-container flex items-center gap-3 flex-1 justify-center">
-            <img
-              src="/images/logo-light.avif"
-              alt="BookBed"
-              title="BookBed"
-              width={84}
-              height={100}
-              loading="eager"
-              className="h-[36px] w-[36px] object-contain dark:hidden"
-            />
-            <img
-              src="/images/logo-light.avif"
-              alt="BookBed"
-              title="BookBed"
-              width={84}
-              height={100}
-              loading="eager"
-              className="h-[36px] w-[36px] object-contain hidden dark:block brightness-0 invert"
-            />
-            <span
-              className="text-lg font-bold tracking-tight"
+          <div className="flex-1 hidden sm:flex justify-center items-center">
+            <a
+              href="/"
+              className="text-lg font-bold tracking-tight hover:opacity-80 transition-opacity"
               style={{ color: menuColor }}
+              title="BookBed - Početna"
             >
               BookBed
-            </span>
+            </a>
           </div>
 
           <div className="flex items-center gap-2.5 flex-shrink-0">
@@ -345,9 +397,8 @@ const CardNav: React.FC<CardNavProps> = ({
         </div>
 
         <div
-          className={`card-nav-content absolute left-0 right-0 top-[60px] bottom-0 p-2 flex flex-col items-stretch gap-2 justify-start z-[1] ${
-            isExpanded ? 'visible pointer-events-auto' : 'invisible pointer-events-none'
-          } md:flex-row md:items-end md:gap-[12px]`}
+          className={`card-nav-content absolute left-0 right-0 top-[60px] bottom-0 p-2 flex flex-col items-stretch gap-2 justify-start z-[1] ${isExpanded ? 'visible pointer-events-auto' : 'invisible pointer-events-none'
+            } md:flex-row md:items-end md:gap-[12px]`}
           aria-hidden={!isExpanded}
         >
           {(items || []).slice(0, 3).map((item, idx) => (

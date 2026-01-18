@@ -4,7 +4,10 @@
     "about": "O nama",
     "demo": "Demo",
     "widget": "Widget",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "docs": "Dokumentacija",
+    "accountDeletion": "Brisanje Računa",
+    "dataDeletion": "Brisanje Podataka"
   },
   "about": {
     "title": "O Nama",
@@ -237,7 +240,873 @@
     "builtWith": "Izgrađeno sa",
     "copyright": "© 2025 BookBed. Sva prava zadržana.",
     "privacy": "Politika Privatnosti",
-    "terms": "Uvjeti Korištenja"
+    "terms": "Uvjeti Korištenja",
+    "accountDeletion": "Brisanje Računa",
+    "dataDeletion": "Brisanje Podataka"
   },
-  "skipToContent": "Preskoči na glavni sadržaj"
+  "skipToContent": "Preskoči na glavni sadržaj",
+  "privacy": {
+    "title": "Politika Privatnosti",
+    "lastUpdated": "Zadnje ažurirano",
+    "intro": "Ova Politika privatnosti opisuje kako BookBed (\"mi\", \"nas\" ili \"naš\") prikuplja, koristi i otkriva vaše informacije kada koristite našu mobilnu aplikaciju (\"Aplikacija\") i naše usluge.\n\nKorištenjem Aplikacije pristajete na prikupljanje i korištenje informacija u skladu s ovom Politikom privatnosti.",
+    "section1": {
+      "title": "1. Informacije koje prikupljamo",
+      "content": "Prikupljamo informacije kako bismo pružili i poboljšali našu Aplikaciju, obradili rezervacije i osigurali sigurnost naših usluga.",
+      "items": {
+        "A": {
+          "title": "A. Osobni podaci",
+          "content": "Tijekom korištenja naše Aplikacije, možemo od vas tražiti da nam dostavite određene osobne podatke koji se mogu koristiti za kontaktiranje ili identifikaciju, uključujući ali ne ograničavajući se na:",
+          "list": [
+            "Podaci o identitetu: Ime, prezime.",
+            "Podaci za kontakt: Email adresa, broj telefona.",
+            "Podaci o računu: Korisničko ime, lozinka (šifrirana) i podaci o profilu.",
+            "Podaci o transakcijama: Detalji o rezervacijama i plaćanjima (napomena: ne pohranjujemo potpune podatke o kreditnim karticama; njima upravljaju naši sigurni pružatelji usluga plaćanja)."
+          ]
+        },
+        "B": {
+          "title": "B. Podaci o korištenju",
+          "content": "Možemo automatski prikupljati informacije o tome kako se Aplikaciji pristupa i kako se koristi (\"Podaci o korištenju\"). Ovi Podaci o korištenju mogu uključivati:",
+          "list": [
+            "Internetsku protokolarnu adresu (IP adresa) vašeg uređaja.",
+            "Vrstu uređaja, verziju i operativni sustav.",
+            "Vrijeme i datum vašeg posjeta, vrijeme provedeno na stranicama i jedinstvene identifikatore uređaja.",
+            "Dnevnike rušenja i dijagnostičke podatke."
+          ]
+        },
+        "C": {
+          "title": "C. Podaci o lokaciji",
+          "content": "Ako nam date dopuštenje, možemo koristiti vaše podatke o lokaciji kako bismo vam pomogli pronaći nekretnine ili usluge u vašoj blizini. Usluge lokacije možete omogućiti ili onemogućiti prilikom korištenja naše Aplikacije u bilo kojem trenutku putem postavki vašeg uređaja."
+        },
+        "D": {
+          "title": "D. Pristup datotekama i medijima",
+          "content": "Aplikacija može zahtijevati pristup kameri ili fotogaleriji vašeg uređaja (npr. koristeći image_picker) kako bi vam omogućila učitavanje profilnih fotografija ili računa. Ovim podacima pristupamo samo kada izričito date dopuštenje i pokrenete akciju."
+        }
+      }
+    },
+    "section2": {
+      "title": "2. Kako koristimo vaše informacije",
+      "content": "Prikupljene podatke koristimo u različite svrhe:",
+      "list": [
+        "Za pružanje i održavanje naše Usluge: Upravljanje vašim rezervacijama i računom.",
+        "Za obavještavanje o promjenama: Ažuriranja usluge ili potvrde rezervacija.",
+        "Za pružanje korisničke podrške: Odgovaranje na vaše upite.",
+        "Za praćenje korištenja: Analiza kako se naša Aplikacija koristi za poboljšanje značajki.",
+        "Za otkrivanje i sprječavanje tehničkih problema: Osiguravanje da je Aplikacija sigurna i bez grešaka.",
+        "Za obradu plaćanja: Sigurno olakšavanje transakcija putem pružatelja usluga trećih strana."
+      ]
+    },
+    "section3": {
+      "title": "3. Zadržavanje podataka",
+      "content": "Vaše Osobne podatke zadržat ćemo samo onoliko dugo koliko je potrebno za svrhe navedene u ovoj Politici privatnosti. Zadržat ćemo i koristiti vaše Osobne podatke u mjeri u kojoj je to potrebno za poštivanje naših zakonskih obveza (na primjer, ako smo dužni zadržati vaše podatke radi poštivanja važećih zakona), rješavanje sporova i provedbu naših pravnih ugovora i politika."
+    },
+    "section4": {
+      "title": "4. Brisanje računa (Pravo na zaborav)",
+      "content": "U skladu sa smjernicama App Storea i Play Storea: Imate pravo zatražiti da izbrišemo vaš račun i povezane podatke.",
+      "subcontent": "Brisanje računa možete zatražiti:",
+      "list": [
+        "Odlaskom u odjeljak Profil ili Postavke unutar Aplikacije i odabirom \"Obriši račun\".",
+        "Kontaktiranjem nas izravno na info@bookbed.io."
+      ],
+      "footer": "Na zahtjev ćemo izbrisati vaše osobne podatke iz naših aktivnih baza podataka, podložno svim zakonskim obvezama koje bismo mogli imati za zadržavanje određenih podataka (npr. u porezne ili računovodstvene svrhe u vezi sa završenim transakcijama)."
+    },
+    "section5": {
+      "title": "5. Pružatelji usluga i usluge trećih strana",
+      "content": "Možemo angažirati tvrtke i pojedince trećih strana kako bismo olakšali našu Uslugu (\"Pružatelji usluga\"), pružili Uslugu u naše ime ili nam pomogli u analizi načina na koji se koristi naša Usluga.\n\nOve treće strane imaju pristup vašim Osobnim podacima samo za obavljanje ovih zadataka u naše ime i obvezne su ih ne otkrivati niti koristiti u bilo koju drugu svrhu.\n\nU našoj Aplikaciji koristimo sljedeće usluge trećih strana:",
+      "list": [
+        "Google Firebase: Koristimo Firebase za autentifikaciju, usluge baze podataka (Firestore) i cloud funkcije.",
+        "Google Analytics za Firebase: Za analizu korištenja aplikacije i angažmana korisnika.",
+        "Firebase Crashlytics: Za prikupljanje podataka o rušenju i pomoć u poboljšanju stabilnosti aplikacije.",
+        "Sentry: Za praćenje pogrešaka i performansi u stvarnom vremenu.",
+        "Stripe: Za sigurnu obradu plaćanja."
+      ]
+    },
+    "section6": {
+      "title": "6. Sigurnost podataka",
+      "content": "Sigurnost vaših podataka nam je važna, ali imajte na umu da nijedan način prijenosa putem Interneta ili način elektroničke pohrane nije 100% siguran. Iako nastojimo koristiti komercijalno prihvatljiva sredstva za zaštitu vaših Osobnih podataka, ne možemo jamčiti njihovu apsolutnu sigurnost."
+    },
+    "section7": {
+      "title": "7. Privatnost djece",
+      "content": "Naša Usluga ne obraća se nikome mlađem od 13 godina (ili odgovarajuće dobi u vašoj jurisdikciji). Ne prikupljamo svjesno osobne podatke od bilo koga mlađeg od 13 godina. Ako ste roditelj ili skrbnik i svjesni ste da nam je vaše dijete dostavilo Osobne podatke, molimo kontaktirajte nas."
+    },
+    "section8": {
+      "title": "8. Izmjene ove Politike privatnosti",
+      "content": "S vremena na vrijeme možemo ažurirati našu Politiku privatnosti. Obavijestit ćemo vas o svim promjenama objavljivanjem nove Politike privatnosti na ovoj stranici i ažuriranjem datuma \"Zadnje ažurirano\" koristeći najnoviji datum.\n\nSavjetujemo vam da povremeno pregledate ovu Politiku privatnosti radi eventualnih promjena."
+    },
+    "section9": {
+      "title": "9. Kontaktirajte nas",
+      "content": "Ako imate bilo kakvih pitanja o ovoj Politici privatnosti, molimo kontaktirajte nas:",
+      "list": [
+        "Emailom: info@bookbed.io",
+        "Posjetom ovoj stranici na našoj web stranici: https://bookbed.io"
+      ]
+    }
+  },
+  "docs": {
+    "menu": "Izbornik dokumentacije",
+    "readMore": "Saznajte više",
+    "previous": "Prethodno",
+    "next": "Sljedeće",
+    "backToQuickStart": "Povratak na Brzi Početak",
+    "backToWidgetSetup": "Povratak na Postavljanje Widgeta",
+    "sections": {
+      "gettingStarted": {
+        "title": "Početak",
+        "items": {
+          "introduction": "Uvod",
+          "quickStart": "Brzi Početak",
+          "account": "Postavke Računa"
+        }
+      },
+      "properties": {
+        "title": "Nekretnine",
+        "items": {
+          "createProperty": "Kreiraj Nekretninu",
+          "addUnits": "Dodaj Jedinice",
+          "pricing": "Cijene",
+          "availability": "Dostupnost"
+        }
+      },
+      "bookings": {
+        "title": "Rezervacije",
+        "items": {
+          "manageBookings": "Upravljanje Rezervacijama",
+          "calendar": "Kalendar",
+          "statuses": "Statusi Rezervacija"
+        }
+      },
+      "widget": {
+        "title": "Widget",
+        "items": {
+          "setupWidget": "Postavljanje Widgeta",
+          "embedCode": "Embed Kod",
+          "customization": "Prilagodba"
+        }
+      },
+      "integrations": {
+        "title": "Integracije",
+        "items": {
+          "stripe": "Stripe Plaćanja",
+          "ical": "iCal Sinkronizacija"
+        }
+      },
+      "settings": {
+        "title": "Postavke",
+        "items": {
+          "notifications": "Obavijesti",
+          "subdomain": "Prilagođena Subdomena"
+        }
+      },
+      "faq": {
+        "title": "Česta Pitanja",
+        "items": {
+          "commonQuestions": "Česta Pitanja"
+        }
+      }
+    },
+    "intro": {
+      "title": "BookBed Dokumentacija",
+      "subtitle": "Sve što trebate znati za upravljanje vašim smještajima putem BookBed platforme. Od kreiranja prve nekretnine do primanja online plaćanja.",
+      "stepsTitle": "5 Koraka za Početak",
+      "steps": {
+        "step1": {
+          "title": "Kreirajte račun",
+          "desc": "Registrirajte se na app.bookbed.io sa vašom email adresom"
+        },
+        "step2": {
+          "title": "Dodajte nekretninu",
+          "desc": "Unesite detalje nekretnine, adresu i vrijeme prijave/odjave"
+        },
+        "step3": {
+          "title": "Kreirajte jedinice",
+          "desc": "Dodajte apartmane, sobe ili vile sa fotografijama i sadržajima"
+        },
+        "step4": {
+          "title": "Postavite cijene",
+          "desc": "Konfigurirajte osnovne cijene, sezonske cijene i pravila minimalnog boravka"
+        },
+        "step5": {
+          "title": "Ugradite widget",
+          "desc": "Kopirajte embed kod i zalijepite ga na vašu web stranicu da počnete primati rezervacije"
+        }
+      },
+      "ctaText": "Spremni za početak? Pratite naš vodič za brzi početak.",
+      "ctaButton": "Vodič za Brzi Početak"
+    },
+    "quickLinks": {
+      "createProperty": {
+        "title": "Kreirajte Prvu Nekretninu",
+        "desc": "Naučite kako postaviti vašu nekretninu sa svim potrebnim detaljima"
+      },
+      "embedWidget": {
+        "title": "Ugradite Widget za Rezervacije",
+        "desc": "Dodajte kalendar za rezervacije na vašu web stranicu za nekoliko minuta"
+      },
+      "stripeSetup": {
+        "title": "Povežite Stripe",
+        "desc": "Počnite primati plaćanja kreditnim karticama od gostiju"
+      },
+      "manageBookings": {
+        "title": "Upravljajte Rezervacijama",
+        "desc": "Naučite kako upravljati rezervacijama i komunicirati s gostima"
+      }
+    },
+    "quickStart": {
+      "title": "Vodič za Brzi Početak",
+      "intro": "Pokrenite vaš BookBed račun za samo 5 minuta. Ovaj vodič će vas provesti kroz osnovne korake postavljanja.",
+      "tipLabel": "Savjet:",
+      "tip": "Uvijek se možete vratiti i dodati više detalja kasnije. Počnite s osnovama i proširujte kako idete.",
+      "step1": {
+        "title": "Korak 1: Kreirajte Račun",
+        "content": "Početak je jednostavan:",
+        "items": [
+          "Idite na app.bookbed.io",
+          "Kliknite \"Registracija\" i unesite vašu email adresu",
+          "Potvrdite email i postavite sigurnu lozinku"
+        ]
+      },
+      "step2": {
+        "title": "Korak 2: Kreirajte Prvu Nekretninu",
+        "content": "Nakon prijave, bit ćete pozvani da kreirate prvu nekretninu. Unesite:",
+        "items": [
+          "Naziv nekretnine (npr. \"Vila Sunset\")",
+          "Adresu (za vašu referencu, ne prikazuje se javno gostima)",
+          "Zadana vremena prijave i odjave"
+        ]
+      },
+      "step3": {
+        "title": "Korak 3: Dodajte Jedinicu",
+        "content": "Svaka nekretnina treba barem jednu jedinicu (apartman, sobu ili vilu). Čarobnjak za postavljanje će vas voditi kroz dodavanje:",
+        "subcontent": "Detalje jedinice poput kapaciteta, sadržaja i fotografija. Možete dodati više jedinica istoj nekretnini."
+      },
+      "step4": {
+        "title": "Korak 4: Postavite Cijene",
+        "content": "Konfigurirajte vaše cijene u kartici Cijene. Možete postaviti osnovnu cijenu i dodati sezonska pravila za različite periode."
+      },
+      "step5": {
+        "title": "Korak 5: Objavite i Ugradite",
+        "content": "Kada je vaša jedinica spremna, objavite je i kopirajte embed kod iz kartice Postavke Widgeta. Zalijepite ovaj kod na vašu web stranicu za prikaz kalendara rezervacija."
+      },
+      "successTitle": "Čestitamo!",
+      "successText": "Završili ste osnovno postavljanje. Vaša nekretnina je sada spremna za primanje rezervacija. Istražite ostale odjeljke da naučite o naprednim funkcijama poput Stripe plaćanja i iCal sinkronizacije.",
+      "nextStep": "Kreirajte Nekretninu"
+    },
+    "createProperty": {
+      "title": "Kreiranje Nekretnine",
+      "intro": "Nekretnina u BookBedu predstavlja fizičku lokaciju gdje nudite smještaj. Naučite kako je pravilno postaviti.",
+      "whatIsProperty": {
+        "title": "Što je Nekretnina?",
+        "content": "Nekretnina je kontejner najviše razine u BookBedu. Predstavlja jednu lokaciju koja može sadržavati jednu ili više jedinica (prostora za iznajmljivanje). Primjeri:",
+        "examples": [
+          "Vila s 3 odvojena apartmana",
+          "Mali hotel s 10 soba",
+          "Jedna kuća za odmor"
+        ]
+      },
+      "steps": {
+        "title": "Kako Kreirati Nekretninu",
+        "step1": {
+          "title": "Navigirajte do Nekretnina",
+          "content": "S vašeg dashboarda, kliknite na \"Nekretnine\" u bočnoj traci, zatim kliknite \"Dodaj Nekretninu\" ili + gumb."
+        },
+        "step2": {
+          "title": "Unesite Detalje Nekretnine",
+          "content": "Ispunite potrebne informacije:",
+          "fields": {
+            "name": {
+              "label": "Naziv Nekretnine",
+              "desc": "Upečatljiv naziv za vašu nekretninu (npr. \"Beach House Croatia\")"
+            },
+            "address": {
+              "label": "Adresa",
+              "desc": "Puna adresa. Ovo je za vašu referencu i može se podijeliti s gostima nakon rezervacije."
+            },
+            "description": {
+              "label": "Opis",
+              "desc": "Opcionalno. Opći opis vaše nekretnine."
+            },
+            "checkInOut": {
+              "label": "Vrijeme Prijave/Odjave",
+              "desc": "Zadana vremena za dolazak i odlazak gostiju."
+            }
+          }
+        },
+        "step3": {
+          "title": "Spremite Nekretninu",
+          "content": "Kliknite \"Spremi\" za kreiranje nekretnine. Sada joj možete dodati jedinice."
+        }
+      },
+      "tipTitle": "Dobro je Znati",
+      "tipContent": "Možete imati više nekretnina ako upravljate smještajima na različitim lokacijama. Svaka nekretnina može imati vlastite postavke i jedinice.",
+      "afterCreation": {
+        "title": "Nakon Kreiranja Nekretnine",
+        "content": "Kada je vaša nekretnina kreirana, sljedeći koraci su:",
+        "steps": [
+          "Dodajte jednu ili više jedinica (apartmana, soba, vila)",
+          "Postavite cijene za svaku jedinicu",
+          "Konfigurirajte pravila dostupnosti"
+        ]
+      },
+      "nextStep": "Dodaj Jedinice"
+    },
+    "widgetEmbed": {
+      "title": "Ugradnja Widget za Rezervacije",
+      "intro": "BookBed widget omogućuje gostima pregled dostupnosti i kreiranje rezervacija direktno s vaše web stranice. Evo kako ga ugraditi.",
+      "getCode": {
+        "title": "Dobivanje Embed Koda",
+        "content": "Slijedite ove korake za dobivanje embed koda:",
+        "steps": [
+          "Idite na Unit Hub i odaberite vašu jedinicu",
+          "Kliknite na karticu \"Widget\"",
+          "Provjerite da je jedinica objavljena",
+          "Kliknite \"Dobij Embed Kod\" za kopiranje iframe koda"
+        ]
+      },
+      "example": {
+        "title": "Primjer Embed Koda",
+        "content": "Vaš embed kod će izgledati slično ovome:",
+        "note": "Zamijenite PROPERTY_ID i UNIT_ID sa vašim stvarnim ID-ovima iz BookBed dashboarda."
+      },
+      "copyCode": "Kopiraj kod",
+      "platforms": {
+        "title": "Dodavanje na Vašu Web Stranicu",
+        "content": "Upute za popularne platforme web stranica:",
+        "wordpress": {
+          "title": "WordPress",
+          "steps": [
+            "Uredite stranicu gdje želite widget",
+            "Dodajte \"Custom HTML\" blok",
+            "Zalijepite embed kod i spremite"
+          ]
+        },
+        "wix": {
+          "title": "Wix",
+          "steps": [
+            "Otvorite Wix Editor",
+            "Dodajte \"Embed HTML\" element",
+            "Zalijepite iframe kod i primijenite"
+          ]
+        },
+        "squarespace": {
+          "title": "Squarespace",
+          "steps": [
+            "Uredite stranicu i dodajte \"Code\" blok",
+            "Zalijepite embed kod",
+            "Spremite i objavite"
+          ]
+        },
+        "html": {
+          "title": "Prilagođena HTML Web Stranica",
+          "content": "Jednostavno zalijepite embed kod bilo gdje u vaš HTML gdje želite da se widget pojavi."
+        }
+      },
+      "warningTitle": "Važno",
+      "warningContent": "Widget zahtijeva JavaScript za funkcioniranje. Neki alati za izradu web stranica mogu blokirati vanjske iframe-ove. Ako naiđete na probleme, kontaktirajte podršku vaše platforme.",
+      "troubleshooting": {
+        "title": "Rješavanje Problema",
+        "content": "Česti problemi i rješenja:",
+        "issues": [
+          {
+            "problem": "Widget se ne učitava",
+            "solution": "Provjerite da je vaša jedinica objavljena i da su ID-ovi u embed kodu ispravni."
+          },
+          {
+            "problem": "Widget je premalen",
+            "solution": "Prilagodite min-height u iframe stilu, ili uklonite max-height ograničenja."
+          },
+          {
+            "problem": "Gumb za rezervaciju ne radi",
+            "solution": "Provjerite da ste povezali Stripe ili omogućili bankovnu uplatu u Postavkama Widgeta."
+          }
+        ]
+      },
+      "nextStep": "Prilagodi Widget"
+    },
+    "stripe": {
+      "title": "Stripe Integracija Plaćanja",
+      "intro": "Primajte plaćanja kreditnim karticama od vaših gostiju putem Stripea. Sigurno je, brzo, i plaćanja idu direktno na vaš bankovni račun.",
+      "securityTitle": "Sigurna Plaćanja",
+      "securityContent": "Stripe je PCI-DSS Level 1 certificiran. BookBed nikada ne pohranjuje brojeve kreditnih kartica - svu obradu plaćanja obavljaju Stripeovi sigurni serveri.",
+      "whatIsStripe": {
+        "title": "Što je Stripe?",
+        "content": "Stripe je globalni procesor plaćanja koji koriste milijuni tvrtki. Sa Stripe Connectom, možete primati plaćanja direktno na vaš vlastiti Stripe račun.",
+        "benefits": [
+          "Prihvaćajte sve glavne kreditne kartice (Visa, Mastercard, American Express)",
+          "Sigurna 3D Secure autentifikacija",
+          "Automatska konverzija valuta",
+          "Sredstva se uplaćuju direktno na vaš bankovni račun"
+        ]
+      },
+      "howItWorks": {
+        "title": "Kako Funkcionira",
+        "content": "Kada gost napravi rezervaciju putem vašeg widgeta:",
+        "steps": [
+          "Gost odabere datume i unese svoje podatke",
+          "Gost se preusmjerava na Stripeovu sigurnu stranicu za naplatu",
+          "Gost unese podatke za plaćanje i potvrdi",
+          "Rezervacija se automatski potvrđuje i vi primate email obavijest"
+        ]
+      },
+      "connect": {
+        "title": "Povezivanje Vašeg Stripe Računa",
+        "content": "Slijedite ove korake za povezivanje Stripea:",
+        "step1": {
+          "title": "Navigirajte do Integracija",
+          "content": "Idite na Postavke > Integracije > Stripe i kliknite \"Poveži Stripe Račun\"."
+        },
+        "step2": {
+          "title": "Završite Stripe Onboarding",
+          "content": "Bit ćete preusmjereni na Stripe gdje se možete prijaviti ili kreirati novi račun. Stripe će zatražiti:",
+          "info": [
+            "Poslovne informacije (naziv, vrsta, adresa)",
+            "Osobnu verifikaciju (identifikacijski dokument)",
+            "Podatke o bankovnom računu za isplate"
+          ]
+        },
+        "step3": {
+          "title": "Povratak na BookBed",
+          "content": "Nakon završetka Stripe onboardinga, bit ćete preusmjereni nazad na BookBed. Status vašeg računa će prikazivati \"Povezano\"."
+        }
+      },
+      "successTitle": "Povezivanje Završeno!",
+      "successContent": "Nakon povezivanja, Stripe plaćanja su automatski omogućena za sve vaše jedinice. Gosti sada mogu plaćati kreditnim karticama putem vašeg widgeta za rezervacije.",
+      "fees": {
+        "title": "Stripe Naknade",
+        "content": "Stripe naplaćuje procesne naknade za svaku transakciju:",
+        "items": [
+          "Europske kartice: 1,4% + 0,25€ po transakciji",
+          "Ne-europske kartice: 2,9% + 0,25€ po transakciji"
+        ]
+      },
+      "noteTitle": "Napomena",
+      "noteContent": "Stripe naknade se odbijaju od plaćanja prije nego dođe na vaš bankovni račun. BookBed ne naplaćuje nikakve dodatne naknade za obradu plaćanja.",
+      "payouts": {
+        "title": "Primanje Isplata",
+        "content": "Stripe obično šalje isplate na vaš bankovni račun unutar 2-7 radnih dana, ovisno o vašoj zemlji. Sve transakcije možete pregledati u vašem Stripe Dashboardu."
+      },
+      "nextStep": "Postavite iCal Sinkronizaciju"
+    },
+    "ical": {
+      "title": "iCal Sinkronizacija",
+      "intro": "Sinkronizirajte vaš BookBed kalendar s Airbnb, Booking.com i drugim platformama kako biste spriječili dvostruke rezervacije.",
+      "whatIsIcal": {
+        "title": "Što je iCal?",
+        "content": "iCal je standardni format kalendara koji omogućuje različitim platformama za rezervacije dijeljenje informacija o dostupnosti. Kada se rezervacija napravi na jednoj platformi, automatski blokira te datume na svim povezanim platformama."
+      },
+      "supported": {
+        "title": "Podržane Platforme",
+        "airbnb": "Potpuna dvosmjerna sinkronizacija",
+        "booking": "Potpuna dvosmjerna sinkronizacija",
+        "vrbo": "Uvoz i izvoz kalendara",
+        "google": "Za osobne kalendare",
+        "other": "Bilo koja platforma koja podržava iCal format"
+      },
+      "import": {
+        "title": "Uvoz Kalendara (Druge Platforme → BookBed)",
+        "content": "Za uvoz rezervacija s drugih platformi u BookBed:",
+        "airbnb": {
+          "title": "S Airbnba",
+          "steps": [
+            "Prijavite se na Airbnb i idite na vaš oglas",
+            "Kliknite \"Dostupnost\" zatim \"Sinkronizacija Kalendara\"",
+            "Kopirajte URL \"Izvoz Kalendara\"",
+            "U BookBedu, idite na Integracije > iCal",
+            "Kliknite \"Dodaj Kalendar\" i zalijepite URL"
+          ]
+        },
+        "booking": {
+          "title": "S Booking.com",
+          "steps": [
+            "Prijavite se na Booking.com Extranet",
+            "Idite na \"Nekretnina\" > \"iCal Sinkronizacija\"",
+            "Kopirajte URL \"Izvoz Kalendara\"",
+            "U BookBedu, idite na Integracije > iCal",
+            "Kliknite \"Dodaj Kalendar\" i zalijepite URL"
+          ]
+        }
+      },
+      "syncFrequency": {
+        "title": "Učestalost Sinkronizacije",
+        "content": "BookBed automatski sinkronizira uvezene kalendare svakih 15 minuta. Također možete pokrenuti ručnu sinkronizaciju u bilo kojem trenutku sa stranice iCal postavki."
+      },
+      "export": {
+        "title": "Izvoz Vašeg BookBed Kalendara",
+        "content": "Za sinkronizaciju BookBed rezervacija na druge platforme:",
+        "steps": [
+          "Idite na Integracije > iCal u BookBedu",
+          "Kopirajte \"Export URL\" vaše jedinice",
+          "Zalijepite ovaj URL u odjeljak \"Uvoz Kalendara\" na Airbnb, Booking.com ili drugim platformama"
+        ]
+      },
+      "twoWay": {
+        "title": "Dvosmjerna Sinkronizacija",
+        "content": "Za potpunu sinkronizaciju, trebate postaviti I uvoz (druge → BookBed) I izvoz (BookBed → druge) za svaku platformu. To osigurava da svi kalendari ostanu savršeno sinkronizirani."
+      },
+      "warningTitle": "Važno Upozorenje",
+      "warningContent": "iCal sinkronizacija ima kašnjenje do 15-30 minuta. Za rezervacije u zadnji trenutak, postoji mali rizik od dvostruke rezervacije. Uvijek provjerite kalendar prije prihvaćanja rezervacija za isti dan ili sutradan.",
+      "troubleshooting": {
+        "title": "Rješavanje Problema",
+        "issues": [
+          {
+            "problem": "Kalendar se ne sinkronizira",
+            "solution": "Provjerite da je URL ispravan i da je izvorni kalendar dostupan."
+          },
+          {
+            "problem": "Rezervacije se ne pojavljuju",
+            "solution": "Pričekajte do 15 minuta da se sinkronizacija završi, ili pokrenite ručnu sinkronizaciju."
+          },
+          {
+            "problem": "Dvostruke rezervacije",
+            "solution": "Provjerite da niste uvezli isti kalendar dva puta."
+          }
+        ]
+      },
+      "nextStep": "Upravljajte Rezervacijama"
+    },
+    "account": {
+      "title": "Postavke Računa",
+      "intro": "Konfigurirajte postavke vašeg BookBed računa za personalizirano iskustvo.",
+      "sections": [
+        {
+          "title": "Postavke Profila",
+          "content": "Ažurirajte vaše osobne podatke, uključujući ime, email i telefonski broj.",
+          "items": [
+            "Idite na Postavke > Profil za uređivanje vaših podataka",
+            "Dodajte profilnu fotografiju za personalizirani dodir",
+            "Postavite preferirani jezik i vremensku zonu"
+          ]
+        },
+        {
+          "title": "Sigurnost",
+          "content": "Održavajte vaš račun sigurnim s ovim postavkama:",
+          "items": [
+            "Koristite jaku, jedinstvenu lozinku",
+            "Omogućite dvofaktorsku autentifikaciju ako je dostupna",
+            "Redovito pregledavajte povijest prijava"
+          ]
+        },
+        {
+          "title": "Obavijesti",
+          "content": "Konfigurirajte kako primate obavijesti:",
+          "items": [
+            "Email obavijesti za nove rezervacije",
+            "Push obavijesti za hitna ažuriranja",
+            "Dnevni ili tjedni sažeci rezervacija"
+          ]
+        }
+      ]
+    },
+    "units": {
+      "title": "Dodavanje Jedinica",
+      "intro": "Jedinice su pojedinačni prostori koje gosti mogu rezervirati unutar vaše nekretnine. Naučite kako ih postaviti.",
+      "sections": [
+        {
+          "title": "Što je Jedinica?",
+          "content": "Jedinica je prostor za rezervaciju unutar vaše nekretnine - apartman, soba ili cijela vila.",
+          "items": [
+            "Svaka jedinica ima vlastiti kalendar, cijene i dostupnost",
+            "Gosti rezerviraju specifične jedinice, ne cijelu nekretninu",
+            "Možete imati više jedinica po nekretnini"
+          ]
+        },
+        {
+          "title": "Kreiranje Jedinice",
+          "content": "Za dodavanje nove jedinice:",
+          "items": [
+            "Idite na vašu nekretninu i kliknite \"Dodaj Jedinicu\"",
+            "Unesite naziv jedinice, kapacitet i opis",
+            "Dodajte fotografije i sadržaje",
+            "Postavite osnovnu cijenu i pravila dostupnosti"
+          ]
+        },
+        {
+          "title": "Detalji Jedinice",
+          "content": "Istaknite vašu jedinicu s kompletnim informacijama:",
+          "items": [
+            "Kvalitetne fotografije (preporučeno najmanje 5)",
+            "Detaljan opis koji ističe jedinstvene značajke",
+            "Kompletan popis sadržaja (WiFi, parking, kuhinja, itd.)",
+            "Točan kapacitet i konfiguracija kreveta"
+          ]
+        }
+      ]
+    },
+    "pricing": {
+      "title": "Postavljanje Cijena",
+      "intro": "Konfigurirajte vašu strategiju cijena s osnovnim cijenama, sezonskim cijenama i posebnim ponudama.",
+      "sections": [
+        {
+          "title": "Osnovna Cijena",
+          "content": "Osnovna cijena je vaša zadana noćna cijena:",
+          "items": [
+            "Postavite konkurentnu osnovnu cijenu za vašu jedinicu",
+            "Ova cijena se primjenjuje kada nema aktivnih sezonskih pravila",
+            "Možete je ažurirati bilo kada iz kartice Cijene"
+          ]
+        },
+        {
+          "title": "Sezonske Cijene",
+          "content": "Prilagodite cijene za različite periode:",
+          "items": [
+            "Kreirajte pravila cijena za visoku sezonu, nisku sezonu, praznike",
+            "Postavite raspon datuma i postotne prilagodbe",
+            "Pravila se automatski primjenjuju na kalendar"
+          ]
+        },
+        {
+          "title": "Minimalni Boravak",
+          "content": "Postavite zahtjeve za minimalan broj noći:",
+          "items": [
+            "Globalni minimalni boravak za jedinicu",
+            "Prepisivanje za specifične raspon datuma",
+            "Korisno za vrhunac sezone ili vikend minimume"
+          ]
+        }
+      ]
+    },
+    "availability": {
+      "title": "Upravljanje Dostupnošću",
+      "intro": "Kontrolirajte kada su vaše jedinice dostupne za rezervaciju.",
+      "sections": [
+        {
+          "title": "Blokiranje Datuma",
+          "content": "Privremeno blokirajte datume od rezervacija:",
+          "items": [
+            "Kliknite na datume u kalendaru za blokiranje",
+            "Koristite za održavanje, osobnu uporabu ili postojeće rezervacije",
+            "Blokirani datumi se prikazuju kao nedostupni gostima"
+          ]
+        },
+        {
+          "title": "Prozor za Rezervacije Unaprijed",
+          "content": "Kontrolirajte koliko unaprijed gosti mogu rezervirati:",
+          "items": [
+            "Minimalno unaprijed: Spriječite rezervacije istog dana ili u zadnji trenutak",
+            "Maksimalno unaprijed: Ograničite koliko daleko u budućnost gosti mogu rezervirati",
+            "Prilagodite prema vašoj fleksibilnosti i potrebama planiranja"
+          ]
+        }
+      ]
+    },
+    "manageBookings": {
+      "title": "Upravljanje Rezervacijama",
+      "intro": "Naučite kako upravljati dolaznim rezervacijama, komunicirati s gostima i upravljati vašim procesom rezervacija.",
+      "sections": [
+        {
+          "title": "Lista Rezervacija",
+          "content": "Pregledajte sve vaše rezervacije na jednom mjestu:",
+          "items": [
+            "Filtrirajte po statusu (na čekanju, potvrđeno, završeno, otkazano)",
+            "Sortirajte po datumu prijave, imenu gosta ili datumu rezervacije",
+            "Kliknite bilo koju rezervaciju za pregled detalja"
+          ]
+        },
+        {
+          "title": "Upravljanje Rezervacijama na Čekanju",
+          "content": "Nove rezervacije zahtijevaju vašu pažnju:",
+          "items": [
+            "Pregledajte detalje rezervacije i informacije o gostu",
+            "Potvrdite za prihvaćanje rezervacije, ili odbijte ako nije dostupno",
+            "Gost automatski prima email obavijest"
+          ]
+        },
+        {
+          "title": "Otkazivanja",
+          "content": "Upravljanje otkazivanjima rezervacija:",
+          "items": [
+            "Možete otkazati rezervaciju sa stranice detalja rezervacije",
+            "Otkazane rezervacije automatski oslobađaju datume",
+            "Gost se obavještava emailom o otkazivanju"
+          ]
+        }
+      ]
+    },
+    "calendar": {
+      "title": "Korištenje Kalendara",
+      "intro": "Timeline kalendar vam daje vizualni pregled svih rezervacija kroz vaše jedinice.",
+      "sections": [
+        {
+          "title": "Prikazi Kalendara",
+          "content": "Jednostavno navigirajte vaše rezervacije:",
+          "items": [
+            "Timeline prikaz prikazuje sve jedinice u jednom prikazu",
+            "Prebacujte se između dnevnog, tjednog i mjesečnog prikaza",
+            "Kliknite na rezervacije za prikaz detalja"
+          ]
+        },
+        {
+          "title": "Kodiranje Bojama",
+          "content": "Razumite status rezervacije na prvi pogled:",
+          "items": [
+            "Zeleno: Potvrđene rezervacije",
+            "Žuto: Na čekanju (čeka potvrdu)",
+            "Plavo: Prijavljeni gosti",
+            "Sivo: Završeni boravci"
+          ]
+        }
+      ]
+    },
+    "statuses": {
+      "title": "Statusi Rezervacija",
+      "intro": "Razumijevanje različitih statusa rezervacija i što znače.",
+      "sections": [
+        {
+          "title": "Vrste Statusa",
+          "content": "Svaka rezervacija prolazi kroz ove faze:",
+          "items": [
+            "Na čekanju: Nova rezervacija koja čeka vašu potvrdu ili plaćanje",
+            "Potvrđeno: Rezervacija je prihvaćena i plaćanje primljeno",
+            "Prijavljen: Gost je stigao",
+            "Završeno: Gost se odjavio",
+            "Otkazano: Rezervacija je otkazana od vas ili gosta"
+          ]
+        },
+        {
+          "title": "Automatska Ažuriranja Statusa",
+          "content": "Neki statusi se ažuriraju automatski:",
+          "items": [
+            "Nakon datuma odjave, status se mijenja u Završeno",
+            "Istek plaćanja pretvara Na čekanju u Otkazano",
+            "Uspješno plaćanje prebacuje Na čekanju u Potvrđeno"
+          ]
+        }
+      ]
+    },
+    "widgetSetup": {
+      "title": "Postavljanje Widgeta",
+      "intro": "Konfigurirajte vaš widget za rezervacije prije ugradnje na vašu web stranicu.",
+      "sections": [
+        {
+          "title": "Objavljivanje Vaše Jedinice",
+          "content": "Prije ugradnje, vaša jedinica mora biti objavljena:",
+          "items": [
+            "Idite na Unit Hub i odaberite vašu jedinicu",
+            "Provjerite da su sva obavezna polja ispunjena",
+            "Kliknite \"Objavi\" da učinite jedinicu dostupnom"
+          ]
+        },
+        {
+          "title": "Modovi Widgeta",
+          "content": "Odaberite kako widget funkcionira:",
+          "items": [
+            "Puna Rezervacija: Gosti mogu završiti rezervacije s plaćanjem",
+            "Samo Kalendar: Prikaz dostupnosti bez funkcionalnosti rezervacije",
+            "Mod Upita: Gosti mogu slati upite za rezervaciju bez neposrednog plaćanja"
+          ]
+        },
+        {
+          "title": "Opcije Plaćanja",
+          "content": "Konfigurirajte kako gosti mogu platiti:",
+          "items": [
+            "Stripe: Plaćanja kreditnom karticom (zahtijeva Stripe povezivanje)",
+            "Bankovni Prijenos: Ručno plaćanje s IBAN podacima",
+            "Plaćanje po Dolasku: Bez unaprijed plaćanja"
+          ]
+        }
+      ]
+    },
+    "widgetCustomize": {
+      "title": "Prilagodba Widgeta",
+      "intro": "Učinite da widget odgovara izgledu vaše web stranice.",
+      "sections": [
+        {
+          "title": "Tema",
+          "content": "Odaberite izgled widgeta:",
+          "items": [
+            "Svijetla tema za svijetle web stranice",
+            "Tamna tema za tamne web stranice",
+            "Auto: Prati sistemske postavke korisnika"
+          ]
+        },
+        {
+          "title": "Jezik",
+          "content": "Postavite jezik widgeta:",
+          "items": [
+            "Automatska detekcija iz postavki preglednika",
+            "Forsirajte specifični jezik (Engleski, Hrvatski, itd.)"
+          ]
+        }
+      ]
+    },
+    "notifications": {
+      "title": "Email Obavijesti",
+      "intro": "Konfigurirajte koje email obavijesti primate.",
+      "sections": [
+        {
+          "title": "Obavijesti o Rezervacijama",
+          "content": "Budite informirani o novim rezervacijama:",
+          "items": [
+            "Upozorenja o novim rezervacijama (odmah)",
+            "Obavijesti o potvrdi rezervacije",
+            "Upozorenja o otkazivanju"
+          ]
+        },
+        {
+          "title": "Komunikacija s Gostima",
+          "content": "Automatski emailovi koji se šalju gostima:",
+          "items": [
+            "Potvrda rezervacije s detaljima",
+            "Podsjetnici za prijavu (7 dana prije)",
+            "Podsjetnici za plaćanje za rezervacije na čekanju"
+          ]
+        }
+      ]
+    },
+    "subdomain": {
+      "title": "Prilagođena Subdomena",
+      "intro": "Dobijte prilagođeni URL za vaš widget za rezervacije.",
+      "sections": [
+        {
+          "title": "Što je Subdomena?",
+          "content": "Subdomena vam daje čist, brendirani URL:",
+          "items": [
+            "Primjer: vase-ime.view.bookbed.io",
+            "Dijelite direktno s gostima ili ugradite na vašu stranicu",
+            "Izgleda profesionalno i pouzdano"
+          ]
+        },
+        {
+          "title": "Postavljanje Vaše Subdomene",
+          "content": "Za zauzimanje vaše subdomene:",
+          "items": [
+            "Idite na Postavke > Subdomena",
+            "Unesite željeni naziv subdomene",
+            "Kliknite \"Provjeri Dostupnost\" i spremite"
+          ]
+        }
+      ]
+    },
+    "faq": {
+      "title": "Česta Pitanja",
+      "intro": "Pronađite odgovore na česta pitanja o BookBedu.",
+      "sections": [
+        {
+          "title": "Početak",
+          "content": "Česta pitanja za nove korisnike:",
+          "items": [
+            "P: Je li BookBed besplatan? O: Kontaktirajte nas za informacije o cijenama prilagođene vašim potrebama.",
+            "P: Koliko traje postavljanje? O: Većina korisnika je spremna unutar 15-30 minuta.",
+            "P: Trebam li tehničke vještine? O: Ne, BookBed je dizajniran za netehničke korisnike."
+          ]
+        },
+        {
+          "title": "Plaćanja",
+          "content": "Pitanja o obradi plaćanja:",
+          "items": [
+            "P: Kada primam novac? O: Stripe isplate stižu unutar 2-7 radnih dana.",
+            "P: Koje metode plaćanja su podržane? O: Kreditne kartice putem Stripea, bankovni prijenosi i gotovina po dolasku.",
+            "P: Ima li skrivenih naknada? O: BookBed je transparentan. Stripe naplaćuje standardne naknade za obradu."
+          ]
+        },
+        {
+          "title": "Tehnička Pitanja",
+          "content": "Tehnička pitanja:",
+          "items": [
+            "P: Mogu li koristiti BookBed na mobitelu? O: Da, vlasnički dashboard radi na svim uređajima.",
+            "P: Radi li widget na svim web stranicama? O: Radi na većini platformi koje podržavaju iframe ugradnju.",
+            "P: Jesu li moji podaci sigurni? O: Da, koristimo industrijsku standardnu enkripciju i sigurnosne prakse."
+          ]
+        }
+      ]
+    }
+  }
 }
