@@ -65,49 +65,415 @@
   <meta name="twitter:description"
     content="Kompletna platforma za upravljanje rezervacijama za vlasnike apartmana i smještaja." />
   <meta name="twitter:image" content="https://bookbed.io/images/og-image.png" />
+
+  <!-- Schema.org JSON-LD Structured Data for AI Crawlers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "BookBed",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "iOS, Android, Web",
+    "description": "Kompletna platforma za upravljanje rezervacijama za vlasnike apartmana i smještaja. Pametni kalendar, Stripe plaćanja, automatski emailovi, iCal sinkronizacija.",
+    "url": "https://bookbed.io",
+    "image": "https://bookbed.io/images/og-image.png",
+    "screenshot": "https://bookbed.io/images/hero/hero-light-1280.avif",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "description": "Besplatno tijekom beta faze"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "50"
+    },
+    "featureList": [
+      "Pametni kalendar rezervacija",
+      "Stripe integracija za plaćanja",
+      "Automatski emailovi gostima",
+      "iCal sinkronizacija (Airbnb, Booking.com)",
+      "Vlastiti booking widget",
+      "Multi-property upravljanje"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BookBed",
+    "url": "https://bookbed.io",
+    "logo": "https://bookbed.io/favicon-512.png",
+    "description": "Platforma za upravljanje rezervacijama smještaja",
+    "email": "info@bookbed.io",
+    "sameAs": [
+      "https://bookbed.io"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "info@bookbed.io",
+      "availableLanguage": ["Croatian", "English"]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "BookBed",
+    "url": "https://bookbed.io",
+    "description": "Upravljajte svim rezervacijama na jednom mjestu",
+    "inLanguage": ["hr", "en"],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://bookbed.io/?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Što je BookBed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BookBed je kompletna platforma za upravljanje rezervacijama namijenjena vlasnicima apartmana i smještaja. Omogućuje praćenje rezervacija, automatske emailove gostima, integraciju plaćanja putem Stripea i sinkronizaciju s Airbnb-om i Booking.com-om."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Koliko košta BookBed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BookBed je trenutno potpuno besplatan tijekom beta faze. Sve značajke su dostupne bez naknade."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Mogu li koristiti BookBed za više nekretnina?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Da! BookBed podržava upravljanje više nekretnina s jednog računa. Možete dodati neograničen broj smještajnih jedinica."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kako radi iCal sinkronizacija?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BookBed automatski sinkronizira vaš kalendar s Airbnb-om, Booking.com-om i drugim platformama putem iCal protokola. Rezervacije se ažuriraju u realnom vremenu."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Je li BookBed dostupan na mobilnim uređajima?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Da, BookBed ima nativne aplikacije za iOS i Android, kao i web verziju koja radi na svim uređajima."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "BookBed Značajke",
+    "description": "Ključne značajke BookBed platforme",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Pametni Kalendar",
+        "description": "Intuitivni kalendar s pregledom svih rezervacija na jednom mjestu"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Stripe Plaćanja",
+        "description": "Sigurna naplata putem Stripe integracije s automatskim fakturama"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Automatski Emailovi",
+        "description": "Automatizirane poruke gostima prije, tijekom i nakon boravka"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "iCal Sinkronizacija",
+        "description": "Dvosmjerna sinkronizacija s Airbnb, Booking.com i drugim platformama"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Booking Widget",
+        "description": "Vlastiti widget za direktne rezervacije na vašoj web stranici"
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "name": "Multi-Property",
+        "description": "Upravljanje više nekretnina s jednog centralnog računa"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
   <div id="root">
-    <!-- Critical HTML - Shows immediately while React loads -->
-    <div id="critical-hero" style="
-        min-height: 100vh;
-        background: linear-gradient(to bottom right, #f1f5f9, #ffffff);
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        padding-top: 120px;
-        text-align: center;
-      ">
-      <h1 style="
-          font-size: clamp(1.75rem, 5vw, 3.5rem);
-          font-weight: 700;
-          color: #2D3748;
-          line-height: 1.25;
-          max-width: 64rem;
-          margin: 0 auto;
-          padding: 0 1rem;
-          font-family: Inter, system-ui, -apple-system, sans-serif;
-        ">Upravljajte Svim Rezervacijama na Jednom Mjestu</h1>
+    <!-- Static Fallback Content - Visible to AI crawlers and when JavaScript is disabled -->
+    <div id="static-fallback"
+      style="font-family: Inter, system-ui, -apple-system, sans-serif; color: #1a1a2e; line-height: 1.6;">
+
+      <!-- Header -->
+      <header style="padding: 20px 24px; border-bottom: 1px solid #e2e8f0;">
+        <div
+          style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="/favicon-48.png" alt="BookBed Logo" width="40" height="40" style="border-radius: 8px;">
+            <span style="font-size: 1.5rem; font-weight: 700; color: #6B4CE6;">BookBed</span>
+          </div>
+          <nav>
+            <a href="https://app.bookbed.io"
+              style="background: #6B4CE6; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600;">Prijava</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section
+        style="min-height: 60vh; background: linear-gradient(to bottom right, #f8fafc, #ffffff); padding: 80px 24px; text-align: center;">
+        <div style="max-width: 900px; margin: 0 auto;">
+          <h1
+            style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: #1a1a2e; margin-bottom: 24px; line-height: 1.1;">
+            Upravljajte Svim Rezervacijama na Jednom Mjestu
+          </h1>
+          <p
+            style="font-size: 1.25rem; color: #64748b; margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto;">
+            Kompletna platforma za vlasnike apartmana i smještaja. Pametni kalendar, Stripe plaćanja, automatski
+            emailovi i iCal sinkronizacija.
+          </p>
+          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://app.bookbed.io/register"
+              style="background: #6B4CE6; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem;">Započnite
+              Besplatno</a>
+            <a href="/demo"
+              style="background: white; color: #6B4CE6; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; border: 2px solid #6B4CE6; font-size: 1.1rem;">Pogledajte
+              Demo</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section style="padding: 80px 24px; background: #ffffff;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+          <h2 style="font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 48px; color: #1a1a2e;">
+            Ključne Značajke</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
+
+            <article style="padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px;">
+              <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; color: #6B4CE6;">📅 Pametni Kalendar
+              </h3>
+              <p style="color: #64748b;">Intuitivni kalendar s pregledom svih rezervacija na jednom mjestu. Drag & drop
+                uređivanje, brzo dodavanje rezervacija.</p>
+            </article>
+
+            <article style="padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px;">
+              <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; color: #6B4CE6;">💳 Stripe Plaćanja
+              </h3>
+              <p style="color: #64748b;">Sigurna naplata putem Stripe integracije. Automatske fakture, praćenje uplata i
+                povrati bez napora.</p>
+            </article>
+
+            <article style="padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px;">
+              <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; color: #6B4CE6;">📧 Automatski
+                Emailovi</h3>
+              <p style="color: #64748b;">Automatizirane poruke gostima prije, tijekom i nakon boravka. Potvrdite
+                rezervacije, pošaljite upute za dolazak.</p>
+            </article>
+
+            <article style="padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px;">
+              <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; color: #6B4CE6;">🔄 iCal
+                Sinkronizacija</h3>
+              <p style="color: #64748b;">Dvosmjerna sinkronizacija s Airbnb-om, Booking.com-om i drugim OTA platformama
+                u realnom vremenu.</p>
+            </article>
+
+            <article style="padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px;">
+              <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; color: #6B4CE6;">🌐 Booking Widget
+              </h3>
+              <p style="color: #64748b;">Vlastiti widget za direktne rezervacije na vašoj web stranici. Jednostavna
+                integracija, bez provizije.</p>
+            </article>
+
+            <article style="padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px;">
+              <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; color: #6B4CE6;">🏠 Multi-Property
+              </h3>
+              <p style="color: #64748b;">Upravljanje više nekretnina s jednog centralnog računa. Neograničen broj
+                smještajnih jedinica.</p>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing Section -->
+      <section style="padding: 80px 24px; background: #f8fafc;">
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+          <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 16px; color: #1a1a2e;">Cijene</h2>
+          <div style="background: white; padding: 40px; border-radius: 16px; border: 2px solid #6B4CE6;">
+            <span
+              style="background: #6B4CE6; color: white; padding: 6px 16px; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">BETA</span>
+            <p style="font-size: 3rem; font-weight: 800; color: #1a1a2e; margin: 24px 0;">€0<span
+                style="font-size: 1rem; color: #64748b;">/mjesečno</span></p>
+            <p style="color: #64748b; margin-bottom: 24px;">Potpuno besplatno tijekom beta faze. Sve značajke uključene.
+            </p>
+            <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 24px;">
+              <li style="padding: 8px 0; color: #1a1a2e;">✓ Neograničen broj nekretnina</li>
+              <li style="padding: 8px 0; color: #1a1a2e;">✓ Neograničen broj rezervacija</li>
+              <li style="padding: 8px 0; color: #1a1a2e;">✓ Stripe integracija</li>
+              <li style="padding: 8px 0; color: #1a1a2e;">✓ iCal sinkronizacija</li>
+              <li style="padding: 8px 0; color: #1a1a2e;">✓ Automatski emailovi</li>
+              <li style="padding: 8px 0; color: #1a1a2e;">✓ Booking widget</li>
+            </ul>
+            <a href="https://app.bookbed.io/register"
+              style="display: block; background: #6B4CE6; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600;">Započnite
+              Besplatno</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section style="padding: 80px 24px; background: #ffffff;">
+        <div style="max-width: 800px; margin: 0 auto;">
+          <h2 style="font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 48px; color: #1a1a2e;">Često
+            Postavljana Pitanja</h2>
+
+          <article style="margin-bottom: 24px; padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px;">
+            <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; color: #1a1a2e;">Što je BookBed?</h3>
+            <p style="color: #64748b;">BookBed je kompletna platforma za upravljanje rezervacijama namijenjena
+              vlasnicima apartmana i smještaja. Omogućuje praćenje rezervacija, automatske emailove gostima, integraciju
+              plaćanja i sinkronizaciju s Airbnb-om i Booking.com-om.</p>
+          </article>
+
+          <article style="margin-bottom: 24px; padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px;">
+            <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; color: #1a1a2e;">Koliko košta BookBed?
+            </h3>
+            <p style="color: #64748b;">BookBed je trenutno potpuno besplatan tijekom beta faze. Sve značajke su dostupne
+              bez naknade.</p>
+          </article>
+
+          <article style="margin-bottom: 24px; padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px;">
+            <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; color: #1a1a2e;">Mogu li koristiti
+              BookBed za više nekretnina?</h3>
+            <p style="color: #64748b;">Da! BookBed podržava upravljanje više nekretnina s jednog računa. Možete dodati
+              neograničen broj smještajnih jedinica.</p>
+          </article>
+
+          <article style="margin-bottom: 24px; padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px;">
+            <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; color: #1a1a2e;">Kako radi iCal
+              sinkronizacija?</h3>
+            <p style="color: #64748b;">BookBed automatski sinkronizira vaš kalendar s Airbnb-om, Booking.com-om i drugim
+              platformama putem iCal protokola. Rezervacije se ažuriraju u realnom vremenu.</p>
+          </article>
+
+          <article style="padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px;">
+            <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; color: #1a1a2e;">Je li BookBed dostupan
+              na mobilnim uređajima?</h3>
+            <p style="color: #64748b;">Da, BookBed ima nativne aplikacije za iOS i Android, kao i web verziju koja radi
+              na svim uređajima.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer style="padding: 48px 24px; background: #1a1a2e; color: white;">
+        <div
+          style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px;">
+          <div>
+            <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 16px;">BookBed</h4>
+            <p style="color: #94a3b8; font-size: 0.875rem;">Kompletna platforma za upravljanje rezervacijama smještaja.
+            </p>
+          </div>
+          <div>
+            <h4 style="font-weight: 600; margin-bottom: 16px;">Proizvod</h4>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 8px;"><a href="/features"
+                  style="color: #94a3b8; text-decoration: none;">Značajke</a></li>
+              <li style="margin-bottom: 8px;"><a href="/pricing"
+                  style="color: #94a3b8; text-decoration: none;">Cijene</a></li>
+              <li style="margin-bottom: 8px;"><a href="/demo" style="color: #94a3b8; text-decoration: none;">Demo</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-weight: 600; margin-bottom: 16px;">Podrška</h4>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 8px;"><a href="/faq" style="color: #94a3b8; text-decoration: none;">FAQ</a></li>
+              <li style="margin-bottom: 8px;"><a href="/contact"
+                  style="color: #94a3b8; text-decoration: none;">Kontakt</a></li>
+              <li style="margin-bottom: 8px;"><a href="/docs"
+                  style="color: #94a3b8; text-decoration: none;">Dokumentacija</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-weight: 600; margin-bottom: 16px;">Kontakt</h4>
+            <p style="color: #94a3b8; font-size: 0.875rem;">Email: <a href="mailto:info@bookbed.io"
+                style="color: #6B4CE6;">info@bookbed.io</a></p>
+            <p style="color: #94a3b8; font-size: 0.875rem; margin-top: 8px;">Web: <a href="https://bookbed.io"
+                style="color: #6B4CE6;">bookbed.io</a></p>
+          </div>
+        </div>
+        <div
+          style="max-width: 1200px; margin: 48px auto 0; padding-top: 24px; border-top: 1px solid #334155; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+          <p style="color: #64748b; font-size: 0.875rem;">© 2025 BookBed. Sva prava pridržana.</p>
+          <div style="display: flex; gap: 24px;">
+            <a href="/privacy" style="color: #64748b; font-size: 0.875rem; text-decoration: none;">Politika
+              privatnosti</a>
+            <a href="/terms" style="color: #64748b; font-size: 0.875rem; text-decoration: none;">Uvjeti korištenja</a>
+          </div>
+        </div>
+      </footer>
+
     </div>
   </div>
   <script>
-    // Remove critical HTML when React hydrates
+    // Remove static fallback when React hydrates
     window.addEventListener('DOMContentLoaded', () => {
-      const critical = document.getElementById('critical-hero');
-      if (critical) {
+      const fallback = document.getElementById('static-fallback');
+      if (fallback) {
         const observer = new MutationObserver(() => {
-          if (document.querySelector('[data-react-root]') || document.querySelector('section')) {
-            critical.remove();
+          if (document.querySelector('[data-react-root]') || document.querySelector('.react-app')) {
+            fallback.remove();
             observer.disconnect();
           }
         });
         observer.observe(document.getElementById('root'), { childList: true, subtree: true });
-        // Fallback: remove after 3 seconds anyway
-        setTimeout(() => { if (critical.parentNode) critical.remove(); }, 3000);
+        // Fallback: remove after 2 seconds if React has rendered
+        setTimeout(() => {
+          if (fallback.parentNode && document.querySelector('main')) {
+            fallback.remove();
+          }
+        }, 2000);
       }
     });
   </script>
+  <script src="https://view.bookbed.io/bookbed-overlay.js" defer></script>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 

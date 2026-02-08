@@ -10,16 +10,12 @@ import GlassIcons from '../components/ui/animations/GlassIcons'
 import { usePageMeta } from '../hooks/usePageMeta'
 
 const WidgetPage = () => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   // Page-specific SEO meta tags
   usePageMeta({
-    title: i18n.language === 'hr'
-      ? 'Booking Widget - Integrirajte Rezervacije na Vaš Web - BookBed'
-      : 'Booking Widget - Integrate Bookings on Your Website - BookBed',
-    description: i18n.language === 'hr'
-      ? 'Dodajte BookBed widget na svoju web stranicu. Prilagodljivi kalendar rezervacija, jednostavna integracija, više načina prikaza.'
-      : 'Add BookBed widget to your website. Customizable booking calendar, easy integration, multiple display modes.'
+    title: t('widget.meta.title'),
+    description: t('widget.meta.description')
   })
   const [activeMode, setActiveMode] = useState<'full' | 'calendar' | 'inquiry'>('full')
   const [copied, setCopied] = useState(false)
@@ -162,11 +158,10 @@ const WidgetPage = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setActiveMode(mode.id as typeof activeMode)}
-                  className={`group flex items-center gap-3 px-4 sm:px-5 py-2.5 rounded-xl font-medium transition-all border ${
-                    activeMode === mode.id
+                  className={`group flex items-center gap-3 px-4 sm:px-5 py-2.5 rounded-xl font-medium transition-all border ${activeMode === mode.id
                       ? 'bg-primary/10 dark:bg-primary/20 border-primary/30 shadow-sm'
                       : 'bg-white/70 dark:bg-zinc-800/70 backdrop-blur-xl hover:bg-gray-50/80 dark:hover:bg-zinc-700/80 border-gray-200/50 dark:border-zinc-700/50 shadow-sm'
-                  }`}
+                    }`}
                 >
                   <GlassIcon size="sm" color={mode.color}>
                     {mode.icon}
@@ -213,30 +208,42 @@ const WidgetPage = () => {
               {/* Glow effect */}
               <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-primary-light/10 to-primary/20 rounded-3xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
 
-              {/* Widget content - Live iframe without wrapper constraints */}
+              {/* Widget content - wrapped with bookbed-widget for overlay JS */}
               {activeMode === 'full' && (
-                <iframe
-                  src="https://view.bookbed.io/?property=fg5nlt3aLlx4HWJeqliq&unit=gMIOos56siO74VkCsSwY&embed=true"
-                  className="relative w-full border-0 rounded-2xl shadow-xl"
-                  style={{ aspectRatio: '1/1.4', minHeight: '500px', maxHeight: '850px' }}
-                  title="BookBed Full Booking Widget"
-                />
+                <div className="bookbed-widget relative w-full" style={{ maxWidth: '100%' }}>
+                  <iframe
+                    src="https://view.bookbed.io/?property=fg5nlt3aLlx4HWJeqliq&unit=gMIOos56siO74VkCsSwY&embed=true"
+                    className="w-full border-0 rounded-2xl shadow-xl block"
+                    style={{ aspectRatio: '1/1.4', minHeight: '500px', maxHeight: '850px' }}
+                    title="BookBed Full Booking Widget"
+                    loading="lazy"
+                  />
+                  <div className="bookbed-overlay absolute inset-0 cursor-pointer z-[1]" style={{ pointerEvents: 'none' }} />
+                </div>
               )}
               {activeMode === 'calendar' && (
-                <iframe
-                  src="https://view.bookbed.io/?property=fg5nlt3aLlx4HWJeqliq&unit=Ot2PzlJYSNXjJIGvicHY&embed=true"
-                  className="relative w-full border-0 rounded-2xl shadow-xl"
-                  style={{ aspectRatio: '1/1.4', minHeight: '500px', maxHeight: '850px' }}
-                  title="BookBed Calendar Widget"
-                />
+                <div className="bookbed-widget relative w-full" style={{ maxWidth: '100%' }}>
+                  <iframe
+                    src="https://view.bookbed.io/?property=fg5nlt3aLlx4HWJeqliq&unit=Ot2PzlJYSNXjJIGvicHY&embed=true"
+                    className="w-full border-0 rounded-2xl shadow-xl block"
+                    style={{ aspectRatio: '1/1.4', minHeight: '500px', maxHeight: '850px' }}
+                    title="BookBed Calendar Widget"
+                    loading="lazy"
+                  />
+                  <div className="bookbed-overlay absolute inset-0 cursor-pointer z-[1]" style={{ pointerEvents: 'none' }} />
+                </div>
               )}
               {activeMode === 'inquiry' && (
-                <iframe
-                  src="https://view.bookbed.io/?property=fg5nlt3aLlx4HWJeqliq&unit=fEAkFrzkjLP6EF2unqLv&embed=true"
-                  className="relative w-full border-0 rounded-2xl shadow-xl"
-                  style={{ aspectRatio: '1/1.4', minHeight: '500px', maxHeight: '850px' }}
-                  title="BookBed Inquiry Widget"
-                />
+                <div className="bookbed-widget relative w-full" style={{ maxWidth: '100%' }}>
+                  <iframe
+                    src="https://view.bookbed.io/?property=fg5nlt3aLlx4HWJeqliq&unit=fEAkFrzkjLP6EF2unqLv&embed=true"
+                    className="w-full border-0 rounded-2xl shadow-xl block"
+                    style={{ aspectRatio: '1/1.4', minHeight: '500px', maxHeight: '850px' }}
+                    title="BookBed Inquiry Widget"
+                    loading="lazy"
+                  />
+                  <div className="bookbed-overlay absolute inset-0 cursor-pointer z-[1]" style={{ pointerEvents: 'none' }} />
+                </div>
               )}
             </motion.div>
           </FadeContent>
@@ -268,11 +275,10 @@ const WidgetPage = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={copyToClipboard}
-                className={`absolute top-3 right-3 p-2.5 rounded-lg transition-all ${
-                  copied
+                className={`absolute top-3 right-3 p-2.5 rounded-lg transition-all ${copied
                     ? 'bg-green-500/20 text-green-400'
                     : 'bg-zinc-700/50 hover:bg-zinc-700 text-gray-400 hover:text-white'
-                }`}
+                  }`}
                 title={copied ? t('widget.copied') : t('widget.copyCode')}
               >
                 {copied ? (
