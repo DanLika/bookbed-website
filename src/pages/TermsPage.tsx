@@ -5,15 +5,11 @@ import FadeContent from '../components/ui/animations/FadeContent'
 import { usePageMeta } from '../hooks/usePageMeta'
 
 const TermsPage = () => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   usePageMeta({
-    title: i18n.language === 'hr'
-      ? 'Uvjeti Korištenja - BookBed'
-      : 'Terms of Service - BookBed',
-    description: i18n.language === 'hr'
-      ? 'Pročitajte uvjete korištenja BookBed platforme. Saznajte o vašim pravima i obvezama kao korisnika naše usluge.'
-      : 'Read BookBed platform terms of service. Learn about your rights and obligations as a user of our service.'
+    title: t('terms.meta.title'),
+    description: t('terms.meta.description')
   })
 
   return (
@@ -30,14 +26,14 @@ const TermsPage = () => {
         <div className="max-w-4xl mx-auto">
           <FadeContent duration={500} direction="up" distance={20}>
             <h1 className={`${typography.h1} font-bold text-text-primary dark:text-white mb-8`}>
-              {t('terms.title', 'Uvjeti Korištenja BookBed Platforme')}
+              {t('terms.title')}
             </h1>
           </FadeContent>
 
           <FadeContent duration={600} delay={100} direction="up" distance={20}>
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-text-secondary dark:text-gray-400 mb-6">
-                {t('terms.lastUpdated', 'Zadnje ažurirano')}: 27. prosinca 2025.
+                {t('terms.lastUpdated')}: {t('terms.lastUpdatedDate')}
               </p>
 
               <h2 className="text-xl font-semibold text-text-primary dark:text-white mt-8 mb-4">

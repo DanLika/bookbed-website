@@ -8,11 +8,12 @@ export default function Footer() {
   const { t } = useTranslation()
 
   const navLinks = [
-    { path: '/', key: 'home', title: 'Početna stranica' },
-    { path: '/demo', key: 'demo', title: 'Pogledajte demo video tutorijale' },
-    { path: '/widget', key: 'widget', title: 'Saznajte više o booking widgetu' },
-    { path: '/docs', key: 'docs', title: 'Dokumentacija i upute za korištenje' },
-    { path: '/contact', key: 'contact', title: 'Kontaktirajte nas' },
+    { path: '/', key: 'home' },
+    { path: '/demo', key: 'demo' },
+    { path: '/widget', key: 'widget' },
+    { path: '/docs', key: 'docs' },
+    { path: '/faq', key: 'faqNav' },
+    { path: '/contact', key: 'contact' },
   ]
 
   return (
@@ -28,7 +29,7 @@ export default function Footer() {
             distance={20}
             className="flex-1"
           >
-            <Link to="/" title="BookBed - Početna" className="inline-flex items-center gap-1.5 sm:gap-2 group mb-4">
+            <Link to="/" title={t('footer.navTitles.home')} className="inline-flex items-center gap-1.5 sm:gap-2 group mb-4">
               <LogoIcon
                 className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
               />
@@ -56,7 +57,7 @@ export default function Footer() {
                   <Link
                     key={link.key}
                     to={link.path}
-                    title={link.title}
+                    title={t(`footer.navTitles.${link.key === 'faqNav' ? 'faq' : link.key}`)}
                     className="text-text-secondary dark:text-gray-400 hover:text-primary active:opacity-80 transition-colors text-sm py-1.5"
                   >
                     {t(`nav.${link.key}`)}
@@ -84,7 +85,7 @@ export default function Footer() {
                     color: 'linear-gradient(135deg, hsl(220, 8%, 50%), hsl(220, 8%, 40%))',
                     label: 'Email',
                     href: 'mailto:info@bookbed.io',
-                    title: 'Pošaljite nam email',
+                    title: t('footer.navTitles.contact'),
                   },
                   {
                     icon: (
@@ -95,7 +96,7 @@ export default function Footer() {
                     color: 'linear-gradient(135deg, hsl(200, 8%, 50%), hsl(200, 8%, 40%))',
                     label: 'App',
                     href: 'https://app.bookbed.io',
-                    title: 'Otvori BookBed aplikaciju',
+                    title: t('footer.navTitles.home'), // Link to app home
                   },
                 ]}
                 className="!flex !gap-4 !py-0"
@@ -113,18 +114,18 @@ export default function Footer() {
         >
           <div className="border-t border-gray-300 dark:border-zinc-800 pt-8">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-text-tertiary dark:text-gray-500">
-              <p>{t('footer.copyright')}</p>
+              <p>{t('copyright') || t('footer.copyright')}</p>
               <div className="flex items-center gap-4">
-                <Link to="/privacy" title="Politika privatnosti" className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
+                <Link to="/privacy" title={t('footer.navTitles.privacy')} className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
                   {t('footer.privacy')}
                 </Link>
-                <Link to="/terms" title="Uvjeti korištenja" className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
+                <Link to="/terms" title={t('footer.navTitles.terms')} className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
                   {t('footer.terms')}
                 </Link>
-                <Link to="/account-deletion" title="Brisanje računa" className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
+                <Link to="/account-deletion" title={t('footer.navTitles.accountDeletion')} className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
                   {t('footer.accountDeletion')}
                 </Link>
-                <Link to="/data-deletion" title="Brisanje podataka" className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
+                <Link to="/data-deletion" title={t('footer.navTitles.dataDeletion')} className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
                   {t('footer.dataDeletion')}
                 </Link>
               </div>

@@ -3,7 +3,8 @@ import { getSectionSpacing, getContainerClasses } from '../utils/spacing'
 import { typography } from '../utils/typography'
 import FadeContent from './ui/animations/FadeContent'
 import BlurText from './ui/animations/BlurText'
-import MagicBento from './ui/MagicBento'
+
+import OnboardingStepper from './ui/OnboardingStepper'
 
 export default function FeaturesSection() {
   const { t } = useTranslation()
@@ -32,19 +33,8 @@ export default function FeaturesSection() {
           </div>
         </FadeContent>
 
-        {/* MagicBento Grid - Original ReactBits Implementation */}
-        <MagicBento
-          textAutoHide={true}
-          enableStars={true}
-          enableSpotlight={true}
-          enableBorderGlow={true}
-          enableTilt={true}
-          enableMagnetism={true}
-          clickEffect={true}
-          spotlightRadius={400}
-          particleCount={12}
-          glowColor="107, 76, 230"
-        />
+        {/* Onboarding Stepper - Snake Layout */}
+        <OnboardingStepper />
       </div>
     </section>
   )

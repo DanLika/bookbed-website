@@ -48,9 +48,9 @@ interface FadeContentProps extends React.HTMLAttributes<HTMLElement> {
 const FadeContent: React.FC<FadeContentProps> = ({
   children,
   container,
-  blur = false,
-  blurAmount = 10,
-  duration = 1000,
+  blur = false, // Deprecated - kept for API compatibility but ignored
+  blurAmount = 10, // Deprecated
+  duration = 600, // Reduced from 1000ms
   ease = 'power2.out',
   delay = 0,
   threshold = 0.1,
@@ -95,15 +95,25 @@ const FadeContent: React.FC<FadeContentProps> = ({
       return;
     }
 
+    // Simplified: Only play animation if not on low-end mobile OR if priority is high
+    const isMobile = window.innerWidth < 768;
+
+    // Auto-disable heavy animations on mobile scroll
+    if (isMobile) {
+      gsap.set(el, { autoAlpha: 1, filter: 'blur(0px)', x: 0, y: 0, scale: 1 });
+      onComplete?.();
+      return;
+    }
+
+    const startPct = (1 - threshold) * 100;
+    const getSeconds = (val: number) => (val > 10 ? val / 1000 : val);
+
     let scrollerTarget: Element | string | null =
       container || document.getElementById('snap-main-container') || null;
 
     if (typeof scrollerTarget === 'string') {
       scrollerTarget = document.querySelector(scrollerTarget);
     }
-
-    const startPct = (1 - threshold) * 100;
-    const getSeconds = (val: number) => (val > 10 ? val / 1000 : val);
 
     // Calculate initial position based on direction
     const getInitialPosition = () => {
@@ -121,28 +131,20 @@ const FadeContent: React.FC<FadeContentProps> = ({
 
     gsap.set(el, {
       autoAlpha: initialOpacity,
-      filter: blur ? `blur(${blurAmount}px)` : 'blur(0px)',
       x: initialPos.x,
       y: initialPos.y,
-      scale: scale ? scaleStart : 1,
-      willChange: 'opacity, filter, transform'
+      scale: scale ? scaleStart : 1
     });
 
     const tl = gsap.timeline({
       paused: true,
       delay: getSeconds(delay),
       onComplete: () => {
-        // Delay willChange cleanup to prevent black flash on scroll-back
-        setTimeout(() => {
-          gsap.set(el, { willChange: 'auto' });
-        }, 100); // Wait 100ms for animation to fully settle
-
         if (onComplete) onComplete();
 
         if (disappearAfter > 0) {
           gsap.to(el, {
             autoAlpha: initialOpacity,
-            filter: blur ? `blur(${blurAmount}px)` : 'blur(0px)',
             x: initialPos.x,
             y: initialPos.y,
             scale: scale ? scaleStart : 1,
@@ -157,7 +159,6 @@ const FadeContent: React.FC<FadeContentProps> = ({
 
     tl.to(el, {
       autoAlpha: 1,
-      filter: 'blur(0px)',
       x: 0,
       y: 0,
       scale: 1,

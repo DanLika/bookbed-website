@@ -7,7 +7,8 @@
     "contact": "Kontakt",
     "docs": "Dokumentacija",
     "accountDeletion": "Brisanje Računa",
-    "dataDeletion": "Brisanje Podataka"
+    "dataDeletion": "Brisanje Podataka",
+    "faqNav": "Česta Pitanja"
   },
   "about": {
     "title": "O Nama",
@@ -37,6 +38,7 @@
     "subtitle": "Kompletna platforma za upravljanje rezervacijama za vlasnike smještaja",
     "cta": "Započnite Besplatno",
     "watchDemo": "Pogledaj Demo",
+    "alt": "BookBed Kontrolna Ploča",
     "cards": {
       "newBooking": "Nova Rezervacija",
       "justNow": "Upravo sada",
@@ -57,29 +59,29 @@
     "title": "Sve Što Vam Treba",
     "subtitle": "Moćne funkcije za pojednostavljenje vašeg posla iznajmljivanja",
     "bento": {
-      "sync": {
-        "title": "Sinkronizacija u Realnom Vremenu",
-        "desc": "iCal sa Airbnb i Booking.com"
+      "step1": {
+        "title": "Registracija",
+        "desc": "Kreiraj račun u sekundi"
       },
-      "emails": {
-        "title": "Automatski Emailovi",
-        "desc": "Potvrde se šalju automatski"
+      "step2": {
+        "title": "Dodaj Nekretninu",
+        "desc": "Postavi smještaj sa fotografijama"
       },
-      "before": {
-        "title": "Prije: Ručno",
-        "desc": "Excel kaos i propuštene rezervacije"
+      "step3": {
+        "title": "Konfiguriraj",
+        "desc": "Postavi cijene i dostupnost"
       },
-      "after": {
-        "title": "Poslije: Automatizirano",
-        "desc": "Dashboard i sinkronizacija uživo"
+      "step4": {
+        "title": "Ugradi Widget",
+        "desc": "Kopiraj kod na web stranicu"
       },
-      "payments": {
-        "title": "Stripe Plaćanja",
-        "desc": "Sigurna automatska obrada"
+      "step5": {
+        "title": "Primi Rezervacije",
+        "desc": "Upravljaj rezervacijama"
       },
-      "multiProperty": {
-        "title": "Više Nekretnina",
-        "desc": "Neograničeno sa jednog mjesta"
+      "step6": {
+        "title": "Poveži Kanale",
+        "desc": "Spoji Airbnb i Booking.com"
       }
     },
     "calendar": {
@@ -138,10 +140,26 @@
     "subtitle": "Počnite upravljati vašim smještajima na jednostavan način",
     "button": "Započni"
   },
+  "newsletter": {
+    "title": "Ostanite u Toku",
+    "subtitle": "Pretplatite se za savjete, novosti iz industrije i ekskluzivne ponude za vlasnike smještaja",
+    "placeholder": "Unesite email",
+    "button": "Pretplatite se",
+    "success": "Hvala! Sada ste pretplaćeni.",
+    "error": "Nešto je pošlo po zlu. Pokušajte ponovo.",
+    "invalidEmail": "Molimo unesite ispravnu email adresu",
+    "benefit1": "Savjeti za upravljanje rezervacijama",
+    "benefit2": "Novosti i trendovi iz industrije",
+    "benefit3": "Ekskluzivne ponude"
+  },
   "demo": {
     "title": "Pogledajte BookBed u Akciji",
     "subtitle": "Pogledajte koliko je lako upravljati vašim smještajima",
-    "badge": "Video Demoi",
+    "badge": "Video Tutorijali",
+    "meta": {
+      "title": "Demo Video Tutorijali - BookBed",
+      "description": "Pogledajte kako BookBed funkcionira kroz naše video tutorijale. Naučite upravljati rezervacijama, postaviti nekretnine i koristiti sve značajke platforme."
+    },
     "comingSoon": "Video dolazi uskoro",
     "ctaTitle": "Spremni za početak?",
     "ctaDesc": "Isprobajte BookBed besplatno i uvjerite se koliko je lako upravljati rezervacijama.",
@@ -168,9 +186,13 @@
     }
   },
   "widget": {
-    "badge": "Widget za Ugradnju",
-    "title": "Widget za Rezervacije",
-    "subtitle": "Dodajte funkcionalnost rezervacija na vašu web stranicu za nekoliko minuta",
+    "badge": "Widget za Rezervacije",
+    "title": "Booking Widget",
+    "subtitle": "Integrirajte BookBed izravno na svoju web stranicu",
+    "meta": {
+      "title": "Booking Widget - Integrirajte Rezervacije na Vaš Web - BookBed",
+      "description": "Dodajte BookBed widget na svoju web stranicu. Prilagodljivi kalendar rezervacija, jednostavna integracija, više načina prikaza."
+    },
     "mode1": {
       "title": "Puni Mod Rezervacije",
       "desc": "Kompletan tok rezervacije sa Stripe integracijom plaćanja"
@@ -242,9 +264,168 @@
     "privacy": "Politika Privatnosti",
     "terms": "Uvjeti Korištenja",
     "accountDeletion": "Brisanje Računa",
-    "dataDeletion": "Brisanje Podataka"
+    "dataDeletion": "Brisanje Podataka",
+    "navTitles": {
+      "home": "Početna stranica",
+      "demo": "Pogledajte demo video tutorijale",
+      "widget": "Saznajte više o booking widgetu",
+      "docs": "Dokumentacija i upute za korištenje",
+      "faq": "Česta pitanja",
+      "contact": "Kontaktirajte nas",
+      "privacy": "Politika privatnosti",
+      "terms": "Uvjeti korištenja",
+      "accountDeletion": "Brisanje računa",
+      "dataDeletion": "Brisanje podataka"
+    }
   },
   "skipToContent": "Preskoči na glavni sadržaj",
+  "terms": {
+    "title": "Uvjeti Korištenja BookBed Platforme",
+    "meta": {
+      "title": "Uvjeti Korištenja - BookBed",
+      "description": "Pročitajte uvjete korištenja BookBed platforme. Saznajte o vašim pravima i obvezama kao korisnika naše usluge."
+    },
+    "lastUpdated": "Zadnje ažurirano",
+    "lastUpdatedDate": "27. prosinca 2025.",
+    "section1": {
+      "title": "1. Prihvaćanje uvjeta",
+      "content": "Korištenjem BookBed platforme prihvaćate ove uvjete korištenja. Ako se ne slažete s ovim uvjetima, molimo vas da ne koristite našu uslugu."
+    },
+    "section2": {
+      "title": "2. Opis usluge",
+      "content": "BookBed je SaaS platforma za upravljanje rezervacijama namijenjena vlasnicima smještaja. Usluga uključuje:",
+      "item1": "Kalendar rezervacija",
+      "item2": "Widget za online rezervacije",
+      "item3": "Obradu plaćanja putem Stripe-a",
+      "item4": "Automatske email obavijesti",
+      "item5": "iCal sinkronizaciju"
+    },
+    "section3": {
+      "title": "3. Korisnički račun",
+      "content": "Za korištenje usluge potrebno je kreirati korisnički račun. Odgovorni ste za:",
+      "item1": "Održavanje sigurnosti svoje lozinke",
+      "item2": "Sve aktivnosti na vašem računu",
+      "item3": "Pružanje točnih informacija"
+    },
+    "section4": {
+      "title": "4. Plaćanja i pretplate",
+      "content": "BookBed nudi različite planove pretplate. Plaćanja se obrađuju putem Stripe-a. Možete otkazati pretplatu u bilo kojem trenutku, a usluga će ostati aktivna do kraja obračunskog razdoblja."
+    },
+    "section5": {
+      "title": "5. Zabranjena ponašanja",
+      "content": "Zabranjeno je:",
+      "item1": "Korištenje usluge za nezakonite aktivnosti",
+      "item2": "Dijeljenje pristupnih podataka s trećim stranama",
+      "item3": "Pokušaji narušavanja sigurnosti platforme",
+      "item4": "Automatsko prikupljanje podataka bez dozvole"
+    },
+    "section6": {
+      "title": "6. Ograničenje odgovornosti",
+      "content": "BookBed se pruža \"kakav jest\". Ne jamčimo neprekidan rad usluge. Nismo odgovorni za indirektne štete nastale korištenjem platforme."
+    },
+    "section7": {
+      "title": "7. Prekid usluge",
+      "content": "Zadržavamo pravo prekinuti pristup usluzi korisnicima koji krše ove uvjete korištenja."
+    },
+    "section8": {
+      "title": "8. Kontakt",
+      "content": "Za sva pitanja o uvjetima korištenja, kontaktirajte nas na: info@bookbed.io"
+    }
+  },
+  "accountDeletion": {
+    "title": "Brisanje BookBed Računa",
+    "meta": {
+      "title": "Brisanje Računa - BookBed",
+      "description": "Saznajte kako izbrisati svoj BookBed račun i povezane podatke. Koraci za brisanje računa i informacije o zadržavanju podataka."
+    },
+    "method1": {
+      "title": "Metoda 1: Brisanje u Aplikaciji (Preporučeno)",
+      "step1": "Otvorite BookBed mobilnu aplikaciju",
+      "step2": "Idite na Profil",
+      "step3": "Skrolujte na dno → Danger Zone (Opasna Zona)",
+      "step4": "Kliknite Delete Account (Obriši račun)",
+      "step5": "Potvrdite brisanje",
+      "note": "Vaš račun i svi podaci bit će trajno izbrisani u roku od 48 sati."
+    },
+    "method2": {
+      "title": "Metoda 2: Email Zahtjev",
+      "intro": "Ako ne možete pristupiti aplikaciji, pošaljite email na:",
+      "subjectLabel": "Naslov:",
+      "subjectValue": "Zahtjev za Brisanje Računa",
+      "includeLabel": "Uključite:",
+      "includeValue": "Vašu registriranu email adresu",
+      "note": "Obradit ćemo vaš zahtjev u roku od 7 radnih dana."
+    },
+    "whatGetsDeleted": {
+      "title": "Što Se Briše",
+      "intro": "Kada izbrišete svoj račun, sljedeći podaci bit će trajno uklonjeni:",
+      "item1": "Podaci o računu (email, ime, lozinka)",
+      "item2": "Informacije o profilu (ime, telefon)",
+      "item3": "Nekretnine i jedinice",
+      "item4": "Povijest rezervacija",
+      "item5": "Podaci o plaćanjima",
+      "item6": "Analitički podaci"
+    },
+    "dataRetention": {
+      "title": "Razdoblje Zadržavanja Podataka",
+      "intro": "Neki podaci mogu biti zadržani radi usklađenosti sa zakonom:",
+      "taxRecordsTitle": "Porezni zapisi:",
+      "taxRecordsContent": "Do 7 godina (zakonski obavezno)",
+      "fraudLogsTitle": "Logovi prevencije prijevare:",
+      "fraudLogsContent": "Do 1 godine"
+    },
+    "questions": {
+      "title": "Pitanja?",
+      "intro": "Ako imate bilo kakvih pitanja o brisanju računa ili podataka, kontaktirajte nas:",
+      "contactLabel": "Kontakt:",
+      "privacyPolicyLabel": "Politika Privatnosti:"
+    }
+  },
+  "dataDeletion": {
+    "title": "Brisanje Podataka Bez Brisanja Računa",
+    "meta": {
+      "title": "Brisanje Podataka - BookBed",
+      "description": "Naučite kako izbrisati određene podatke iz svog BookBed računa bez brisanja cijelog računa."
+    },
+    "intro": "Možete selektivno izbrisati određene podatke iz svog BookBed računa bez brisanja cijelog računa:",
+    "inAppTitle": "U BookBed Aplikaciji",
+    "deleteProperties": {
+      "title": "Brisanje Nekretnina",
+      "step1": "Idite na Nekretnine (Properties)",
+      "step2": "Odaberite nekretninu",
+      "step3": "Kliknite ⋮ meni → Obriši (Delete)"
+    },
+    "deleteUnits": {
+      "title": "Brisanje Jedinica",
+      "step1": "Idite na Nekretnine → Odaberite nekretninu",
+      "step2": "Kliknite na jedinicu",
+      "step3": "Kliknite ⋮ meni → Obriši jedinicu (Delete Unit)"
+    },
+    "deleteBookings": {
+      "title": "Brisanje Rezervacija",
+      "step1": "Idite na Rezervacije (Bookings)",
+      "step2": "Odaberite rezervaciju",
+      "step3": "Kliknite Otkaži rezervaciju (Cancel Booking) ili Obriši (Delete)"
+    },
+    "deleteProfileData": {
+      "title": "Brisanje Podataka Profila",
+      "intro": "Za brisanje određenih osobnih informacija (broj telefona, ime) bez brisanja cijelog računa:",
+      "subjectLabel": "Naslov:",
+      "subjectValue": "Zahtjev za Brisanje Podataka",
+      "specifyLabel": "Navedite:",
+      "specifyValue": "Koje osobne podatke želite izbrisati",
+      "note": "Odgovorit ćemo u roku od 7 radnih dana."
+    },
+    "importantNote": {
+      "title": "Važna Napomena",
+      "content": "Neki podaci (kao što su dovršene transakcije) mogu biti zadržani radi usklađenosti sa zakonom i poreznim obvezama."
+    },
+    "fullAccountDeletion": {
+      "title": "🗑️ Želite izbrisati cijeli račun?",
+      "intro": "Ako želite izbrisati svoj cijeli BookBed račun (zajedno sa svim podacima), posjetite stranicu za brisanje računa:",
+      "button": "Obriši Cijeli Račun"
+    }
+  },
   "privacy": {
     "title": "Politika Privatnosti",
     "lastUpdated": "Zadnje ažurirano",
@@ -1107,6 +1288,153 @@
           ]
         }
       ]
+    }
+  },
+  "faqPage": {
+    "badge": "Česta Pitanja",
+    "title": "Česta Pitanja",
+    "subtitle": "Sve što trebate znati o BookBedu prije nego što počnete",
+    "meta": {
+      "title": "Često Postavljana Pitanja (FAQ) - BookBed",
+      "description": "Pronađite odgovore na najčešća pitanja o BookBed platformi za upravljanje rezervacijama, cijenama i značajkama."
+    },
+    "categories": {
+      "about": {
+        "title": "O BookBedu",
+        "items": [
+          {
+            "question": "Što je BookBed?",
+            "answer": "BookBed je platforma za upravljanje rezervacijama dizajnirana za vlasnike smještaja. Pomaže vam upravljati rezervacijama, primati online plaćanja, sinkronizirati kalendare s Airbnb i Booking.com te ugraditi booking widget na vašu web stranicu."
+          },
+          {
+            "question": "Za koga je BookBed?",
+            "answer": "BookBed je savršen za vlasnike apartmana, vila, pansiona, kuća za odmor i malih hotela koji žele primati direktne rezervacije i efikasnije upravljati rezervacijama."
+          },
+          {
+            "question": "Po čemu se BookBed razlikuje od Booking.com ili Airbnba?",
+            "answer": "Za razliku od OTA platformi (Online Travel Agencies), BookBed je VAŠA platforma. Vi posjedujete odnos s gostom, ne plaćate proviziju na rezervacije i imate punu kontrolu nad cijenama i dostupnošću. BookBed se sinkronizira S ovim platformama, ne protiv njih."
+          },
+          {
+            "question": "Je li BookBed channel manager?",
+            "answer": "BookBed uključuje iCal sinkronizaciju koja sprječava dvostruke rezervacije na različitim platformama. Iako nije puni channel manager, održava vaše kalendare sinkroniziranima s Airbnb, Booking.com i drugim platformama koje podržavaju iCal."
+          }
+        ]
+      },
+      "pricing": {
+        "title": "Cijene i Planovi",
+        "items": [
+          {
+            "question": "Koliko košta BookBed?",
+            "answer": "Nudimo prilagođene cijene prema vašim potrebama. Kontaktirajte nas za personaliziranu ponudu koja odgovara vašem portfelju nekretnina. Ne naplaćujemo provizije na rezervacije."
+          },
+          {
+            "question": "Postoji li besplatna probna verzija?",
+            "answer": "Da! Možete se registrirati i besplatno istražiti BookBed. Kontaktirajte nas za dogovor o probnom periodu koji vam odgovara."
+          },
+          {
+            "question": "Ima li skrivenih troškova?",
+            "answer": "Nema skrivenih troškova. Jedini dodatni troškovi su Stripeove standardne naknade za obradu plaćanja (1,4% + 0,25€ za europske kartice) kada primate kartična plaćanja."
+          },
+          {
+            "question": "Mogu li otkazati bilo kada?",
+            "answer": "Da, možete otkazati pretplatu u bilo kojem trenutku. Vaši podaci ostaju dostupni za izvoz, i ne vežemo vas dugotrajnim ugovorima."
+          },
+          {
+            "question": "Naplaćujete li proviziju na rezervacije?",
+            "answer": "Ne, BookBed ne uzima nikakvu proviziju na vaše rezervacije. Zadržavate 100% prihoda od rezervacija (minus standardne Stripe naknade za kartična plaćanja)."
+          }
+        ]
+      },
+      "gettingStarted": {
+        "title": "Početak Korištenja",
+        "items": [
+          {
+            "question": "Kako se registriram?",
+            "answer": "Posjetite app.bookbed.io i kreirajte račun s vašom email adresom. Čarobnjak za postavljanje vodit će vas kroz dodavanje prve nekretnine za nekoliko minuta."
+          },
+          {
+            "question": "Postoji li mobilna aplikacija?",
+            "answer": "Da! BookBed ima nativne mobilne aplikacije za iOS i Android, tako da možete upravljati rezervacijama u pokretu. Web dashboard također odlično radi na mobilnim preglednicima."
+          },
+          {
+            "question": "Koliko vremena treba za postavljanje?",
+            "answer": "Možete postaviti prvu nekretninu i biti spremni za primanje rezervacija za otprilike 15 minuta. Dodavanje fotografija, opisa i fino podešavanje cijena može se raditi postupno."
+          },
+          {
+            "question": "Trebam li tehničko znanje?",
+            "answer": "Uopće ne! BookBed je dizajniran da bude jednostavan za korištenje. Ako znate koristiti email i osnovne aplikacije, možete koristiti BookBed. Naša dokumentacija pokriva sve korak po korak."
+          }
+        ]
+      },
+      "features": {
+        "title": "Pregled Funkcionalnosti",
+        "items": [
+          {
+            "question": "Mogu li primati online plaćanja?",
+            "answer": "Da! BookBed se integrira sa Stripeom za sigurna plaćanja kreditnim karticama. Gosti mogu platiti pri rezervaciji, a sredstva idu direktno na vaš bankovni račun."
+          },
+          {
+            "question": "Sinkronizira li se s Booking.com i Airbnbom?",
+            "answer": "Da, BookBed podržava dvosmjernu iCal sinkronizaciju. Kada se rezervacija napravi na bilo kojoj platformi, automatski blokira te datume posvuda drugdje kako bi se spriječile dvostruke rezervacije."
+          },
+          {
+            "question": "Mogu li ugraditi kalendar rezervacija na svoju web stranicu?",
+            "answer": "Apsolutno! BookBed pruža widget za ugradnju koji možete dodati na bilo koju web stranicu. Prikazuje dostupnost i omogućuje gostima direktnu rezervaciju sa samo nekoliko linija koda."
+          },
+          {
+            "question": "Podržava li više nekretnina?",
+            "answer": "Da, možete upravljati neograničenim brojem nekretnina i jedinica s jednog dashboarda. Svaka nekretnina može imati vlastite postavke, cijene i booking widget."
+          },
+          {
+            "question": "Koji jezici su podržani?",
+            "answer": "Vlasnički dashboard i booking widget dostupni su na engleskom i hrvatskom, s više jezika koji dolaze uskoro."
+          }
+        ]
+      },
+      "security": {
+        "title": "Sigurnost i Povjerenje",
+        "items": [
+          {
+            "question": "Jesu li moji podaci sigurni?",
+            "answer": "Da, koristimo industrijsku standardnu enkripciju i sigurnosne prakse. Vaši podaci su pohranjeni na Google Cloud infrastrukturi s automatskim sigurnosnim kopijama i strogim kontrolama pristupa."
+          },
+          {
+            "question": "Je li BookBed usklađen s GDPR-om?",
+            "answer": "Da, BookBed je potpuno usklađen s GDPR-om. Možete zatražiti izvoz ili brisanje podataka u bilo kojem trenutku, a prikupljamo samo podatke potrebne za pružanje naših usluga."
+          },
+          {
+            "question": "Kako se obrađuju plaćanja?",
+            "answer": "Plaćanja se obrađuju putem Stripea, PCI-DSS Level 1 certificiranog procesora plaćanja. BookBed nikada ne pohranjuje brojeve kreditnih kartica - sve podatke o plaćanju obrađuju Stripeovi sigurni serveri."
+          },
+          {
+            "question": "Što se događa ako BookBed prestane raditi?",
+            "answer": "Vaši podaci su uvijek dostupni za izvoz. Vi posjedujete podatke o gostima i povijest rezervacija. U malo vjerojatnom slučaju prekida usluge, imali biste dovoljno vremena za obavijest i puni pristup podacima."
+          }
+        ]
+      },
+      "support": {
+        "title": "Podrška",
+        "items": [
+          {
+            "question": "Kako mogu kontaktirati podršku?",
+            "answer": "Možete nas kontaktirati putem emaila na info@bookbed.io ili putem kontakt forme na našoj web stranici. Nastojimo odgovoriti unutar 24 sata radnim danom."
+          },
+          {
+            "question": "Postoji li dokumentacija ili centar za pomoć?",
+            "answer": "Da! Naša sveobuhvatna dokumentacija pokriva sve od postavljanja do naprednih funkcija. Posjetite odjeljak Dokumentacija za detaljne vodiče i tutoriale."
+          },
+          {
+            "question": "Nudite li pomoć pri uhodavanju?",
+            "answer": "Da, rado ćemo vam pomoći da počnete. Kontaktirajte nas za personaliziranu podršku pri uhodavanju, posebno ako upravljate s više nekretnina."
+          }
+        ]
+      }
+    },
+    "cta": {
+      "title": "Još uvijek imate pitanja?",
+      "subtitle": "Tu smo da pomognemo. Kontaktirajte nas ili započnite besplatnu probnu verziju danas.",
+      "getStarted": "Započnite Besplatno",
+      "contact": "Kontaktirajte Nas"
     }
   }
 }

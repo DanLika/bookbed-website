@@ -7,7 +7,8 @@
     "contact": "Contact",
     "docs": "Docs",
     "accountDeletion": "Account Deletion",
-    "dataDeletion": "Data Deletion"
+    "dataDeletion": "Data Deletion",
+    "faqNav": "FAQ"
   },
   "about": {
     "title": "About Us",
@@ -37,6 +38,7 @@
     "subtitle": "The complete booking management platform for vacation rental owners",
     "cta": "Get Started Free",
     "watchDemo": "Watch Demo",
+    "alt": "BookBed Dashboard",
     "cards": {
       "newBooking": "New Booking",
       "justNow": "Just now",
@@ -57,29 +59,29 @@
     "title": "Everything You Need",
     "subtitle": "Powerful features to streamline your rental business",
     "bento": {
-      "sync": {
-        "title": "Real-time Sync",
-        "desc": "iCal with Airbnb & Booking.com"
+      "step1": {
+        "title": "Sign Up",
+        "desc": "Create your account in seconds"
       },
-      "emails": {
-        "title": "Auto Emails",
-        "desc": "Confirmations sent automatically"
+      "step2": {
+        "title": "Add Property",
+        "desc": "Set up your rental with photos"
       },
-      "before": {
-        "title": "Before: Manual",
-        "desc": "Excel chaos & missed bookings"
+      "step3": {
+        "title": "Configure",
+        "desc": "Set pricing & availability"
       },
-      "after": {
-        "title": "After: Automated",
-        "desc": "Dashboard & real-time sync"
+      "step4": {
+        "title": "Embed Widget",
+        "desc": "Copy code to your website"
       },
-      "payments": {
-        "title": "Stripe Payments",
-        "desc": "Secure automatic processing"
+      "step5": {
+        "title": "Get Bookings",
+        "desc": "Receive & manage reservations"
       },
-      "multiProperty": {
-        "title": "Multi-Property",
-        "desc": "Unlimited from one place"
+      "step6": {
+        "title": "Sync Channels",
+        "desc": "Connect Airbnb & Booking.com"
       }
     },
     "calendar": {
@@ -138,10 +140,26 @@
     "subtitle": "Start managing your vacation rentals the easy way",
     "button": "Get Started"
   },
+  "newsletter": {
+    "title": "Stay Updated",
+    "subtitle": "Subscribe for tips, industry insights, and exclusive offers for property owners",
+    "placeholder": "Enter your email",
+    "button": "Subscribe",
+    "success": "Thank you! You're now subscribed.",
+    "error": "Something went wrong. Please try again.",
+    "invalidEmail": "Please enter a valid email address",
+    "benefit1": "Booking management tips",
+    "benefit2": "Industry news & trends",
+    "benefit3": "Exclusive offers"
+  },
   "demo": {
     "title": "See BookBed in Action",
     "subtitle": "Watch how easy it is to manage your vacation rentals",
-    "badge": "Video Demos",
+    "badge": "Video Tutorials",
+    "meta": {
+      "title": "Demo Video Tutorials - BookBed",
+      "description": "See how BookBed works through our video tutorials. Learn to manage bookings, set up properties, and use all platform features."
+    },
     "comingSoon": "Video coming soon",
     "ctaTitle": "Ready to get started?",
     "ctaDesc": "Try BookBed free and see how easy it is to manage your bookings.",
@@ -168,9 +186,13 @@
     }
   },
   "widget": {
-    "badge": "Embeddable Widget",
-    "title": "Embeddable Booking Widget",
-    "subtitle": "Add booking functionality to your website in minutes",
+    "badge": "Booking Widget",
+    "title": "Booking Widget",
+    "subtitle": "Integrate BookBed directly on your website",
+    "meta": {
+      "title": "Booking Widget - Integrate Bookings on Your Website - BookBed",
+      "description": "Add BookBed widget to your website. Customizable booking calendar, easy integration, multiple display modes."
+    },
     "mode1": {
       "title": "Full Booking Mode",
       "desc": "Complete booking flow with Stripe payment integration"
@@ -242,9 +264,168 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "accountDeletion": "Account Deletion",
-    "dataDeletion": "Data Deletion"
+    "dataDeletion": "Data Deletion",
+    "navTitles": {
+      "home": "Home page",
+      "demo": "Watch demo video tutorials",
+      "widget": "Learn more about the booking widget",
+      "docs": "Documentation and usage instructions",
+      "faq": "Frequently asked questions",
+      "contact": "Contact us",
+      "privacy": "Privacy policy",
+      "terms": "Terms of service",
+      "accountDeletion": "Account deletion",
+      "dataDeletion": "Data deletion"
+    }
   },
   "skipToContent": "Skip to main content",
+  "terms": {
+    "title": "BookBed Platform Terms of Service",
+    "meta": {
+      "title": "Terms of Service - BookBed",
+      "description": "Read BookBed platform terms of service. Learn about your rights and obligations as a user of our service."
+    },
+    "lastUpdated": "Last Updated",
+    "lastUpdatedDate": "December 27, 2025",
+    "section1": {
+      "title": "1. Acceptance of Terms",
+      "content": "By using the BookBed platform, you accept these terms of service. If you do not agree with these terms, please do not use our service."
+    },
+    "section2": {
+      "title": "2. Description of Service",
+      "content": "BookBed is a booking management SaaS platform intended for property owners. The service includes:",
+      "item1": "Booking calendar",
+      "item2": "Online booking widget",
+      "item3": "Payment processing via Stripe",
+      "item4": "Automatic email notifications",
+      "item5": "iCal synchronization"
+    },
+    "section3": {
+      "title": "3. User Account",
+      "content": "To use the service, it is necessary to create a user account. You are responsible for:",
+      "item1": "Maintaining the security of your password",
+      "item2": "All activities on your account",
+      "item3": "Providing accurate information"
+    },
+    "section4": {
+      "title": "4. Payments and Subscriptions",
+      "content": "BookBed offers different subscription plans. Payments are processed via Stripe. You can cancel your subscription at any time, and the service will remain active until the end of the billing period."
+    },
+    "section5": {
+      "title": "5. Prohibited Conduct",
+      "content": "It is prohibited to:",
+      "item1": "Use the service for illegal activities",
+      "item2": "Share access data with third parties",
+      "item3": "Attempts to compromise platform security",
+      "item4": "Automatic data collection without permission"
+    },
+    "section6": {
+      "title": "6. Limitation of Liability",
+      "content": "BookBed is provided \"as is\". We do not guarantee uninterrupted service operation. We are not responsible for indirect damages resulting from platform use."
+    },
+    "section7": {
+      "title": "7. Termination of Service",
+      "content": "We reserve the right to terminate service access for users who violate these terms of service."
+    },
+    "section8": {
+      "title": "8. Contact",
+      "content": "For any questions about the terms of service, contact us at: info@bookbed.io"
+    }
+  },
+  "accountDeletion": {
+    "title": "Delete Your BookBed Account",
+    "meta": {
+      "title": "Account Deletion - BookBed",
+      "description": "Learn how to delete your BookBed account and associated data. Steps for account deletion and data retention information."
+    },
+    "method1": {
+      "title": "Method 1: In-App Deletion (Recommended)",
+      "step1": "Open the BookBed mobile app",
+      "step2": "Navigate to Profile",
+      "step3": "Scroll to the bottom → Danger Zone",
+      "step4": "Tap Delete Account",
+      "step5": "Confirm deletion",
+      "note": "Your account and all data will be permanently deleted within 48 hours."
+    },
+    "method2": {
+      "title": "Method 2: Email Request",
+      "intro": "If you cannot access the app, send an email to:",
+      "subjectLabel": "Subject:",
+      "subjectValue": "Account Deletion Request",
+      "includeLabel": "Include:",
+      "includeValue": "Your registered email address",
+      "note": "We will process your request within 7 business days."
+    },
+    "whatGetsDeleted": {
+      "title": "What Gets Deleted",
+      "intro": "When you delete your account, the following data is permanently removed:",
+      "item1": "Account information (email, name, password)",
+      "item2": "Profile information (name, phone)",
+      "item3": "Properties and units",
+      "item4": "Booking history",
+      "item5": "Payment records",
+      "item6": "Analytics data"
+    },
+    "dataRetention": {
+      "title": "Data Retention Period",
+      "intro": "Some data may be retained for legal compliance:",
+      "taxRecordsTitle": "Tax records:",
+      "taxRecordsContent": "Up to 7 years (legally required)",
+      "fraudLogsTitle": "Fraud prevention logs:",
+      "fraudLogsContent": "Up to 1 year"
+    },
+    "questions": {
+      "title": "Questions?",
+      "intro": "If you have any questions about account or data deletion, contact us:",
+      "contactLabel": "Contact:",
+      "privacyPolicyLabel": "Privacy Policy:"
+    }
+  },
+  "dataDeletion": {
+    "title": "Delete Specific Data",
+    "meta": {
+      "title": "Data Deletion - BookBed",
+      "description": "Learn how to delete specific data from your BookBed account without deleting your entire account."
+    },
+    "intro": "You can selectively delete specific data from your BookBed account without deleting your entire account:",
+    "inAppTitle": "In the BookBed App",
+    "deleteProperties": {
+      "title": "Delete Properties",
+      "step1": "Go to Properties",
+      "step2": "Select the property",
+      "step3": "Tap the ⋮ menu → Delete"
+    },
+    "deleteUnits": {
+      "title": "Delete Units",
+      "step1": "Go to Properties → Select property",
+      "step2": "Tap on the unit",
+      "step3": "Tap ⋮ menu → Delete Unit"
+    },
+    "deleteBookings": {
+      "title": "Delete Bookings",
+      "step1": "Go to Bookings",
+      "step2": "Select the booking",
+      "step3": "Tap Cancel Booking or Delete"
+    },
+    "deleteProfileData": {
+      "title": "Delete Profile Data",
+      "intro": "To delete specific personal information (phone number, name) without deleting your entire account:",
+      "subjectLabel": "Subject:",
+      "subjectValue": "Data Deletion Request",
+      "specifyLabel": "Specify:",
+      "specifyValue": "Which personal data you want to delete",
+      "note": "We will respond within 7 business days."
+    },
+    "importantNote": {
+      "title": "Important Note",
+      "content": "Some data (like completed transactions) may be retained for legal/tax compliance purposes."
+    },
+    "fullAccountDeletion": {
+      "title": "🗑️ Want to delete your entire account?",
+      "intro": "If you want to delete your entire BookBed account (along with all data), visit the account deletion page:",
+      "button": "Delete Entire Account"
+    }
+  },
   "privacy": {
     "title": "Privacy Policy",
     "lastUpdated": "Last updated",
@@ -1107,6 +1288,153 @@
           ]
         }
       ]
+    }
+  },
+  "faqPage": {
+    "badge": "FAQ",
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about BookBed before getting started",
+    "meta": {
+      "title": "Frequently Asked Questions (FAQ) - BookBed",
+      "description": "Find answers to the most common questions about the BookBed booking management platform, pricing, and features."
+    },
+    "categories": {
+      "about": {
+        "title": "About BookBed",
+        "items": [
+          {
+            "question": "What is BookBed?",
+            "answer": "BookBed is a booking management platform designed for vacation rental owners. It helps you manage reservations, accept online payments, sync calendars with Airbnb and Booking.com, and embed a booking widget on your website."
+          },
+          {
+            "question": "Who is BookBed for?",
+            "answer": "BookBed is perfect for owners of apartments, villas, B&Bs, vacation rentals, and small hotels who want to accept direct bookings and manage reservations more efficiently."
+          },
+          {
+            "question": "How is BookBed different from Booking.com or Airbnb?",
+            "answer": "Unlike OTAs (Online Travel Agencies), BookBed is YOUR platform. You own the guest relationship, pay no commission on bookings, and have full control over your pricing and availability. BookBed syncs WITH these platforms, not against them."
+          },
+          {
+            "question": "Is BookBed a channel manager?",
+            "answer": "BookBed includes iCal synchronization which prevents double bookings across platforms. While it's not a full channel manager, it keeps your calendars in sync with Airbnb, Booking.com, and other platforms that support iCal."
+          }
+        ]
+      },
+      "pricing": {
+        "title": "Pricing & Plans",
+        "items": [
+          {
+            "question": "How much does BookBed cost?",
+            "answer": "We offer custom pricing based on your needs. Contact us for a personalized quote that fits your property portfolio. We don't charge commissions on bookings."
+          },
+          {
+            "question": "Is there a free trial?",
+            "answer": "Yes! You can sign up and explore BookBed free. Contact us to discuss a trial period that works for your situation."
+          },
+          {
+            "question": "Are there any hidden fees?",
+            "answer": "No hidden fees. The only additional costs are Stripe's standard payment processing fees (1.4% + €0.25 for European cards) when you accept card payments."
+          },
+          {
+            "question": "Can I cancel anytime?",
+            "answer": "Yes, you can cancel your subscription at any time. Your data remains accessible for export, and we don't lock you into long-term contracts."
+          },
+          {
+            "question": "Do you charge commission on bookings?",
+            "answer": "No, BookBed doesn't take any commission on your bookings. You keep 100% of your booking revenue (minus standard Stripe processing fees for card payments)."
+          }
+        ]
+      },
+      "gettingStarted": {
+        "title": "Getting Started",
+        "items": [
+          {
+            "question": "How do I sign up?",
+            "answer": "Visit app.bookbed.io and create an account with your email address. The setup wizard will guide you through adding your first property in minutes."
+          },
+          {
+            "question": "Is there a mobile app?",
+            "answer": "Yes! BookBed has native mobile apps for iOS and Android, so you can manage bookings on the go. The web dashboard also works great on mobile browsers."
+          },
+          {
+            "question": "How long does setup take?",
+            "answer": "You can have your first property set up and ready to accept bookings in about 15 minutes. Adding photos, descriptions, and fine-tuning pricing can be done gradually."
+          },
+          {
+            "question": "Do I need technical knowledge?",
+            "answer": "Not at all! BookBed is designed to be user-friendly. If you can use email and basic apps, you can use BookBed. Our documentation covers everything step-by-step."
+          }
+        ]
+      },
+      "features": {
+        "title": "Features Overview",
+        "items": [
+          {
+            "question": "Can I accept online payments?",
+            "answer": "Yes! BookBed integrates with Stripe for secure credit card payments. Guests can pay when booking, and funds go directly to your bank account."
+          },
+          {
+            "question": "Does it sync with Booking.com and Airbnb?",
+            "answer": "Yes, BookBed supports two-way iCal synchronization. When a booking is made on any platform, it automatically blocks those dates everywhere else to prevent double bookings."
+          },
+          {
+            "question": "Can I embed a booking calendar on my website?",
+            "answer": "Absolutely! BookBed provides an embeddable widget you can add to any website. It shows availability and lets guests book directly with just a few lines of code."
+          },
+          {
+            "question": "Does it support multiple properties?",
+            "answer": "Yes, you can manage unlimited properties and units from a single dashboard. Each property can have its own settings, pricing, and booking widget."
+          },
+          {
+            "question": "What languages are supported?",
+            "answer": "The owner dashboard and booking widget are available in English and Croatian, with more languages coming soon."
+          }
+        ]
+      },
+      "security": {
+        "title": "Security & Trust",
+        "items": [
+          {
+            "question": "Is my data secure?",
+            "answer": "Yes, we use industry-standard encryption and security practices. Your data is stored on Google Cloud infrastructure with automatic backups and strict access controls."
+          },
+          {
+            "question": "Is BookBed GDPR compliant?",
+            "answer": "Yes, BookBed is fully GDPR compliant. You can request data export or deletion at any time, and we only collect data necessary to provide our services."
+          },
+          {
+            "question": "How are payments processed?",
+            "answer": "Payments are processed through Stripe, a PCI-DSS Level 1 certified payment processor. BookBed never stores credit card numbers - all payment data is handled by Stripe's secure servers."
+          },
+          {
+            "question": "What happens if BookBed shuts down?",
+            "answer": "Your data is always exportable. You own your guest data and booking history. In the unlikely event of service discontinuation, you'd have ample notice and full data access."
+          }
+        ]
+      },
+      "support": {
+        "title": "Support",
+        "items": [
+          {
+            "question": "How can I contact support?",
+            "answer": "You can reach us via email at info@bookbed.io or through the contact form on our website. We aim to respond within 24 hours on business days."
+          },
+          {
+            "question": "Is there documentation or a help center?",
+            "answer": "Yes! Our comprehensive documentation covers everything from setup to advanced features. Visit the Docs section to find step-by-step guides and tutorials."
+          },
+          {
+            "question": "Do you offer onboarding assistance?",
+            "answer": "Yes, we're happy to help you get started. Contact us for personalized onboarding support, especially if you're managing multiple properties."
+          }
+        ]
+      }
+    },
+    "cta": {
+      "title": "Still have questions?",
+      "subtitle": "We're here to help. Contact us or start your free trial today.",
+      "getStarted": "Get Started Free",
+      "contact": "Contact Us"
     }
   }
 }

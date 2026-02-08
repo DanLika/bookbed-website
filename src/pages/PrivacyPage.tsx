@@ -5,15 +5,11 @@ import FadeContent from '../components/ui/animations/FadeContent'
 import { usePageMeta } from '../hooks/usePageMeta'
 
 const PrivacyPage = () => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   usePageMeta({
-    title: i18n.language === 'hr'
-      ? 'Politika Privatnosti - BookBed'
-      : 'Privacy Policy - BookBed',
-    description: i18n.language === 'hr'
-      ? 'Saznajte kako BookBed prikuplja, koristi i štiti vaše osobne podatke. Naša politika privatnosti objašnjava vaša prava i naše obveze.'
-      : 'Learn how BookBed collects, uses, and protects your personal data. Our privacy policy explains your rights and our obligations.'
+    title: t('privacy.meta.title'),
+    description: t('privacy.meta.description')
   })
 
   const renderList = (key: string) => {
@@ -51,7 +47,7 @@ const PrivacyPage = () => {
           <FadeContent duration={600} delay={100} direction="up" distance={20}>
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-text-secondary dark:text-gray-400 mb-6">
-                {t('privacy.lastUpdated')}: 14. {i18n.language === 'hr' ? 'siječnja' : 'January'} 2026.
+                {t('privacy.lastUpdated')}: {t('privacy.lastUpdatedDate')}
               </p>
 
               <div className="text-text-secondary dark:text-gray-400 mb-8 whitespace-pre-wrap">
@@ -143,7 +139,7 @@ const PrivacyPage = () => {
                   href="/account-deletion"
                   className="inline-flex items-center text-purple-600 dark:text-purple-400 hover:underline font-medium"
                 >
-                  {i18n.language === 'hr' ? 'Posjetite stranicu za brisanje računa →' : 'Visit Account Deletion Page →'}
+                  {t('privacy.visitAccountDeletion')}
                 </a>
               </div>
               <p className="text-text-secondary dark:text-gray-400 mt-4">

@@ -50,12 +50,14 @@ const BlurText: React.FC<BlurTextProps> = ({
   const elements = animateBy === 'words' ? text.split(' ') : text.split('');
   const [inView, setInView] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const ref = useRef<HTMLElement>(null);
 
-  // Check for reduced motion preference
+  // Check for reduced motion preference and mobile
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
+    setIsMobile(window.innerWidth < 768);
 
     const handleChange = (e: MediaQueryListEvent) => {
       setPrefersReducedMotion(e.matches);
@@ -87,24 +89,20 @@ const BlurText: React.FC<BlurTextProps> = ({
     return () => observer.disconnect();
   }, [threshold, rootMargin, prefersReducedMotion]);
 
+  // Simplified animation - remove blur filter for performance
   const defaultFrom = useMemo(
     () =>
       direction === 'top'
-        ? { filter: 'blur(10px)', opacity: 0, y: -30 }
-        : { filter: 'blur(10px)', opacity: 0, y: 30 },
+        ? { opacity: 0, y: -20 }
+        : { opacity: 0, y: 20 },
     [direction]
   );
 
   const defaultTo = useMemo(
     () => [
-      {
-        filter: 'blur(5px)',
-        opacity: 0.5,
-        y: direction === 'top' ? 5 : -5
-      },
-      { filter: 'blur(0px)', opacity: 1, y: 0 }
+      { opacity: 1, y: 0 }
     ],
-    [direction]
+    []
   );
 
   const fromSnapshot = animationFrom ?? defaultFrom;
@@ -114,8 +112,8 @@ const BlurText: React.FC<BlurTextProps> = ({
   const totalDuration = stepDuration * (stepCount - 1);
   const times = Array.from({ length: stepCount }, (_, i) => (stepCount === 1 ? 0 : i / (stepCount - 1)));
 
-  // If reduced motion, render without animation
-  if (prefersReducedMotion) {
+  // If reduced motion or mobile, render without animation
+  if (prefersReducedMotion || isMobile) {
     const Component = as;
     return (
       <Component className={className}>
@@ -129,13 +127,12 @@ const BlurText: React.FC<BlurTextProps> = ({
   return (
     <Component
       ref={ref as React.RefObject<HTMLParagraphElement>}
-      className={`blur-text ${className} flex flex-wrap ${
-        justify === 'responsive' ? 'justify-center lg:justify-start' :
+      className={`blur-text ${className} flex flex-wrap ${justify === 'responsive' ? 'justify-center lg:justify-start' :
         justify === 'start' ? 'justify-start' :
-        justify === 'end' ? 'justify-end' :
-        justify === 'between' ? 'justify-between' :
-        'justify-center'
-      }`}
+          justify === 'end' ? 'justify-end' :
+            justify === 'between' ? 'justify-between' :
+              'justify-center'
+        }`}
     >
       {elements.map((segment, index) => {
         const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);
@@ -155,8 +152,7 @@ const BlurText: React.FC<BlurTextProps> = ({
             transition={spanTransition}
             onAnimationComplete={index === elements.length - 1 ? onAnimationComplete : undefined}
             style={{
-              display: 'inline-block',
-              willChange: 'transform, filter, opacity'
+              display: 'inline-block'
             }}
           >
             {segment === ' ' ? '\u00A0' : segment}

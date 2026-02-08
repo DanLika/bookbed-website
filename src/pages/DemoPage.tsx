@@ -8,16 +8,12 @@ import GlassIcon from '../components/ui/GlassIcon'
 import { usePageMeta } from '../hooks/usePageMeta'
 
 const DemoPage = () => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   // Page-specific SEO meta tags
   usePageMeta({
-    title: i18n.language === 'hr'
-      ? 'Demo Video Tutorijali - BookBed'
-      : 'Demo Video Tutorials - BookBed',
-    description: i18n.language === 'hr'
-      ? 'Pogledajte kako BookBed funkcionira kroz naše video tutorijale. Naučite upravljati rezervacijama, postaviti nekretnine i koristiti sve značajke platforme.'
-      : 'See how BookBed works through our video tutorials. Learn to manage bookings, set up properties, and use all platform features.'
+    title: t('demo.meta.title'),
+    description: t('demo.meta.description')
   })
 
   const videos = [
@@ -111,9 +107,8 @@ const DemoPage = () => {
                 distance={40}
               >
                 <div
-                  className={`flex flex-col ${
-                    index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                  } items-center gap-8 lg:gap-12`}
+                  className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                    } items-center gap-8 lg:gap-12`}
                 >
                   {/* Text */}
                   <div className={`flex-1 text-center ${index % 2 === 0 ? 'lg:text-left' : 'lg:text-right'}`}>

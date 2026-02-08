@@ -86,10 +86,10 @@ export default function HeroSection() {
 
         {/* Dashboard Screenshot - Light/Dark versions with optimized responsive srcset */}
         <img
-          src="/images/hero/hero-light-1280.avif"
-          srcSet="/images/hero/hero-light-768.avif 768w, /images/hero/hero-light-1000.avif 1000w, /images/hero/hero-light-1280.avif 1280w"
-          alt="BookBed Dashboard"
-          title="BookBed Dashboard"
+          src="/images/hero/hero-dark-1280.avif"
+          srcSet="/images/hero/hero-dark-768.avif 768w, /images/hero/hero-dark-1000.avif 1000w, /images/hero/hero-dark-1280.avif 1280w"
+          alt={t('hero.alt')}
+          title={t('hero.alt')}
           width={1280}
           height={720}
           sizes="(max-width: 640px) 130vw, (max-width: 1024px) 115vw, 1280px"
@@ -99,10 +99,10 @@ export default function HeroSection() {
           decoding="async"
         />
         <img
-          src="/images/hero/hero-dark-1280.avif"
-          srcSet="/images/hero/hero-dark-768.avif 768w, /images/hero/hero-dark-1000.avif 1000w, /images/hero/hero-dark-1280.avif 1280w, /images/hero/hero-dark.avif 1778w"
-          alt="BookBed Dashboard"
-          title="BookBed Dashboard"
+          src="/images/hero/hero-light-1280.avif"
+          srcSet="/images/hero/hero-light-768.avif 768w, /images/hero/hero-light-1000.avif 1000w, /images/hero/hero-light-1280.avif 1280w"
+          alt={t('hero.alt')}
+          title={t('hero.alt')}
           width={1280}
           height={720}
           sizes="(max-width: 640px) 130vw, (max-width: 1024px) 115vw, 1280px"

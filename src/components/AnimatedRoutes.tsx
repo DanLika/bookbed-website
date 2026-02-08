@@ -13,6 +13,8 @@ const TermsPage = lazy(() => import('../pages/TermsPage'))
 const AccountDeletionPage = lazy(() => import('../pages/AccountDeletionPage'))
 const DataDeletionPage = lazy(() => import('../pages/DataDeletionPage'))
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'))
+const TestWidgetPage = lazy(() => import('../pages/TestWidgetPage'))
+const FAQPage = lazy(() => import('../pages/FAQPage'))
 
 // Docs pages
 const DocsIntroPage = lazy(() => import('../pages/docs/DocsIntroPage'))
@@ -49,6 +51,8 @@ export default function AnimatedRoutes() {
       <Route path="/terms" element={<Suspense fallback={<PageFallback />}><PageTransition><TermsPage /></PageTransition></Suspense>} />
       <Route path="/account-deletion" element={<Suspense fallback={<PageFallback />}><PageTransition><AccountDeletionPage /></PageTransition></Suspense>} />
       <Route path="/data-deletion" element={<Suspense fallback={<PageFallback />}><PageTransition><DataDeletionPage /></PageTransition></Suspense>} />
+      <Route path="/test-widget" element={<Suspense fallback={<PageFallback />}><PageTransition><TestWidgetPage /></PageTransition></Suspense>} />
+      <Route path="/faq" element={<Suspense fallback={<PageFallback />}><PageTransition><FAQPage /></PageTransition></Suspense>} />
 
       {/* Docs Routes */}
       <Route path="/docs" element={<Suspense fallback={<PageFallback />}><PageTransition><DocsIntroPage /></PageTransition></Suspense>} />

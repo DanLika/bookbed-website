@@ -61,15 +61,14 @@
     background: transparent !important;
   }
 
-  /* Smooth transitions for theme changes - only for specific properties */
+  /* Smooth transitions for theme changes - Optimized to target only necessary properties */
   html,
-  body,
-  [class*="bg-"],
-  [class*="text-"],
-  [class*="border-"] {
-    transition-property: background-color, border-color, color;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms;
+  body {
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .theme-transition {
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
   }
 }
 

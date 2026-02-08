@@ -80,64 +80,64 @@ export default function PricingSection() {
           threshold={0.15}
           className="max-w-md mx-auto"
         >
-            {/* Card with popular style + Spotlight effect */}
-            <SpotlightCard
-              className="rounded-3xl p-8 sm:p-10 bg-gradient-to-br from-primary via-primary-hover to-primary-dark border-2 border-primary shadow-purple"
-              spotlightColor="rgba(255, 255, 255, 0.35)"
-            >
-              <div className="relative">
-                {/* Plan name */}
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-                  {t('pricing.custom.title')}
-                </h3>
-                <p className="text-white/80 mb-8 text-lg">
-                  {t('pricing.custom.desc')}
-                </p>
+          {/* Card with popular style + Spotlight effect */}
+          <SpotlightCard
+            className="rounded-3xl p-8 sm:p-10 bg-gradient-to-br from-primary via-primary-hover to-primary-dark border-2 border-primary shadow-purple"
+            spotlightColor="rgba(255, 255, 255, 0.35)"
+          >
+            <div className="relative">
+              {/* Plan name */}
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+                {t('pricing.custom.title')}
+              </h3>
+              <p className="text-white/80 mb-8 text-lg">
+                {t('pricing.custom.desc')}
+              </p>
 
-                {/* Features list */}
-                <ul className="space-y-4 mb-10">
-                  {features.map((feature, i) => (
-                    <FadeContent
-                      key={i}
-                      duration={300}
-                      delay={400 + i * 50}
-                      direction="left"
-                      distance={20}
-                    >
-                      <li className="flex items-center gap-3">
-                        <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                          <CheckIcon />
-                        </div>
-                        <span className="text-white/90">
-                          {feature}
-                        </span>
-                      </li>
-                    </FadeContent>
-                  ))}
-                </ul>
-
-                {/* CTA Button */}
-                <FadeContent
-                  duration={400}
-                  delay={700}
-                  direction="up"
-                  distance={20}
-                >
-                  <Link
-                    to="/contact"
-                    title="Kontaktirajte nas"
-                    className="group block w-full py-3 sm:py-4 px-6 sm:px-8 text-center font-semibold rounded-lg text-base sm:text-lg bg-white text-primary shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-xl"
+              {/* Features list */}
+              <ul className="space-y-4 mb-10">
+                {features.map((feature, i) => (
+                  <FadeContent
+                    key={i}
+                    duration={300}
+                    delay={400 + i * 50}
+                    direction="left"
+                    distance={20}
                   >
-                    <span className="inline-flex items-center gap-2">
-                      <ShinyText text={t('pricing.cta')} speed={4} />
-                      <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </span>
-                  </Link>
-                </FadeContent>
-              </div>
-            </SpotlightCard>
+                    <li className="flex items-center gap-3">
+                      <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                        <CheckIcon />
+                      </div>
+                      <span className="text-white/90">
+                        {feature}
+                      </span>
+                    </li>
+                  </FadeContent>
+                ))}
+              </ul>
+
+              {/* CTA Button */}
+              <FadeContent
+                duration={400}
+                delay={700}
+                direction="up"
+                distance={20}
+              >
+                <Link
+                  to="/contact"
+                  title={t('footer.navTitles.contact')}
+                  className="group block w-full py-3 sm:py-4 px-6 sm:px-8 text-center font-semibold rounded-lg text-base sm:text-lg bg-white text-primary shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-xl"
+                >
+                  <span className="inline-flex items-center gap-2">
+                    <ShinyText text={t('pricing.cta')} speed={4} />
+                    <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
+                </Link>
+              </FadeContent>
+            </div>
+          </SpotlightCard>
         </ScrollFloat>
       </div>
     </section>
