@@ -236,6 +236,38 @@ export default function HeroSection() {
           </Link>
         </StarBorder>
       </div>
+
+      {/* App Store Buttons */}
+      <div className={`flex justify-center gap-3 mt-4 sm:mt-5 ${spacing.container.padding} animate-fade-in-up`} style={{ animationDelay: '0.3s' }}>
+        <a
+          href="https://apps.apple.com/ba/app/bookbed/id6758141353"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-black dark:bg-white text-white dark:text-black rounded-xl text-sm font-medium transition-all md:hover:scale-[1.02] active:scale-[0.98] shadow-md hover:shadow-lg"
+        >
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+          </svg>
+          <span className="flex flex-col leading-tight">
+            <span className="text-[9px] opacity-80">{t('hero.downloadIosPrefix')}</span>
+            <span className="text-xs font-semibold -mt-0.5">{t('hero.downloadIos')}</span>
+          </span>
+        </a>
+        <a
+          href="https://play.google.com/store/apps/details?id=io.bookbed.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-black dark:bg-white text-white dark:text-black rounded-xl text-sm font-medium transition-all md:hover:scale-[1.02] active:scale-[0.98] shadow-md hover:shadow-lg"
+        >
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3.18 23.49c-.36-.17-.58-.54-.58-.94V1.45c0-.4.22-.77.58-.94l10.93 11.49L3.18 23.49zM16.81 15.3L5.27 21.81l9.62-10.12L16.81 15.3zM20.16 10.69c.38.22.63.64.63 1.09 0 .45-.25.87-.63 1.09l-2.56 1.51-2.19-2.38 2.19-2.38 2.56 1.07zM5.27 2.19l11.54 6.51-1.92 2.61L5.27 2.19z" />
+          </svg>
+          <span className="flex flex-col leading-tight">
+            <span className="text-[9px] opacity-80">{t('hero.downloadAndroidPrefix')}</span>
+            <span className="text-xs font-semibold -mt-0.5">{t('hero.downloadAndroid')}</span>
+          </span>
+        </a>
+      </div>
     </section>
   )
 }

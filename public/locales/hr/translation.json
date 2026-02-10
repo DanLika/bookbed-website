@@ -50,7 +50,11 @@
       "guestInfo": "Ana M. - Apartman A1",
       "occupancy": "85% Popunjenost",
       "thisMonth": "Ovaj mjesec"
-    }
+    },
+    "downloadIos": "App Store",
+    "downloadAndroid": "Google Play",
+    "downloadIosPrefix": "Preuzmi na",
+    "downloadAndroidPrefix": "Preuzmi na"
   },
   "trust": {
     "title": "Izgrađeno sa Modernom Tehnologijom"
