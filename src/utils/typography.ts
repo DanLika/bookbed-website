@@ -27,8 +27,8 @@ export const typography = {
 // Container widths - progressive scaling
 export const containers = {
   // Hero container - wider on larger screens
-  hero: 'max-w-[95%] sm:max-w-[90%] md:max-w-4xl lg:max-w-5xl xl:max-w-6xl',
+  hero: 'max-w-[95%] sm:max-w-[90%] md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl',
 
-  // Standard section container
-  section: 'max-w-[95%] sm:max-w-[90%] md:max-w-4xl lg:max-w-5xl xl:max-w-6xl',
+  // Standard section container - matches spacing.ts
+  section: 'max-w-7xl',
 }

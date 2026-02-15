@@ -68,7 +68,7 @@ export default function ScreenshotGallery() {
   }))
 
   return (
-    <section className={`relative ${getSectionSpacing()} bg-white dark:bg-zinc-900`}>
+    <section className={`relative max-w-[1920px] mx-auto ${getSectionSpacing()} bg-white dark:bg-zinc-900`}>
       {/* Section Header with container */}
       <div className={`relative ${getContainerClasses()}`}>
         <div className="text-center mb-12 sm:mb-16 px-4 sm:px-6 md:px-8 lg:px-12">
@@ -95,7 +95,7 @@ export default function ScreenshotGallery() {
       </div>
 
       {/* Static Image Grid */}
-      <div className="px-4 sm:px-6 lg:px-8">
+      <div className={getContainerClasses()}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {galleryItems.map((item, index) => (
             <div

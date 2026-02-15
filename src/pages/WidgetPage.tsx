@@ -84,7 +84,7 @@ const WidgetPage = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-white dark:bg-zinc-900 overflow-hidden">
+    <div className="relative min-h-screen max-w-[1920px] mx-auto bg-white dark:bg-zinc-900 overflow-hidden">
       {/* Subtle dot pattern background */}
       <div
         className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]"
@@ -191,8 +191,8 @@ const WidgetPage = () => {
       </section>
 
       {/* Widget Preview */}
-      <section className={`relative pb-12 ${spacing.container.padding}`}>
-        <div className="max-w-4xl mx-auto">
+      <section className="relative pb-12">
+        <div className={`max-w-5xl mx-auto ${spacing.container.padding}`}>
           <FadeContent
             duration={600}
             delay={400}

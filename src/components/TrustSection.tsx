@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { getCompactSpacing } from '../utils/spacing'
+import { getCompactSpacing, getContainerClasses } from '../utils/spacing'
 import FadeContent from './ui/animations/FadeContent'
 import LogoLoop from './ui/animations/LogoLoop'
 import type { LogoItem } from './ui/animations/LogoLoop'
@@ -54,8 +54,8 @@ export default function TrustSection() {
   ]
 
   return (
-    <section className={`relative ${getCompactSpacing()} bg-gradient-to-b from-white to-gray-50 dark:from-zinc-900 dark:to-zinc-950`}>
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+    <section className={`relative max-w-[1920px] mx-auto ${getCompactSpacing()} bg-gradient-to-b from-white to-gray-50 dark:from-zinc-900 dark:to-zinc-950`}>
+      <div className={`relative ${getContainerClasses()}`}>
         {/* Title */}
         <FadeContent
           duration={500}

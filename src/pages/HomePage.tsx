@@ -30,7 +30,7 @@ export default function HomePage() {
   })
 
   return (
-    <div className="overflow-x-hidden bg-white dark:bg-zinc-950">
+    <div className="overflow-x-hidden max-w-[1920px] mx-auto bg-white dark:bg-zinc-950">
       {/* Hero loads immediately - above the fold */}
       <HeroSection />
 

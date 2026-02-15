@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { LogoIcon } from './Logo'
+import { getContainerClasses } from '../utils/spacing'
 import FadeContent from './ui/animations/FadeContent'
 import GlassIcons from './ui/animations/GlassIcons'
 
@@ -17,9 +18,9 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="relative bg-white dark:bg-zinc-900 overflow-hidden">
+    <footer className="relative max-w-[1920px] mx-auto bg-white dark:bg-zinc-900 overflow-hidden">
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div className={`relative ${getContainerClasses()} py-12 sm:py-16`}>
         {/* Main Footer Content */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 mb-10">
           {/* Logo & Description */}

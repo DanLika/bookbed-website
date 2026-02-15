@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import CardNav from './components/CardNav'
 import Footer from './components/Footer'
 import AnimatedRoutes from './components/AnimatedRoutes'
+import TawkMessengerWrapper from './components/TawkMessengerWrapper'
 
 function App() {
   const [isDark, setIsDark] = useState(false)
@@ -35,6 +36,8 @@ function App() {
   return (
     <BrowserRouter>
       <AppContent isDark={isDark} onToggleTheme={toggleTheme} />
+      <TawkMessengerWrapper />
+
     </BrowserRouter>
   )
 }

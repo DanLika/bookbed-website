@@ -12,7 +12,7 @@ export default function FeaturesSection() {
   return (
     <section
       id="features"
-      className={`relative ${getSectionSpacing()} bg-gradient-to-b from-gray-50 to-white dark:from-zinc-950 dark:to-zinc-900 overflow-hidden`}
+      className={`relative max-w-[1920px] mx-auto ${getSectionSpacing()} bg-gradient-to-b from-gray-50 to-white dark:from-zinc-950 dark:to-zinc-900 overflow-hidden`}
     >
 
       <div className={getContainerClasses()}>

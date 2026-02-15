@@ -227,7 +227,7 @@ export default function FAQPage() {
     ]
 
     return (
-        <div className="relative min-h-screen bg-white dark:bg-zinc-900 overflow-hidden">
+        <div className="relative min-h-screen max-w-[1920px] mx-auto bg-white dark:bg-zinc-900 overflow-hidden">
             {/* Subtle dot pattern background */}
             <div
                 className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]"
@@ -284,7 +284,7 @@ export default function FAQPage() {
             </section>
 
             {/* FAQ Categories */}
-            <section className={`relative ${getSectionSpacing()} ${spacing.container.padding} bg-gray-50 dark:bg-zinc-800/30`}>
+            <section className={`relative ${getSectionSpacing()} ${spacing.container.padding} bg-white dark:bg-zinc-900`}>
                 <div className="max-w-3xl mx-auto">
                     {categories.map((category, index) => (
                         <FAQCategorySection

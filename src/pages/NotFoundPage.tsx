@@ -7,7 +7,7 @@ export default function NotFoundPage() {
   const { t } = useTranslation()
 
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center px-4 sm:px-6 md:px-8 bg-white dark:bg-zinc-900">
+    <section className="relative min-h-[70vh] max-w-[1920px] mx-auto flex items-center justify-center px-4 sm:px-6 md:px-8 bg-white dark:bg-zinc-900">
       <div className="text-center">
         {/* Fuzzy 404 - 200x200 container */}
         <div className="flex justify-center mb-8">

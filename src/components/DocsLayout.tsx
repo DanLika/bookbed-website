@@ -142,7 +142,7 @@ const DocsLayout = ({ children }: DocsLayoutProps) => {
   )
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-900">
+    <div className="min-h-screen max-w-[1920px] mx-auto bg-white dark:bg-zinc-900">
       {/* Mobile Header - positioned below navbar */}
       <div className="lg:hidden sticky top-0 z-40 bg-white dark:bg-zinc-900 border-b border-gray-200 dark:border-zinc-800 px-4 py-3 mt-16">
         <button

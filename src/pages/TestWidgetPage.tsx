@@ -65,7 +65,7 @@ const TestWidgetPage = () => {
   const isHr = i18n.language === 'hr'
 
   return (
-    <div className="relative min-h-screen bg-white dark:bg-zinc-900 overflow-hidden">
+    <div className="relative min-h-screen max-w-[1920px] mx-auto bg-white dark:bg-zinc-900 overflow-hidden">
       {/* Subtle dot pattern background */}
       <div
         className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]"
