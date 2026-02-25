@@ -267,6 +267,11 @@ Mockup u hero sekciji je skaliran da bude veći na mobilnim uređajima, sa optim
 - Desktop varijante (`hidden lg:block`) - pune veličine
 - Bez animacija - samo static display sa `animate-float` CSS
 
+**GridScan Background (Dark Mode):**
+- Omogućeno na svim uređajima (mobile, tablet, desktop) za premium osjećaj u dark mode-u.
+- Optimizovano za performanse koristeći `requestIdleCallback` za inicijalizaciju GSAP timeline-a.
+- Automatski se isključuje ako korisnik ima uključen `prefers-reduced-motion`.
+
 ---
 
 ## ScreenshotGallery Section - CircularGallery
@@ -897,4 +902,4 @@ useEffect(() => {
 
 ---
 
-**Last Updated:** 2025-12-26
+**Last Updated:** 2026-02-25
