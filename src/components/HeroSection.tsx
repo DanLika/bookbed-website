@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { containers } from '../utils/typography'
 import { spacing } from '../utils/spacing'
@@ -224,8 +223,10 @@ export default function HeroSection() {
           thickness={2}
           className="shadow-lg hover:shadow-xl transition-shadow"
         >
-          <Link
-            to="/demo"
+          <a
+            href="https://bookbed.io/widget"
+            target="_blank"
+            rel="noopener noreferrer"
             title="Pogledaj demo"
             className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 text-text-primary dark:text-white font-semibold rounded-lg text-base sm:text-lg transition-all transform md:hover:scale-[1.02] active:scale-[0.98] focus:outline-none"
           >
@@ -233,7 +234,7 @@ export default function HeroSection() {
               <path d="M8 5v14l11-7z" />
             </svg>
             <ShinyText text={t('hero.watchDemo')} speed={4} />
-          </Link>
+          </a>
         </StarBorder>
       </div>
 
