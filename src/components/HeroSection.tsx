@@ -33,7 +33,7 @@ export default function HeroSection() {
     return () => observer.disconnect()
   }, [])
 
-  const showGridScan = isDark && isDesktop && !prefersReducedMotion;
+  const showGridScan = isDark && !prefersReducedMotion;
 
   return (
     <section className="relative w-full max-w-[1920px] mx-auto pb-4 sm:pb-6 md:pb-8 lg:pb-10 bg-gradient-to-br from-slate-100 to-white dark:from-zinc-950 dark:to-zinc-900 overflow-hidden">
