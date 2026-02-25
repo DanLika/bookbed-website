@@ -57,7 +57,6 @@ function AppContent({ isDark, onToggleTheme }: { isDark: boolean; onToggleTheme:
       textColor: isDark ? '#E9D5FF' : '#5B21B6',
       links: [
         { label: t('nav.home'), href: '/', ariaLabel: 'Go to Home' },
-        { label: t('nav.demo'), href: '/demo', ariaLabel: 'Go to Demo' },
         { label: t('nav.widget'), href: '/widget', ariaLabel: 'Go to Widget' },
         { label: t('nav.docs'), href: '/docs', ariaLabel: 'Go to Documentation' },
         { label: t('nav.faqNav'), href: '/faq', ariaLabel: 'Go to FAQ' },
