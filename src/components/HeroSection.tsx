@@ -13,7 +13,7 @@ const GridScan = lazy(() => import('./ui/backgrounds/GridScan'))
 export default function HeroSection() {
   const { t } = useTranslation()
   const [isDark, setIsDark] = useState(false)
-  const isDesktop = useMediaQuery('(min-width: 1024px)')
+
   const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
 
   useEffect(() => {
