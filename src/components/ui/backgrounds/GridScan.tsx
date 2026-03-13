@@ -708,10 +708,8 @@ export default function GridScan({
     }
     if (bloomRef.current) {
       bloomRef.current.blendMode.opacity.value = Math.max(0, bloomIntensity)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(bloomRef.current as any).luminanceMaterial.threshold = bloomThreshold
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(bloomRef.current as any).luminanceMaterial.smoothing = bloomSmoothing
+      bloomRef.current.luminanceMaterial.threshold = bloomThreshold
+      bloomRef.current.luminanceMaterial.smoothing = bloomSmoothing
     }
     if (chromaRef.current) {
       chromaRef.current.offset.set(chromaticAberration, chromaticAberration)
