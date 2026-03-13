@@ -30,6 +30,10 @@ type GridScanProps = {
   style?: React.CSSProperties
 }
 
+interface DeviceOrientationEventStatic {
+  requestPermission?: () => Promise<'granted' | 'denied' | 'default'>
+}
+
 const vert = `
 varying vec2 vUv;
 void main(){
@@ -401,16 +405,15 @@ export default function GridScan({
       if (
         enableGyro &&
         typeof window !== 'undefined' &&
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (window as any).DeviceOrientationEvent &&
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (DeviceOrientationEvent as any).requestPermission
+        'DeviceOrientationEvent' in window
       ) {
-        try {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          await (DeviceOrientationEvent as any).requestPermission()
-        } catch {
-          // Ignore permission errors
+        const DOEvent = window.DeviceOrientationEvent as unknown as DeviceOrientationEventStatic
+        if (typeof DOEvent.requestPermission === 'function') {
+          try {
+            await DOEvent.requestPermission()
+          } catch {
+            // Ignore permission errors
+          }
         }
       }
     }
