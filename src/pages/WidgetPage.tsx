@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { spacing, heroSpacing, getSectionSpacing } from '../utils/spacing'
@@ -8,6 +8,39 @@ import GradientText from '../components/ui/animations/GradientText'
 import GlassIcon from '../components/ui/GlassIcon'
 import GlassIcons from '../components/ui/animations/GlassIcons'
 import { usePageMeta } from '../hooks/usePageMeta'
+
+const modes = [
+  {
+    id: 'full',
+    key: 'mode1',
+    icon: (
+      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+      </svg>
+    ),
+    color: 'primary' as const,
+  },
+  {
+    id: 'calendar',
+    key: 'mode2',
+    icon: (
+      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    ),
+    color: 'blue' as const,
+  },
+  {
+    id: 'inquiry',
+    key: 'mode3',
+    icon: (
+      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+      </svg>
+    ),
+    color: 'emerald' as const,
+  },
+] as const
 
 const WidgetPage = () => {
   const { t } = useTranslation()
@@ -20,38 +53,7 @@ const WidgetPage = () => {
   const [activeMode, setActiveMode] = useState<'full' | 'calendar' | 'inquiry'>('full')
   const [copied, setCopied] = useState(false)
 
-  const modes = [
-    {
-      id: 'full',
-      key: 'mode1',
-      icon: (
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-        </svg>
-      ),
-      color: 'primary' as const,
-    },
-    {
-      id: 'calendar',
-      key: 'mode2',
-      icon: (
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      ),
-      color: 'blue' as const,
-    },
-    {
-      id: 'inquiry',
-      key: 'mode3',
-      icon: (
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-        </svg>
-      ),
-      color: 'emerald' as const,
-    },
-  ] as const
+  const activeModeData = useMemo(() => modes.find(m => m.id === activeMode), [activeMode])
 
   const getEmbedCode = () => {
     if (activeMode === 'calendar') {
@@ -185,7 +187,7 @@ const WidgetPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-lg text-text-secondary dark:text-gray-400"
           >
-            {t(`widget.${modes.find(m => m.id === activeMode)?.key}.desc`)}
+            {t(`widget.${activeModeData?.key}.desc`)}
           </motion.p>
         </div>
       </section>
