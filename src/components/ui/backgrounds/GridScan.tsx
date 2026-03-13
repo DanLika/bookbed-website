@@ -326,7 +326,7 @@ export default function GridScan({
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null)
   const materialRef = useRef<THREE.ShaderMaterial | null>(null)
   const composerRef = useRef<EffectComposer | null>(null)
-  const bloomRef = useRef<BloomEffect | null>(null)
+  const bloomRef = useRef<(BloomEffect & { luminanceMaterial?: { threshold?: number, smoothing?: number } }) | null>(null)
   const chromaRef = useRef<ChromaticAberrationEffect | null>(null)
   const rafRef = useRef<number | null>(null)
 
@@ -708,10 +708,10 @@ export default function GridScan({
     }
     if (bloomRef.current) {
       bloomRef.current.blendMode.opacity.value = Math.max(0, bloomIntensity)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(bloomRef.current as any).luminanceMaterial.threshold = bloomThreshold
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(bloomRef.current as any).luminanceMaterial.smoothing = bloomSmoothing
+      if (bloomRef.current.luminanceMaterial) {
+        bloomRef.current.luminanceMaterial.threshold = bloomThreshold
+        bloomRef.current.luminanceMaterial.smoothing = bloomSmoothing
+      }
     }
     if (chromaRef.current) {
       chromaRef.current.offset.set(chromaticAberration, chromaticAberration)
