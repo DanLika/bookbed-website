@@ -2,6 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import { EffectComposer, RenderPass, EffectPass, BloomEffect, ChromaticAberrationEffect } from 'postprocessing'
 import * as THREE from 'three'
 
+interface DeviceOrientationEventStatic extends DeviceOrientationEvent {
+  requestPermission?: () => Promise<'granted' | 'denied' | 'default'>
+}
+
 type GridScanProps = {
   sensitivity?: number
   lineThickness?: number
@@ -398,19 +402,14 @@ export default function GridScan({
     const onClick = async () => {
       const nowSec = performance.now() / 1000
       if (scanOnClick) pushScan(nowSec)
-      if (
-        enableGyro &&
-        typeof window !== 'undefined' &&
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (window as any).DeviceOrientationEvent &&
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (DeviceOrientationEvent as any).requestPermission
-      ) {
-        try {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          await (DeviceOrientationEvent as any).requestPermission()
-        } catch {
-          // Ignore permission errors
+      if (enableGyro && typeof window !== 'undefined' && 'DeviceOrientationEvent' in window) {
+        const DOEvent = window.DeviceOrientationEvent as unknown as DeviceOrientationEventStatic
+        if (typeof DOEvent.requestPermission === 'function') {
+          try {
+            await DOEvent.requestPermission()
+          } catch {
+            // Ignore permission errors
+          }
         }
       }
     }
@@ -708,10 +707,13 @@ export default function GridScan({
     }
     if (bloomRef.current) {
       bloomRef.current.blendMode.opacity.value = Math.max(0, bloomIntensity)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(bloomRef.current as any).luminanceMaterial.threshold = bloomThreshold
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(bloomRef.current as any).luminanceMaterial.smoothing = bloomSmoothing
+      const luminanceMaterial = (
+        bloomRef.current as unknown as {
+          luminanceMaterial: { threshold: number; smoothing: number }
+        }
+      ).luminanceMaterial
+      luminanceMaterial.threshold = bloomThreshold
+      luminanceMaterial.smoothing = bloomSmoothing
     }
     if (chromaRef.current) {
       chromaRef.current.offset.set(chromaticAberration, chromaticAberration)
