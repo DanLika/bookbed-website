@@ -2,6 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import { EffectComposer, RenderPass, EffectPass, BloomEffect, ChromaticAberrationEffect } from 'postprocessing'
 import * as THREE from 'three'
 
+interface DeviceOrientationEventStatic {
+  requestPermission?: () => Promise<'granted' | 'denied' | 'default'>
+}
+
 type GridScanProps = {
   sensitivity?: number
   lineThickness?: number
@@ -401,14 +405,11 @@ export default function GridScan({
       if (
         enableGyro &&
         typeof window !== 'undefined' &&
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (window as any).DeviceOrientationEvent &&
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (DeviceOrientationEvent as any).requestPermission
+        'DeviceOrientationEvent' in window &&
+        typeof (DeviceOrientationEvent as unknown as DeviceOrientationEventStatic).requestPermission === 'function'
       ) {
         try {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          await (DeviceOrientationEvent as any).requestPermission()
+          await (DeviceOrientationEvent as unknown as DeviceOrientationEventStatic).requestPermission!()
         } catch {
           // Ignore permission errors
         }
