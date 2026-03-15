@@ -34,6 +34,11 @@ export default defineConfig({
     // Target modern browsers for smaller bundle
     target: 'es2020',
   },
+  // Strip console.log/warn in production (keep console.error for critical WebGL issues)
+  esbuild: {
+    drop: ['debugger'],
+    pure: ['console.log', 'console.warn'],
+  },
   // Image optimization
   assetsInclude: ['**/*.avif', '**/*.webp'],
   test: {

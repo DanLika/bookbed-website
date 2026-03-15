@@ -1,6 +1,17 @@
 import { useRef } from 'react';
 import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 
+interface TawkSetAttributesCallback {
+    (error?: Error | null): void;
+}
+
+interface TawkMessengerRef {
+    setAttributes: (
+        attributes: Record<string, string | undefined>,
+        callback: TawkSetAttributesCallback
+    ) => void;
+}
+
 interface TawkMessengerWrapperProps {
     user?: {
         name?: string;
@@ -9,7 +20,7 @@ interface TawkMessengerWrapperProps {
 }
 
 const TawkMessengerWrapper = ({ user }: TawkMessengerWrapperProps) => {
-    const tawkMessengerRef = useRef<any>(null);
+    const tawkMessengerRef = useRef<TawkMessengerRef | null>(null);
 
     const handleLoad = () => {
         if (!user) return;
@@ -20,7 +31,7 @@ const TawkMessengerWrapper = ({ user }: TawkMessengerWrapperProps) => {
                     name: user.name,
                     email: user.email,
                 },
-                (error: any) => {
+                (error) => {
                     if (error) console.error('Tawk setAttributes error:', error);
                 }
             );
@@ -31,7 +42,6 @@ const TawkMessengerWrapper = ({ user }: TawkMessengerWrapperProps) => {
     const widgetId = import.meta.env.VITE_TAWK_WIDGET_ID;
 
     if (!propertyId || !widgetId) {
-        console.warn('Tawk.to propertyId or widgetId is missing in environment variables.');
         return null;
     }
 
