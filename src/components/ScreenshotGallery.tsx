@@ -93,17 +93,22 @@ export default function ScreenshotGallery() {
           {galleryItems.map((item, index) => (
             <div
               key={index}
-              className="relative rounded-lg overflow-hidden shadow-lg"
+              className="group"
             >
-              <img
-                src={item.image}
-                alt={item.text}
-                width={400}
-                height={800}
-                className="w-full h-auto"
-                loading="lazy"
-                decoding="async"
-              />
+              <div className="relative rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:scale-[1.02]">
+                <img
+                  src={item.image}
+                  alt={item.text}
+                  width={400}
+                  height={800}
+                  className="w-full h-auto"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <p className="text-center text-xs sm:text-sm font-medium text-text-secondary dark:text-gray-400 mt-2 sm:mt-3">
+                {item.text}
+              </p>
             </div>
           ))}
         </div>

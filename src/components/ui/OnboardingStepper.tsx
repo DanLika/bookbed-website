@@ -86,7 +86,7 @@ export default function OnboardingStepper() {
 
     return (
         <div className="w-full max-w-[80rem] mx-auto px-4 py-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-24 relative">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-14 md:gap-x-8 md:gap-y-20 lg:gap-y-24 relative">
                 {steps.map((step, index) => (
                     <FadeContent
                         key={step.id}
@@ -95,7 +95,7 @@ export default function OnboardingStepper() {
                         className={`relative z-10 flex flex-col items-center text-center group ${step.orderClass}`}
                     >
                         {/* Step Number Badge */}
-                        <div className="absolute -top-6 -left-4 w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-light text-white flex items-center justify-center font-bold text-xl shadow-[0_0_20px_rgba(107,76,230,0.3)] z-20 border-[3px] border-white dark:border-zinc-900 transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(107,76,230,0.5)]">
+                        <div className="absolute -top-4 -left-2 sm:-top-6 sm:-left-4 w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-primary to-primary-light text-white flex items-center justify-center font-bold text-sm sm:text-xl shadow-[0_0_20px_rgba(107,76,230,0.3)] z-20 border-2 sm:border-[3px] border-white dark:border-zinc-900 transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(107,76,230,0.5)]">
                             {step.number}
                         </div>
 
@@ -112,11 +112,11 @@ export default function OnboardingStepper() {
                         </div>
 
                         {/* Content */}
-                        <div className="mt-8">
-                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors duration-300">
+                        <div className="mt-4 sm:mt-8">
+                            <h3 className="text-sm sm:text-xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2 group-hover:text-primary transition-colors duration-300">
                                 {step.title}
                             </h3>
-                            <p className="text-sm font-medium text-gray-500 dark:text-gray-400 leading-relaxed max-w-[280px] mx-auto">
+                            <p className="text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-400 leading-relaxed max-w-[280px] mx-auto hidden sm:block">
                                 {step.desc}
                             </p>
                         </div>

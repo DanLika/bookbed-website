@@ -17,7 +17,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="relative max-w-[1920px] mx-auto bg-white dark:bg-zinc-900 overflow-hidden">
+    <footer className="relative max-w-[1920px] mx-auto bg-gradient-to-b from-zinc-900 to-zinc-950 dark:from-zinc-950 dark:to-black overflow-hidden">
 
       <div className={`relative ${getContainerClasses()} py-12 sm:py-16`}>
         {/* Main Footer Content */}
@@ -33,11 +33,11 @@ export default function Footer() {
               <LogoIcon
                 className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
               />
-              <span className="text-xs sm:text-sm lg:text-base font-bold text-text-primary dark:text-white group-hover:text-primary dark:group-hover:text-primary-light transition-colors duration-300">
+              <span className="text-xs sm:text-sm lg:text-base font-bold text-white group-hover:text-primary-light transition-colors duration-300">
                 BookBed
               </span>
             </Link>
-            <p className="text-text-secondary dark:text-gray-400 text-sm leading-relaxed max-w-sm">
+            <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
               {t('footer.description')}
             </p>
           </FadeContent>
@@ -51,14 +51,14 @@ export default function Footer() {
               direction="up"
               distance={20}
             >
-              <div className="text-text-primary dark:text-white font-semibold mb-3 text-sm uppercase tracking-wider">{t('footer.navigation')}</div>
+              <div className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">{t('footer.navigation')}</div>
               <nav className="flex flex-col" aria-label="Footer navigation">
                 {navLinks.map((link) => (
                   <Link
                     key={link.key}
                     to={link.path}
                     title={t(`footer.navTitles.${link.key === 'faqNav' ? 'faq' : link.key}`)}
-                    className="text-text-secondary dark:text-gray-400 hover:text-primary active:opacity-80 transition-colors text-sm py-1.5"
+                    className="text-gray-400 hover:text-primary-light active:opacity-80 transition-colors text-sm py-1.5"
                   >
                     {t(`nav.${link.key}`)}
                   </Link>
@@ -73,7 +73,7 @@ export default function Footer() {
               direction="up"
               distance={20}
             >
-              <div className="text-text-primary dark:text-white font-semibold mb-6 text-sm uppercase tracking-wider">{t('footer.contact')}</div>
+              <div className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">{t('footer.contact')}</div>
               <GlassIcons
                 items={[
                   {
@@ -112,20 +112,20 @@ export default function Footer() {
           direction="up"
           distance={10}
         >
-          <div className="border-t border-gray-300 dark:border-zinc-800 pt-8">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-text-tertiary dark:text-gray-500">
+          <div className="border-t border-zinc-800 pt-8">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
               <p>{t('footer.copyright')}</p>
               <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-4 gap-y-1">
-                <Link to="/privacy" title={t('footer.navTitles.privacy')} className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
+                <Link to="/privacy" title={t('footer.navTitles.privacy')} className="hover:text-primary-light active:opacity-80 transition-all py-2 px-1 text-center">
                   {t('footer.privacy')}
                 </Link>
-                <Link to="/terms" title={t('footer.navTitles.terms')} className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
+                <Link to="/terms" title={t('footer.navTitles.terms')} className="hover:text-primary-light active:opacity-80 transition-all py-2 px-1 text-center">
                   {t('footer.terms')}
                 </Link>
-                <Link to="/account-deletion" title={t('footer.navTitles.accountDeletion')} className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
+                <Link to="/account-deletion" title={t('footer.navTitles.accountDeletion')} className="hover:text-primary-light active:opacity-80 transition-all py-2 px-1 text-center">
                   {t('footer.accountDeletion')}
                 </Link>
-                <Link to="/data-deletion" title={t('footer.navTitles.dataDeletion')} className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
+                <Link to="/data-deletion" title={t('footer.navTitles.dataDeletion')} className="hover:text-primary-light active:opacity-80 transition-all py-2 px-1 text-center">
                   {t('footer.dataDeletion')}
                 </Link>
               </div>
