@@ -100,7 +100,7 @@ function AppContent({ isDark, onToggleTheme }: { isDark: boolean; onToggleTheme:
         buttonBgColor={isDark ? '#6B4CE6' : '#6B4CE6'}
         buttonTextColor="#FFFFFF"
         buttonText={t('hero.cta')}
-        onButtonClick={() => window.open('https://app.bookbed.io', '_blank')}
+        onButtonClick={() => window.open('https://app.bookbed.io', '_blank', 'noopener,noreferrer')}
         isDark={isDark}
         onToggleTheme={onToggleTheme}
         onToggleLanguage={toggleLanguage}
