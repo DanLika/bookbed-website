@@ -148,7 +148,11 @@ export default function FinalCTASection() {
                     className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto lg:mx-0"
                   >
                     <div className="flex-1 relative">
+                      <label htmlFor="newsletter-email" className="sr-only">
+                        {t('newsletter.placeholder')}
+                      </label>
                       <input
+                        id="newsletter-email"
                         type="email"
                         value={email}
                         onChange={(e) => {

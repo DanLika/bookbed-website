@@ -1,8 +1,8 @@
 export const spacing = {
   section: {
     hero: 'pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-8 sm:pb-12 md:pb-16 lg:pb-20',
-    regular: 'py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28',
-    compact: 'py-8 sm:py-10 md:py-12 lg:py-16',
+    regular: 'py-8 sm:py-10 md:py-14 lg:py-18 xl:py-20',
+    compact: 'py-6 sm:py-8 md:py-10 lg:py-12',
   },
   container: {
     // Mobile: 16px, Tablet: 24px, Desktop: 32-48px

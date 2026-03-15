@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { getSectionSpacing, getContainerClasses } from '../utils/spacing'
 import { typography } from '../utils/typography'
 import FadeContent from './ui/animations/FadeContent'
-import GradientText from './ui/animations/GradientText'
 
 export default function ScreenshotGallery() {
   const { t } = useTranslation()
@@ -79,13 +78,7 @@ export default function ScreenshotGallery() {
             distance={20}
           >
             <h2 className={`${typography.h2} font-bold text-text-primary dark:text-white mb-4`}>
-              <GradientText
-                colors={['#6B4CE6', '#9B86F3', '#6B4CE6', '#9B86F3', '#6B4CE6']}
-                animationSpeed={6}
-                className={typography.h2}
-              >
-                {t('gallery.title', 'See It In Action')}
-              </GradientText>
+              {t('gallery.title', 'See It In Action')}
             </h2>
           </FadeContent>
           <p className="text-lg sm:text-xl text-text-secondary dark:text-gray-400 max-w-2xl mx-auto">
@@ -96,7 +89,7 @@ export default function ScreenshotGallery() {
 
       {/* Static Image Grid */}
       <div className={getContainerClasses()}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 lg:gap-6">
           {galleryItems.map((item, index) => (
             <div
               key={index}

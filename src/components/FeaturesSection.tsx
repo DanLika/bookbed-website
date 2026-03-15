@@ -20,7 +20,7 @@ export default function FeaturesSection() {
         <FadeContent>
           <div className="text-center mb-12 sm:mb-16 md:mb-20">
             <span className="inline-block px-4 py-2 mb-4 text-sm font-semibold rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-light">
-              {t('features.title')}
+              {t('features.badge', t('features.title'))}
             </span>
             <h2
               className={`${typography.h2} font-bold text-text-primary dark:text-white mb-4`}

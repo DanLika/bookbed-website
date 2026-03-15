@@ -308,7 +308,7 @@ const CardNav: React.FC<CardNavProps> = ({
             </a>
 
             <div
-              className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''} group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] w-[40px] flex-shrink-0`}
+              className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''} group h-full flex lg:hidden flex-col items-center justify-center cursor-pointer gap-[6px] w-[40px] flex-shrink-0`}
               onClick={toggleMenu}
               onKeyDown={(e) => e.key === 'Enter' && toggleMenu()}
               role="button"
@@ -328,7 +328,8 @@ const CardNav: React.FC<CardNavProps> = ({
             </div>
           </div>
 
-          <div className="flex-1 hidden sm:flex justify-center items-center">
+          {/* BookBed text - shown on sm-md, hidden on lg+ where inline nav shows */}
+          <div className="flex-1 hidden sm:flex lg:hidden justify-center items-center">
             <a
               href="/"
               className="text-lg font-bold tracking-tight hover:opacity-80 transition-opacity"
@@ -337,6 +338,23 @@ const CardNav: React.FC<CardNavProps> = ({
             >
               BookBed
             </a>
+          </div>
+
+          {/* Inline nav links - desktop only (lg+) */}
+          <div className="flex-1 hidden lg:flex justify-center items-center gap-1">
+            {(items || []).flatMap(item =>
+              item.links?.map((lnk, i) => (
+                <a
+                  key={`inline-${lnk.label}-${i}`}
+                  href={lnk.href}
+                  title={lnk.ariaLabel}
+                  className="px-3 py-1.5 text-sm font-medium rounded-lg transition-all hover:opacity-70"
+                  style={{ color: menuColor }}
+                >
+                  {lnk.label}
+                </a>
+              )) || []
+            )}
           </div>
 
           <div className="flex items-center gap-2.5 flex-shrink-0">

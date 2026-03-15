@@ -68,15 +68,11 @@ export default function PricingSection() {
         {/* Single Pricing Card - Centered with scroll float effect */}
         <ScrollFloat
           direction="up"
-          distance={100}
+          distance={60}
           scale
-          scaleStart={0.85}
-          rotate
-          rotateAmount={-8}
-          blur
-          blurAmount={12}
-          duration={1.2}
-          ease="elastic.out(1, 0.5)"
+          scaleStart={0.92}
+          duration={0.8}
+          ease="power2.out"
           threshold={0.15}
           className="max-w-md mx-auto"
         >

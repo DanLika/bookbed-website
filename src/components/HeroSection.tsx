@@ -113,10 +113,10 @@ export default function HeroSection() {
         />
 
         {/* Floating Cards - NO ANIMATIONS, just static display */}
-        {/* Left Card - New Booking (visible on mobile too, but smaller) */}
+        {/* Left Card - New Booking (hidden on smallest mobile, visible sm+) */}
         <div className="absolute left-[2%] sm:left-[3%] lg:left-[5%] xl:left-[10%] top-[15%] sm:top-[20%] lg:top-1/4 z-10">
-          {/* Mobile version - compact */}
-          <div className="lg:hidden bg-white dark:bg-zinc-800 rounded-lg p-2 shadow-xl border border-gray-200 dark:border-zinc-700 w-28 sm:w-36 animate-float">
+          {/* Mobile version - compact, hidden on xs */}
+          <div className="hidden sm:block lg:hidden bg-white dark:bg-zinc-800 rounded-lg p-2 shadow-xl border border-gray-200 dark:border-zinc-700 w-28 sm:w-36 animate-float">
             <div className="flex items-center gap-1.5 sm:gap-2">
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
                 <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -167,8 +167,8 @@ export default function HeroSection() {
 
         {/* Right Card - Check-in Today (mobile shows this instead of Payment) */}
         <div className="absolute right-[2%] sm:right-[3%] lg:right-[10%] xl:right-[15%] top-[60%] sm:top-[55%] lg:top-2/3 z-10">
-          {/* Mobile version - compact Check-in card */}
-          <div className="lg:hidden bg-white dark:bg-zinc-800 rounded-lg p-2 shadow-xl border border-gray-200 dark:border-zinc-700 w-26 sm:w-32 animate-float" style={{ animationDelay: '1s' }}>
+          {/* Mobile version - compact Check-in card, hidden on xs */}
+          <div className="hidden sm:block lg:hidden bg-white dark:bg-zinc-800 rounded-lg p-2 shadow-xl border border-gray-200 dark:border-zinc-700 w-26 sm:w-32 animate-float" style={{ animationDelay: '1s' }}>
             <div className="flex items-center gap-1.5 sm:gap-2">
               <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center flex-shrink-0">
                 <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">

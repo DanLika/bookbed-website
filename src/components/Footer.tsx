@@ -114,8 +114,8 @@ export default function Footer() {
         >
           <div className="border-t border-gray-300 dark:border-zinc-800 pt-8">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-text-tertiary dark:text-gray-500">
-              <p>{t('copyright') || t('footer.copyright')}</p>
-              <div className="flex items-center gap-4">
+              <p>{t('footer.copyright')}</p>
+              <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-4 gap-y-1">
                 <Link to="/privacy" title={t('footer.navTitles.privacy')} className="hover:text-primary active:opacity-80 transition-all py-2 px-1 text-center">
                   {t('footer.privacy')}
                 </Link>
