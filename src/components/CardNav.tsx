@@ -19,6 +19,7 @@ export interface CardNavProps {
   logo: string
   logoAlt?: string
   items: CardNavItem[]
+  inlineLinks?: CardNavLink[]
   className?: string
   ease?: string
   baseColor?: string
@@ -35,6 +36,7 @@ export interface CardNavProps {
 
 const CardNav: React.FC<CardNavProps> = ({
   items,
+  inlineLinks,
   className = '',
   ease = 'power3.out',
   baseColor = '#6B4CE6',
@@ -308,7 +310,7 @@ const CardNav: React.FC<CardNavProps> = ({
             </a>
 
             <div
-              className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''} group h-full flex lg:hidden flex-col items-center justify-center cursor-pointer gap-[6px] w-[40px] flex-shrink-0`}
+              className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''} group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] w-[40px] flex-shrink-0`}
               onClick={toggleMenu}
               onKeyDown={(e) => e.key === 'Enter' && toggleMenu()}
               role="button"
@@ -341,9 +343,9 @@ const CardNav: React.FC<CardNavProps> = ({
           </div>
 
           {/* Inline nav links - desktop only (lg+) */}
-          <div className="flex-1 hidden lg:flex justify-center items-center gap-1">
-            {(items || []).flatMap(item =>
-              item.links?.map((lnk, i) => (
+          {inlineLinks && inlineLinks.length > 0 && (
+            <div className="flex-1 hidden lg:flex justify-center items-center gap-1">
+              {inlineLinks.map((lnk, i) => (
                 <a
                   key={`inline-${lnk.label}-${i}`}
                   href={lnk.href}
@@ -353,9 +355,9 @@ const CardNav: React.FC<CardNavProps> = ({
                 >
                   {lnk.label}
                 </a>
-              )) || []
-            )}
-          </div>
+              ))}
+            </div>
+          )}
 
           <div className="flex items-center gap-2.5 flex-shrink-0">
             {/* Language Toggle - Globe Icon */}
