@@ -2,9 +2,16 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import FuzzyText from '../components/ui/animations/FuzzyText'
 import FadeContent from '../components/ui/animations/FadeContent'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 export default function NotFoundPage() {
   const { t } = useTranslation()
+
+  usePageMeta({
+    title: '404 - ' + t('notFound.title', 'Page Not Found') + ' | BookBed',
+    description: t('notFound.description', "The page you're looking for doesn't exist or has been moved."),
+    noindex: true,
+  })
 
   return (
     <section className="relative min-h-[70vh] max-w-[1920px] mx-auto flex items-center justify-center px-4 sm:px-6 md:px-8 bg-white dark:bg-zinc-900">

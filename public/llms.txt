@@ -1,0 +1,18 @@
+# BookBed
+> Kompletna platforma za upravljanje rezervacijama za vlasnike apartmana i smještaja u Hrvatskoj i regiji.
+
+## Ključne stranice
+- [Početna](https://bookbed.io/): Pregled platforme i značajki
+- [Značajke](https://bookbed.io/#features): Kalendar, Stripe, iCal, Widget, Emailovi
+- [Cijene](https://bookbed.io/#pricing): Besplatno tijekom beta faze
+- [Demo](https://bookbed.io/demo): Video demonstracije
+- [Widget](https://bookbed.io/widget): Booking widget za web stranice
+- [Dokumentacija](https://bookbed.io/docs): Vodič za korištenje
+- [FAQ](https://bookbed.io/faq): Često postavljana pitanja
+- [Kontakt](https://bookbed.io/contact): info@bookbed.io
+
+## O proizvodu
+BookBed je SaaS platforma namijenjena vlasnicima apartmana, vila i smještajnih objekata. Omogućuje upravljanje rezervacijama, automatsku sinkronizaciju kalendara s Airbnb-om i Booking.com-om putem iCal protokola, naplatu putem Stripe-a, automatske email obavijesti gostima, te vlastiti booking widget za direktne rezervacije bez provizije.
+
+## Tehnologije
+Flutter (iOS, Android), Firebase, Stripe, Resend (email)

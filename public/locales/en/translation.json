@@ -11,6 +11,10 @@
     "faqNav": "FAQ"
   },
   "about": {
+    "meta": {
+      "title": "About Us - BookBed",
+      "description": "Learn about BookBed - the complete booking management platform for vacation rental owners in Croatia and the region."
+    },
     "title": "About Us",
     "description": "BookBed is a booking management platform that helps vacation rental owners efficiently manage their business.",
     "mission": {

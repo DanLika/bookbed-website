@@ -11,6 +11,10 @@
     "faqNav": "Česta Pitanja"
   },
   "about": {
+    "meta": {
+      "title": "O Nama - BookBed",
+      "description": "Saznajte više o BookBedu - kompletnoj platformi za upravljanje rezervacijama za vlasnike apartmana i smještaja u Hrvatskoj i regiji."
+    },
     "title": "O Nama",
     "description": "BookBed je platforma za upravljanje rezervacijama smještaja koja pomaže vlasnicima nekretnina da efikasno upravljaju svojim poslovanjem.",
     "mission": {

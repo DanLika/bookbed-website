@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { spacing, heroSpacing, getSectionSpacing, getContainerClasses } from '../utils/spacing'
@@ -6,9 +7,10 @@ import FadeContent from '../components/ui/animations/FadeContent'
 import GradientText from '../components/ui/animations/GradientText'
 import GlassIcon from '../components/ui/GlassIcon'
 import { usePageMeta } from '../hooks/usePageMeta'
+import { useBreadcrumbSchema } from '../hooks/useBreadcrumbSchema'
 
 const DemoPage = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   // Page-specific SEO meta tags
   usePageMeta({
@@ -16,10 +18,62 @@ const DemoPage = () => {
     description: t('demo.meta.description')
   })
 
+  // BreadcrumbList schema
+  useBreadcrumbSchema([
+    { name: i18n.language === 'hr' ? 'Početna' : 'Home', url: 'https://bookbed.io/' },
+    { name: 'Demo', url: 'https://bookbed.io/demo/' },
+  ])
+
+  // VideoObject schema — ready for when real videos are added
+  useEffect(() => {
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: i18n.language === 'hr' ? 'BookBed Video Demo' : 'BookBed Video Demos',
+      description: t('demo.subtitle'),
+      numberOfItems: 4,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: t('demo.video1.title'),
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: t('demo.video2.title'),
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: t('demo.video3.title'),
+        },
+        {
+          '@type': 'ListItem',
+          position: 4,
+          name: t('demo.video4.title'),
+        },
+      ],
+    }
+
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.id = 'demo-video-schema'
+    script.textContent = JSON.stringify(schema)
+
+    document.getElementById('demo-video-schema')?.remove()
+    document.head.appendChild(script)
+
+    return () => {
+      document.getElementById('demo-video-schema')?.remove()
+    }
+  }, [t, i18n.language])
+
+  // TODO: Replace placeholder YouTube IDs with actual BookBed demo videos
   const videos = [
     {
       id: 'video1',
-      youtubeId: 'dQw4w9WgXcQ', // Placeholder - replace with actual video
+      youtubeId: 'dQw4w9WgXcQ',
     },
     {
       id: 'video2',

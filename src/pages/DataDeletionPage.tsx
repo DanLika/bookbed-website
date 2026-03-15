@@ -9,7 +9,8 @@ const DataDeletionPage = () => {
 
   usePageMeta({
     title: t('dataDeletion.meta.title'),
-    description: t('dataDeletion.meta.description')
+    description: t('dataDeletion.meta.description'),
+    noindex: true,
   })
 
   return (

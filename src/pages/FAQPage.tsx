@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -159,15 +159,69 @@ function FAQCategorySection({
 }
 
 import { usePageMeta } from '../hooks/usePageMeta'
+import { useBreadcrumbSchema } from '../hooks/useBreadcrumbSchema'
+
+function useFAQSchema(t: (key: string, options?: Record<string, unknown>) => string) {
+    const categoryKeys = ['about', 'pricing', 'gettingStarted', 'features', 'security', 'support']
+
+    useEffect(() => {
+        const mainEntity: { '@type': string; name: string; acceptedAnswer: { '@type': string; text: string } }[] = []
+
+        for (const catKey of categoryKeys) {
+            let itemIndex = 0
+            while (true) {
+                const question = t(`faqPage.categories.${catKey}.items.${itemIndex}.question`, { defaultValue: '' } as Record<string, unknown>)
+                if (!question) break
+                const answer = t(`faqPage.categories.${catKey}.items.${itemIndex}.answer`, { defaultValue: '' } as Record<string, unknown>)
+                mainEntity.push({
+                    '@type': 'Question',
+                    name: question,
+                    acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: answer,
+                    },
+                })
+                itemIndex++
+            }
+        }
+
+        const schema = {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity,
+        }
+
+        const script = document.createElement('script')
+        script.type = 'application/ld+json'
+        script.id = 'faq-page-schema'
+        script.textContent = JSON.stringify(schema)
+
+        document.getElementById('faq-page-schema')?.remove()
+        document.head.appendChild(script)
+
+        return () => {
+            document.getElementById('faq-page-schema')?.remove()
+        }
+    }, [t])
+}
 
 export default function FAQPage() {
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
 
     // Page-specific SEO meta tags
     usePageMeta({
         title: t('faqPage.meta.title'),
         description: t('faqPage.meta.description')
     })
+
+    // FAQPage JSON-LD schema for rich results
+    useFAQSchema(t)
+
+    // BreadcrumbList schema
+    useBreadcrumbSchema([
+        { name: i18n.language === 'hr' ? 'Početna' : 'Home', url: 'https://bookbed.io/' },
+        { name: 'FAQ', url: 'https://bookbed.io/faq/' },
+    ])
 
     const categories: FAQCategory[] = [
         {

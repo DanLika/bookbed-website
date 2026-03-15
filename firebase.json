@@ -3,6 +3,7 @@
     "site": "bookbed-website",
     "public": "dist",
     "ignore": ["firebase.json", "**/node_modules/**"],
+    "cleanUrls": true,
     "headers": [
       {
         "source": "/.well-known/assetlinks.json",
@@ -31,6 +32,13 @@
       {
         "source": "/locales/**",
         "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=86400" }
+        ]
+      },
+      {
+        "source": "/llms.txt",
+        "headers": [
+          { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
           { "key": "Cache-Control", "value": "public, max-age=86400" }
         ]
       },

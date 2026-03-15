@@ -1,7 +1,10 @@
+import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import DocsLayout from '../../components/DocsLayout'
 import { usePageMeta } from '../../hooks/usePageMeta'
+import { useBreadcrumbSchema } from '../../hooks/useBreadcrumbSchema'
+import { useHowToSchema } from '../../hooks/useHowToSchema'
 import { FiCheck, FiArrowRight, FiInfo, FiCheckCircle } from 'react-icons/fi'
 
 const QuickStartPage = () => {
@@ -12,6 +15,30 @@ const QuickStartPage = () => {
     description: i18n.language === 'hr'
       ? 'Započnite s BookBed platformom u 5 minuta.'
       : 'Get started with BookBed platform in 5 minutes.'
+  })
+
+  // BreadcrumbList schema
+  useBreadcrumbSchema([
+    { name: i18n.language === 'hr' ? 'Početna' : 'Home', url: 'https://bookbed.io/' },
+    { name: i18n.language === 'hr' ? 'Dokumentacija' : 'Documentation', url: 'https://bookbed.io/docs/' },
+    { name: i18n.language === 'hr' ? 'Brzi Početak' : 'Quick Start', url: 'https://bookbed.io/docs/quick-start/' },
+  ])
+
+  // HowTo schema for rich results
+  const howToSteps = useMemo(() => [
+    { name: t('docs.quickStart.step1.title'), text: t('docs.quickStart.step1.content') },
+    { name: t('docs.quickStart.step2.title'), text: t('docs.quickStart.step2.content') },
+    { name: t('docs.quickStart.step3.title'), text: t('docs.quickStart.step3.content') },
+    { name: t('docs.quickStart.step4.title'), text: t('docs.quickStart.step4.content') },
+    { name: t('docs.quickStart.step5.title'), text: t('docs.quickStart.step5.content') },
+  ], [t])
+
+  useHowToSchema({
+    name: i18n.language === 'hr' ? 'Kako započeti s BookBedom' : 'How to Get Started with BookBed',
+    description: i18n.language === 'hr'
+      ? 'Započnite s BookBed platformom u 5 minuta.'
+      : 'Get started with BookBed platform in 5 minutes.',
+    steps: howToSteps,
   })
 
   const steps = [

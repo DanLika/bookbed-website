@@ -3,9 +3,15 @@ import { spacing, heroSpacing, getSectionSpacing } from '../utils/spacing'
 import { typography } from '../utils/typography'
 import FadeContent from '../components/ui/animations/FadeContent'
 import GradientText from '../components/ui/animations/GradientText'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 export default function AboutPage() {
   const { t } = useTranslation()
+
+  usePageMeta({
+    title: t('about.meta.title', 'About Us - BookBed'),
+    description: t('about.meta.description', 'Learn about BookBed - the complete booking management platform for vacation rental owners in Croatia and the region.'),
+  })
 
   const features = [
     {

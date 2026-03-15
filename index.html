@@ -24,7 +24,14 @@
   <meta name="robots" content="index, follow" />
   <meta name="author" content="BookBed" />
   <meta name="publisher" content="BookBed" />
+  <meta name="geo.region" content="HR" />
+  <meta name="geo.placename" content="Croatia" />
   <link rel="canonical" href="https://bookbed.io/" />
+
+  <!-- Hreflang for i18n -->
+  <link rel="alternate" hreflang="hr" href="https://bookbed.io/" />
+  <link rel="alternate" hreflang="en" href="https://bookbed.io/" />
+  <link rel="alternate" hreflang="x-default" href="https://bookbed.io/" />
 
   <!-- Theme Color -->
   <meta name="theme-color" content="#6B4CE6" />
@@ -112,6 +119,11 @@
     "sameAs": [
       "https://bookbed.io"
     ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "Croatia"
+    },
+    "knowsLanguage": ["hr", "en"],
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "customer service",
@@ -128,12 +140,7 @@
     "name": "BookBed",
     "url": "https://bookbed.io",
     "description": "Upravljajte svim rezervacijama na jednom mjestu",
-    "inLanguage": ["hr", "en"],
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://bookbed.io/?search={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "inLanguage": ["hr", "en"]
   }
   </script>
 

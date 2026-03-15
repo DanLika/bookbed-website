@@ -1,7 +1,9 @@
+import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import DocsLayout from '../../components/DocsLayout'
 import { usePageMeta } from '../../hooks/usePageMeta'
+import { useBreadcrumbSchema } from '../../hooks/useBreadcrumbSchema'
 import { FiArrowRight, FiArrowLeft, FiCheckCircle } from 'react-icons/fi'
 
 interface GenericDocsPageProps {
@@ -14,6 +16,7 @@ interface GenericDocsPageProps {
 
 const GenericDocsPage = ({ sectionKey, prevPath, prevLabelKey, nextPath, nextLabelKey }: GenericDocsPageProps) => {
   const { t, i18n } = useTranslation()
+  const location = useLocation()
 
   const title = t(`docs.${sectionKey}.title`)
 
@@ -21,6 +24,15 @@ const GenericDocsPage = ({ sectionKey, prevPath, prevLabelKey, nextPath, nextLab
     title: `${title} - BookBed ${i18n.language === 'hr' ? 'Dokumentacija' : 'Documentation'}`,
     description: t(`docs.${sectionKey}.intro`)
   })
+
+  // BreadcrumbList schema for docs pages
+  const breadcrumbs = useMemo(() => [
+    { name: i18n.language === 'hr' ? 'Početna' : 'Home', url: 'https://bookbed.io/' },
+    { name: i18n.language === 'hr' ? 'Dokumentacija' : 'Documentation', url: 'https://bookbed.io/docs/' },
+    { name: title, url: `https://bookbed.io${location.pathname.replace(/\/$/, '')}/` },
+  ], [i18n.language, title, location.pathname])
+
+  useBreadcrumbSchema(breadcrumbs)
 
   // Get content sections dynamically
   const intro = t(`docs.${sectionKey}.intro`, { defaultValue: '' })

@@ -15,14 +15,15 @@ const TestWidgetPage = () => {
   const [propertyId, setPropertyId] = useState(searchParams.get('property') || '')
   const [unitId, setUnitId] = useState(searchParams.get('unit') || '')
 
-  // Page-specific SEO meta tags
+  // Page-specific SEO meta tags — noindex for internal test page
   usePageMeta({
     title: i18n.language === 'hr'
       ? 'Test Widget - BookBed'
       : 'Test Widget - BookBed',
     description: i18n.language === 'hr'
       ? 'Testirajte vaš BookBed widget prije embedanja na vaš web sajt.'
-      : 'Test your BookBed widget before embedding it on your website.'
+      : 'Test your BookBed widget before embedding it on your website.',
+    noindex: true,
   })
 
   // Auto-populate fields from URL params

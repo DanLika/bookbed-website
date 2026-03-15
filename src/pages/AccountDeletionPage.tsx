@@ -9,7 +9,8 @@ const AccountDeletionPage = () => {
 
   usePageMeta({
     title: t('accountDeletion.meta.title'),
-    description: t('accountDeletion.meta.description')
+    description: t('accountDeletion.meta.description'),
+    noindex: true,
   })
 
   return (
