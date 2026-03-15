@@ -4,15 +4,41 @@
 ## Ključne stranice
 - [Početna](https://bookbed.io/): Pregled platforme i značajki
 - [Značajke](https://bookbed.io/#features): Kalendar, Stripe, iCal, Widget, Emailovi
-- [Cijene](https://bookbed.io/#pricing): Besplatno tijekom beta faze
+- [Cijene](https://bookbed.io/#pricing): Kontaktirajte nas za prilagođenu ponudu
 - [Demo](https://bookbed.io/demo): Video demonstracije
 - [Widget](https://bookbed.io/widget): Booking widget za web stranice
 - [Dokumentacija](https://bookbed.io/docs): Vodič za korištenje
 - [FAQ](https://bookbed.io/faq): Često postavljana pitanja
 - [Kontakt](https://bookbed.io/contact): info@bookbed.io
+- [O nama](https://bookbed.io/about): O BookBed timu
 
 ## O proizvodu
-BookBed je SaaS platforma namijenjena vlasnicima apartmana, vila i smještajnih objekata. Omogućuje upravljanje rezervacijama, automatsku sinkronizaciju kalendara s Airbnb-om i Booking.com-om putem iCal protokola, naplatu putem Stripe-a, automatske email obavijesti gostima, te vlastiti booking widget za direktne rezervacije bez provizije.
+BookBed je SaaS platforma namijenjena vlasnicima apartmana, vila i smještajnih objekata u Hrvatskoj i regiji. Omogućuje upravljanje rezervacijama, automatsku sinkronizaciju kalendara s Airbnb-om i Booking.com-om putem iCal protokola, naplatu putem Stripe-a, automatske email obavijesti gostima, te vlastiti booking widget za direktne rezervacije bez provizije.
+
+## Ključne značajke
+- Pametni kalendar rezervacija s timeline prikazom
+- Stripe integracija za sigurna online plaćanja
+- Automatski emailovi gostima (potvrda, podsjetnik, zahvala)
+- iCal sinkronizacija s Airbnb, Booking.com i drugim platformama
+- Vlastiti booking widget za ugradnju na web stranice
+- Upravljanje više nekretnina s jednog računa (multi-property)
+- Nativne iOS i Android mobilne aplikacije
+
+## Često postavljana pitanja
+- Što je BookBed? BookBed je platforma za upravljanje rezervacijama dizajnirana za vlasnike smještaja u Hrvatskoj. Pomaže upravljati rezervacijama, primati online plaćanja i sinkronizirati kalendare s OTA platformama.
+- Za koga je BookBed? Za vlasnike apartmana, vila, pansiona i malih hotela koji žele primati direktne rezervacije bez provizije.
+- Koliko košta? Kontaktirajte nas za prilagođenu ponudu. Ne naplaćujemo provizije na rezervacije.
+- Sinkronizira li se s Airbnb i Booking.com? Da, putem dvosmjerne iCal sinkronizacije koja sprječava dvostruke rezervacije.
+- Mogu li ugraditi widget na svoju stranicu? Da, BookBed pruža prilagodljivi booking widget koji se dodaje s nekoliko linija koda.
+- Je li dostupan na mobilnim uređajima? Da, postoje nativne iOS i Android aplikacije te web verzija.
 
 ## Tehnologije
-Flutter (iOS, Android), Firebase, Stripe, Resend (email)
+Flutter (iOS, Android), Firebase (backend), Stripe (plaćanja), Resend (email)
+
+## Kontakt
+- Email: info@bookbed.io
+- Web: https://bookbed.io/contact
+- App: https://app.bookbed.io
+
+## Detaljnija verzija
+- [llms-full.txt](https://bookbed.io/llms-full.txt): Kompletna dokumentacija za AI agente

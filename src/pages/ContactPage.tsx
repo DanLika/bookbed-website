@@ -11,19 +11,20 @@ import ShinyText from '../components/ui/animations/ShinyText'
 import GlassIcon from '../components/ui/GlassIcon'
 import GlassIcons from '../components/ui/animations/GlassIcons'
 import { usePageMeta } from '../hooks/usePageMeta'
+import { useBreadcrumbSchema } from '../hooks/useBreadcrumbSchema'
 
 const ContactPage = () => {
   const { t, i18n } = useTranslation()
 
   // Page-specific SEO meta tags
   usePageMeta({
-    title: i18n.language === 'hr'
-      ? 'Kontaktirajte BookBed Tim | Podrška'
-      : 'Contact BookBed Team | Support',
-    description: i18n.language === 'hr'
-      ? 'Kontaktirajte BookBed tim. Pošaljite upit, zatražite demo ili saznajte više o našoj platformi za upravljanje rezervacijama.'
-      : 'Contact BookBed team. Send an inquiry, request a demo, or learn more about our booking management platform.'
+    title: t('contact.meta.title'),
+    description: t('contact.meta.description')
   })
+  useBreadcrumbSchema([
+    { name: i18n.language === 'hr' ? 'Početna' : 'Home', url: 'https://bookbed.io/' },
+    { name: i18n.language === 'hr' ? 'Kontakt' : 'Contact', url: 'https://bookbed.io/contact/' },
+  ])
   const [formData, setFormData] = useState({
     name: '',
     email: '',

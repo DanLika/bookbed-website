@@ -1,0 +1,104 @@
+# BookBed - Kompletna dokumentacija za AI agente
+
+> BookBed je SaaS platforma za upravljanje rezervacijama namijenjena vlasnicima apartmana, vila i smještajnih objekata u Hrvatskoj i regiji. Omogućuje direktne rezervacije bez provizije putem vlastitog booking widgeta.
+
+## Pregled platforme
+
+BookBed rješava ključni problem vlasnika smještaja: upravljanje rezervacijama s više platformi na jednom mjestu. Umjesto da vlasnici ručno ažuriraju kalendare na Airbnb-u, Booking.com-u i svojoj web stranici, BookBed automatski sinkronizira sve putem iCal protokola.
+
+### Razlike od OTA platformi (Airbnb, Booking.com)
+- BookBed ne naplaćuje proviziju na rezervacije (0% vs 15-20% na OTA)
+- Vlasnik posjeduje odnos s gostom i sve podatke
+- Vlasnik ima punu kontrolu nad cijenama i dostupnošću
+- BookBed se sinkronizira SA drugim platformama, ne protiv njih
+
+## Značajke
+
+### 1. Pametni kalendar rezervacija
+Intuitivni timeline kalendar s pregledom svih rezervacija, check-in/check-out datuma i popunjenosti. Podržava drag-and-drop, filtere po nekretnini i vizualni pregled zauzetosti.
+
+### 2. Booking Widget
+Prilagodljivi widget za ugradnju na bilo koju web stranicu. Tri načina prikaza:
+- **Puni mod**: Kompletan tok rezervacije sa Stripe plaćanjem
+- **Kalendar mod**: Samo prikaz dostupnosti
+- **Mod upita**: Formular za upit bez online plaćanja
+
+Ugradnja zahtijeva samo nekoliko linija HTML koda:
+```html
+<iframe src="https://view.bookbed.io/?owner=YOUR_ID&unit=YOUR_UNIT" width="100%" height="600"></iframe>
+```
+
+### 3. Stripe integracija
+Sigurna naplata kreditnim karticama putem Stripe-a (PCI-DSS Level 1 certificiran). Sredstva idu direktno na bankovni račun vlasnika. Stripe naplaćuje standardnu naknadu od 1,4% + 0,25€ za europske kartice.
+
+### 4. Automatski emailovi
+Automatizirane poruke gostima u ključnim trenucima:
+- Potvrda rezervacije
+- Podsjetnik prije dolaska
+- Upute za check-in
+- Zahvala nakon boravka
+
+### 5. iCal sinkronizacija
+Dvosmjerna sinkronizacija kalendara s:
+- Airbnb
+- Booking.com
+- Google Calendar
+- Bilo koja platforma koja podržava iCal protokol
+
+Automatski blokira datume na svim platformama kada se napravi nova rezervacija.
+
+### 6. Multi-property upravljanje
+Upravljanje neograničenim brojem nekretnina i smještajnih jedinica s jednog dashboarda. Svaka nekretnina može imati vlastite postavke, cijene i booking widget.
+
+## Tehnički stack
+- **Frontend/Mobile**: Flutter (iOS, Android, Web)
+- **Backend**: Firebase (Firestore, Cloud Functions, Authentication)
+- **Plaćanja**: Stripe
+- **Email**: Resend
+- **Sinkronizacija**: iCal protokol
+
+## Cijene
+Prilagođene cijene prema potrebama vlasnika. Kontaktirajte nas za personaliziranu ponudu. Nema provizije na rezervacije - zadržavate 100% prihoda.
+
+## Često postavljana pitanja
+
+### Što je BookBed?
+BookBed je kompletna platforma za upravljanje rezervacijama namijenjena vlasnicima apartmana i smještaja. Omogućuje praćenje rezervacija, automatske emailove gostima, integraciju plaćanja putem Stripea i sinkronizaciju s Airbnb-om i Booking.com-om.
+
+### Za koga je BookBed?
+Za vlasnike apartmana, vila, pansiona, kuća za odmor i malih hotela koji žele primati direktne rezervacije i efikasnije upravljati svojim smještajem.
+
+### Koliko košta BookBed?
+Nudimo prilagođene cijene prema vašim potrebama. Kontaktirajte nas za personaliziranu ponudu. Ne naplaćujemo provizije na rezervacije.
+
+### Kako radi iCal sinkronizacija?
+BookBed automatski sinkronizira vaš kalendar s Airbnb-om, Booking.com-om i drugim platformama putem iCal protokola. Kada se rezervacija napravi na jednoj platformi, automatski blokira datume na svim ostalim.
+
+### Je li BookBed dostupan na mobilnim uređajima?
+Da, BookBed ima nativne aplikacije za iOS i Android, kao i web verziju koja radi na svim uređajima.
+
+### Mogu li koristiti BookBed za više nekretnina?
+Da, možete upravljati neograničenim brojem nekretnina i jedinica s jednog dashboarda.
+
+### Jesu li moji podaci sigurni?
+Da, koristimo industrijsku standardnu enkripciju. Podaci su pohranjeni na Google Cloud infrastrukturi s automatskim sigurnosnim kopijama.
+
+### Je li BookBed usklađen s GDPR-om?
+Da, BookBed je potpuno usklađen s GDPR-om. Možete zatražiti izvoz ili brisanje podataka u bilo kojem trenutku.
+
+## Kontakt
+- Email: info@bookbed.io
+- Web: https://bookbed.io/contact
+- App Store: https://apps.apple.com/ba/app/bookbed/id6758141353
+- Google Play: https://play.google.com/store/apps/details?id=io.bookbed.app
+- Dashboard: https://app.bookbed.io
+
+## Linkovi
+- Početna: https://bookbed.io/
+- Dokumentacija: https://bookbed.io/docs
+- FAQ: https://bookbed.io/faq
+- Widget: https://bookbed.io/widget
+- Demo: https://bookbed.io/demo
+- Kontakt: https://bookbed.io/contact
+- Politika privatnosti: https://bookbed.io/privacy
+- Uvjeti korištenja: https://bookbed.io/terms

@@ -4,14 +4,19 @@ import { typography } from '../utils/typography'
 import FadeContent from '../components/ui/animations/FadeContent'
 import GradientText from '../components/ui/animations/GradientText'
 import { usePageMeta } from '../hooks/usePageMeta'
+import { useBreadcrumbSchema } from '../hooks/useBreadcrumbSchema'
 
 export default function AboutPage() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   usePageMeta({
     title: t('about.meta.title', 'About Us - BookBed'),
     description: t('about.meta.description', 'Learn about BookBed - the complete booking management platform for vacation rental owners in Croatia and the region.'),
   })
+  useBreadcrumbSchema([
+    { name: i18n.language === 'hr' ? 'Početna' : 'Home', url: 'https://bookbed.io/' },
+    { name: i18n.language === 'hr' ? 'O Nama' : 'About', url: 'https://bookbed.io/about/' },
+  ])
 
   const features = [
     {

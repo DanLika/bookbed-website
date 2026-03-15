@@ -230,6 +230,10 @@
     }
   },
   "contact": {
+    "meta": {
+      "title": "Kontaktirajte BookBed Tim | Podrška",
+      "description": "Kontaktirajte BookBed tim. Pošaljite upit, zatražite demo ili saznajte više o našoj platformi za upravljanje rezervacijama."
+    },
     "title": "Kontaktirajte Nas",
     "subtitle": "Imate pitanja? Rado ćemo vas čuti",
     "name": "Ime",
@@ -435,8 +439,13 @@
     }
   },
   "privacy": {
+    "meta": {
+      "title": "Politika Privatnosti - BookBed",
+      "description": "Pročitajte politiku privatnosti BookBeda. Saznajte kako prikupljamo, koristimo i štitimo vaše osobne podatke."
+    },
     "title": "Politika Privatnosti",
     "lastUpdated": "Zadnje ažurirano",
+    "lastUpdatedDate": "27. prosinca 2025.",
     "intro": "Ova Politika privatnosti opisuje kako BookBed (\"mi\", \"nas\" ili \"naš\") prikuplja, koristi i otkriva vaše informacije kada koristite našu mobilnu aplikaciju (\"Aplikacija\") i naše usluge.\n\nKorištenjem Aplikacije pristajete na prikupljanje i korištenje informacija u skladu s ovom Politikom privatnosti.",
     "section1": {
       "title": "1. Informacije koje prikupljamo",

@@ -3,15 +3,20 @@ import { spacing, heroSpacing } from '../utils/spacing'
 import { typography } from '../utils/typography'
 import FadeContent from '../components/ui/animations/FadeContent'
 import { usePageMeta } from '../hooks/usePageMeta'
+import { useBreadcrumbSchema } from '../hooks/useBreadcrumbSchema'
 
 const DataDeletionPage = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   usePageMeta({
     title: t('dataDeletion.meta.title'),
     description: t('dataDeletion.meta.description'),
     noindex: true,
   })
+  useBreadcrumbSchema([
+    { name: i18n.language === 'hr' ? 'Početna' : 'Home', url: 'https://bookbed.io/' },
+    { name: i18n.language === 'hr' ? 'Brisanje Podataka' : 'Data Deletion', url: 'https://bookbed.io/data-deletion/' },
+  ])
 
   return (
     <div className="relative min-h-screen max-w-[1920px] mx-auto bg-white dark:bg-zinc-900 overflow-hidden">

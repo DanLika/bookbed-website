@@ -10,7 +10,6 @@ export default function Footer() {
 
   const navLinks = [
     { path: '/', key: 'home' },
-    { path: '/demo', key: 'demo' },
     { path: '/widget', key: 'widget' },
     { path: '/docs', key: 'docs' },
     { path: '/faq', key: 'faqNav' },

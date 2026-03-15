@@ -8,6 +8,7 @@ import GradientText from '../components/ui/animations/GradientText'
 import GlassIcon from '../components/ui/GlassIcon'
 import GlassIcons from '../components/ui/animations/GlassIcons'
 import { usePageMeta } from '../hooks/usePageMeta'
+import { useBreadcrumbSchema } from '../hooks/useBreadcrumbSchema'
 
 const modes = [
   {
@@ -43,13 +44,17 @@ const modes = [
 ] as const
 
 const WidgetPage = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   // Page-specific SEO meta tags
   usePageMeta({
     title: t('widget.meta.title'),
     description: t('widget.meta.description')
   })
+  useBreadcrumbSchema([
+    { name: i18n.language === 'hr' ? 'Početna' : 'Home', url: 'https://bookbed.io/' },
+    { name: 'Widget', url: 'https://bookbed.io/widget/' },
+  ])
   const [activeMode, setActiveMode] = useState<'full' | 'calendar' | 'inquiry'>('full')
   const [copied, setCopied] = useState(false)
 

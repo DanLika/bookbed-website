@@ -3,14 +3,19 @@ import { spacing, heroSpacing } from '../utils/spacing'
 import { typography } from '../utils/typography'
 import FadeContent from '../components/ui/animations/FadeContent'
 import { usePageMeta } from '../hooks/usePageMeta'
+import { useBreadcrumbSchema } from '../hooks/useBreadcrumbSchema'
 
 const TermsPage = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   usePageMeta({
     title: t('terms.meta.title'),
     description: t('terms.meta.description')
   })
+  useBreadcrumbSchema([
+    { name: i18n.language === 'hr' ? 'Početna' : 'Home', url: 'https://bookbed.io/' },
+    { name: i18n.language === 'hr' ? 'Uvjeti Korištenja' : 'Terms of Service', url: 'https://bookbed.io/terms/' },
+  ])
 
   return (
     <div className="relative min-h-screen max-w-[1920px] mx-auto bg-white dark:bg-zinc-900 overflow-hidden">
