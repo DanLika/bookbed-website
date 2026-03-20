@@ -1,5 +1,10 @@
 import { motion } from 'framer-motion'
 
+// Static arrays for mapped elements to avoid unnecessary inline allocations
+const ARRAY_OF_3 = [0, 1, 2];
+const ARRAY_OF_6 = [...Array(6)];
+const ARRAY_OF_2 = [0, 1];
+
 // Sync Animation - Rotating sync icon with pulsing circles
 export const SyncAnimation = () => (
   <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
@@ -41,7 +46,7 @@ export const SyncAnimation = () => (
 // Email Animation - Email envelopes flying up
 export const EmailAnimation = () => (
   <div className="absolute inset-0 overflow-hidden flex items-center justify-center">
-    {[0, 1, 2].map((i) => (
+    {ARRAY_OF_3.map((i) => (
       <motion.div
         key={i}
         className="absolute"
@@ -91,7 +96,7 @@ export const ManualChaosAnimation = () => (
     </motion.div>
 
     {/* Chaotic Excel sheets flying around */}
-    {[...Array(6)].map((_, i) => (
+    {ARRAY_OF_6.map((_, i) => (
       <motion.div
         key={i}
         className="absolute w-10 h-12"
@@ -119,7 +124,7 @@ export const ManualChaosAnimation = () => (
     ))}
 
     {/* "X" marks for errors */}
-    {[0, 1].map((i) => (
+    {ARRAY_OF_2.map((i) => (
       <motion.div
         key={`x-${i}`}
         className="absolute text-red-500 font-bold text-2xl"
@@ -168,7 +173,7 @@ export const AutomatedAnimation = () => (
 
     {/* Organized dashboard cards appearing in sequence */}
     <div className="absolute inset-0 grid grid-cols-3 gap-2 p-6">
-      {[...Array(6)].map((_, i) => (
+      {ARRAY_OF_6.map((_, i) => (
         <motion.div
           key={i}
           className="bg-gradient-to-br from-emerald-400/20 to-emerald-500/20 border border-emerald-500/30 rounded-lg flex items-center justify-center relative overflow-hidden"
@@ -223,7 +228,7 @@ export const AutomatedAnimation = () => (
     </div>
 
     {/* Success sparkles */}
-    {[0, 1, 2].map((i) => (
+    {ARRAY_OF_3.map((i) => (
       <motion.div
         key={`sparkle-${i}`}
         className="absolute text-emerald-400 text-xl"
@@ -291,7 +296,7 @@ export const PaymentAnimation = () => (
 export const MultiPropertyAnimation = () => (
   <div className="absolute inset-0 flex items-center justify-center p-6">
     <div className="grid grid-cols-3 gap-2 w-full">
-      {[...Array(6)].map((_, i) => (
+      {ARRAY_OF_6.map((_, i) => (
         <motion.div
           key={i}
           className="aspect-square bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/30 rounded-lg flex items-center justify-center"
