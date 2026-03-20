@@ -112,17 +112,9 @@ function FAQCategorySection({
     const [openIndex, setOpenIndex] = useState<number | null>(null)
 
     const title = t(`faqPage.categories.${category.key}.title`)
-    const items: FAQItem[] = []
 
     // Get items from translations
-    let itemIndex = 0
-    while (true) {
-        const question = t(`faqPage.categories.${category.key}.items.${itemIndex}.question`, { defaultValue: '' })
-        if (!question) break
-        const answer = t(`faqPage.categories.${category.key}.items.${itemIndex}.answer`, { defaultValue: '' })
-        items.push({ question, answer })
-        itemIndex++
-    }
+    const items = t(`faqPage.categories.${category.key}.items`, { returnObjects: true, defaultValue: [] }) as FAQItem[]
 
     return (
         <FadeContent
@@ -168,20 +160,18 @@ function useFAQSchema(t: (key: string, options?: Record<string, unknown>) => str
         const mainEntity: { '@type': string; name: string; acceptedAnswer: { '@type': string; text: string } }[] = []
 
         for (const catKey of categoryKeys) {
-            let itemIndex = 0
-            while (true) {
-                const question = t(`faqPage.categories.${catKey}.items.${itemIndex}.question`, { defaultValue: '' } as Record<string, unknown>)
-                if (!question) break
-                const answer = t(`faqPage.categories.${catKey}.items.${itemIndex}.answer`, { defaultValue: '' } as Record<string, unknown>)
-                mainEntity.push({
-                    '@type': 'Question',
-                    name: question,
-                    acceptedAnswer: {
-                        '@type': 'Answer',
-                        text: answer,
-                    },
-                })
-                itemIndex++
+            const items = t(`faqPage.categories.${catKey}.items`, { returnObjects: true, defaultValue: [] }) as { question: string, answer: string }[]
+            for (const item of items) {
+                if (item.question && item.answer) {
+                    mainEntity.push({
+                        '@type': 'Question',
+                        name: item.question,
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: item.answer,
+                        },
+                    })
+                }
             }
         }
 
