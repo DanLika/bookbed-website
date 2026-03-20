@@ -77,18 +77,32 @@ export default function ScrollReveal({
   // Split text based on animateBy option
   const elements = useMemo(() => {
     if (animateBy === 'characters') {
-      return children.split('').map((char, i) => ({
-        content: char === ' ' ? '\u00A0' : char,
-        key: i,
-        isSpace: char === ' ',
-      }))
+      const len = children.length
+      const result = new Array(len)
+      for (let i = 0; i < len; i++) {
+        const char = children[i]
+        const isSpace = char === ' '
+        result[i] = {
+          content: isSpace ? '\u00A0' : char,
+          key: i,
+          isSpace,
+        }
+      }
+      return result
     }
+
     // Default: words
-    return children.split(' ').map((word, i) => ({
-      content: word,
-      key: i,
-      isSpace: false,
-    }))
+    const words = children.split(' ')
+    const len = words.length
+    const result = new Array(len)
+    for (let i = 0; i < len; i++) {
+      result[i] = {
+        content: words[i],
+        key: i,
+        isSpace: false,
+      }
+    }
+    return result
   }, [children, animateBy])
 
   // Calculate initial position based on direction
