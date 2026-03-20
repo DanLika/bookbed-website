@@ -73,19 +73,19 @@ const DemoPage = () => {
   const videos = [
     {
       id: 'video1',
-      youtubeId: 'dQw4w9WgXcQ',
+      youtubeId: '',
     },
     {
       id: 'video2',
-      youtubeId: 'dQw4w9WgXcQ',
+      youtubeId: '',
     },
     {
       id: 'video3',
-      youtubeId: 'dQw4w9WgXcQ',
+      youtubeId: '',
     },
     {
       id: 'video4',
-      youtubeId: 'dQw4w9WgXcQ',
+      youtubeId: '',
     },
   ]
 
