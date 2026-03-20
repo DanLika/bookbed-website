@@ -20,6 +20,17 @@ const defaultParams: ShaderParams = {
   speed: 0.3
 }
 
+function inside(x: number, y: number, width: number, height: number, shapeMask: boolean[]) {
+  if (x < 0 || x >= width || y < 0 || y >= height) return false
+  return shapeMask[y * width + x]
+}
+
+function getU(x: number, y: number, width: number, height: number, shapeMask: boolean[], arr: Float32Array) {
+  if (x < 0 || x >= width || y < 0 || y >= height) return 0
+  if (!shapeMask[y * width + x]) return 0
+  return arr[y * width + x]
+}
+
 export function parseLogoImage(file: File): Promise<{ imageData: ImageData; pngBlob: Blob }> {
   const canvas = document.createElement('canvas')
   const ctx = canvas.getContext('2d')
@@ -86,11 +97,6 @@ export function parseLogoImage(file: File): Promise<{ imageData: ImageData; pngB
         }
       }
 
-      function inside(x: number, y: number) {
-        if (x < 0 || x >= width || y < 0 || y >= height) return false
-        return shapeMask[y * width + x]
-      }
-
       const boundaryMask = new Array(width * height).fill(false)
       for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
@@ -99,7 +105,7 @@ export function parseLogoImage(file: File): Promise<{ imageData: ImageData; pngB
           let isBoundary = false
           for (let ny = y - 1; ny <= y + 1 && !isBoundary; ny++) {
             for (let nx = x - 1; nx <= x + 1 && !isBoundary; nx++) {
-              if (!inside(nx, ny)) {
+              if (!inside(nx, ny, width, height, shapeMask)) {
                 isBoundary = true
               }
             }
@@ -131,12 +137,6 @@ export function parseLogoImage(file: File): Promise<{ imageData: ImageData; pngB
       const C = 0.01
       const ITERATIONS = 300
 
-      function getU(x: number, y: number, arr: Float32Array) {
-        if (x < 0 || x >= width || y < 0 || y >= height) return 0
-        if (!shapeMask[y * width + x]) return 0
-        return arr[y * width + x]
-      }
-
       for (let iter = 0; iter < ITERATIONS; iter++) {
         for (let y = 0; y < height; y++) {
           for (let x = 0; x < width; x++) {
@@ -145,7 +145,11 @@ export function parseLogoImage(file: File): Promise<{ imageData: ImageData; pngB
               newU[idx] = 0
               continue
             }
-            const sumN = getU(x + 1, y, u) + getU(x - 1, y, u) + getU(x, y + 1, u) + getU(x, y - 1, u)
+            const sumN =
+              getU(x + 1, y, width, height, shapeMask, u) +
+              getU(x - 1, y, width, height, shapeMask, u) +
+              getU(x, y + 1, width, height, shapeMask, u) +
+              getU(x, y - 1, width, height, shapeMask, u)
             newU[idx] = (C + sumN) / 4
           }
         }
@@ -363,6 +367,35 @@ void main() {
 }
 `
 
+function createShader(gl: WebGL2RenderingContext, sourceCode: string, type: number) {
+  const shader = gl.createShader(type)
+  if (!shader) {
+    return null
+  }
+
+  gl.shaderSource(shader, sourceCode)
+  gl.compileShader(shader)
+
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    console.error('An error occurred compiling the shaders: ' + gl.getShaderInfoLog(shader))
+    gl.deleteShader(shader)
+    return null
+  }
+
+  return shader
+}
+
+function getUniforms(program: WebGLProgram, gl: WebGL2RenderingContext) {
+  let uniforms: Record<string, WebGLUniformLocation> = {}
+  let uniformCount = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS)
+  for (let i = 0; i < uniformCount; i++) {
+    let uniformName = gl.getActiveUniform(program, i)?.name
+    if (!uniformName) continue
+    uniforms[uniformName] = gl.getUniformLocation(program, uniformName) as WebGLUniformLocation
+  }
+  return uniforms
+}
+
 export default function MetallicPaint({
   imageData,
   params = defaultParams
@@ -397,24 +430,6 @@ export default function MetallicPaint({
         return
       }
 
-      function createShader(gl: WebGL2RenderingContext, sourceCode: string, type: number) {
-        const shader = gl.createShader(type)
-        if (!shader) {
-          return null
-        }
-
-        gl.shaderSource(shader, sourceCode)
-        gl.compileShader(shader)
-
-        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-          console.error('An error occurred compiling the shaders: ' + gl.getShaderInfoLog(shader))
-          gl.deleteShader(shader)
-          return null
-        }
-
-        return shader
-      }
-
       const vertexShader = createShader(gl, vertexShaderSource, gl.VERTEX_SHADER)
       const fragmentShader = createShader(gl, liquidFragSource, gl.FRAGMENT_SHADER)
       const program = gl.createProgram()
@@ -431,16 +446,6 @@ export default function MetallicPaint({
         return null
       }
 
-      function getUniforms(program: WebGLProgram, gl: WebGL2RenderingContext) {
-        let uniforms: Record<string, WebGLUniformLocation> = {}
-        let uniformCount = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS)
-        for (let i = 0; i < uniformCount; i++) {
-          let uniformName = gl.getActiveUniform(program, i)?.name
-          if (!uniformName) continue
-          uniforms[uniformName] = gl.getUniformLocation(program, uniformName) as WebGLUniformLocation
-        }
-        return uniforms
-      }
       const uniforms = getUniforms(program, gl)
       setUniforms(uniforms)
 
