@@ -40,7 +40,7 @@ const TestWidgetPage = () => {
     }
 
     // Open widget in new tab
-    const url = `https://view.bookbed.io/?property=${propertyId.trim()}&unit=${unitId.trim()}`
+    const url = `https://view.bookbed.io/?property=${encodeURIComponent(propertyId.trim())}&unit=${encodeURIComponent(unitId.trim())}`
     window.open(url, '_blank', 'noopener,noreferrer')
 
     // Update URL params for sharing
@@ -59,7 +59,7 @@ const TestWidgetPage = () => {
   }, [propertyId, unitId])
 
   const copyShareLink = () => {
-    const shareUrl = `https://view.bookbed.io/?property=${propertyId.trim()}&unit=${unitId.trim()}`
+    const shareUrl = `https://view.bookbed.io/?property=${encodeURIComponent(propertyId.trim())}&unit=${encodeURIComponent(unitId.trim())}`
     navigator.clipboard.writeText(shareUrl)
   }
 
