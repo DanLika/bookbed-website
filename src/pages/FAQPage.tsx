@@ -6,6 +6,7 @@ import { spacing, heroSpacing, getSectionSpacing } from '../utils/spacing'
 import { typography } from '../utils/typography'
 import FadeContent from '../components/ui/animations/FadeContent'
 import GradientText from '../components/ui/animations/GradientText'
+import { gradientColors } from '../utils/colors'
 
 interface FAQItem {
     question: string
@@ -305,7 +306,7 @@ export default function FAQPage() {
                     >
                         <h1 className={`${typography.h1} font-bold text-text-primary dark:text-white mb-6`}>
                             <GradientText
-                                colors={['#6B4CE6', '#9B86F3', '#6B4CE6', '#9B86F3', '#6B4CE6']}
+                                colors={[...gradientColors.primary]}
                                 animationSpeed={6}
                                 className={typography.h1}
                             >

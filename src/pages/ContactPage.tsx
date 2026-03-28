@@ -10,6 +10,7 @@ import SpotlightCard from '../components/ui/animations/SpotlightCard'
 import ShinyText from '../components/ui/animations/ShinyText'
 import GlassIcon from '../components/ui/GlassIcon'
 import GlassIcons from '../components/ui/animations/GlassIcons'
+import { colors } from '../utils/colors'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { useBreadcrumbSchema } from '../hooks/useBreadcrumbSchema'
 
@@ -273,7 +274,7 @@ const ContactPage = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                           </svg>
                         ),
-                        color: '#9b86f3',
+                        color: colors.primary.light,
                         label: ''
                       }]}
                       className="!py-0 !gap-0 !grid-cols-1"
@@ -335,7 +336,7 @@ const ContactPage = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                         ),
-                        color: '#61a6fb',
+                        color: colors.secondary.light,
                         label: ''
                       }]}
                       className="!py-0 !gap-0 !grid-cols-1"

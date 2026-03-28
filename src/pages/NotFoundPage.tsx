@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import FuzzyText from '../components/ui/animations/FuzzyText'
 import FadeContent from '../components/ui/animations/FadeContent'
+import { colors } from '../utils/colors'
 import { usePageMeta } from '../hooks/usePageMeta'
 
 export default function NotFoundPage() {
@@ -22,7 +23,7 @@ export default function NotFoundPage() {
             <FuzzyText
               fontSize="clamp(4rem, 12vw, 6rem)"
               fontWeight={900}
-              color="#6B4CE6"
+              color={colors.primary.DEFAULT}
               baseIntensity={0.15}
               hoverIntensity={0.6}
               enableHover

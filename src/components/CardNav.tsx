@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef, useState, useCallback } from 'react'
 import { gsap } from 'gsap'
 import { GoArrowUpRight } from 'react-icons/go'
+import { colors } from '../utils/colors'
 
 type CardNavLink = {
   label: string
@@ -39,10 +40,10 @@ const CardNav: React.FC<CardNavProps> = ({
   inlineLinks,
   className = '',
   ease = 'power3.out',
-  baseColor = '#6B4CE6',
-  menuColor = '#FFFFFF',
-  buttonBgColor = '#FFFFFF',
-  buttonTextColor = '#2D3748',
+  baseColor = colors.primary.DEFAULT,
+  menuColor = colors.text.inverse,
+  buttonBgColor = colors.bg.white,
+  buttonTextColor = colors.text.primary,
   buttonText = 'Get Started',
   onButtonClick,
   isDark = false,
@@ -281,7 +282,7 @@ const CardNav: React.FC<CardNavProps> = ({
         className={`card-nav ${isExpanded ? 'open' : ''} block h-[60px] p-0 rounded-xl shadow-lg border relative overflow-hidden`}
         style={{
           backgroundColor: baseColor,
-          borderColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+          borderColor: isDark ? colors.border.darkSubtle : colors.border.lightSubtle,
           willChange: isExpanded ? 'height' : 'auto', // Only hint when animating
           contain: 'layout style' // CSS containment for better performance
         }}
@@ -317,7 +318,7 @@ const CardNav: React.FC<CardNavProps> = ({
               aria-label={isExpanded ? 'Close menu' : 'Open menu'}
               aria-expanded={isExpanded}
               tabIndex={0}
-              style={{ color: menuColor || '#000' }}
+              style={{ color: menuColor || colors.text.primary }}
             >
               <div
                 className={`hamburger-line w-[30px] h-[2px] bg-current transition-[transform,opacity,margin] duration-300 ease-linear [transform-origin:50%_50%] ${isHamburgerOpen ? 'translate-y-[4px] rotate-45' : ''
@@ -368,7 +369,7 @@ const CardNav: React.FC<CardNavProps> = ({
                 className="p-2 rounded-lg border transition-all hover:opacity-75 active:scale-95"
                 style={{
                   color: menuColor,
-                  borderColor: isDark ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.15)',
+                  borderColor: isDark ? colors.border.darkMedium : colors.border.lightMedium,
                   borderWidth: '1px'
                 }}
                 aria-label={currentLanguage === 'en' ? 'Switch to Croatian' : 'Switch to English'}
@@ -387,7 +388,7 @@ const CardNav: React.FC<CardNavProps> = ({
                 className="p-2 rounded-lg border transition-all hover:opacity-75 active:scale-95"
                 style={{
                   color: menuColor,
-                  borderColor: isDark ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.15)',
+                  borderColor: isDark ? colors.border.darkMedium : colors.border.lightMedium,
                   borderWidth: '1px'
                 }}
                 aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}

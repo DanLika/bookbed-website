@@ -5,6 +5,7 @@ import { spacing, heroSpacing, getSectionSpacing, getContainerClasses } from '..
 import { typography } from '../utils/typography'
 import FadeContent from '../components/ui/animations/FadeContent'
 import GradientText from '../components/ui/animations/GradientText'
+import { gradientColors } from '../utils/colors'
 import GlassIcon from '../components/ui/GlassIcon'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { useBreadcrumbSchema } from '../hooks/useBreadcrumbSchema'
@@ -126,7 +127,7 @@ const DemoPage = () => {
           >
             <h1 className={`${typography.h1} font-bold text-text-primary dark:text-white mb-6`}>
               <GradientText
-                colors={['#6B4CE6', '#9B86F3', '#6B4CE6', '#9B86F3', '#6B4CE6']}
+                colors={[...gradientColors.primary]}
                 animationSpeed={6}
                 className={typography.h1}
               >

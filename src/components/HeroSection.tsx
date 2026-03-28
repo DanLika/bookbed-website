@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { containers } from '../utils/typography'
 import { spacing } from '../utils/spacing'
+import { colors } from '../utils/colors'
 import ShinyText from './ui/animations/ShinyText'
 import StarBorder from './ui/animations/StarBorder'
 import { useMediaQuery } from '../hooks/useMediaQuery'
@@ -41,15 +42,15 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-violet-50/80 via-white to-white dark:hidden" />
 
       {/* Background - Dark theme overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] to-zinc-900 hidden dark:block" />
+      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 to-zinc-900 hidden dark:block" />
 
       {/* GridScan Background - Dark theme only, lazy loaded with performance optimizations */}
       {showGridScan && (
         <Suspense fallback={null}>
           <div className="absolute inset-0 w-full h-full opacity-50">
             <GridScan
-              linesColor="#6B4CE6"
-              scanColor="#9B86F3"
+              linesColor={colors.primary.DEFAULT}
+              scanColor={colors.primary.light}
               gridScale={0.1}
               lineThickness={0.8}
               lineJitter={0.08}
@@ -219,7 +220,7 @@ export default function HeroSection() {
       <div className={`flex justify-center mt-4 sm:mt-6 md:mt-8 lg:mt-6 ${spacing.container.padding} animate-fade-in-up`} style={{ animationDelay: '0.2s' }}>
         <StarBorder
           as="div"
-          color="#6B4CE6"
+          color={colors.primary.DEFAULT}
           speed="4s"
           thickness={2}
           className="shadow-lg hover:shadow-xl transition-shadow"
