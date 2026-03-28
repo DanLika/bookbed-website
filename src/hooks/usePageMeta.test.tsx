@@ -1,6 +1,14 @@
 import { renderHook } from '@testing-library/react'
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
+import { vi } from "vitest"
+
+vi.mock("react-i18next", () => ({
+  useTranslation: () => ({
+    i18n: { language: "en" }
+  })
+}))
+
 import { usePageMeta } from './usePageMeta'
 
 describe('usePageMeta', () => {
