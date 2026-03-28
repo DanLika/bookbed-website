@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 export function useMediaQuery(query: string): boolean {
   const getMatches = (query: string): boolean => {
     // Prevents SSR issues
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && typeof window.matchMedia !== 'undefined') {
       return window.matchMedia(query).matches
     }
     return false
@@ -12,6 +12,9 @@ export function useMediaQuery(query: string): boolean {
   const [matches, setMatches] = useState<boolean>(getMatches(query))
 
   useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia === 'undefined') {
+      return;
+    }
     const matchMedia = window.matchMedia(query)
 
     const handleChange = () => {
