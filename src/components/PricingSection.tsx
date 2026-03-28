@@ -95,19 +95,19 @@ export default function PricingSection() {
                 {features.map((feature, i) => (
                   <FadeContent
                     key={i}
+                    as="li"
                     duration={300}
                     delay={400 + i * 50}
                     direction="left"
                     distance={20}
+                    className="flex items-center gap-3"
                   >
-                    <li className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                        <CheckIcon />
-                      </div>
-                      <span className="text-white/90">
-                        {feature}
-                      </span>
-                    </li>
+                    <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                      <CheckIcon />
+                    </div>
+                    <span className="text-white/90">
+                      {feature}
+                    </span>
                   </FadeContent>
                 ))}
               </ul>

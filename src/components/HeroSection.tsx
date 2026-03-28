@@ -159,7 +159,7 @@ export default function HeroSection() {
               </div>
               <div>
                 <p className="font-semibold text-text-primary dark:text-white text-sm">€320.00</p>
-                <p className="text-xs text-emerald-600 dark:text-emerald-400">{t('hero.cards.paymentReceived')}</p>
+                <p className="text-xs text-emerald-700 dark:text-emerald-400">{t('hero.cards.paymentReceived')}</p>
               </div>
             </div>
           </div>
