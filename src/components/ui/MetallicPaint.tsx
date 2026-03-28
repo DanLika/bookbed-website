@@ -33,10 +33,11 @@ export function parseLogoImage(file: File): Promise<{ imageData: ImageData; pngB
     const img = new Image()
     img.crossOrigin = 'anonymous'
     img.onload = function () {
-      if (file.type === 'image/svg+xml') {
-        img.width = 1000
-        img.height = 1000
-      }
+      try {
+        if (file.type === 'image/svg+xml') {
+          img.width = 1000
+          img.height = 1000
+        }
 
       const MAX_SIZE = 1000
       const MIN_SIZE = 500
@@ -181,16 +182,19 @@ export function parseLogoImage(file: File): Promise<{ imageData: ImageData; pngB
       }
       ctx.putImageData(outImg, 0, 0)
 
-      canvas.toBlob(blob => {
-        if (!blob) {
-          reject(new Error('Failed to create PNG blob'))
-          return
-        }
-        resolve({
-          imageData: outImg,
-          pngBlob: blob
-        })
-      }, 'image/png')
+        canvas.toBlob(blob => {
+          if (!blob) {
+            reject(new Error('Failed to create PNG blob'))
+            return
+          }
+          resolve({
+            imageData: outImg,
+            pngBlob: blob
+          })
+        }, 'image/png')
+      } catch (err) {
+        reject(err)
+      }
     }
 
     img.onerror = () => reject(new Error('Failed to load image'))
