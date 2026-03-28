@@ -76,12 +76,12 @@ const useResizeObserver = (
 };
 
 const useImageLoader = (
-  seqRef: React.RefObject<HTMLUListElement | null>,
+  imagesRef: React.RefObject<(HTMLImageElement | null)[]>,
   onLoad: () => void,
   dependencies: React.DependencyList
 ) => {
   useEffect(() => {
-    const images = seqRef.current?.querySelectorAll('img') ?? [];
+    const images = (imagesRef.current ?? []).filter((img): img is HTMLImageElement => img !== null);
 
     if (images.length === 0) {
       onLoad();
@@ -97,12 +97,11 @@ const useImageLoader = (
     };
 
     images.forEach(img => {
-      const htmlImg = img as HTMLImageElement;
-      if (htmlImg.complete) {
+      if (img.complete) {
         handleImageLoad();
       } else {
-        htmlImg.addEventListener('load', handleImageLoad, { once: true });
-        htmlImg.addEventListener('error', handleImageLoad, { once: true });
+        img.addEventListener('load', handleImageLoad, { once: true });
+        img.addEventListener('error', handleImageLoad, { once: true });
       }
     });
 
@@ -215,6 +214,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
     const containerRef = useRef<HTMLDivElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
     const seqRef = useRef<HTMLUListElement>(null);
+    const imagesRef = useRef<(HTMLImageElement | null)[]>([]);
 
     const [seqWidth, setSeqWidth] = useState<number>(0);
     const [seqHeight, setSeqHeight] = useState<number>(0);
@@ -269,7 +269,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
 
     useResizeObserver(updateDimensions, [containerRef, seqRef], [logos, gap, logoHeight, isVertical]);
 
-    useImageLoader(seqRef, updateDimensions, [logos, gap, logoHeight, isVertical]);
+    useImageLoader(imagesRef, updateDimensions, [logos, gap, logoHeight, isVertical]);
 
     useAnimationLoop(trackRef, targetVelocity, seqWidth, seqHeight, isHovered, effectiveHoverSpeed, isVertical);
 
@@ -306,7 +306,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
     }, [effectiveHoverSpeed]);
 
     const renderLogoItem = useCallback(
-      (item: LogoItem, key: React.Key) => {
+      (item: LogoItem, key: React.Key, isOriginalSequence: boolean, itemIndex: number) => {
         if (renderItem) {
           return (
             <li
@@ -339,6 +339,13 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           </span>
         ) : (
           <img
+            ref={
+              isOriginalSequence
+                ? (el) => {
+                    imagesRef.current[itemIndex] = el;
+                  }
+                : undefined
+            }
             className={cx(
               'h-[var(--logoloop-logoHeight)] w-auto block object-contain',
               '[-webkit-user-drag:none] pointer-events-none',
@@ -410,7 +417,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
             aria-hidden={copyIndex > 0}
             ref={copyIndex === 0 ? seqRef : undefined}
           >
-            {logos.map((item, itemIndex) => renderLogoItem(item, `${copyIndex}-${itemIndex}`))}
+            {logos.map((item, itemIndex) => renderLogoItem(item, `${copyIndex}-${itemIndex}`, copyIndex === 0, itemIndex))}
           </ul>
         )),
       [copyCount, logos, renderLogoItem, isVertical]
