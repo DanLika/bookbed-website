@@ -78,42 +78,28 @@ export function parseLogoImage(file: File): Promise<{ imageData: ImageData; pngB
         }
       }
 
-      function inside(x: number, y: number) {
-        if (x < 0 || x >= width || y < 0 || y >= height) return false
-        return shapeMask[y * width + x]
-      }
-
       const boundaryMask = new Array(width * height).fill(false)
       for (let y = 0; y < height; y++) {
+        const yWidth = y * width
         for (let x = 0; x < width; x++) {
-          const idx = y * width + x
+          const idx = yWidth + x
           if (!shapeMask[idx]) continue
-          let isBoundary = false
-          for (let ny = y - 1; ny <= y + 1 && !isBoundary; ny++) {
-            for (let nx = x - 1; nx <= x + 1 && !isBoundary; nx++) {
-              if (!inside(nx, ny)) {
-                isBoundary = true
-              }
-            }
-          }
-          if (isBoundary) {
-            boundaryMask[idx] = true
-          }
-        }
-      }
 
-      const interiorMask = new Array(width * height).fill(false)
-      for (let y = 1; y < height - 1; y++) {
-        for (let x = 1; x < width - 1; x++) {
-          const idx = y * width + x
           if (
-            shapeMask[idx] &&
-            shapeMask[idx - 1] &&
-            shapeMask[idx + 1] &&
-            shapeMask[idx - width] &&
-            shapeMask[idx + width]
+            x === 0 ||
+            x === width - 1 ||
+            y === 0 ||
+            y === height - 1 ||
+            !shapeMask[idx - 1] ||
+            !shapeMask[idx + 1] ||
+            !shapeMask[idx - width] ||
+            !shapeMask[idx + width] ||
+            !shapeMask[idx - width - 1] ||
+            !shapeMask[idx - width + 1] ||
+            !shapeMask[idx + width - 1] ||
+            !shapeMask[idx + width + 1]
           ) {
-            interiorMask[idx] = true
+            boundaryMask[idx] = true
           }
         }
       }
@@ -123,23 +109,19 @@ export function parseLogoImage(file: File): Promise<{ imageData: ImageData; pngB
       const C = 0.01
       const ITERATIONS = 300
 
-      function getU(x: number, y: number, arr: Float32Array) {
-        if (x < 0 || x >= width || y < 0 || y >= height) return 0
-        if (!shapeMask[y * width + x]) return 0
-        return arr[y * width + x]
+      const innerIndices: number[] = []
+      for (let idx = 0; idx < width * height; idx++) {
+        if (shapeMask[idx] && !boundaryMask[idx]) {
+          innerIndices.push(idx)
+        }
       }
+      const innerIndicesArray = new Int32Array(innerIndices)
 
       for (let iter = 0; iter < ITERATIONS; iter++) {
-        for (let y = 0; y < height; y++) {
-          for (let x = 0; x < width; x++) {
-            const idx = y * width + x
-            if (!shapeMask[idx] || boundaryMask[idx]) {
-              newU[idx] = 0
-              continue
-            }
-            const sumN = getU(x + 1, y, u) + getU(x - 1, y, u) + getU(x, y + 1, u) + getU(x, y - 1, u)
-            newU[idx] = (C + sumN) / 4
-          }
+        for (let i = 0, len = innerIndicesArray.length; i < len; i++) {
+          const idx = innerIndicesArray[i]
+          const sumN = u[idx + 1] + u[idx - 1] + u[idx + width] + u[idx - width]
+          newU[idx] = (C + sumN) / 4
         }
         u.set(newU)
       }
