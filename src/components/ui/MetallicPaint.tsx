@@ -131,30 +131,62 @@ export function parseLogoImage(file: File): Promise<{ imageData: ImageData; pngB
       const C = 0.01
       const ITERATIONS = 300
 
-      function getU(x: number, y: number, arr: Float32Array) {
-        if (x < 0 || x >= width || y < 0 || y >= height) return 0
-        if (!shapeMask[y * width + x]) return 0
-        return arr[y * width + x]
-      }
+      const validSpans: number[] = []
+      let inSpan = false
+      let start = 0
 
-      for (let iter = 0; iter < ITERATIONS; iter++) {
-        for (let y = 0; y < height; y++) {
-          for (let x = 0; x < width; x++) {
-            const idx = y * width + x
-            if (!shapeMask[idx] || boundaryMask[idx]) {
-              newU[idx] = 0
-              continue
-            }
-            const sumN = getU(x + 1, y, u) + getU(x - 1, y, u) + getU(x, y + 1, u) + getU(x, y - 1, u)
-            newU[idx] = (C + sumN) / 4
+      for (let y = 1; y < height - 1; y++) {
+        for (let x = 1; x < width - 1; x++) {
+          const idx = y * width + x
+          const isActive = shapeMask[idx] && !boundaryMask[idx]
+          if (isActive && !inSpan) {
+            inSpan = true
+            start = idx
+          } else if (!isActive && inSpan) {
+            inSpan = false
+            validSpans.push(start, idx)
           }
         }
-        u.set(newU)
+        if (inSpan) {
+          inSpan = false
+          validSpans.push(start, y * width + width - 1)
+        }
       }
 
+      const numSpans = validSpans.length
+      const spans = new Uint32Array(validSpans)
+
+      let currentU = u
+      let nextU = newU
+
+      for (let iter = 0; iter < ITERATIONS; iter++) {
+        for (let i = 0; i < numSpans; i += 2) {
+          const startIdx = spans[i]
+          const endIdx = spans[i + 1]
+
+          for (let idx = startIdx; idx < endIdx; idx++) {
+            nextU[idx] =
+              (C +
+                currentU[idx + 1] +
+                currentU[idx - 1] +
+                currentU[idx + width] +
+                currentU[idx - width]) *
+              0.25
+          }
+        }
+
+        const temp = currentU
+        currentU = nextU
+        nextU = temp
+      }
+
+      // If ITERATIONS is odd, u is currently in nextU, currentU is newU
+      // but if ITERATIONS is even, u is currentU, nextU is newU
+      // so currentU holds the final result!
+      // Instead of copying, we can just use currentU for the rest of the function.
       let maxVal = 0
       for (let i = 0; i < width * height; i++) {
-        if (u[i] > maxVal) maxVal = u[i]
+        if (currentU[i] > maxVal) maxVal = currentU[i]
       }
       const alpha = 2.0
       const outImg = ctx.createImageData(width, height)
@@ -169,7 +201,7 @@ export function parseLogoImage(file: File): Promise<{ imageData: ImageData; pngB
             outImg.data[px + 2] = 255
             outImg.data[px + 3] = 255
           } else {
-            const raw = u[idx] / maxVal
+            const raw = currentU[idx] / maxVal
             const remapped = Math.pow(raw, alpha)
             const gray = 255 * (1 - remapped)
             outImg.data[px] = gray
