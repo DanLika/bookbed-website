@@ -114,7 +114,7 @@ function FAQCategorySection({
     const title = t(`faqPage.categories.${category.key}.title`)
 
     // Get items from translations
-    const items = t(`faqPage.categories.${category.key}.items`, { returnObjects: true, defaultValue: [] }) as FAQItem[]
+    const items = t(`faqPage.categories.${category.key}.items`, { returnObjects: true, defaultValue: [] }) as unknown as FAQItem[]
 
     return (
         <FadeContent
@@ -160,7 +160,7 @@ function useFAQSchema(t: (key: string, options?: Record<string, unknown>) => str
         const mainEntity: { '@type': string; name: string; acceptedAnswer: { '@type': string; text: string } }[] = []
 
         for (const catKey of categoryKeys) {
-            const items = t(`faqPage.categories.${catKey}.items`, { returnObjects: true, defaultValue: [] }) as { question: string, answer: string }[]
+            const items = t(`faqPage.categories.${catKey}.items`, { returnObjects: true, defaultValue: [] }) as unknown as { question: string, answer: string }[]
             for (const item of items) {
                 if (item.question && item.answer) {
                     mainEntity.push({
