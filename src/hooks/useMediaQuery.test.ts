@@ -106,4 +106,18 @@ describe('useMediaQuery', () => {
     expect(removeEventListenerMock).toHaveBeenCalledWith('change', expect.any(Function));
   });
 
+  describe('edge cases', () => {
+    it('should return false and not crash when window.matchMedia is undefined', () => {
+      const originalMatchMedia = window.matchMedia;
+      // @ts-ignore
+      delete window.matchMedia;
+
+      const { result } = renderHook(() => useMediaQuery('(min-width: 768px)'));
+
+      expect(result.current).toBe(false);
+
+      window.matchMedia = originalMatchMedia;
+    });
+  });
+
 });
