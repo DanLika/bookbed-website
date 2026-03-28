@@ -14,7 +14,7 @@ i18n
     lng: 'hr', // Croatian as default/primary language
     fallbackLng: 'hr',
     interpolation: {
-      escapeValue: false,
+      escapeValue: true, // Enable HTML escaping to prevent XSS vulnerabilities
     },
   })
 
